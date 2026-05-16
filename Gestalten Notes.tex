@@ -503,7 +503,7 @@
 	\end{definition}
 
 	\begin{observation}
-		For fixed $A$, countably presented $A$-algebras are closed under countable colimits, retracts, and in particular finite colimits. Equivalently, in $\Aff$, countably presented maps to a fixed target are closed under countable limits, and in particular under finite limits. Countably presented maps are also stable under base change and composition. Moreover, if $A \to B$ and $A \to D$ are countably presented and $B \to D$ is a map over $A$, then $B \to D$ is countably presented; equivalently, any map over a fixed target between countably presented objects over that target is countably presented. In particular, a section of a countably presented map is countably presented. Indeed, these assertions are respectively the special cases $\kappa = \aleph_1$ and $C = \Sp$ of \Cref{lem:Kappa_Compact_Algebra_Closure_Properties}(1)--(4) and \Cref{lem:Kappa_Compact_Algebra_Section}.
+		The basic closure properties of countably presented maps follow from the compact algebra lemmas in \Cref{sec:Basic_Properties_Compacts}, applied with $\kappa = \aleph_1$ and $C = \Sp$. We will spell out the particular consequences needed later in \Cref{lem:Affine_Countably_Presented_Calculus}.
 	\end{observation}
 
 	Our first main goal is to promote the assignments $\Spec(A) \mapsto n\Pr_A$ to a six-functor formalism on affines:
@@ -970,32 +970,46 @@
 		\item We conclude that the Stefanich ring functor preserves countable colimits and finite limits.
 	\end{itemize}
 
-	\section{A six-functor formalism for \texorpdfstring{$n\Pr$}{nPr} at \texorpdfstring{$n \geq 1$}{n >= 1}}
-
-	We fix $n \geq 1$. Given a map $f\colon Y \to X$ of fpqc-stacks, we denote the resulting symmetric monoidal pullback functor by
-	\[
-		f_n^*\colon n\Pr_X \to n\Pr_Y,
-	\]
-	and its right adjoint by $f_{n*}$. We denote by $\otimes_{n\Pr_X}$ the tensor product of $n\Pr_X$.
-
-	\begin{remark}
-		Throughout this talk, we will frequently abuse notation and regard $n\Pr_Y$ as an object of $(n+1)\Pr_X$ by setting
-		\[
-			n\Pr_Y := f_{n+1,*}(\unit_Y) \qin (n+1)\Pr_X.
-		\]
-		For $p_X: X \to \pt$, we get a `forgetful functor' $p_{X,n+1,*} \colon (n+1)\Pr_X \to (n+1)\Pr$, and we claim that that the image of $f_{n+1,*}(\unit_Y)$ under this functor is $n\Pr_Y$. Indeed, if we write $Y \simeq \colim_{\Spec(A) \to Y} \Spec(A)$, then we may write $p_{X,n+1,*}f_{n+1,*}(\unit) = p_{Y,n+1,*}(\unit)$ as a limit over $p_{A,n+1}(\unit) = n\Pr_A$, which is $n\Pr_Y$ by definition.
-	\end{remark}
+	\section{Bi-countably presented maps}
 
 	We will now extend the assignment $X \mapsto n\Pr_X$ to a six-functor formalism. We may think of this as a `higher' version of the six-functor formalism on $X \mapsto D(X)$. A first question is: what are the $!$-able maps? It turns out that at the higher categorical level, the class of $!$-able maps contains essentially \emph{all} maps. The relevant class of maps is the following:
 
 	\begin{definition}\label[definition]{def:Bi_Countably_Presented}
-		A map $f\colon Y \to X$ of fpqc stacks is \emph{bi-countably presented} if for every affine $\Spec(A) \to X$, the fiber product $Y \times_X \Spec(A)$ is a countable colimit of $\Spec(B_i)$ for countably presented $A$-algebras $B_i$. Let $E$ denote the class of bi-countably presented maps.
+		Let $A \in \CAlg(\Sp)$. A map $Z \to \Spec(A)$ of fpqc sheaves is \emph{bi-countably presented over $\Spec(A)$} if $Z$ is a countable colimit, in $\Shv_{\fpqc}(\Aff)_{/\Spec(A)}$, of affines $\Spec(B_i)$ with $A \to B_i$ countably presented.
+
+		A map $f\colon Y \to X$ of fpqc stacks is \emph{bi-countably presented} if for every affine $\Spec(A) \to X$, the fiber product $Y \times_X \Spec(A)$ is bi-countably presented over $\Spec(A)$. Let $E$ denote the class of bi-countably presented maps.
 	\end{definition}
 
-	\begin{lemma}
-		\label[lemma]{lem:Closure_Properties_Bicountably_Presented}
-		The class $E$ is closed under composition, base change, and formation of diagonals.
+	We first record the affine algebra input that will be used below.
+
+	\begin{lemma}\label[lemma]{lem:Affine_Countably_Presented_Calculus}
+		Let $A \in \CAlg(\Sp)$.
+		\begin{enumerate}[(i)]
+			\item Countably presented $A$-algebras are closed under countable colimits, retracts, and finite colimits in $\CAlg_A(\Sp)$.
+			\item Countably presented maps of affine spectral schemes are stable under base change and composition.
+			\item If $A \to B$ and $A \to C$ are countably presented and $B \to C$ is a map over $A$, then $B \to C$ is countably presented.
+			\item If $\Spec(B) \to \Spec(A)$ is countably presented and admits a section $\Spec(A) \to \Spec(B)$, then the section is countably presented.
+		\end{enumerate}
 	\end{lemma}
+	\begin{proof}
+		Part (i) is \Cref{lem:Kappa_Compact_Algebra_Closure_Properties}(1), applied with $\kappa = \aleph_1$ and $C = \Sp$.
+
+		For base change in (ii), suppose $A \to B$ is countably presented and $A \to A'$ is any map. The base change is $\Spec(A' \otimes_A B) \to \Spec(A')$, and $A' \to A' \otimes_A B$ is countably presented by \Cref{lem:Kappa_Compact_Algebra_Closure_Properties}(2). For composition, if $A \to B$ and $B \to C$ are countably presented, then $A \to C$ is countably presented by \Cref{lem:Kappa_Compact_Algebra_Closure_Properties}(3).
+
+		Part (iii) is \Cref{lem:Kappa_Compact_Algebra_Closure_Properties}(4). Finally, a section $\Spec(A) \to \Spec(B)$ corresponds to an $A$-algebra retraction $B \to A$, so (iv) is exactly \Cref{lem:Kappa_Compact_Algebra_Section}.
+	\end{proof}
+
+	\begin{lemma}\label[lemma]{lem:Section_Of_Bicountably_Presented_Affine_Base}
+		Let $S = \Spec(A)$, and let $p\colon Z \to S$ be bi-countably presented. Then every section $s\colon S \to Z$ of $p$ is bi-countably presented as a map to $Z$.
+	\end{lemma}
+	\begin{proof}
+		\red{TO DO.}
+	\end{proof}
+
+	\begin{proposition}
+		\label[proposition]{prop:Closure_Properties_Bicountably_Presented}
+		The class $E$ is closed under composition and base change. Assuming \Cref{lem:Section_Of_Bicountably_Presented_Affine_Base}, it is also closed under sections and formation of diagonals.
+	\end{proposition}
 	\begin{proof}		
 		Closure under base change is immediate from the definition. For closure under composition, let $Z \to Y \to X$ be two maps in $E$ and let $\Spec(A) \to X$ be affine. Write
 		\[
@@ -1012,18 +1026,40 @@
 		\]
 		and the final indexing category is still countable. Hence $Z \to X$ lies in $E$.
 		
-		It remains to discuss diagonals. The diagonal $\Delta_f\colon Y \to Y \times_X Y$ is a section of the first projection
+		It remains to discuss sections and diagonals, conditional on the missing input \Cref{lem:Section_Of_Bicountably_Presented_Affine_Base}. The diagonal $\Delta_f\colon Y \to Y \times_X Y$ is a section of the first projection
 		\[
 			Y \times_X Y \to Y.
 		\]
 		This projection is a base change of $f$, hence lies in $E$. Since $E$ is already closed under base change, it is therefore enough to know that $E$ is closed under sections.
 		
-		Let us spell out the section statement. Let $p\colon Y \to X$ lie in $E$, let $s\colon X \to Y$ be a section, and test $s$ against an affine map $a\colon \Spec(A) \to Y$. Base change $p$ along the composite $\Spec(A) \xrightarrow{a} Y \xrightarrow{p} X$. Since $p \in E$, the resulting map $Y_A := Y \times_X \Spec(A) \to \Spec(A)$ is countably presented. The map $a$ gives one section of $Y_A \to \Spec(A)$, and $s \circ p \circ a$ gives another. Moreover
+		Let $p\colon Y \to X$ lie in $E$, let $s\colon X \to Y$ be a section, and test $s$ against an affine map $a\colon \Spec(A) \to Y$. Base change $p$ along the composite $\Spec(A) \xrightarrow{a} Y \xrightarrow{p} X$. Since $p \in E$, the resulting map $Y_A := Y \times_X \Spec(A) \to \Spec(A)$ is bi-countably presented over $\Spec(A)$. The map $a$ gives one section of $Y_A \to \Spec(A)$, and $s \circ p \circ a$ gives another. Moreover
 		\[
 			X \times_Y \Spec(A) \simeq \Spec(A) \times_{Y_A} \Spec(A)
 		\]
-		with respect to these two sections. We use the standard formal properties of countably presented morphisms, whose affine algebra versions are recorded in \Cref{lem:Kappa_Compact_Algebra_Closure_Properties,lem:Kappa_Compact_Algebra_Section}: if $T \to S$ and $T' \to S$ are countably presented, then any $S$-map $T \to T'$ is countably presented; countably presented objects in a slice are closed under finite limits; and countable presentation is transitive. Applying the first property over $S = \Spec(A)$ shows that both sections $\Spec(A) \to Y_A$ are countably presented over $Y_A$. Hence their fiber product is countably presented over $Y_A$, and therefore also countably presented over $\Spec(A)$ by transitivity. Since the base is affine, this means precisely that $X \times_Y \Spec(A)$ is a countable colimit of affines countably presented over $A$. Thus $s \in E$, so $E$ is closed under sections and therefore under diagonals.
+		with respect to these two sections. By \Cref{lem:Section_Of_Bicountably_Presented_Affine_Base}, the first section $\Spec(A) \to Y_A$ is bi-countably presented as a map to $Y_A$. Pulling it back along the second section shows that
+		\[
+			\Spec(A) \times_{Y_A} \Spec(A) \to \Spec(A)
+		\]
+		is bi-countably presented over $\Spec(A)$. Thus $s \in E$, so $E$ is closed under sections and therefore under diagonals.
 	\end{proof}
+
+	Consequently, the use of diagonal closure in the ambidexterity argument below should be read as conditional on the missing input \Cref{lem:Section_Of_Bicountably_Presented_Affine_Base}.
+
+	\section{A six-functor formalism for \texorpdfstring{$n\Pr$}{nPr} at \texorpdfstring{$n \geq 1$}{n >= 1}}
+
+	We fix $n \geq 1$. Given a map $f\colon Y \to X$ of fpqc-stacks, we denote the resulting symmetric monoidal pullback functor by
+	\[
+		f_n^*\colon n\Pr_X \to n\Pr_Y,
+	\]
+	and its right adjoint by $f_{n*}$. We denote by $\otimes_{n\Pr_X}$ the tensor product of $n\Pr_X$.
+
+	\begin{remark}
+		Throughout this talk, we will frequently abuse notation and regard $n\Pr_Y$ as an object of $(n+1)\Pr_X$ by setting
+		\[
+			n\Pr_Y := f_{n+1,*}(\unit_Y) \qin (n+1)\Pr_X.
+		\]
+		For $p_X: X \to \pt$, we get a `forgetful functor' $p_{X,n+1,*} \colon (n+1)\Pr_X \to (n+1)\Pr$, and we claim that that the image of $f_{n+1,*}(\unit_Y)$ under this functor is $n\Pr_Y$. Indeed, if we write $Y \simeq \colim_{\Spec(A) \to Y} \Spec(A)$, then we may write $p_{X,n+1,*}f_{n+1,*}(\unit) = p_{Y,n+1,*}(\unit)$ as a limit over $p_{A,n+1}(\unit) = n\Pr_A$, which is $n\Pr_Y$ by definition.
+	\end{remark}
 
 	\begin{theorem}\label[theorem]{thm:Six_Functors_For_nPr}
 		Let $f\colon Y \to X$ be a bi-countably presented map of fpqc stacks, and let $n \geq 1$.
@@ -1162,7 +1198,7 @@
 				Y \rar["f"'] & X .
 			\end{tikzcd}
 		\]
-		The maps $p$, $q$, and $f \circ p = f' \circ q$ are again bi-countably presented by \Cref{lem:Closure_Properties_Bicountably_Presented}, so the relevant $\sharp$-functors are available. Using the projection formula for $f_{n,\sharp}$, base change for the cartesian square above, and then the projection formula for $p_{n,\sharp}$, we then compute
+		The maps $p$, $q$, and $f \circ p = f' \circ q$ are again bi-countably presented by \Cref{prop:Closure_Properties_Bicountably_Presented}, so the relevant $\sharp$-functors are available. Using the projection formula for $f_{n,\sharp}$, base change for the cartesian square above, and then the projection formula for $p_{n,\sharp}$, we then compute
 		\[
 		\begin{aligned}
 			(n-1)\Pr_Y \otimes_{n\Pr_X} (n-1)\Pr_{Y'}
@@ -1218,10 +1254,10 @@
 		\[
 			X \simeq \colim_j \Spec(A_j).
 		\]
-		We use here the standard fact that $\aleph_1$-compact objects of
-		$\Shv_{\fpqc}(\Aff)$ are closed under finite limits; hence each
-		base change $Y_j := Y \times_X \Spec(A_j)$ is again
-		$\aleph_1$-compact.
+		By \Cref{lem:Aleph1_Compact_fpqc_Finite_Limits},
+		$\aleph_1$-compact objects of $\Shv_{\fpqc}(\Aff)$ are closed under
+		finite limits; hence each base change
+		$Y_j := Y \times_X \Spec(A_j)$ is again $\aleph_1$-compact.
 		For such countable colimits, the descent formula
 		\[
 			n\Pr_X \simeq \lim_j n\Pr_{A_j}
@@ -1310,6 +1346,160 @@
 		objects are retracts of countable colimits of $\aleph_1$-compact
 		generators; absorbing the retract into the indexing category gives the
 		stated countable affine presentation.
+	\end{proof}
+
+	\begin{lemma}\label[lemma]{lem:Aleph1_Compact_Anima_Countable_Simplicial}
+		An anima is $\aleph_1$-compact if and only if it can be represented by a
+		countable simplicial set. In particular, $\aleph_1$-compact animae are
+		closed under finite limits.
+	\end{lemma}
+	\begin{proof}
+		First suppose that $X$ is represented by a countable simplicial set
+		$K$. Then $K$ is the filtered colimit of its finite simplicial subsets.
+		Since $K$ is countable, this is a countable colimit. Finite simplicial
+		sets are compact in $\An$, and countable colimits of
+		$\aleph_1$-compact objects are again $\aleph_1$-compact, because
+		$\aleph_1$-filtered colimits in $\An$ commute with countable limits.
+		Thus $X$ is $\aleph_1$-compact.
+
+		Conversely, let $X$ be $\aleph_1$-compact, and choose a simplicial set
+		$K$ representing it. Let $I$ be the poset of countable simplicial
+		subsets of $K$. This poset is $\aleph_1$-filtered, since a countable
+		union of countable simplicial subsets is again countable, and
+		\[
+			K \simeq \colim_{L \in I} L
+		\]
+		in simplicial sets, hence also in $\An$. By compactness, the identity
+		of $X$ factors through one of the maps $\Piinfty{L} \to X$. Thus $X$ is
+		a retract of an anima represented by a countable simplicial set. It
+		follows that $\pi_0(X)$ is countable and that, for every base point,
+		all higher homotopy groups of $X$ are countable.
+
+		We now use the usual cellular approximation argument. Start with one
+		vertex for each connected component of $X$. Inductively, after the
+		$n$-skeleton has been constructed, attach countably many cells to hit
+		the remaining elements of $\pi_n(X)$ and countably many further cells
+		to kill the kernel on $\pi_n$. Since the homotopy groups of $X$ are
+		countable, only countably many cells are needed at each stage. The
+		result is a countable simplicial set $Y$ equipped with a map
+		$\Piinfty{Y} \to X$ inducing an isomorphism on $\pi_0$ and on all
+		higher homotopy groups. Hence $\Piinfty{Y} \to X$ is an equivalence.
+
+		It remains to prove the closure under finite limits. The terminal
+		anima is represented by $\Delta^0$, so it is enough to consider
+		pullbacks. Let
+		\[
+			X \to Z \leftarrow Y
+		\]
+		be a diagram of $\aleph_1$-compact animae. Choose countable simplicial
+		sets $K,L,M$ representing $X,Y,Z$. Replace $M$ by the countable Kan
+		complex $M^{\fib}:=\operatorname{Ex}^{\infty}(M)$. This is still
+		countable: for each $n$, the simplicial set $\operatorname{sd}\Delta^n$
+		is finite, so
+		\[
+			(\operatorname{Ex} N)_n
+			=
+			\Hom_{\sSet}(\operatorname{sd}\Delta^n,N)
+		\]
+		is countable whenever $N$ is countable, and then
+		$\operatorname{Ex}^{\infty}(M)$ is a countable sequential colimit of
+		countable simplicial sets. Since $M^{\fib}$ is fibrant, the two maps to
+		$Z$ may be represented by actual maps of simplicial sets $K \to M^{\fib}$ and
+		$L \to M^{\fib}$, and the homotopy pullback is represented by
+		\[
+			K
+			\times_{M^{\fib}}
+			(M^{\fib})^{\Delta^1}
+			\times_{M^{\fib}}
+			L.
+		\]
+		This simplicial set is countable. Indeed,
+		$(M^{\fib})^{\Delta^1}$ is countable because
+		\[
+			((M^{\fib})^{\Delta^1})_n
+			=
+			\Hom_{\sSet}(\Delta^n \times \Delta^1,M^{\fib}),
+		\]
+		and $\Delta^n \times \Delta^1$ is finite; finite strict limits of
+		countable simplicial sets are countable levelwise. Hence the pullback
+		is represented by a countable simplicial set, and is therefore
+		$\aleph_1$-compact.
+	\end{proof}
+
+	\begin{lemma}\label[lemma]{lem:Aleph1_Compact_Presheaves_Finite_Limits}
+		The $\aleph_1$-compact objects of $\PSh(\Aff)$ are closed under finite
+		limits.
+	\end{lemma}
+	\begin{proof}
+		\red{TO DO.}
+	\end{proof}
+
+	\begin{lemma}\label[lemma]{lem:Compact_Finite_Limits_Localization}
+		Let $\kappa$ be a regular cardinal, and let
+		\[
+			L\colon C \rightleftarrows D : \iota
+		\]
+		be an accessible localization of presentable categories. Assume that
+		$C$ is $\kappa$-compactly generated, that $C^{\kappa}$ is closed under
+		finite limits, that $L$ preserves finite limits, and that $\iota$
+		preserves $\kappa$-filtered colimits. Then $D$ is
+		$\kappa$-compactly generated, and $D^{\kappa}$ is closed under finite
+		limits.
+	\end{lemma}
+	\begin{proof}
+		Since $\iota$ preserves $\kappa$-filtered colimits, the left adjoint
+		$L$ carries $\kappa$-compact objects of $C$ to $\kappa$-compact objects
+		of $D$. Indeed, for $K \in C^{\kappa}$ and a $\kappa$-filtered diagram
+		$(Y_j)$ in $D$, we have
+		\[
+			\Hom_D(LK,\colim_j Y_j)
+			\simeq
+			\Hom_C(K,\iota\colim_j Y_j)
+			\simeq
+			\Hom_C(K,\colim_j \iota Y_j)
+			\simeq
+			\colim_j\Hom_D(LK,Y_j).
+		\]
+		Since $L$ is essentially surjective and the $\kappa$-compact objects of
+		$C$ generate $C$ under colimits, it follows that the objects $LK$ with
+		$K \in C^{\kappa}$ generate $D$ under colimits. Thus $D$ is
+		$\kappa$-compactly generated.
+
+		Moreover, the $\kappa$-compact objects of $D$ are the retracts of
+		objects of the form $LK$ with $K \in C^{\kappa}$. More precisely, the
+		restriction $L^{\kappa}\colon C^{\kappa} \to D^{\kappa}$ exhibits
+		$D^{\kappa}$ as the idempotent completion of the localization of
+		$C^{\kappa}$ obtained by inverting the maps which become equivalences
+		under $L$.
+
+		We now use finite limits. Since $L$ preserves finite limits and
+		$C^{\kappa}$ is closed under finite limits, the localized category
+		$C^{\kappa}[L^{-1}]$ has finite limits and the functor
+		$C^{\kappa} \to C^{\kappa}[L^{-1}]$ preserves them. Passing to
+		idempotent completion preserves finite limits: equivalently, for every
+		finite category $J$, idempotent completion commutes with
+		$\Fun(J,-)$. Hence $D^{\kappa}$ is closed under finite limits in $D$.
+	\end{proof}
+
+	\begin{lemma}\label[lemma]{lem:Aleph1_Compact_fpqc_Finite_Limits}
+		Assume \Cref{lem:Aleph1_Compact_Presheaves_Finite_Limits}. Then
+		$\aleph_1$-compact objects of $\Shv_{\fpqc}(\Aff)$ are closed under
+		finite limits.
+	\end{lemma}
+	\begin{proof}
+		Let
+		\[
+			L\colon \PSh(\Aff) \rightleftarrows \Shv_{\fpqc}(\Aff) : \iota
+		\]
+		be sheafification and the inclusion. By the proof of
+		\Cref{lem:Affines_Aleph1_Compact_fpqc}, the inclusion $\iota$
+		preserves $\aleph_1$-filtered colimits. The sheafification functor $L$
+		preserves finite limits. The presheaf category is
+		$\aleph_1$-compactly generated, and its $\aleph_1$-compact objects are
+		closed under finite limits by
+		\Cref{lem:Aleph1_Compact_Presheaves_Finite_Limits}. Therefore
+		\Cref{lem:Compact_Finite_Limits_Localization}, applied with
+		$\kappa=\aleph_1$, gives the claim.
 	\end{proof}
 
 	\begin{lemma}\label[lemma]{lem:Aleph1_Compact_Pro_Bicountably_Presented}
