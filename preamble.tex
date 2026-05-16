@@ -1,0 +1,817 @@
+%---------------------------------------
+% Packages
+%---------------------------------------
+% === Document Setup and Language ===
+\usepackage[english]{babel}        % English language
+\addto\captionsenglish{\renewcommand{\chaptername}{Talk}}
+\usepackage[utf8]{inputenc}        % Unicode support
+\usepackage[T1]{fontenc}           % Font encoding
+\usepackage{subfiles}              % Allow for subfiles which can be compiled standalone
+\setcounter{secnumdepth}{2}
+
+% === Math Packages ===
+\usepackage{amsfonts, amsmath, amssymb, amsthm}  % AMS math packages
+\usepackage{dsfont}                % For \mathds{1}
+\usepackage{mathtools}             % Enhanced math tools
+\usepackage{accents}               % Mathematical accents
+
+% === Typography and Fonts ===
+%\usepackage{mathptmx}              % Times New Roman font
+\usepackage{newtxtext,newtxmath}   % Enhanced Times New Roman with math support
+\usepackage{csquotes}              % Smart quotes and quotation management
+\linespread{1.05}                  % Line spacing
+
+% === Graphics and Diagrams ===
+\usepackage{tikz-cd, tikz}         % Diagrams and drawings
+\usetikzlibrary{
+	positioning, 	% For relative positioning (below=of, right=of)
+	calc,        	% For coordinate calculations (finding midpoints)
+	fit,			% Needed for the bounding box (fit)
+	patterns, 
+	decorations.markings,
+	decorations.pathmorphing,	% Needed for squiggly arrows
+	backgrounds
+}
+\usepackage{graphicx}              % Image handling
+
+% === Page Layout ===
+\usepackage{geometry}
+\geometry{left=1.3in,right=1.2in}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+
+% === Lists and Enumeration ===
+\usepackage{enumerate}             % Enhanced enumeration
+\renewcommand{\labelenumi}{\normalfont{(\arabic{enumi})}} % Default to [(1)]
+\usepackage{etoolbox}              % Programming tools for LaTeX
+
+% === Hyperlinks and References ===
+\usepackage[hyphens]{url}
+\urlstyle{same}
+\usepackage{bookmark}
+\usepackage{hyperref}              % Must be loaded after most other packages
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	filecolor=black,
+	urlcolor=black,
+	citecolor=black,
+	bookmarksdepth=subsubsection
+}
+
+% === Bibliography ===
+\usepackage[
+backend=biber,
+natbib,
+style=alphabetic,
+maxcitenames=4,
+maxalphanames=4,
+maxbibnames=99
+]{biblatex}
+\renewbibmacro{in:}{}              % Suppresses "In: " before journal names
+\addbibresource{C:/Users/LocalAdmin/OneDrive/Documenten OneDrive/A - Regensburg/Research and notes/Main_Bibliography.bib}
+%\addbibresource{Bibliography.bib}
+
+% === Optional Settings (uncomment if needed) ===
+% \setcounter{secnumdepth}{2}
+% \setcounter{tocdepth}{2}
+
+%---------------------------------------
+% Gestalten
+%---------------------------------------
+\DeclareMathOperator{\fpqc}{fpqc}
+
+%---------------------------------------
+% Algebraic geometry / motivic cohomology
+%---------------------------------------
+\DeclareMathOperator{\KGL}{KGL}
+\DeclareMathOperator{\Nis}{Nis}
+\DeclareMathOperator{\Et}{Et}
+\DeclareMathOperator{\cdh}{cdh}
+\DeclareMathOperator{\vdim}{vdim}
+\DeclareMathOperator{\Krdim}{Kr.dim}
+\DeclareMathOperator{\qcqs}{qcqs}
+\DeclareMathOperator{\Sm}{Sm}
+\DeclareMathOperator{\SSeq}{SSeq}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\KH}{KH}
+
+%---------------------------------------
+% Topos theory
+%---------------------------------------
+\newcommand{\ssquare}{\,\square\,}
+\DeclareMathOperator{\Aff}{Aff}
+\DeclareMathOperator{\Mono}{Mono}
+\DeclareMathOperator{\Gerb}{Gerb}
+\DeclareMathOperator{\hyp}{hyp}
+\DeclareMathOperator{\mono}{mono}
+\DeclareMathOperator{\cons}{cons}
+\DeclareMathOperator{\wcons}{wcons}
+\DeclareMathOperator{\quottext}{quot}
+\DeclareMathOperator{\epi}{epi}
+\DeclareMathOperator{\MonoCong}{MonoCong}
+\DeclareMathOperator{\EpiCong}{EpiCong}
+\DeclareMathOperator{\Cong}{Cong}
+\DeclareMathOperator{\HypCong}{HypCong}
+\DeclareMathOperator{\Mdl}{Mdl}
+\DeclareMathOperator{\Acyc}{Acyc}
+\DeclareMathOperator{\Sat}{Sat}
+\DeclareMathOperator{\SSat}{SSat}
+\DeclareMathOperator{\Conn}{Conn}
+\DeclareMathOperator{\EffEpi}{EffEpi}
+\DeclareMathOperator{\Epi}{Epi}
+\DeclareMathOperator{\Cotr}{Cotr}
+\DeclareMathOperator{\All}{All}
+\DeclareMathOperator{\Pos}{Pos}
+\DeclareMathOperator{\post}{post}
+\DeclareMathOperator{\El}{El}
+\DeclareMathOperator{\cocompl}{cocompl}
+\newcommand{\Topos}{\catname{Topos}}
+\newcommand{\Logos}{\catname{Logos}}
+\newcommand{\bbCat}{\bbC \mathrm{at}}
+\newcommand{\bbLog}{\bbL \mathrm{ogos}}
+\newcommand{\bbTop}{\bbT \mathrm{opos}}
+%\renewcommand{\top}{\mathrm{top}}
+\DeclareMathOperator{\Geom}{Geom}
+\DeclareMathOperator{\Pt}{Pt}
+\DeclareMathOperator{\im}{im}				% Image
+\DeclareMathOperator{\coim}{coim}			% Coimage
+\DeclareMathOperator{\Act}{Act}
+\DeclareMathOperator{\Bun}{Bun}
+\DeclareMathOperator{\Site}{Site}
+\DeclareMathOperator{\cont}{cont}
+\DeclareMathOperator{\cocont}{cocont}
+\DeclareMathOperator{\wccolim}{w.c.colim}
+
+%---------------------------------------
+% Miscellaneous
+%---------------------------------------
+\DeclareMathOperator{\Atl}{Atl}
+\DeclareMathOperator{\DiffStk}{DiffStk}
+\DeclareMathOperator{\SepStk}{SepStk}
+\renewcommand{\H}{\mathrm{H}}
+\newcommand{\SH}{\mathrm{SH}}
+\DeclareMathOperator{\htp}{htp}
+\DeclareMathOperator{\rep}{rep}
+\DeclareMathOperator{\Loc}{Loc}
+\DeclareMathOperator{\modtext}{mod}
+\newcommand{\absmod}[1]{\abs{#1}_{\modtext}}
+\DeclareMathOperator{\sep}{sep}
+\DeclareMathOperator{\PB}{PB}
+\DeclareMathOperator{\PF}{PF}
+\DeclareMathOperator{\NerveDiff}{N^{\mathrm{Diff}}}
+\newcommand{\Deltaalg}[1]{\Delta^{#1}_{\mathrm{alg}}}
+%\newcommand{\Act}[1]{#1 \textup{Act}}
+\DeclareMathOperator{\shear}{shear}
+\DeclareMathOperator{\Sph}{Sph}
+\DeclareMathOperator{\Sub}{Sub}
+\DeclareMathOperator{\Open}{Open}
+\DeclareMathOperator{\open}{open}
+\DeclareMathOperator{\Corr}{Corr}
+\DeclareMathOperator{\bbMap}{\mathbb{M} ap}
+\DeclareMathOperator{\bbHom}{\mathbb{H} om}
+\DeclareMathOperator{\gen}{gen}
+\DeclareMathOperator{\Bgl}{B_{gl}}
+\newcommand{\PrnBdl}[2]{\textup{PrnBdl}_{#1}(#2)}
+\newcommand{\catnameb}[1]{{\normalfont\textbf{#1}}}
+\DeclareMathOperator{\bLieGrpd}{\catnameb{LieGrpd}}
+\newcommand{\cFun}{\Ff \textup{un}}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Shp}{Shp}
+\DeclareMathOperator{\THH}{THH}
+
+%---------------------------------------
+% Higher Algebra
+%---------------------------------------
+
+\newcommand{\Assoc}{\mathcal{A}\mathit{ssoc}}
+\newcommand{\Comm}{\mathcal{C}\!\,\mathit{omm}}
+\newcommand{\Lie}{\mathcal{L}\mathit{ie}}
+\newcommand{\Triv}{\mathcal{T}\!\!\mathit{riv}}
+\newcommand{\oTens}{\mathcal{T}\!\!\mathit{ens}}
+\newcommand{\oLMod}{\mathcal{L}\!\mathcal{M}\mathit{od}}
+\newcommand{\oRMod}{\mathcal{R}\!\mathcal{M}\mathit{od}}
+\newcommand{\oBMod}{\mathcal{B}\!\mathcal{M}\mathit{od}}
+\newcommand{\oMod}{\mathcal{M}\mathit{od}}
+\newcommand{\oAlg}{\mathcal{A}\mathit{lg}}
+\newcommand{\oEnd}{\mathcal{E}\mathit{nd}}
+\newcommand{\oCMon}{\mathcal{C}\!\mathcal{M}\mathit{on}}
+\newcommand{\oCGrp}{\mathcal{C}\mathcal{G}\mathit{rp}}
+\newcommand{\oSp}{\mathcal{S}\mathit{p}}
+\newcommand{\Mult}{\mathcal{M}}
+\DeclareMathOperator{\oCat}{\mathcal{C}\!\mathit{at}}
+\DeclareMathOperator{\oFun}{\mathcal{F}\!\mathit{un}}
+%\newcommand{\Mult}{\mathcal{M}\mathit{ult}}
+\DeclareMathOperator{\Env}{Env}
+\DeclareMathOperator{\Op}{Op}
+\DeclareMathOperator{\AdTrip}{AdTrip}
+\DeclareMathOperator{\rev}{rev}
+\DeclareMathOperator{\tiso}{iso}
+\DeclareMathOperator{\oTw}{\overline{\Tw}}
+\DeclareMathOperator{\lax}{lax}
+\DeclareMathOperator{\NTw}{NTw}
+\newcommand{\OpCocart}{\Oo^{\amalg}}
+\newcommand{\OpCart}{\Oo^{\times}}
+\DeclareMathOperator{\Day}{Day}
+\newcommand{\oDay}{\mathcal{D}\mathit{ay}}
+\newcommand{\dlax}{\textup{-lax}}
+\newcommand{\textred}{\textup{red}}
+\newcommand{\exc}{\textup{exc}}
+\DeclareMathOperator{\BiFun}{BiFun}
+\DeclareMathOperator{\BV}{BV}
+\renewcommand{\Bar}{\mathrm{Bar}}
+\newcommand{\dnil}{\textup{-nil}}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Tor}{Tor}
+\newcommand{\enr}{\textup{enr}}
+\newcommand{\heart}{\heartsuit}
+\newcommand{\dsm}{\textup{-sm}}
+\DeclareMathOperator{\Free}{Free}
+
+%---------------------------------------
+% Stable Homotopy Theory
+%---------------------------------------
+\DeclareMathOperator{\ku}{ku}
+\DeclareMathOperator{\KU}{KU}
+\DeclareMathOperator{\MU}{MU}
+\DeclareMathOperator{\MO}{MO}
+\DeclareMathOperator{\MSO}{MSO}
+\DeclareMathOperator{\BO}{BO}
+\DeclareMathOperator{\bGr}{\mathbf{Gr}}
+\DeclareMathOperator{\BUP}{BUP}
+\DeclareMathOperator{\bBUP}{\mathbf{BUP}}
+\DeclareMathOperator{\Th}{Th}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\pre}{pre}
+\DeclareMathOperator{\Line}{Line}
+%\DeclareMathOperator{\Triv}{Triv}
+\DeclareMathOperator{\PT}{PT}
+\newcommand{\interiorsymb}[1]{ {\kern0pt#1}^{\mathrm{o}}}
+\newcommand{\PSp}{\catname{PSp}}
+\DeclareMathOperator{\Emb}{Emb}
+\newcommand{\Ntop}{N^{\textup{top}}}
+\newcommand{\Homtop}{\Hom^{\textup{top}}}
+\DeclareMathOperator{\fw}{fw}
+\DeclareMathOperator{\Shift}{Shift}
+\DeclareMathOperator{\Der}{Der}
+
+%---------------------------------------
+% Category Theory Operators
+%---------------------------------------
+
+% Maps and functors
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\iHom}{\underline{\operatorname{Hom}}}			% Internal Hom
+\DeclareMathOperator{\ihom}{\underline{\operatorname{hom}}}			% Internal Hom
+\DeclareMathOperator{\uHom}{\underline{\operatorname{Hom}}}			% Internal Hom
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\map}{map}
+\DeclareMathOperator{\Path}{Path}
+\DeclareMathOperator{\Fun}{Fun}
+\newcommand{\FunL}{\Fun^{\textup{L}}}
+\newcommand{\FunR}{\Fun^{\textup R}}
+\newcommand{\ulFun}{\ul{\Fun}}
+\DeclareMathOperator{\Nat}{Nat}
+
+% Fibrations and Related Concepts
+\DeclareMathOperator{\Lift}{Lift}
+\DeclareMathOperator{\lift}{lift}
+\DeclareMathOperator{\cocart}{cocart}
+\DeclareMathOperator{\CoCart}{CoCart}
+\DeclareMathOperator{\Cocart}{Cocart}
+\DeclareMathOperator{\isCocart}{\texttt{isCocart}}
+\DeclareMathOperator{\Cart}{Cart}
+\DeclareMathOperator{\RFib}{RFib}
+\DeclareMathOperator{\LFib}{LFib}
+\DeclareMathOperator{\St}{St}
+\DeclareMathOperator{\Un}{Un}
+\DeclareMathOperator{\cart}{cart}
+\newcommand{\dcart}{\textup{-cart}}
+\DeclareMathOperator{\cc}{cc}
+\DeclareMathOperator{\ct}{ct}
+\DeclareMathOperator{\Str}{Str}
+\DeclareMathOperator{\el}{el}
+
+%---------------------------------------
+% Algebraic Geometry
+%---------------------------------------
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\QCoh}{QCoh}
+\DeclareMathOperator{\Perf}{Perf}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Zar}{Zar}
+\DeclareMathOperator{\Sch}{Sch}
+\newcommand{\ad}{\mathrm{ad}}
+\newcommand{\corp}{\mathrm{corp}}
+\newcommand{\loc}{\mathrm{loc}}
+\newcommand{\ultra}{\mathrm{ultra}}
+
+%---------------------------------------
+% Other math-operators
+%---------------------------------------
+\DeclareMathOperator{\Ar}{Ar}
+\DeclareMathOperator{\BC}{BC}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Ho}{Ho}
+\let\Im\relax
+\DeclareMathOperator{\Im}{Im}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\Iso}{Iso}
+\DeclareMathOperator{\LConst}{LConst}
+\DeclareMathOperator{\Nm}{Nm}
+\DeclareMathOperator{\Pro}{Pro}
+\DeclareMathOperator{\Rex}{Rex}
+\DeclareMathOperator{\PSh}{PSh}
+\DeclareMathOperator{\Shape}{Shape}
+\DeclareMathOperator{\Shv}{Shv}
+\usepackage{relsize}
+\newcommand{\simp}{\mathlarger{\boldsymbol{\Delta}}}
+\newcommand{\bOmega}{{\boldsymbol{\Omega}}}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\NSpan}{NSpan}
+\DeclareMathOperator{\Tw}{Tw}
+\DeclareMathOperator{\LM}{LM}
+\let\Re\relax
+\DeclareMathOperator{\Re}{Re}
+\DeclareMathOperator{\Fact}{Fact}
+
+\DeclareMathOperator{\shift}{shift}
+\DeclareMathOperator{\act}{act}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\ex}{ex}
+\DeclareMathOperator{\lex}{lex}
+\DeclareMathOperator{\rex}{rex}
+\DeclareMathOperator{\chain}{chain}
+\DeclareMathOperator{\sd}{sd}
+\DeclareMathOperator{\Reedy}{Reedy}
+\newcommand{\vectimes}[1]{\;\vec{\times}_{#1}\;}
+\DeclareMathOperator{\Nmadj}{\widetilde{\Nm}}
+
+%---------------------------------------
+% Abbreviations
+%---------------------------------------
+
+\newcommand{\can}{\mathrm{can}}             % Canonical
+\newcommand{\ho}{\mathrm{ho}}               % Homotopy category
+\newcommand{\nondeg}{\mathrm{nondeg}}       % Non-degenerate
+\newcommand{\univ}{\mathrm{univ}}           % Universal
+\newcommand{\prop}{\textup{pr}}
+\newcommand{\inv}{\textup{inv}}
+\DeclareMathOperator{\ac}{ac}				% Associated category
+\DeclareMathOperator{\pb}{pb}				% Pullback
+
+\DeclareMathOperator{\fgt}{fgt}				% Forgetful functor
+\DeclareMathOperator{\id}{id}				% Identity
+\DeclareMathOperator{\pr}{pr}				% Projection
+\DeclareMathOperator{\incl}{incl}				% Inclusion
+\DeclareMathOperator{\const}{const}			% Forgetful
+\DeclareMathOperator{\sk}{sk}				% Skeleton
+\DeclareMathOperator{\cosk}{cosk}			% Coskeleton
+\DeclareMathOperator{\gl}{gl}               % Global
+\DeclareMathOperator{\grp}{grp}             % Group completion
+\DeclareMathOperator{\qis}{qis}             % Quasi-isomorphism
+\DeclareMathOperator{\cyl}{cyl}             % Cylinder
+\DeclareMathOperator{\surj}{surj}             % Surjective
+\newcommand{\et}{\textup{ét}}				% Étale
+\newcommand{\coh}{\mathrm{coh}}				% Coherent
+\newcommand{\acc}{\mathrm{acc}}				% Accessible
+\renewcommand{\small}{\mathrm{small}}
+
+\DeclareMathOperator{\free}{free}
+\DeclareMathOperator{\fin}{fin}
+\DeclareMathOperator{\pt}{pt}
+\DeclareMathOperator{\aug}{{aug}}
+\DeclareMathOperator{\st}{st}
+
+\DeclareMathOperator{\cofib}{cofib}
+\DeclareMathOperator{\fib}{fib}
+\DeclareMathOperator{\colim}{colim}
+\let\lim\relax
+\DeclareMathOperator{\lim}{lim}
+\DeclareMathOperator{\coeq}{coeq}
+\DeclareMathOperator{\coker}{coker}
+\newcommand{\ev}{\textup{ev}}
+\newcommand{\coev}{\textup{coev}}
+\DeclareMathOperator{\res}{res}
+\DeclareMathOperator{\ind}{ind}
+\DeclareMathOperator{\coind}{coind}
+
+%---------------------------------------
+% Categories
+%---------------------------------------
+\newcommand{\catname}[1]{{\textup{#1}}}
+\newcommand{\Set}{\catname{Set}}
+\newcommand{\An}{\catname{An}}
+\newcommand{\CondAn}{\catname{CondAn}}
+\newcommand{\Ab}{\catname{Ab}}
+\newcommand{\Alg}{\catname{Alg}}
+\newcommand{\CAlg}{\catname{CAlg}}
+\newcommand{\Cat}{\catname{Cat}}
+\newcommand{\CAT}{\catname{CAT}}
+\newcommand{\CRing}{\catname{CRing}}
+\newcommand{\qCat}{\catname{qCat}}
+\newcommand{\CGrp}{\catname{CGrp}}
+\newcommand{\CMon}{\catname{CMon}}
+\newcommand{\Fin}{\catname{Fin}}
+\newcommand{\FinGrpd}{\catname{FinGrpd}}
+\newcommand{\Grp}{\catname{Grp}}
+\newcommand{\Grpd}{\catname{Grpd}}
+\newcommand{\Mod}{\catname{Mod}}
+\newcommand{\Mon}{\catname{Mon}}
+\newcommand{\LMod}{\catname{LMod}}
+\newcommand{\RMod}{\catname{RMod}}
+\newcommand{\BMod}{\catname{BMod}}
+\newcommand{\Rep}{\catname{Rep}}
+\renewcommand{\Top}{\catname{Top}}
+\newcommand{\TopGrpd}{\catname{TopGrpd}}
+\newcommand{\bTopGrpd}{\mathbf{TopGrpd}}
+\newcommand{\Spc}{\catname{Spc}}
+\newcommand{\Sp}{\catname{Sp}}
+\newcommand{\Vect}{\catname{Vect}}
+\newcommand{\Orb}{\textup{Orb}}
+\newcommand{\Orbit}{\textup{Orbit}}
+\newcommand{\Glo}{\textup{Glo}}
+
+\newcommand{\sAn}{\s\An}
+\newcommand{\dAn}{\mathrm{d}\An}
+\newcommand{\bVect}{\mathbf{V}\catname{ect}}
+\newcommand{\LCHaus}{\catname{LCHaus}}
+\newcommand{\CHaus}{\catname{CHaus}}
+\newcommand{\ProFin}{\catname{ProFin}}
+\newcommand{\AnRing}{\catname{AnRing}}
+\newcommand{\AnStck}{\catname{AnStck}}
+\newcommand{\StRing}{\catname{StRing}}
+\newcommand{\PreStRing}{\catname{PreStRing}}
+\newcommand{\Gest}{\catname{Gest}}
+\newcommand{\LieGrpd}{\catname{LieGrpd}}
+\newcommand{\sTop}{\catname{sTop}}
+\newcommand{\Diff}{\catname{Diff}}
+\newcommand{\sSet}{\catname{sSet}}
+\newcommand{\Poset}{\catname{Poset}}
+
+\renewcommand{\Pr}{\textup{Pr}}
+\newcommand{\PrL}{\textup{Pr}^{\textup{L}}}
+\newcommand{\PrR}{\textup{Pr}^{\textup{R}}}
+
+\def\ulSp{\smash{\ul{{\setbox0=\hbox{\Sp}\dp0=1pt \ht0=0pt \box0\relax}}}}
+\def\ulSpc{\smash{\ul{{\setbox0=\hbox{\Spc}\dp0=1pt \ht0=0pt \box0\relax}}}}
+\def\ulOrbSp{\smash{\ul{{\setbox0=\hbox{\Orb\Sp}\dp0=1pt \ht0=0pt \box0\relax}}}}
+\def\ulOrbSpc{\smash{\ul{{\setbox0=\hbox{\Orb\Spc}\dp0=1pt \ht0=0pt \box0\relax}}}}
+
+%---------------------------------------
+% Miscellaneous
+%---------------------------------------
+
+\newcommand{\h}{\textup{h}}
+\newcommand{\CW}{\mathrm{CW}}
+\DeclareMathOperator{\hocolim}{hocolim}
+\DeclareMathOperator{\holim}{holim}
+\DeclareMathOperator{\Exc}{Exc}
+\newcommand{\s}{\textup{s}}
+\DeclareMathOperator{\Sing}{Sing}
+\DeclareMathOperator{\Kan}{Kan}
+\newcommand{\bKan}{\mathbf{Kan}}
+\newcommand{\bqCat}{\mathbf{qCat}}
+\DeclareMathOperator{\Ch}{\catname{Ch}}
+\DeclareMathOperator{\inj}{inj}
+\DeclareMathOperator{\all}{all}
+\DeclareMathOperator{\isotext}{iso}
+\DeclareMathOperator{\Cut}{Cut}
+\DeclareMathOperator{\LCut}{LCut}
+\DeclareMathOperator{\BCut}{BCut}
+\DeclareMathOperator{\Red}{Red}
+\DeclareMathOperator{\Segal}{Segal}
+\DeclareMathOperator{\Seg}{Seg}
+\DeclareMathOperator{\CSeg}{CSeg}
+\DeclareMathOperator{\add}{add}
+\DeclareMathOperator{\sadd}{sadd}
+\newcommand{\Piinfty}[1]{\Pi_{\infty}(#1)}
+\DeclareMathOperator{\oplax}{oplax}
+
+\newcommand{\qednow}{\pushQED{\qed}\qedhere\popQED} % Use this 
+
+\newcommand{\quadtext}[1]{\quad\textrm{#1}\quad}
+\newcommand{\qquadtext}[1]{\qquad\textrm{#1}\qquad}
+\newcommand{\qin}{\quad\in\quad}
+\newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\geom}[1]{\| #1 \|}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+
+\newcommand{\catop}{^{\textup{op}}}
+\let\op\relax
+\DeclareMathOperator{\op}{op}
+
+\DeclareMathOperator{\unit}{\mathds{1}}    % unit for \otimes
+\newcommand{\blank}{{\textup{ --}}}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+\newcommand{\lra}[1]{\langle #1 \rangle}
+
+\newcommand{\iso}{\xrightarrow{\;\smash{\raisebox{-0.5ex}{\ensuremath{\scriptstyle\sim}}}\;}}
+\newcommand{\xrightrightarrows}[2]{\begin{tikzcd}[ampersand replacement=\&, cramped] \vphantom{x}\rar[shift left=0.45ex, "#1"] \rar[shift right=0.45ex, swap, "#2"]\& \vphantom{x} \end{tikzcd}}
+\newcommand{\xadjto}[2]{\begin{tikzcd}[ampersand replacement=\&, cramped] \vphantom{x}\rar[shift left=0.45ex, "#1"]\& \lar[shift left=0.45ex, "#2"] \vphantom{x} \end{tikzcd}}
+
+%---------------------------------------
+% Alphabets
+%---------------------------------------
+\let\S\relax
+\let\P\relax
+\DeclareMathOperator{\C}{\mathbb C}
+\DeclareMathOperator{\F}{\mathbb F}
+\DeclareMathOperator{\N}{\mathbb N}
+\DeclareMathOperator{\P}{\mathbb P}
+\DeclareMathOperator{\Q}{\mathbb Q}
+\DeclareMathOperator{\R}{\mathbb R}
+\DeclareMathOperator{\S}{\mathbb S}
+\DeclareMathOperator{\Z}{\mathbb Z}
+\DeclareMathOperator{\D}{\mathrm{D}}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\aa}{\mathfrak{a}}
+\newcommand{\pp}{\mathfrak{p}}
+\newcommand{\fa}{\mathfrak{a}}
+\newcommand{\fb}{\mathfrak{b}}
+\newcommand{\fc}{\mathfrak{c}}
+\newcommand{\fm}{\mathfrak{m}}
+\newcommand{\mm}{\mathfrak{m}}
+\newcommand{\fn}{\mathfrak{n}}
+\newcommand{\fp}{\mathfrak{p}}
+
+% Caligraphic font
+\newcommand{\Aa}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Cc}{\mathcal{C}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ee}{\mathcal{E}}
+\newcommand{\Ff}{\mathcal{F}}
+\newcommand{\Gg}{\mathcal{G}}
+\newcommand{\Hh}{\mathcal{H}}
+\newcommand{\Ii}{\mathcal{I}}
+\newcommand{\Jj}{\mathcal{J}}
+\newcommand{\Kk}{\mathcal{K}}
+\newcommand{\Ll}{\mathcal{L}}
+\newcommand{\Mm}{\mathcal{M}}
+\newcommand{\Nn}{\mathcal{N}}
+\newcommand{\Oo}{\mathcal{O}}
+\newcommand{\Pp}{\mathcal{P}}
+\newcommand{\Qq}{\mathcal{Q}}
+\newcommand{\Rr}{\mathcal{R}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Tt}{\mathcal{T}}
+\newcommand{\Uu}{\mathcal{U}}
+\newcommand{\Vv}{\mathcal{V}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Xx}{\mathcal{X}}
+\newcommand{\Yy}{\mathcal{Y}}
+\newcommand{\Zz}{\mathcal{Z}}
+
+% Bold font
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bB}{\mathbf{B}}
+\newcommand{\bC}{\mathbf{C}}
+\newcommand{\bD}{\mathbf{D}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bG}{\mathbf{G}}
+\newcommand{\bH}{\mathbf{H}}
+\newcommand{\bI}{\mathbf{I}}
+\newcommand{\bJ}{\mathbf{J}}
+\newcommand{\bK}{\mathbf{K}}
+\newcommand{\bL}{\mathbf{L}}
+\newcommand{\bM}{\mathbf{M}}
+\newcommand{\bN}{\mathbf{N}}
+\newcommand{\bO}{\mathbf{O}}
+\newcommand{\bP}{\mathbf{P}}
+\newcommand{\bQ}{\mathbf{Q}}
+\newcommand{\bR}{\mathbf{R}}
+\newcommand{\bS}{\mathbf{S}}
+\newcommand{\bT}{\mathbf{T}}
+\newcommand{\bU}{\mathbf{U}}
+\newcommand{\bV}{\mathbf{V}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\bZ}{\mathbf{Z}}
+
+% Blackboard bold
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+%---------------------------------------
+% Environments
+%---------------------------------------
+
+% Theorem-style environments
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{thmx}{Theorem}
+\renewcommand{\thethmx}{\Alph{thmx}}
+
+% Definition-style environments
+\theoremstyle{definition}
+\newtheorem{axiom}{Axiom}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{convention}[theorem]{Convention}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{discussion}[theorem]{Discussion}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{terminology}[theorem]{Terminology}
+\newtheorem{warning}[theorem]{Warning}
+
+% Unnumbered environments
+\newtheorem*{remark*}{Remark}
+\newtheorem*{example*}{Example}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{recognition*}{Recognition Principle for Infinite Loop Spaces}
+\newtheorem*{claim*}{Claim}
+\newtheorem*{convention*}{Convention}
+\newtheorem*{definition*}{Definition}
+\newtheorem*{exercise*}{Exercise}
+\newtheorem*{fact*}{Fact}
+\newtheorem*{question*}{Question}
+\newtheorem*{warning*}{Warning}
+\renewcommand{\theaxiom}{\Alph{axiom}}
+\newtheorem{subaxiom}{Axiom}
+\renewcommand{\thesubaxiom}{\Alph{axiom}.\arabic{subaxiom}}
+\renewcommand{\theHsubaxiom}{\theaxiom.\thesubaxiom}  % Makes sure the hyperlinks remember in which axiom the subaxiom appears
+\newtheorem{subaxiomprime}{Axiom}
+\renewcommand{\thesubaxiomprime}{\Alph{axiom}.\arabic{subaxiomprime}'}
+\renewcommand{\theHsubaxiomprime}{\theaxiom.\thesubaxiomprime}  % Makes sure the hyperlinks remember in which axiom the subaxiom appears
+
+%---------------------------------------
+% Margin notes
+%---------------------------------------
+\newcommand{\red}[1]{{\color{red}{\textbf #1}}}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.8ex}
+\setlength\marginparwidth{57pt}
+\newcommand{\notehelper}[3]{\textcolor{#3}{$\blacksquare$}\marginpar{\ifodd\thepage\raggedright\else\raggedleft\fi\color{#3}\tiny \textbf{#2:} #1}}
+\newcommand\bastiaan[1]{\notehelper{#1}{Bastiaan}{blue}}
+\newcommand\bastiaanlong[1]{{\itshape \color{blue} #1}}
+
+%---------------------------------------
+% Tikzcd
+%---------------------------------------
+
+\tikzcdset{pullback/.style = {phantom, "\lrcorner"{very near start}}}
+\tikzcdset{pullbackdl/.style = {phantom, "{\reflectbox{$\lrcorner$}}"{very near start}}}
+\tikzcdset{pushout/.style = {phantom, "{\rotatebox{180}{$\lrcorner$}}"{very near end}}}
+
+\tikzset{curve/.style={settings={#1},to path={(\tikztostart)
+			.. controls ($(\tikztostart)!\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
+			and ($(\tikztostart)!1-\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
+			.. (\tikztotarget)\tikztonodes}}}
+\tikzcdset{scale cd/.style={every label/.append style={scale=#1},cells={nodes={scale=#1}}}}
+\newcommand{\pullback}{\mathrel{\text{\tikz{
+				\draw[line width=0.6pt] (0,0) -- (0.5em,0);
+				\draw[line width=0.6pt] (0.5em,0) -- (0.5em,0.6em);
+		}}\,}}
+\newcommand{\pullbackto}{\mathrel{\text{\tikz{
+				\draw[line width=0.6pt] (0,0) -- (0.5em,0);
+				\draw[line width=0.6pt] (0.5em,0) -- (0.5em,0.6em);
+		}}\kern0.5em\to}}
+\newcommand{\pushout}{\mathrel{\text{\tikz{
+				\draw[line width=0.4pt] (0,0) -- (0,0.5em);
+				\draw[line width=0.4pt] (0,0.5em) -- (0.5em,0.5em);
+		}}\,}}
+\newcommand{\pushoutto}{\mathrel{\text{\tikz{
+				\draw[line width=0.4pt] (0,0) -- (0,0.5em);
+				\draw[line width=0.4pt] (0,0.5em) -- (0.5em,0.5em);
+		}}\kern0.5em\to}}
+
+%---------------------------------------
+% Other
+%---------------------------------------
+
+\newcommand{\quot}{/\!\!/}
+
+% Use this when you want to write a \colon but the arrow goes from right to left, as in $Y \leftarrow X\noloc f$.
+\newcommand\noloc{%
+	\nobreak
+	\mspace{6mu plus 1mu}
+	{:}
+	\nonscript\mkern-\thinmuskip
+	\mathpunct{}
+	\mspace{2mu}
+}
+
+\newcommand{\pvto}[2]{{%
+		\kern1pt
+		\big(
+		\begin{matrix}
+			\text{\tiny $#1$} \\[-7pt]
+			\scriptstyle\downarrow \\[-7pt]
+			\text{\tiny $#2$}
+		\end{matrix}
+		\big)
+}}
+\newcommand{\puto}[3]{{%
+		\kern1pt
+		\big(
+		\begin{matrix}
+			\text{\tiny $#1$ \hspace{-6pt}\phantom{$#3$}} \\[-9pt]
+			\scriptstyle\downarrow \raisebox{2pt}{\text{\tiny $#3$}} \\[-9pt]
+			\text{\tiny $#2$ \hspace{-6pt}\phantom{$#3$}}
+		\end{matrix}
+		\big)
+}}
+\newcommand{\apvto}[2]{\raisebox{0pt}[1.3\ht\strutbox][1.3\dp\strutbox]{$\smash{\pvto{#1}{#2}}$}}
+\newcommand{\pwto}[2]{{%
+		\kern1pt
+		\big(
+		\begin{matrix}
+			\text{\tiny $#1$} \\[-5pt]
+			\text{\tiny $#2$}
+		\end{matrix}
+		\big)
+}}
+\newcommand{\rbox}[3]{\raisebox{0pt}[#1\ht\strutbox][#2\dp\strutbox]{$#3$}}
+
+%---------------------------------------
+% Cleverref
+%---------------------------------------
+\usepackage[capitalise]{cleveref}  % Smart cross-referencing
+
+\crefname{axiom}{axiom}{axioms}
+\crefname{claim}{claim}{claims}
+\crefname{conjecture}{conjecture}{conjectures}
+\crefname{construction}{construction}{constructions}
+\crefname{convention}{convention}{conventions}
+\crefname{corollary}{corollary}{corollaries}
+\crefname{definition}{definition}{definitions}
+\crefname{discussion}{discussion}{discussions}
+\crefname{example}{example}{examples}
+\crefname{exercise}{exercise}{exercises}
+\crefname{fact}{fact}{facts}
+\crefname{lemma}{lemma}{lemmas}
+\crefname{notation}{notation}{notations}
+\crefname{observation}{observation}{observations}
+\crefname{proposition}{proposition}{propositions}
+\crefname{question}{question}{questions}
+\crefname{remark}{remark}{remarks}
+\crefname{subaxiom}{axiom}{axioms}
+\crefname{terminology}{terminology}{terminologies}
+\crefname{theorem}{theorem}{theorems}
+\crefname{warning}{warning}{warnings}
+
+\Crefname{axiom}{Axiom}{Axioms}
+\Crefname{claim}{Claim}{Claims}
+\Crefname{conjecture}{Conjecture}{Conjectures}
+\Crefname{construction}{Construction}{Constructions}
+\Crefname{convention}{Convention}{Conventions}
+\Crefname{corollary}{Corollary}{Corollaries}
+\Crefname{definition}{Definition}{Definitions}
+\Crefname{discussion}{Discussion}{Discussions}
+\Crefname{example}{Example}{Examples}
+\Crefname{exercise}{Exercise}{Exercises}
+\Crefname{fact}{Fact}{Facts}
+\Crefname{lemma}{Lemma}{Lemmas}
+\Crefname{notation}{Notation}{Notations}
+\Crefname{observation}{Observation}{Observations}
+\Crefname{proposition}{Proposition}{Propositions}
+\Crefname{question}{Question}{Questions}
+\Crefname{remark}{Remark}{Remarks}
+\Crefname{subaxiom}{Axiom}{Axioms}
+\Crefname{terminology}{Terminology}{Terminologies}
+\Crefname{theorem}{Theorem}{Theorems}
+\Crefname{warning}{Warning}{Warnings}
