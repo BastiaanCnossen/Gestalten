@@ -439,68 +439,64 @@
 	\end{proof}
 
 	\chapter{Quasicoherent sheaves of higher categories I}
+	\label[chapter]{chap:QCoh_I}
 
 	\emph{Talk given by Christoph.}
 
-	Recall that we denote $1\Pr := \PrL_{\aleph_1}$. Given $C \in \CAlg(1\Pr)$, we have the adjunction of \Cref{nota:M_E_Adjunction},
+	The eventual goal is to construct higher analogues of quasicoherent sheaves on fpqc-stacks. In this talk we treat the affine case, meaning stacks of the form $\Spec(A)$ for a commutative ring spectrum $A \in \CAlg(\Sp)$. We write
 	\[
-		M_C\colon \CAlg(C) \rightleftarrows \CAlg(\Mod_C(1\Pr)) \simeq \CAlg(1\Pr)_{C/} \colon E_C,
+		\Aff := \CAlg(\Sp)\catop,
 	\]
-	where $M_C$ is a fully faithful symmetric monoidal functor sending $B$ to $\Mod_B(C)$, and $E_C$ sends a commutative algebra $M$ over $C$ to the endomorphism object $\End_M(\unit)$.
+	and denote by $\Spec(A)$ the object of $\Aff$ corresponding to $A$. A map $\Spec(B) \to \Spec(A)$ in $\Aff$ is the same thing as a map $A \to B$ in $\CAlg(\Sp)$.
 
-	Applying this to $1\Pr \in \CAlg(1\Pr)$, we inductively define
+	For each such affine $\Spec(A)$ we will define presentable categories
+	\[
+		0\Pr_A,\; 1\Pr_A,\; 2\Pr_A,\ldots
+	\]
+	which should be thought of as higher versions of $\QCoh(\Spec(A))$. These categories are not ad hoc: they are the components of the Stefanich ring associated to $A$.
+
+	\section{Affine Stefanich rings}
+
+	Recall that $1\Pr = \PrL_{\aleph_1}$ and that, for $n \geq 1$, the higher categories $n\Pr$ are defined by
 	\[
 		(n+1)\Pr := \Mod_{n\Pr}(1\Pr).
 	\]
-	We then define the presentable category $\StRing$ as the colimit
+	The category of Stefanich rings is the colimit
 	\[
 		\StRing := \colim(\CAlg(1\Pr) \xhookrightarrow{M_{1\Pr}} \CAlg(2\Pr) \xhookrightarrow{M_{2\Pr}} \dots)
 	\]
-	in $\CAlg(1\Pr)$. Equivalently, $\StRing$ is a limit of $\CAlg(n\Pr)$ along the endomorphism algebra functors $E_{n\Pr}\colon \CAlg((n+1)\Pr) \to \CAlg(n\Pr)$.
+	where the transition functors are the embeddings from \Cref{nota:M_E_Adjunction}. Equivalently, it is the limit of the categories $\CAlg(n\Pr)$ along the endomorphism algebra functors $E_{n\Pr}$.
 
-	\section{Stefanich rings associated to ring spectra}
-
-	Now consider an arbitrary ring spectrum $A \in \CAlg(\Sp)$. We may then consider $0\Pr_A := \Mod_A(\Sp) \in \CAlg(1\Pr)$. Applying $M_{\Sp}$ from \Cref{nota:M_E_Adjunction} gives a fully faithful functor
+	Now let $A \in \CAlg(\Sp)$. We first regard $A$ through its category of modules
+	\[
+		0\Pr_A := \Mod_A(\Sp) \in \CAlg(1\Pr).
+	\]
+	Applying the functor $M_{\Sp}$ from \Cref{nota:M_E_Adjunction} gives a fully faithful functor
 	\[
 		\CAlg(\Sp) \xhookrightarrow{M_{\Sp}} \CAlg(\Mod_{\Sp}(1\Pr)) \hookrightarrow \CAlg(1\Pr) \hookrightarrow \StRing.
 	\]
-	The image of this composite on $A$ is the sequence $(n\Pr_A)_{n \geq 0}$, where we inductively define
+	We denote the Stefanich ring associated to $A$ by
 	\[
-		n\Pr_A := \Mod_{(n-1)\Pr_A}(n\Pr) \in \CAlg((n+1)\Pr) = \CAlg(\Mod_{n\Pr}(1\Pr)) \simeq \CAlg(1\Pr)_{n\Pr/}
+		A \longmapsto (0\Pr_A,1\Pr_A,2\Pr_A,\ldots).
 	\]
-	for $n \geq 1$.
-
-	\begin{remark}
-		The choice of starting with commutative ring spectra is somewhat arbitrary and mostly done for expository purposes. More generally, we could replace $\CAlg(\Sp)$ by some other $\infty$-category $C$ of suitable ``derived rings'', e.g.\ animated rings, connective commutative $\Z$-algebras, or connective commutative $\S$-algebras, as long as we have some reasonable notion of the module category $\Mod_A(C) \in \CAlg(1\Pr)$. The main advantage of $\CAlg(\Sp)$ is that the functor to $\CAlg(1\Pr)$ is fully faithful, as being an $\Sp$-module in $1\Pr$ is the \emph{property} of being stable.
-	\end{remark}
-
-	\begin{observation}
-		Consider $D \in \CAlg(1\Pr)$, and consider the inclusion $M_{\Mod_D(1\Pr)}$ of \Cref{nota:M_E_Adjunction},
-		\[
-			\CAlg(\Mod_D(1\Pr)) \hookrightarrow \CAlg(\Mod_{\Mod_D(1\Pr)}(1\Pr))
-		\]
-		induced by the symmetric monoidal inclusion $M_{1\Pr}\colon \CAlg(1\Pr) \hookrightarrow \CAlg(\Mod_D(1\Pr))$. By the fact that commutative algebras in the category of $D$-modules are the same as commutative $D$-algebras, and similarly for the right-hand side reidentifying the left-hand side and the right-hand side, we may rewrite this as a functor
-		\[
-			\CAlg(1\Pr)_{D/} \to \CAlg(1\Pr)_{\Mod_D(1\Pr)/}.
-		\]
-		Given an object $D \to B$ on the left-hand side, the corresponding algebra on the right-hand side is the map
-		\[
-			\Mod_D(1\Pr) \to \Mod_B(\Mod_D(1\Pr)) \simeq \Mod_B(1\Pr).
-		\]
-		So we may think of this functor as the effect of $M_{1\Pr}\colon \CAlg(1\Pr) \to \CAlg(1\Pr)$ on morphisms, given by base change along $B \to D$.
-	\end{observation}
-
-	By applying this to the map $n\Pr \to n\Pr_A$, we inductively see that
+	Unwinding the embeddings into $\StRing$ gives, for $n \geq 1$,
 	\[
-		n\Pr_A \simeq \Mod_{(n-1)\Pr_A}(1\Pr)
+		n\Pr_A \simeq \Mod_{(n-1)\Pr_A}(1\Pr).
 	\]
-	for every $n \geq 1$, with the structure map $n\Pr \to n\Pr_A$ inductively induced by the maps $(n-1)\Pr \to (n-1)\Pr_A$ by passing to modules in $1\Pr$.
-
-	We write
+	More precisely, $n\Pr_A$ is a commutative algebra over $n\Pr$, i.e. an object of
 	\[
-		\Aff := \CAlg(\Sp)\catop.
+		\CAlg((n+1)\Pr) \simeq \CAlg(\Mod_{n\Pr}(1\Pr)) \simeq \CAlg(1\Pr)_{n\Pr/},
 	\]
-	For $A \in \CAlg(\Sp)$, we denote the corresponding object of $\Aff$ by $\Spec(A)$. Thus a map $\Spec(B) \to \Spec(A)$ in $\Aff$ is the same thing as a map $A \to B$ in $\CAlg(\Sp)$.
+	and the structure map $n\Pr \to n\Pr_A$ is obtained from $(n-1)\Pr \to (n-1)\Pr_A$ by passing to modules in $1\Pr$.
+
+	A map $f\colon A \to B$ in $\CAlg(\Sp)$ induces, by functoriality of the Stefanich-ring embedding, symmetric monoidal pullback functors
+	\[
+		f_n^*\colon n\Pr_A \to n\Pr_B
+	\]
+	for all $n \geq 0$. Concretely, $f_0^*$ is extension of scalars along $f$, and for $n > 0$ the functor $f_n^*$ is extension of scalars along
+	\[
+		f_{n-1}^*\colon (n-1)\Pr_A \to (n-1)\Pr_B.
+	\]
 
 	\begin{definition}
 		A map $\Spec(B) \to \Spec(A)$ in $\Aff$ is called \emph{countably presented} if $B$ is $\aleph_1$-compact as an object of $\CAlg_A(\Sp)$. Equivalently, the subcategory of $\CAlg(\Sp)_{A/}$ spanned by the countably presented maps is the smallest subcategory containing the polynomial algebra on one generator over $A$ which is closed under countable colimits.
@@ -510,7 +506,7 @@
 		For fixed $A$, countably presented $A$-algebras are closed under countable colimits, retracts, and in particular finite colimits. Equivalently, in $\Aff$, countably presented maps to a fixed target are closed under countable limits, and in particular under finite limits. Countably presented maps are also stable under base change and composition. Moreover, if $A \to B$ and $A \to D$ are countably presented and $B \to D$ is a map over $A$, then $B \to D$ is countably presented; equivalently, any map over a fixed target between countably presented objects over that target is countably presented. In particular, a section of a countably presented map is countably presented. Indeed, these assertions are respectively the special cases $\kappa = \aleph_1$ and $C = \Sp$ of \Cref{lem:Kappa_Compact_Algebra_Closure_Properties}(1)--(4) and \Cref{lem:Kappa_Compact_Algebra_Section}.
 	\end{observation}
 
-	The goal of today is to show the following:
+	Our first main goal is to promote the assignments $\Spec(A) \mapsto n\Pr_A$ to a six-functor formalism on affines:
 
 	\begin{theorem}
 		\label[theorem]{thm:Six_Functor_Formalism_Pr_On_Affines}
@@ -520,17 +516,17 @@
 		\]
 	\end{theorem}
 
-	This functor is supposed to send a span in $\Aff$, equivalently a cospan in $\CAlg(\Sp)$ of the form
+	On a span in $\Aff$, equivalently a cospan in $\CAlg(\Sp)$ of the form
 	\[
 		A \xrightarrow{f} B \xleftarrow{f'} C
 	\]
-	to the composite functor
+	the desired functor acts by pullback along $f$ followed by pushforward along $f'$:
 	\[
-		n\Pr_A \xrightarrow{f_n^*} n\Pr_B \xrightarrow{f_{n,*}} n\Pr_C,
+		n\Pr_A \xrightarrow{f_n^*} n\Pr_B \xrightarrow{f'_{n,*}} n\Pr_C,
 	\]
-	where $f_{n,*}$ is right adjoint to $f_n^*$. Here $f_n^*$ is defined inductively: for $n = 1$ it is extension by scalars along $f\colon A \to B$, and for $n > 1$ it is extension by scalars along $f_{n-1}^*\colon (n-1)\Pr_A \to (n-1)\Pr_B$. We now discuss this in more detail.
+	where $f'_{n,*}$ is right adjoint to $f'_n{}^*$. The next two sections verify the formal properties needed for these assignments to define the stated six-functor formalism.
 
-	\section{Some formal nonsense}
+	\section{Extension and restriction of scalars}
 
 	Consider some $\Vv \in \CAlg(\PrL)$. Given a map $g\colon R \to S$ in $\CAlg(\Vv)$, we obtain an adjunction
 	\[
@@ -704,10 +700,11 @@
 	\end{proof}
 
 	\chapter{Descent for quasicoherent sheaves}
+	\label[chapter]{chap:Descent_QCoh}
 
 	\emph{Talk given by Melvin.}
 
-	Recollections from last time:
+	We use the following output of the previous talk:
 	\begin{itemize}
 		\item For $A \in \CAlg(\Sp)$, we defined categories $n\Pr_A$ by
 		\[
@@ -719,7 +716,7 @@
 
 	\section{Hyperdescent}
 
-	The goal of today is the following theorem:
+	The goal of this chapter is the following hyperdescent statement:
 
 	\begin{theorem}
 		The functor $n\Pr_{(-)}^!\colon \Aff \to 1\Pr$ (defined on maps by the maps $f^!$) is a hypersheaf with respect to the fpqc topology for each $n \geq 0$. (Note that for $n \geq 1$, the maps $f^!$ agree with $f^*$ by ambidexterity.)
@@ -755,11 +752,11 @@
 		is an isomorphism.
 	\end{itemize}
 
-	Let us now provide a proof sketch/rough plan for the proof:
+	The proof has three parts:
 	\begin{itemize}
-		\item As we will see at the end of the talk, the claim may be reduced to the case of countably presented maps. So the main part of the talk focuses on that special case.
-		\item We then first treat the case $n = 0$.
-		\item And then we prove the claim for other $n$ by induction.
+		\item The main argument treats countably presented fpqc hypercovers; the final section reduces arbitrary fpqc hypercovers to this case.
+		\item We first prove the theorem for $n = 0$.
+		\item We then prove the general case by induction on $n$.
 	\end{itemize}
 
 	\section{The base case \texorpdfstring{$n = 0$}{n = 0}}
@@ -935,12 +932,13 @@
 	where we use that $1\Pr$ is $\aleph_1$-compactly generated so that $\aleph_1$-filtered colimits commute with countable limits. This finishes the proof of the general form of the theorem.
 
 	\chapter{Quasicoherent sheaves of higher categories II}
+	\label[chapter]{chap:QCoh_II}
 
 	\emph{Talk given by Bastiaan.}
 
-	The goal of this talk is to extend the discussion from the previous two talks from affine schemes to fpqc-stacks.
+	We now pass from affine spectral schemes ($\Aff := \CAlg(\Sp)\catop$) to fpqc-stacks.
 
-	In Talk 2 we introduced the functors
+	On affines, Talk 2 introduced the functors
 	\[
 		\Aff\catop \to \CAlg((n+1)\Pr) = \CAlg(1\Pr)_{n\Pr/}, \qquad \Spec(A) \mapsto n\Pr_A
 	\]
@@ -964,7 +962,7 @@
 		In general, there is a difference between taking the limit defining $n\Pr_X$ inside $1\Pr = \PrL_{\aleph_1}$ or inside the larger category $\PrL$ of all presentable categories. Usually, $\QCoh(X)$ is defined using limits in $\PrL$. For countable colimits of affines the two limits agree.
 	\end{remark}
 
-	The goal of this talk is as follows:
+	The rest of the chapter has four goals:
 	\begin{itemize}
 		\item For $n \geq 1$, we extend the assignment $X \mapsto n\Pr_X$ to a six-functor formalism, with $!$-able maps given by so-called `bi-countably presented maps';
 		\item We show that ``every bi-countably presented map is étale'', and for $n \geq 2$ that in fact ``every bi-countably presented map is proper'';
@@ -988,7 +986,7 @@
 		For $p_X: X \to \pt$, we get a `forgetful functor' $p_{X,n+1,*} \colon (n+1)\Pr_X \to (n+1)\Pr$, and we claim that that the image of $f_{n+1,*}(\unit_Y)$ under this functor is $n\Pr_Y$. Indeed, if we write $Y \simeq \colim_{\Spec(A) \to Y} \Spec(A)$, then we may write $p_{X,n+1,*}f_{n+1,*}(\unit) = p_{Y,n+1,*}(\unit)$ as a limit over $p_{A,n+1}(\unit) = n\Pr_A$, which is $n\Pr_Y$ by definition.
 	\end{remark}
 
-	We will now extend the assignment $X \mapsto \PrL_X$ to a six-functor formalism. We may think of this as a `higher' version of the six-functor formalism on $X \mapsto D(X)$. A first question is: what are the $!$-able maps? It turns out that at the higher categorical level, the class of $!$-able maps contains essentially \emph{all} maps. The relevant class of maps is the following:
+	We will now extend the assignment $X \mapsto n\Pr_X$ to a six-functor formalism. We may think of this as a `higher' version of the six-functor formalism on $X \mapsto D(X)$. A first question is: what are the $!$-able maps? It turns out that at the higher categorical level, the class of $!$-able maps contains essentially \emph{all} maps. The relevant class of maps is the following:
 
 	\begin{definition}\label[definition]{def:Bi_Countably_Presented}
 		A map $f\colon Y \to X$ of fpqc stacks is \emph{bi-countably presented} if for every affine $\Spec(A) \to X$, the fiber product $Y \times_X \Spec(A)$ is a countable colimit of $\Spec(B_i)$ for countably presented $A$-algebras $B_i$. Let $E$ denote the class of bi-countably presented maps.
