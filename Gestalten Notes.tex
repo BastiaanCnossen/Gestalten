@@ -68,13 +68,16 @@
 
 	\begin{lemma}
 		\label[lemma]{lem:Functor_Category_Presentable}
-		If $D$ is $\aleph_1$-presentable and $I$ is a countable (=$\aleph_1$-small) category, then also $\Fun(I,D)$ is $\aleph_1$-presentable. Its $\aleph_1$-compact generators are given by $\Fun(I,D^{\aleph_1})$.
+		Let $\kappa$ be an uncountable regular cardinal. If $D$ is
+		$\kappa$-presentable and $I$ is a $\kappa$-small category, then also
+		$\Fun(I,D)$ is $\kappa$-presentable. Its $\kappa$-compact generators
+		are given by $\Fun(I,D^{\kappa})$.
 	\end{lemma}
 	\begin{proof}
-		This is a special case of \cite[Proposition 5.4.4.3]{lurie2009HTT}; note that no
-		enlargement of the regular cardinal is needed: since $I$ is countable,
-		the argument only uses that $\aleph_1$-filtered colimits of anima
-		commute with countable limits.
+		This follows from the argument given in \cite[Proposition 5.4.4.3]{lurie2009HTT}; note that no
+		enlargement of the regular cardinal is needed: since $I$ is
+		$\kappa$-small, the argument only uses that $\kappa$-filtered colimits
+		of anima commute with $\kappa$-small limits.
 	\end{proof}
 
 	\begin{definition}
@@ -345,99 +348,6 @@
 		\]
 	\end{remark}
 
-	\section{Appendix: Basic properties of compact algebras}
-	\label[section]{sec:Basic_Properties_Compacts}
-
-	We will now state and prove various basic properties of $\kappa$-compact algebras in a $\kappa$-presentable category.
-
-	\begin{lemma}\label[lemma]{lem:Kappa_Compact_Algebra_Iff_Module}
-		Let $\kappa$ be an uncountable regular cardinal, let $C \in \CAlg(\PrL_{\kappa})$, let $R \in \CAlg(C)$, and let $B \in \CAlg_R(C)$. Then $B$ is $\kappa$-compact as an $R$-algebra if and only if its underlying $R$-module is $\kappa$-compact.
-	\end{lemma}
-	\begin{proof}
-		The point is that the $E_{\infty}$-operad is countable. We write
-		\[
-			\operatorname{Sym}_R\colon \Mod_R(C) \rightleftarrows \CAlg_R(C) \colon U
-		\]
-		for the free-forgetful adjunction. We will use that $\kappa$-small colimits of $\kappa$-compact objects are again $\kappa$-compact: mapping out of such a colimit gives a $\kappa$-small limit of anima, and $\kappa$-filtered colimits of animae commute with $\kappa$-small limits.
-
-		First let $M \in \Mod_R(C)$ be $\kappa$-compact. The underlying $R$-module of the free commutative $R$-algebra on $M$ is
-		\[
-			U\operatorname{Sym}_R(M)
-			\simeq
-			\coprod_{d \geq 0} (M^{\otimes_R d})_{h\Sigma_d}.
-		\]
-		Here each tensor power is $\kappa$-compact, the homotopy orbits are a countable colimit, and the coproduct is countable. Thus $U\operatorname{Sym}_R(M)$ is $\kappa$-compact. Also $\operatorname{Sym}_R(M)$ is $\kappa$-compact as an algebra, since $U$ preserves $\kappa$-filtered colimits.
-
-		Since the monad $U\operatorname{Sym}_R$ is $\kappa$-accessible and preserves $\kappa$-compact objects by the formula above, the $\kappa$-compact objects in $\CAlg_R(C)$ are generated under $\kappa$-small colimits and retracts by free algebras on $\kappa$-compact modules. Indeed, for any $\kappa$-accessible monad on a $\kappa$-presentable category which preserves $\kappa$-compact objects, the free algebras on $\kappa$-compact objects are $\kappa$-compact and generate the algebra category under colimits, so the $\kappa$-compact algebras are the retracts of their $\kappa$-small colimits.
-
-		It remains to check that the class of $R$-algebras with $\kappa$-compact underlying $R$-module is closed under these operations. Closure under retracts is clear. For $\kappa$-small colimits, write such a colimit as the geometric realization of its simplicial replacement; the $n$-simplices are $\kappa$-small coproducts of the algebras in the diagram. A $\kappa$-small coproduct of commutative $R$-algebras is the sifted colimit over its finite sub-coproducts, and the underlying $R$-module of a finite coproduct is the corresponding finite tensor product in $\Mod_R(C)$. Since $U$ preserves sifted colimits, and since $\kappa$-compact $R$-modules are closed under finite tensor products and $\kappa$-small colimits, the underlying module of each simplicial degree, and hence of the realization, is $\kappa$-compact. Thus a $\kappa$-compact $R$-algebra has $\kappa$-compact underlying $R$-module.
-
-		Conversely, suppose that $U(B)$ is $\kappa$-compact. By monadicity, $B$ is the geometric realization of the standard simplicial resolution by free algebras,
-		\[
-			\cdots \rightrightarrows
-			\operatorname{Sym}_R U\operatorname{Sym}_R U(B)
-			\rightrightarrows
-			\operatorname{Sym}_R U(B).
-		\]
-		By the free-algebra case above, every term in this simplicial object is $\kappa$-compact as an algebra. Since the geometric realization is a countable colimit, $B$ is $\kappa$-compact in $\CAlg_R(C)$.
-	\end{proof}
-
-	\begin{lemma}\label[lemma]{lem:Kappa_Compact_Modules_Change_Of_Scalars}
-		Let $\kappa$ be an uncountable regular cardinal, let $C \in \CAlg(\PrL_{\kappa})$, and let $A \to B$ be $\kappa$-compact in $\CAlg_A(C)$. Then an object $M \in \Mod_B(C)$ is $\kappa$-compact as a $B$-module if and only if its underlying $A$-module is $\kappa$-compact.
-	\end{lemma}
-	\begin{proof}
-		By \Cref{lem:Kappa_Compact_Algebra_Iff_Module}, the underlying $A$-module of $B$ is $\kappa$-compact. We write
-		\[
-			f^* = B \otimes_A - \colon \Mod_A(C) \rightleftarrows \Mod_B(C) \colon f_*
-		\]
-		for the extension-restriction adjunction. First suppose that $M$ is $\kappa$-compact as a $B$-module. The $\kappa$-compact objects in $\Mod_B(C)$ are generated under $\kappa$-small colimits and retracts by the free $B$-modules $B \otimes X$ with $X \in C^{\kappa}$. Since $f_*$ preserves colimits and sends such a free module to $B \otimes X$, which is $\kappa$-compact as an $A$-module because the $C$-action on $\Mod_A(C)$ preserves $\kappa$-compact objects, it follows that $f_*M$ is $\kappa$-compact.
-
-		Conversely, suppose that $f_*M$ is $\kappa$-compact as an $A$-module. The standard monadic resolution
-		\[
-			M \simeq \left| \cdots \rightrightarrows f^*f_*f^*f_*M \rightrightarrows f^*f_*M \right|
-		\]
-		expresses $M$ as a countable colimit of $B$-modules of the form $f^*N$. Since $f_*f^*N \simeq B \otimes_A N$ and the tensor product on $\Mod_A(C)$ preserves $\kappa$-compact objects in both variables, the functor $f_*f^*$ preserves $\kappa$-compact $A$-modules. Hence every term in this resolution is of the form $f^*N$ with $N$ $\kappa$-compact as an $A$-module, and is therefore $\kappa$-compact as a $B$-module. Since the realization is a countable, hence $\kappa$-small, colimit, $M$ is $\kappa$-compact.
-	\end{proof}
-
-	\begin{corollary}\label[corollary]{cor:Restriction_Kappa_Compact_Algebra_Preserves_Compacts}
-		Let $\kappa$ be an uncountable regular cardinal, let $C \in \CAlg(\PrL_{\kappa})$, and let $g\colon R \to S$ be $\kappa$-compact in $\CAlg_R(C)$. Then the restriction functor
-		\[
-			g_*\colon \Mod_S(C) \to \Mod_R(C)
-		\]
-		preserves $\kappa$-compact objects.
-	\end{corollary}
-	\begin{proof}
-		This is one direction of \Cref{lem:Kappa_Compact_Modules_Change_Of_Scalars}.
-	\end{proof}
-
-	\begin{lemma}\label[lemma]{lem:Kappa_Compact_Algebra_Closure_Properties}
-		Let $\kappa$ be an uncountable regular cardinal, let $C \in \CAlg(\PrL_{\kappa})$, and let $A \in \CAlg(C)$.
-		\begin{enumerate}[(1)]
-			\item The $\kappa$-compact objects in $\CAlg_A(C)$ are closed under $\kappa$-small colimits and retracts. In particular, they are closed under finite colimits.
-			\item If $B \in \CAlg_A(C)$ is $\kappa$-compact and $A \to A'$ is any map in $\CAlg(C)$, then $A' \otimes_A B \in \CAlg_{A'}(C)$ is $\kappa$-compact.
-			\item If $B \in \CAlg_A(C)$ is $\kappa$-compact and $D \in \CAlg_B(C)$ is $\kappa$-compact, then $D$ is $\kappa$-compact as an object of $\CAlg_A(C)$.
-			\item If $B,D \in \CAlg_A(C)$ are $\kappa$-compact and $B \to D$ is a map in $\CAlg_A(C)$, then $D$ is $\kappa$-compact as an object of $\CAlg_B(C)$.
-		\end{enumerate}
-	\end{lemma}
-	\begin{proof}
-		Part (1) is the general closure property of $\kappa$-compact objects in a $\kappa$-presentable category. For (2), extension of scalars
-		\[
-			A' \otimes_A - \colon \CAlg_A(C) \to \CAlg_{A'}(C)
-		\]
-		is left adjoint to the forgetful functor, and this forgetful functor preserves $\kappa$-filtered colimits.
-
-		For (3), \Cref{lem:Kappa_Compact_Algebra_Iff_Module} shows that $D$ is $\kappa$-compact as a $B$-module. By \Cref{lem:Kappa_Compact_Modules_Change_Of_Scalars}, its underlying $A$-module is $\kappa$-compact, so \Cref{lem:Kappa_Compact_Algebra_Iff_Module} again shows that $D$ is $\kappa$-compact as an $A$-algebra.
-
-		For (4), the underlying $A$-module of $D$ is $\kappa$-compact by \Cref{lem:Kappa_Compact_Algebra_Iff_Module}. Since $B$ is $\kappa$-compact over $A$, \Cref{lem:Kappa_Compact_Modules_Change_Of_Scalars} implies that $D$ is $\kappa$-compact as a $B$-module. Applying \Cref{lem:Kappa_Compact_Algebra_Iff_Module} once more, $D$ is $\kappa$-compact as a $B$-algebra.
-	\end{proof}
-
-	\begin{lemma}\label[lemma]{lem:Kappa_Compact_Algebra_Section}
-		Let $\kappa$ be an uncountable regular cardinal, let $C \in \CAlg(\PrL_{\kappa})$, and let $A \to B$ be $\kappa$-compact in $\CAlg_A(C)$. If $A \to B$ admits an $A$-algebra retraction $B \to A$, then $A$ is $\kappa$-compact as an object of $\CAlg_B(C)$.
-	\end{lemma}
-	\begin{proof}
-		Apply \Cref{lem:Kappa_Compact_Algebra_Closure_Properties}(4) to the map $B \to A$ in $\CAlg_A(C)$: both $B$ and the initial $A$-algebra $A$ are $\kappa$-compact in $\CAlg_A(C)$.
-	\end{proof}
-
 	\chapter{Quasicoherent sheaves of higher categories I}
 	\label[chapter]{chap:QCoh_I}
 
@@ -445,9 +355,9 @@
 
 	The eventual goal is to construct higher analogues of quasicoherent sheaves on fpqc-stacks. In this talk we treat the affine case, meaning stacks of the form $\Spec(A)$ for a commutative ring spectrum $A \in \CAlg(\Sp)$. We write
 	\[
-		\Aff := \CAlg(\Sp)\catop,
+		\Aff_{\S} := \CAlg(\Sp)\catop,
 	\]
-	and denote by $\Spec(A)$ the object of $\Aff$ corresponding to $A$. A map $\Spec(B) \to \Spec(A)$ in $\Aff$ is the same thing as a map $A \to B$ in $\CAlg(\Sp)$.
+	and denote by $\Spec(A)$ the object of $\Aff_{\S}$ corresponding to $A$. A map $\Spec(B) \to \Spec(A)$ in $\Aff_{\S}$ is the same thing as a map $A \to B$ in $\CAlg(\Sp)$.
 
 	For each such affine $\Spec(A)$ we will define presentable categories
 	\[
@@ -499,11 +409,11 @@
 	\]
 
 	\begin{definition}
-		A map $\Spec(B) \to \Spec(A)$ in $\Aff$ is called \emph{countably presented} if $B$ is $\aleph_1$-compact as an object of $\CAlg_A(\Sp)$. Equivalently, the subcategory of $\CAlg(\Sp)_{A/}$ spanned by the countably presented maps is the smallest subcategory containing the polynomial algebra on one generator over $A$ which is closed under countable colimits.
+		A map $\Spec(B) \to \Spec(A)$ in $\Aff_{\S}$ is called \emph{countably presented} if $B$ is $\aleph_1$-compact as an object of $\CAlg_A(\Sp)$. Equivalently, the subcategory of $\CAlg(\Sp)_{A/}$ spanned by the countably presented maps is the smallest subcategory containing the polynomial algebra on one generator over $A$ which is closed under countable colimits.
 	\end{definition}
 
 	\begin{observation}
-		The basic closure properties of countably presented maps follow from the compact algebra lemmas in \Cref{sec:Basic_Properties_Compacts}, applied with $\kappa = \aleph_1$ and $C = \Sp$. We will spell out the particular consequences needed later in \Cref{lem:Affine_Countably_Presented_Calculus}.
+		The basic closure properties of countably presented maps follow from the compact algebra lemmas in \Cref{sec:Compact_Algebras}, applied with $\kappa = \aleph_1$ and $C = \Sp$. We will spell out the particular consequences needed later in \Cref{lem:Affine_Countably_Presented_Calculus}.
 	\end{observation}
 
 	Our first main goal is to promote the assignments $\Spec(A) \mapsto n\Pr_A$ to a six-functor formalism on affines:
@@ -512,11 +422,11 @@
 		\label[theorem]{thm:Six_Functor_Formalism_Pr_On_Affines}
 		For every $n \geq 0$, there exists a 6-functor formalism
 		\[
-			\Span(\Aff, \mathrm{all}, \textup{countably presented maps}) \to 1\Pr, \qquad \Spec(A) \mapsto n\Pr_A.
+			\Span(\Aff_{\S}, \mathrm{all}, \textup{countably presented maps}) \to 1\Pr, \qquad \Spec(A) \mapsto n\Pr_A.
 		\]
 	\end{theorem}
 
-	On a span in $\Aff$, equivalently a cospan in $\CAlg(\Sp)$ of the form
+	On a span in $\Aff_{\S}$, equivalently a cospan in $\CAlg(\Sp)$ of the form
 	\[
 		A \xrightarrow{f} B \xleftarrow{f'} C
 	\]
@@ -568,22 +478,22 @@
 
 	\section{Construction of the six-functor formalism}
 
-	We now construct the six-functor formalism for every $n \geq 0$. For $n = 0$, we have $\Vv = \Sp$, and we have the functor $\Aff\catop \to \CAlg(1\Pr)$, $\Spec(A) \mapsto 0\Pr_A = \Mod_A(\Sp)$. We then established all the relevant properties to deduce that the assignment $\Spec(A) \mapsto 0\Pr_A = \Mod_A(\Sp)$ extends to a six-functor formalism
+	We now construct the six-functor formalism for every $n \geq 0$. For $n = 0$, we have $\Vv = \Sp$, and we have the functor $\Aff_{\S}\catop \to \CAlg(1\Pr)$, $\Spec(A) \mapsto 0\Pr_A = \Mod_A(\Sp)$. We then established all the relevant properties to deduce that the assignment $\Spec(A) \mapsto 0\Pr_A = \Mod_A(\Sp)$ extends to a six-functor formalism
 	\[
-		\Span(\Aff) \to \PrL, \qquad \Spec(A) \mapsto 0\Pr_A
+		\Span(\Aff_{\S}) \to \PrL, \qquad \Spec(A) \mapsto 0\Pr_A
 	\]
-	where all maps in $\Aff$ are treated as ``proper'' maps (i.e.\ we always pick the right adjoint). Moreover, if we restrict the right-way maps to the countably presented maps, then the functors $f_*$ preserve $\aleph_1$-compact objects, so this functor restricts to
+	where all maps in $\Aff_{\S}$ are treated as ``proper'' maps (i.e.\ we always pick the right adjoint). Moreover, if we restrict the right-way maps to the countably presented maps, then the functors $f_*$ preserve $\aleph_1$-compact objects, so this functor restricts to
 	\[
-		\Span(\Aff, \mathrm{all}, \textup{countably presented}) \to 1\Pr.
+		\Span(\Aff_{\S}, \mathrm{all}, \textup{countably presented}) \to 1\Pr.
 	\]
 
 	Now assume $n > 0$. Notice that if the map $R \to S$ in $\CAlg(\Vv)$ is countably presented, then so is the induced map $\Mod_R(\Vv) \to \Mod_S(\Vv)$ in $\CAlg(\Mod_{\Vv}(1\Pr)) \simeq \CAlg_{\Vv}(1\Pr)$. (One can see this by observing that the assignment $R \mapsto \Mod_R(\Vv)$ preserves $\aleph_1$-compact objects, since its right adjoint $D \mapsto \End_{\unit}(D)$ preserves $\aleph_1$-filtered colimits.) So by induction, each functor $f_n^*\colon n\Pr_A \to n\Pr_B$ is countably presented whenever $f\colon A \to B$ is. We may then consider the composite
 	\[
-		n\Pr_{(-)}\colon \Aff\catop \xrightarrow{(n-1)\Pr_{(-)}} \CAlg(n\Pr) \xrightarrow{\Mod_{(-)}(n\Pr)} \CAlg((n+1)\Pr) \to \CAlg(1\Pr).
+		n\Pr_{(-)}\colon \Aff_{\S}\catop \xrightarrow{(n-1)\Pr_{(-)}} \CAlg(n\Pr) \xrightarrow{\Mod_{(-)}(n\Pr)} \CAlg((n+1)\Pr) \to \CAlg(1\Pr).
 	\]
 	Then we may apply properties (a)--(f) to get the desired six-functor formalism
 	\[
-		\Span(\Aff, \mathrm{all}, \textup{countably presented}) \to 1\Pr, \qquad \Spec(A) \mapsto n\Pr_A
+		\Span(\Aff_{\S}, \mathrm{all}, \textup{countably presented}) \to 1\Pr, \qquad \Spec(A) \mapsto n\Pr_A
 	\]
 	for every $n \geq 1$. Since the unit $\S$ is mapped to $n\Pr_{\S}$, this functor canonically factors through $\Mod_{n\Pr_{\S}}(1\Pr) \subseteq (n+1)\Pr$.
 
@@ -710,7 +620,7 @@
 		\[
 			0\Pr_A := \D(A) := \Mod_A(\Sp), \qquad (n+1)\Pr_A := \Mod_{n\Pr_A}((n+1)\Pr) \simeq \Mod_{n\Pr_A}(1\Pr).
 		\]
-		\item The assignment $\Spec(A) \mapsto n\Pr_A$ defines a six-functor formalism on $\Aff$ valued in $1\Pr$.
+		\item The assignment $\Spec(A) \mapsto n\Pr_A$ defines a six-functor formalism on $\Aff_{\S}$ valued in $1\Pr$.
 		\item For $n \geq 1$, we have ambidexterity: if $f\colon \Spec(A) \to \Spec(B)$ is countably presented, then the right adjoint $f_{n,*}\colon n\Pr_A \to n\Pr_B$ is also a left adjoint to $f_n^*$ in a canonical way.
 	\end{itemize}
 
@@ -719,7 +629,7 @@
 	The goal of this chapter is the following hyperdescent statement:
 
 	\begin{theorem}
-		The functor $n\Pr_{(-)}^!\colon \Aff \to 1\Pr$ (defined on maps by the maps $f^!$) is a hypersheaf with respect to the fpqc topology for each $n \geq 0$. (Note that for $n \geq 1$, the maps $f^!$ agree with $f^*$ by ambidexterity.)
+		The functor $n\Pr_{(-)}^!\colon \Aff_{\S} \to 1\Pr$ (defined on maps by the maps $f^!$) is a hypersheaf with respect to the fpqc topology for each $n \geq 0$. (Note that for $n \geq 1$, the maps $f^!$ agree with $f^*$ by ambidexterity.)
 	\end{theorem}
 
 	To make sense of this statement, we recall the following two definitions:
@@ -734,15 +644,15 @@
 			\item For a static ring $B_0 \in \CAlg(\Ab)$ and a static $B_0$-module $M_0$, we say that $M_0$ is \emph{flat} if the functor $M_0 \otimes_{B_0} -\colon \Mod_{B_0}(\Ab) \to \Ab$ is exact. It is called \emph{faithfully flat} if, in addition, the functor $M_0 \otimes_{B_0} -$ is conservative, i.e.\ detects isomorphisms. (Equivalently it detects exact sequences.)
 			\item A morphism $B_0 \to A_0$ in $\CAlg(\Ab)$ is called \emph{(faithfully) flat} if $A_0$ is (faithfully) flat as a $B_0$-module.
 			\item A morphism $B \to A$ in $\CAlg(\Sp)$ is \emph{(faithfully) flat} if the map $\pi_0 A \to \pi_0 B$ in $\CAlg(\Ab)$ is (faithfully) flat and for each $i \in \Z$ the multiplication map $\pi_i B \otimes_{\pi_0 B} \pi_0 A \to \pi_i A$ is an isomorphism.
-			\item A morphism $\Spec(A) \to \Spec(B)$ in $\Aff$ is called (faithfully) flat if its associated map $B \to A$ in $\CAlg(\Sp)$ is.
+			\item A morphism $\Spec(A) \to \Spec(B)$ in $\Aff_{\S}$ is called (faithfully) flat if its associated map $B \to A$ in $\CAlg(\Sp)$ is.
 		\end{itemize}
 	\end{definition}
 
 	\begin{definition}
-		The \emph{fpqc topology} on $\Aff$ is the Grothendieck topology in which a sieve over $\Spec(B)$ is declared to be a covering sieve if it contains a finite collection of morphisms $\Spec(A_i) \to \Spec(B)$ such that the induced map $\Spec(\prod_{i=1}^n A_i) \to \Spec(B)$ is faithfully flat.
+		The \emph{fpqc topology} on $\Aff_{\S}$ is the Grothendieck topology in which a sieve over $\Spec(B)$ is declared to be a covering sieve if it contains a finite collection of morphisms $\Spec(A_i) \to \Spec(B)$ such that the induced map $\Spec(\prod_{i=1}^n A_i) \to \Spec(B)$ is faithfully flat.
 	\end{definition}
 
-	Observe that a functor $F\colon \Aff\catop \to C$ is a hypersheaf with respect to the fpqc topology if and only if the following two properties are satisfied:
+	Observe that a functor $F\colon \Aff_{\S}\catop \to C$ is a hypersheaf with respect to the fpqc topology if and only if the following two properties are satisfied:
 	\begin{itemize}
 		\item The functor $F$ preserves finite products.
 		\item For an fpqc hypercover $\Spec(A_{\bullet}) \to \Spec(A)$, the induced map
@@ -761,7 +671,7 @@
 
 	\section{The base case \texorpdfstring{$n = 0$}{n = 0}}
 
-	We will start by showing that the assignment $\Spec(A) \mapsto \D(A)$ satisfies fpqc-hyperdescent. Since we have $\D(\prod_i A_i) \iso \prod_i \D(A_i)$, it remains to show that for an fpqc hypercover $\Spec(A_{\bullet}) \to \Spec(A)$ in $\Aff$ the functor
+	We will start by showing that the assignment $\Spec(A) \mapsto \D(A)$ satisfies fpqc-hyperdescent. Since we have $\D(\prod_i A_i) \iso \prod_i \D(A_i)$, it remains to show that for an fpqc hypercover $\Spec(A_{\bullet}) \to \Spec(A)$ in $\Aff_{\S}$ the functor
 	\[
 		\D(A) \iso \lim_{[n] \in \simp}^! \D(A_{\bullet})
 	\]
@@ -917,7 +827,7 @@
 
 	Finally, we show that the claim for $n = 0$ can be reduced to the countably presented case. We use the following lemma:
 
-	\begin{lemma}
+	\begin{lemma}\label[lemma]{lem:Faithfully_Flat_Approximation}
 		Every faithfully flat map $A \to B$ of commutative ring spectra is an $\aleph_1$-filtered colimit of countably presented such maps.
 	\end{lemma}
 
@@ -936,25 +846,25 @@
 
 	\emph{Talk given by Bastiaan.}
 
-	We now pass from affine spectral schemes ($\Aff := \CAlg(\Sp)\catop$) to fpqc-stacks.
+	We now pass from affine spectral schemes ($\Aff_{\S} := \CAlg(\Sp)\catop$) to fpqc-stacks.
 
 	On affines, Talk 2 introduced the functors
 	\[
-		\Aff\catop \to \CAlg((n+1)\Pr) = \CAlg(1\Pr)_{n\Pr/}, \qquad \Spec(A) \mapsto n\Pr_A
+		\Aff_{\S}\catop \to \CAlg((n+1)\Pr) = \CAlg(1\Pr)_{n\Pr/}, \qquad \Spec(A) \mapsto n\Pr_A
 	\]
 	for all $n \geq 0$, and showed they canonically extend to six-functor formalisms in which every countably presented map is cohomologically proper. Denote by 
 	\[
-		\Shv_{\fpqc}(\Aff) \; \subseteq \; \PSh(\Aff)
+		\Shv_{\fpqc}(\Aff_{\S}) \; \subseteq \; \PSh(\Aff_{\S})
 	\]	
 	the subcategory of \emph{small} fpqc-sheaves. Here \emph{small} means that the sheaf is a small colimit of representable objects. (In fact, we will mostly restrict to sheaves which are countable colimits of affines.) By the main result of Talk 3, we obtain a unique limit-preserving extension
 	\[
-		\Shv_{\fpqc}(\Aff)\catop \to \CAlg(1\Pr)_{n\Pr/}, \qquad X \mapsto n\Pr_X.
+		\Shv_{\fpqc}(\Aff_{\S})\catop \to \CAlg(1\Pr)_{n\Pr/}, \qquad X \mapsto n\Pr_X.
 	\]
 	Since the endomorphism functor $\End: (n+1)\Pr \to n\Pr$ commutes with limits, this means that every fpqc-stack $X$ defines a Stefanich ring
 	\[
 		(\Oo(X), \D(X), 1\Pr_X, 2\Pr_X, \ldots),
 	\]
-	giving rise to a functor $\Shv_{\fpqc}(\Aff)\catop \to \StRing$.
+	giving rise to a functor $\Shv_{\fpqc}(\Aff_{\S})\catop \to \StRing$.
 
 	For $n = 0$, the value $0\Pr_X = \D(X)$ is the usual derived $\infty$-category of quasicoherent sheaves on $X$, at least when $X$ is a countable colimit of affines.
 
@@ -975,7 +885,7 @@
 	We will now extend the assignment $X \mapsto n\Pr_X$ to a six-functor formalism. We may think of this as a `higher' version of the six-functor formalism on $X \mapsto D(X)$. A first question is: what are the $!$-able maps? It turns out that at the higher categorical level, the class of $!$-able maps contains essentially \emph{all} maps. The relevant class of maps is the following:
 
 	\begin{definition}\label[definition]{def:Bi_Countably_Presented}
-		Let $A \in \CAlg(\Sp)$. A map $Z \to \Spec(A)$ of fpqc sheaves is \emph{bi-countably presented over $\Spec(A)$} if $Z$ is a countable colimit, in $\Shv_{\fpqc}(\Aff)_{/\Spec(A)}$, of affines $\Spec(B_i)$ with $A \to B_i$ countably presented.
+		Let $A \in \CAlg(\Sp)$. A map $Z \to \Spec(A)$ of fpqc sheaves is \emph{bi-countably presented over $\Spec(A)$} if $Z$ is a countable colimit, in $\Shv_{\fpqc}(\Aff_{\S})_{/\Spec(A)}$, of affines $\Spec(B_i)$ with $A \to B_i$ countably presented.
 
 		A map $f\colon Y \to X$ of fpqc stacks is \emph{bi-countably presented} if for every affine $\Spec(A) \to X$, the fiber product $Y \times_X \Spec(A)$ is bi-countably presented over $\Spec(A)$. Let $E$ denote the class of bi-countably presented maps.
 	\end{definition}
@@ -1003,12 +913,86 @@
 		Let $S = \Spec(A)$, and let $p\colon Z \to S$ be bi-countably presented. Then every section $s\colon S \to Z$ of $p$ is bi-countably presented as a map to $Z$.
 	\end{lemma}
 	\begin{proof}
-		\red{TO DO.}
+		We first record two elementary fpqc-local reductions. Let
+		$S'=\Spec(A') \to S=\Spec(A)$ be faithfully flat and countably
+		presented. A map $W \to S$ is bi-countably presented if and only if its
+		base change $W_{S'} \to S'$ is bi-countably presented. The forward
+		implication is base change. Conversely, write
+		$S'_{\bullet}$ for the Cech nerve of $S' \to S$. Since
+		$A \to A'$ is countably presented, each $S'_m \to S$ is countably
+		presented by \Cref{lem:Affine_Countably_Presented_Calculus}. If
+		$W_{S'}$ is a countable colimit of affines countably presented over
+		$S'$, then each $W_{S'_m}$ is a countable colimit of affines countably
+		presented over $S$. By fpqc descent,
+		\[
+			W \simeq \abs{W_{S'_{\bullet}}},
+		\]
+		and the indexing category $\simp\catop$ is countable. Hence $W$ is
+		again a countable colimit of affines countably presented over $S$.
+
+		Second, let
+		\[
+			Z \simeq \colim_{i \in I} \Spec(B_i)
+		\]
+		be a countable affine presentation over $S$, and let
+		$T=\Spec(C) \to S$ be affine. Any finite collection of sections
+		$T \to Z_T:=Z\times_S T$ factors, after a faithfully flat countably
+		presented base change $T' \to T$, through stages of the induced
+		presentation
+		\[
+			Z_T \simeq \colim_{i \in I} \Spec(B_i\otimes_A C).
+		\]
+		Indeed, by the definition of sheafification, this factorization exists
+		after some fpqc cover of $T$. By
+		\Cref{lem:Faithfully_Flat_Approximation}, and because the stages are
+		countably presented over $T$, this cover can be refined by a
+		faithfully flat countably presented affine cover. For finitely many
+		sections we take a common refinement.
+
+		We now prove the lemma. Let $T=\Spec(C) \to Z$ be an affine test
+		object. We must show that
+		\[
+			T \times_Z S \to T
+		\]
+		is bi-countably presented. After base change along $T \to S$, the map
+		$Z_T \to T$ has two sections: the section $t$ induced by the given map
+		$T \to Z$, and the section $s_T$ obtained by pulling back $s$. By the
+		fpqc-local reductions above, we may pass to a faithfully flat
+		countably presented cover of $T$ and assume that both sections factor
+		through stages of a countable presentation of $Z_T$.
+
+		Let $\Aff_T^{\mathrm{cp}}$ be the full subcategory of affine
+		$T$-schemes which are countably presented over $T$. It has finite
+		limits by \Cref{lem:Affine_Countably_Presented_Calculus}. Let
+		$\widetilde Z$ be the corresponding countable colimit of representables
+		in $\PSh(\Aff_T^{\mathrm{cp}})$. The two sections $s_T,t\colon T \to
+		Z_T$ now come from maps
+		\[
+			\ast \rightrightarrows \widetilde Z
+		\]
+		in this presheaf category, where $\ast$ denotes the terminal
+		representable. Consider the presheaf fiber product
+		\[
+			P := \ast \times_{\widetilde Z} \ast.
+		\]
+		The objects $\ast$ and $\widetilde Z$ are $\aleph_1$-compact in
+		$\PSh(\Aff_T^{\mathrm{cp}})$, and
+		\Cref{prop:Kappa_Compact_Presheaves_Finite_Limits} shows that $P$ is
+		again $\aleph_1$-compact. Since presheaf categories are generated by
+		representables, $P$ is a countable colimit of representables from
+		$\Aff_T^{\mathrm{cp}}$. Sheafification preserves finite limits, so the
+		sheafification of $P$ is precisely
+		\[
+			T \times_{Z_T} T \simeq T \times_Z S.
+		\]
+		Thus, fpqc locally on $T$, the map $T \times_Z S \to T$ is
+		bi-countably presented. The first reduction descends this conclusion
+		to $T$ itself.
 	\end{proof}
 
 	\begin{proposition}
 		\label[proposition]{prop:Closure_Properties_Bicountably_Presented}
-		The class $E$ is closed under composition and base change. Assuming \Cref{lem:Section_Of_Bicountably_Presented_Affine_Base}, it is also closed under sections and formation of diagonals.
+		The class $E$ is closed under composition, base change, sections, and formation of diagonals.
 	\end{proposition}
 	\begin{proof}		
 		Closure under base change is immediate from the definition. For closure under composition, let $Z \to Y \to X$ be two maps in $E$ and let $\Spec(A) \to X$ be affine. Write
@@ -1026,7 +1010,7 @@
 		\]
 		and the final indexing category is still countable. Hence $Z \to X$ lies in $E$.
 		
-		It remains to discuss sections and diagonals, conditional on the missing input \Cref{lem:Section_Of_Bicountably_Presented_Affine_Base}. The diagonal $\Delta_f\colon Y \to Y \times_X Y$ is a section of the first projection
+		It remains to discuss sections and diagonals. The diagonal $\Delta_f\colon Y \to Y \times_X Y$ is a section of the first projection
 		\[
 			Y \times_X Y \to Y.
 		\]
@@ -1042,8 +1026,6 @@
 		\]
 		is bi-countably presented over $\Spec(A)$. Thus $s \in E$, so $E$ is closed under sections and therefore under diagonals.
 	\end{proof}
-
-	Consequently, the use of diagonal closure in the ambidexterity argument below should be read as conditional on the missing input \Cref{lem:Section_Of_Bicountably_Presented_Affine_Base}.
 
 	\section{A six-functor formalism for \texorpdfstring{$n\Pr$}{nPr} at \texorpdfstring{$n \geq 1$}{n >= 1}}
 
@@ -1137,7 +1119,7 @@
 
 		This is a result by Ramzi. In short, the reason is that the dualizable objects can be characterized as those $C$ that are retracts of $\Pp_{\Vv}(C^{\aleph_1})$ in a canonical way. Since this retract diagram is functorial in $C$, it shows closure under countable colimits.
 
-		\textbf{Step 2: The general case.} For general $X$, we may write $X$ as a colimit of affine schemes, providing an equivalence
+		\textbf{Step 2: The general case.} For general $X$, we may write $X$ as a colimit of affine spectral schemes, providing an equivalence
 		\[
 			(n+1)\Pr_X \simeq \lim_{\Spec(A) \to X} (n+1)\Pr_A.
 		\]
@@ -1232,7 +1214,7 @@
 	We will now see that for some of the previous assertions we may drop the condition on the map being bi-countably presented if instead we require sufficient compactness conditions on $X$ and $Y$.
 
 	\begin{proposition}\label[proposition]{prop:Kunneth_Aleph1_Compact}
-		Let $f\colon Y \to X$ be a map between $\aleph_1$-compact objects of $\Shv_{\fpqc}(\Aff)$ (so both $X$ and $Y$ are countable colimits of affine schemes by \Cref{lem:Affines_Aleph1_Compact_fpqc} below). For $n \geq 2$, the right adjoint
+		Let $f\colon Y \to X$ be a map between $\aleph_1$-compact objects of $\Shv_{\fpqc}(\Aff_{\S})$ (so both $X$ and $Y$ are countable colimits of affine spectral schemes by \Cref{lem:Affines_Aleph1_Compact_fpqc} below). For $n \geq 2$, the right adjoint
 		\[
 			f_{n,*}\colon n\Pr_Y \to n\Pr_X
 		\]
@@ -1255,7 +1237,7 @@
 			X \simeq \colim_j \Spec(A_j).
 		\]
 		By \Cref{lem:Aleph1_Compact_fpqc_Finite_Limits},
-		$\aleph_1$-compact objects of $\Shv_{\fpqc}(\Aff)$ are closed under
+		$\aleph_1$-compact objects of $\Shv_{\fpqc}(\Aff_{\S})$ are closed under
 		finite limits; hence each base change
 		$Y_j := Y \times_X \Spec(A_j)$ is again $\aleph_1$-compact.
 		For such countable colimits, the descent formula
@@ -1301,210 +1283,73 @@
 		With these properties established, the Künneth formula is proved formally just like in \Cref{cor:Kunneth_Higher_Pr}.
 	\end{proof}
 
+	\begin{lemma}\label[lemma]{lem:fpqc_Inclusion_Aleph1_Filtered_Colimits}
+		The inclusion
+		\[
+			\Shv_{\fpqc}(\Aff_{\S}) \hookrightarrow \PSh(\Aff_{\S})
+		\]
+		preserves $\aleph_1$-filtered colimits. The same holds for the
+		corresponding fpqc sheaf categories on affines over any fixed affine
+		base.
+	\end{lemma}
+	\begin{proof}
+		The fpqc sheaf category is obtained from presheaves by imposing descent
+		for fpqc Cech nerves. Each such Cech nerve is indexed by the countable
+		category $\simp\catop$, so the corresponding descent maps are maps
+		between $\aleph_1$-compact presheaves. Hence this localization is
+		generated by maps between $\aleph_1$-compact objects, and the fully
+		faithful right adjoint preserves $\aleph_1$-filtered colimits. The
+		argument over an affine base is identical.
+	\end{proof}
+
 	\begin{lemma}\label[lemma]{lem:Affines_Aleph1_Compact_fpqc}
-		Every affine object $\Spec(A) \in \Shv_{\fpqc}(\Aff)$ is
+		Every affine object $\Spec(A) \in \Shv_{\fpqc}(\Aff_{\S})$ is
 		$\aleph_1$-compact. More generally, for every affine
 		$X = \Spec(A)$, every affine object $\Spec(B) \to X$ is
 		$\aleph_1$-compact in the slice
-		$\Shv_{\fpqc}(\Aff)_{/X}$. In particular,
-		$\Shv_{\fpqc}(\Aff)_{/X}$ is $\aleph_1$-compactly generated by
+		$\Shv_{\fpqc}(\Aff_{\S})_{/X}$. In particular,
+		$\Shv_{\fpqc}(\Aff_{\S})_{/X}$ is $\aleph_1$-compactly generated by
 		affines, and every $\aleph_1$-compact object in this slice is a
 		countable colimit of affine objects.
 	\end{lemma}
 	\begin{proof}
-		The fpqc sheaf category is obtained from presheaves by imposing descent
-		for fpqc Cech nerves. These descent conditions are indexed by the
-		countable category $\simp\catop$, so the corresponding localization is
-		generated by maps between $\aleph_1$-compact presheaves. Hence the
-		inclusion
-		\[
-			\Shv_{\fpqc}(\Aff) \hookrightarrow \PSh(\Aff)
-		\]
-		preserves $\aleph_1$-filtered colimits. It follows that, for every
-		$\aleph_1$-filtered diagram $(Y_i)$ of fpqc sheaves,
-		\[
-			\Hom(\Spec(A),\colim_i Y_i)
-			\simeq
-			(\colim_i Y_i)(A)
-			\simeq
-			\colim_i Y_i(A)
-			\simeq
-			\colim_i \Hom(\Spec(A),Y_i).
-		\]
-		This proves the first assertion. For the slice assertion, observe that
-		mapping out of $\Spec(B) \to X$ in $\Shv_{\fpqc}(\Aff)_{/X}$ is
-		the fiber of
-		\[
-			\Hom(\Spec(B),Y) \to \Hom(\Spec(B),X)
-		\]
-		over the chosen structure map $\Spec(B) \to X$. Since finite limits
-		commute with $\aleph_1$-filtered colimits in animae, the same
-		compactness statement holds in the slice.
-		Since affine objects generate the slice under colimits, it is
-		$\aleph_1$-compactly generated by affines. In any
-		$\aleph_1$-compactly generated category, the $\aleph_1$-compact
-		objects are retracts of countable colimits of $\aleph_1$-compact
-		generators; absorbing the retract into the indexing category gives the
-		stated countable affine presentation.
-	\end{proof}
+		Representables are compact in presheaves. By
+		\Cref{lem:fpqc_Inclusion_Aleph1_Filtered_Colimits}, fpqc
+		sheafification sends $\aleph_1$-compact presheaves to
+		$\aleph_1$-compact sheaves. This proves the first assertion, and the
+		same argument on the fpqc site of affines over $X$ proves the slice
+		assertion.
 
-	\begin{lemma}\label[lemma]{lem:Aleph1_Compact_Anima_Countable_Simplicial}
-		An anima is $\aleph_1$-compact if and only if it can be represented by a
-		countable simplicial set. In particular, $\aleph_1$-compact animae are
-		closed under finite limits.
-	\end{lemma}
-	\begin{proof}
-		First suppose that $X$ is represented by a countable simplicial set
-		$K$. Then $K$ is the filtered colimit of its finite simplicial subsets.
-		Since $K$ is countable, this is a countable colimit. Finite simplicial
-		sets are compact in $\An$, and countable colimits of
-		$\aleph_1$-compact objects are again $\aleph_1$-compact, because
-		$\aleph_1$-filtered colimits in $\An$ commute with countable limits.
-		Thus $X$ is $\aleph_1$-compact.
-
-		Conversely, let $X$ be $\aleph_1$-compact, and choose a simplicial set
-		$K$ representing it. Let $I$ be the poset of countable simplicial
-		subsets of $K$. This poset is $\aleph_1$-filtered, since a countable
-		union of countable simplicial subsets is again countable, and
-		\[
-			K \simeq \colim_{L \in I} L
-		\]
-		in simplicial sets, hence also in $\An$. By compactness, the identity
-		of $X$ factors through one of the maps $\Piinfty{L} \to X$. Thus $X$ is
-		a retract of an anima represented by a countable simplicial set. It
-		follows that $\pi_0(X)$ is countable and that, for every base point,
-		all higher homotopy groups of $X$ are countable.
-
-		We now use the usual cellular approximation argument. Start with one
-		vertex for each connected component of $X$. Inductively, after the
-		$n$-skeleton has been constructed, attach countably many cells to hit
-		the remaining elements of $\pi_n(X)$ and countably many further cells
-		to kill the kernel on $\pi_n$. Since the homotopy groups of $X$ are
-		countable, only countably many cells are needed at each stage. The
-		result is a countable simplicial set $Y$ equipped with a map
-		$\Piinfty{Y} \to X$ inducing an isomorphism on $\pi_0$ and on all
-		higher homotopy groups. Hence $\Piinfty{Y} \to X$ is an equivalence.
-
-		It remains to prove the closure under finite limits. The terminal
-		anima is represented by $\Delta^0$, so it is enough to consider
-		pullbacks. Let
-		\[
-			X \to Z \leftarrow Y
-		\]
-		be a diagram of $\aleph_1$-compact animae. Choose countable simplicial
-		sets $K,L,M$ representing $X,Y,Z$. Replace $M$ by the countable Kan
-		complex $M^{\fib}:=\operatorname{Ex}^{\infty}(M)$. This is still
-		countable: for each $n$, the simplicial set $\operatorname{sd}\Delta^n$
-		is finite, so
-		\[
-			(\operatorname{Ex} N)_n
-			=
-			\Hom_{\sSet}(\operatorname{sd}\Delta^n,N)
-		\]
-		is countable whenever $N$ is countable, and then
-		$\operatorname{Ex}^{\infty}(M)$ is a countable sequential colimit of
-		countable simplicial sets. Since $M^{\fib}$ is fibrant, the two maps to
-		$Z$ may be represented by actual maps of simplicial sets $K \to M^{\fib}$ and
-		$L \to M^{\fib}$, and the homotopy pullback is represented by
-		\[
-			K
-			\times_{M^{\fib}}
-			(M^{\fib})^{\Delta^1}
-			\times_{M^{\fib}}
-			L.
-		\]
-		This simplicial set is countable. Indeed,
-		$(M^{\fib})^{\Delta^1}$ is countable because
-		\[
-			((M^{\fib})^{\Delta^1})_n
-			=
-			\Hom_{\sSet}(\Delta^n \times \Delta^1,M^{\fib}),
-		\]
-		and $\Delta^n \times \Delta^1$ is finite; finite strict limits of
-		countable simplicial sets are countable levelwise. Hence the pullback
-		is represented by a countable simplicial set, and is therefore
-		$\aleph_1$-compact.
-	\end{proof}
-
-	\begin{lemma}\label[lemma]{lem:Aleph1_Compact_Presheaves_Finite_Limits}
-		The $\aleph_1$-compact objects of $\PSh(\Aff)$ are closed under finite
-		limits.
-	\end{lemma}
-	\begin{proof}
-		\red{TO DO.}
-	\end{proof}
-
-	\begin{lemma}\label[lemma]{lem:Compact_Finite_Limits_Localization}
-		Let $\kappa$ be a regular cardinal, and let
-		\[
-			L\colon C \rightleftarrows D : \iota
-		\]
-		be an accessible localization of presentable categories. Assume that
-		$C$ is $\kappa$-compactly generated, that $C^{\kappa}$ is closed under
-		finite limits, that $L$ preserves finite limits, and that $\iota$
-		preserves $\kappa$-filtered colimits. Then $D$ is
-		$\kappa$-compactly generated, and $D^{\kappa}$ is closed under finite
-		limits.
-	\end{lemma}
-	\begin{proof}
-		Since $\iota$ preserves $\kappa$-filtered colimits, the left adjoint
-		$L$ carries $\kappa$-compact objects of $C$ to $\kappa$-compact objects
-		of $D$. Indeed, for $K \in C^{\kappa}$ and a $\kappa$-filtered diagram
-		$(Y_j)$ in $D$, we have
-		\[
-			\Hom_D(LK,\colim_j Y_j)
-			\simeq
-			\Hom_C(K,\iota\colim_j Y_j)
-			\simeq
-			\Hom_C(K,\colim_j \iota Y_j)
-			\simeq
-			\colim_j\Hom_D(LK,Y_j).
-		\]
-		Since $L$ is essentially surjective and the $\kappa$-compact objects of
-		$C$ generate $C$ under colimits, it follows that the objects $LK$ with
-		$K \in C^{\kappa}$ generate $D$ under colimits. Thus $D$ is
-		$\kappa$-compactly generated.
-
-		Moreover, the $\kappa$-compact objects of $D$ are the retracts of
-		objects of the form $LK$ with $K \in C^{\kappa}$. More precisely, the
-		restriction $L^{\kappa}\colon C^{\kappa} \to D^{\kappa}$ exhibits
-		$D^{\kappa}$ as the idempotent completion of the localization of
-		$C^{\kappa}$ obtained by inverting the maps which become equivalences
-		under $L$.
-
-		We now use finite limits. Since $L$ preserves finite limits and
-		$C^{\kappa}$ is closed under finite limits, the localized category
-		$C^{\kappa}[L^{-1}]$ has finite limits and the functor
-		$C^{\kappa} \to C^{\kappa}[L^{-1}]$ preserves them. Passing to
-		idempotent completion preserves finite limits: equivalently, for every
-		finite category $J$, idempotent completion commutes with
-		$\Fun(J,-)$. Hence $D^{\kappa}$ is closed under finite limits in $D$.
+		The sheaf category over $X$ is generated under colimits by affine
+		objects over $X$. Thus it is $\aleph_1$-compactly generated by affines.
+		In any $\aleph_1$-compactly generated category, the
+		$\aleph_1$-compact objects are retracts of countable colimits of
+		$\aleph_1$-compact generators; absorbing the retract into the indexing
+		category gives the stated countable affine presentation.
 	\end{proof}
 
 	\begin{lemma}\label[lemma]{lem:Aleph1_Compact_fpqc_Finite_Limits}
-		Assume \Cref{lem:Aleph1_Compact_Presheaves_Finite_Limits}. Then
-		$\aleph_1$-compact objects of $\Shv_{\fpqc}(\Aff)$ are closed under
-		finite limits.
+		The $\aleph_1$-compact objects of $\Shv_{\fpqc}(\Aff_{\S})$ are closed
+		under finite limits.
 	\end{lemma}
 	\begin{proof}
 		Let
 		\[
-			L\colon \PSh(\Aff) \rightleftarrows \Shv_{\fpqc}(\Aff) : \iota
+			L\colon \PSh(\Aff_{\S}) \rightleftarrows \Shv_{\fpqc}(\Aff_{\S}) : \iota
 		\]
-		be sheafification and the inclusion. By the proof of
-		\Cref{lem:Affines_Aleph1_Compact_fpqc}, the inclusion $\iota$
-		preserves $\aleph_1$-filtered colimits. The sheafification functor $L$
-		preserves finite limits. The presheaf category is
-		$\aleph_1$-compactly generated, and its $\aleph_1$-compact objects are
-		closed under finite limits by
-		\Cref{lem:Aleph1_Compact_Presheaves_Finite_Limits}. Therefore
-		\Cref{lem:Compact_Finite_Limits_Localization}, applied with
-		$\kappa=\aleph_1$, gives the claim.
+		be sheafification and the inclusion. By
+		\Cref{lem:fpqc_Inclusion_Aleph1_Filtered_Colimits}, the inclusion
+		$\iota$ preserves $\aleph_1$-filtered colimits. The functor $L$
+		preserves finite limits, and
+		\Cref{prop:Kappa_Compact_Presheaves_Finite_Limits} shows that
+		$\aleph_1$-compact presheaves on $\Aff_{\S}$ are closed under finite
+		limits. Therefore \Cref{lem:Compact_Finite_Limits_Localization},
+		applied with $\kappa=\aleph_1$, gives the claim.
 	\end{proof}
 
 	\begin{lemma}\label[lemma]{lem:Aleph1_Compact_Pro_Bicountably_Presented}
 		Let $X = \Spec(A)$ be affine. Then every $\aleph_1$-compact object
-		$Y \in \Shv_{\fpqc}(\Aff)_{/X}$ admits a compatible cone
+		$Y \in \Shv_{\fpqc}(\Aff_{\S})_{/X}$ admits a compatible cone
 		$Y \to Y_i$ over an $\aleph_1$-filtered category $I$, where each
 		$Y_i \to X$ is bi-countably presented, such that, for every
 		$n \geq 1$, the induced functor
@@ -1516,7 +1361,7 @@
 	\begin{proof}
 		By \Cref{lem:Affines_Aleph1_Compact_fpqc}, the affine objects over
 		$X$ are $\aleph_1$-compact. Since affine objects
-		generate $\Shv_{\fpqc}(\Aff)_{/X}$ under colimits, this sheaf
+		generate $\Shv_{\fpqc}(\Aff_{\S})_{/X}$ under colimits, this sheaf
 		category is $\aleph_1$-compactly generated by affines. Thus an
 		$\aleph_1$-compact object over $X$ admits a presentation by countably
 		many affines: we have
@@ -1768,7 +1613,7 @@
 	% 	\[
 	% 		Z \simeq \colim_{i \in I} \Spec(B_i)
 	% 	\]
-	% 	be a countable colimit in $\Shv_{\fpqc}(\Aff)_{/\Spec(A)}$, where $I$ is a countable category and each $A \to B_i$ is countably presented. Then for any two objects $i,j \in I$, the intersection
+	% 	be a countable colimit in $\Shv_{\fpqc}(\Aff_{\S})_{/\Spec(A)}$, where $I$ is a countable category and each $A \to B_i$ is countably presented. Then for any two objects $i,j \in I$, the intersection
 	% 	\[
 	% 		\Spec(B_i) \times_Z \Spec(B_j)
 	% 	\]
@@ -2395,7 +2240,521 @@
 	\chapter{The proof of Cartier duality}
 
 	\emph{Talk given by Sil.}
-	
+
+	\appendix
+
+	\titleformat{\chapter}{\normalfont\huge\bfseries}{\Alph{chapter}}{20pt}{\Huge}
+	\titleformat{\section}{\Large\bfseries}{\Alph{chapter}.\arabic{section}}{10pt}{\Large}
+	\titleformat{\subsection}{\large\normalfont}{\Alph{chapter}.\arabic{section}.\arabic{subsection}}{6pt}{\large}
+	\titleformat{\subsubsection}{\large\bfseries}{}{6pt}{\large}
+	\addtocontents{toc}{\vskip 15pt}
+	\renewcommand{\thechapter}{\Alph{chapter}}
+	\renewcommand{\thesection}{\Alph{chapter}.\arabic{section}}
+	\renewcommand{\thesubsection}{\Alph{chapter}.\arabic{section}.\arabic{subsection}}
+	\renewcommand{\thetheorem}{\Alph{chapter}.\arabic{theorem}}
+
+	\chapter{\texorpdfstring{$\aleph_1$}{ℵ\_1}-compact objects}
+	\label[chapter]{chap:Compact_Objects}
+
+	The formalism developed in these notes heavily relies on manipulations with $\kappa$-compact objects for uncountable cardinals $\kappa$ (which we mostly fix to be $\aleph_1$). In this appendix, we record various basic properties of $\kappa$-compact objects.
+
+	\section{Compact algebras and modules}
+	\label[section]{sec:Compact_Algebras}
+
+	We state and prove various basic properties of $\kappa$-compact algebras in a $\kappa$-presentable category.
+
+	\begin{lemma}\label[lemma]{lem:Kappa_Compact_Algebra_Iff_Module}
+		Let $\kappa$ be an uncountable regular cardinal, let $C \in \CAlg(\PrL_{\kappa})$, let $R \in \CAlg(C)$, and let $B \in \CAlg_R(C)$. Then $B$ is $\kappa$-compact as an $R$-algebra if and only if its underlying $R$-module is $\kappa$-compact.
+	\end{lemma}
+	\begin{proof}
+		The point is that the $E_{\infty}$-operad is countable. We write
+		\[
+			\operatorname{Sym}_R\colon \Mod_R(C) \rightleftarrows \CAlg_R(C) \colon U
+		\]
+		for the free-forgetful adjunction. We will use that $\kappa$-small colimits of $\kappa$-compact objects are again $\kappa$-compact: mapping out of such a colimit gives a $\kappa$-small limit of anima, and $\kappa$-filtered colimits of animae commute with $\kappa$-small limits.
+
+		First let $M \in \Mod_R(C)$ be $\kappa$-compact. The underlying $R$-module of the free commutative $R$-algebra on $M$ is
+		\[
+			U\operatorname{Sym}_R(M)
+			\simeq
+			\coprod_{d \geq 0} (M^{\otimes_R d})_{h\Sigma_d}.
+		\]
+		Here each tensor power is $\kappa$-compact, the homotopy orbits are a countable colimit, and the coproduct is countable. Thus $U\operatorname{Sym}_R(M)$ is $\kappa$-compact. Also $\operatorname{Sym}_R(M)$ is $\kappa$-compact as an algebra, since $U$ preserves $\kappa$-filtered colimits.
+
+		Since the monad $U\operatorname{Sym}_R$ is $\kappa$-accessible and preserves $\kappa$-compact objects by the formula above, the $\kappa$-compact objects in $\CAlg_R(C)$ are generated under $\kappa$-small colimits and retracts by free algebras on $\kappa$-compact modules. Indeed, for any $\kappa$-accessible monad on a $\kappa$-presentable category which preserves $\kappa$-compact objects, the free algebras on $\kappa$-compact objects are $\kappa$-compact and generate the algebra category under colimits, so the $\kappa$-compact algebras are the retracts of their $\kappa$-small colimits.
+
+		It remains to check that the class of $R$-algebras with $\kappa$-compact underlying $R$-module is closed under these operations. Closure under retracts is clear. For $\kappa$-small colimits, write such a colimit as the geometric realization of its simplicial replacement; the $n$-simplices are $\kappa$-small coproducts of the algebras in the diagram. A $\kappa$-small coproduct of commutative $R$-algebras is the sifted colimit over its finite sub-coproducts, and the underlying $R$-module of a finite coproduct is the corresponding finite tensor product in $\Mod_R(C)$. Since $U$ preserves sifted colimits, and since $\kappa$-compact $R$-modules are closed under finite tensor products and $\kappa$-small colimits, the underlying module of each simplicial degree, and hence of the realization, is $\kappa$-compact. Thus a $\kappa$-compact $R$-algebra has $\kappa$-compact underlying $R$-module.
+
+		Conversely, suppose that $U(B)$ is $\kappa$-compact. By monadicity, $B$ is the geometric realization of the standard simplicial resolution by free algebras,
+		\[
+			\cdots \rightrightarrows
+			\operatorname{Sym}_R U\operatorname{Sym}_R U(B)
+			\rightrightarrows
+			\operatorname{Sym}_R U(B).
+		\]
+		By the free-algebra case above, every term in this simplicial object is $\kappa$-compact as an algebra. Since the geometric realization is a countable colimit, $B$ is $\kappa$-compact in $\CAlg_R(C)$.
+	\end{proof}
+
+	\begin{lemma}\label[lemma]{lem:Kappa_Compact_Modules_Change_Of_Scalars}
+		Let $\kappa$ be an uncountable regular cardinal, let $C \in \CAlg(\PrL_{\kappa})$, and let $A \to B$ be $\kappa$-compact in $\CAlg_A(C)$. Then an object $M \in \Mod_B(C)$ is $\kappa$-compact as a $B$-module if and only if its underlying $A$-module is $\kappa$-compact.
+	\end{lemma}
+	\begin{proof}
+		By \Cref{lem:Kappa_Compact_Algebra_Iff_Module}, the underlying $A$-module of $B$ is $\kappa$-compact. We write
+		\[
+			f^* = B \otimes_A - \colon \Mod_A(C) \rightleftarrows \Mod_B(C) \colon f_*
+		\]
+		for the extension-restriction adjunction. First suppose that $M$ is $\kappa$-compact as a $B$-module. The $\kappa$-compact objects in $\Mod_B(C)$ are generated under $\kappa$-small colimits and retracts by the free $B$-modules $B \otimes X$ with $X \in C^{\kappa}$. Since $f_*$ preserves colimits and sends such a free module to $B \otimes X$, which is $\kappa$-compact as an $A$-module because the $C$-action on $\Mod_A(C)$ preserves $\kappa$-compact objects, it follows that $f_*M$ is $\kappa$-compact.
+
+		Conversely, suppose that $f_*M$ is $\kappa$-compact as an $A$-module. The standard monadic resolution
+		\[
+			M \simeq \left| \cdots \rightrightarrows f^*f_*f^*f_*M \rightrightarrows f^*f_*M \right|
+		\]
+		expresses $M$ as a countable colimit of $B$-modules of the form $f^*N$. Since $f_*f^*N \simeq B \otimes_A N$ and the tensor product on $\Mod_A(C)$ preserves $\kappa$-compact objects in both variables, the functor $f_*f^*$ preserves $\kappa$-compact $A$-modules. Hence every term in this resolution is of the form $f^*N$ with $N$ $\kappa$-compact as an $A$-module, and is therefore $\kappa$-compact as a $B$-module. Since the realization is a countable, hence $\kappa$-small, colimit, $M$ is $\kappa$-compact.
+	\end{proof}
+
+	\begin{corollary}\label[corollary]{cor:Restriction_Kappa_Compact_Algebra_Preserves_Compacts}
+		Let $\kappa$ be an uncountable regular cardinal, let $C \in \CAlg(\PrL_{\kappa})$, and let $g\colon R \to S$ be $\kappa$-compact in $\CAlg_R(C)$. Then the restriction functor
+		\[
+			g_*\colon \Mod_S(C) \to \Mod_R(C)
+		\]
+		preserves $\kappa$-compact objects.
+	\end{corollary}
+	\begin{proof}
+		This is one direction of \Cref{lem:Kappa_Compact_Modules_Change_Of_Scalars}.
+	\end{proof}
+
+	\begin{lemma}\label[lemma]{lem:Kappa_Compact_Algebra_Closure_Properties}
+		Let $\kappa$ be an uncountable regular cardinal, let $C \in \CAlg(\PrL_{\kappa})$, and let $A \in \CAlg(C)$.
+		\begin{enumerate}[(1)]
+			\item The $\kappa$-compact objects in $\CAlg_A(C)$ are closed under $\kappa$-small colimits and retracts. In particular, they are closed under finite colimits.
+			\item If $B \in \CAlg_A(C)$ is $\kappa$-compact and $A \to A'$ is any map in $\CAlg(C)$, then $A' \otimes_A B \in \CAlg_{A'}(C)$ is $\kappa$-compact.
+			\item If $B \in \CAlg_A(C)$ is $\kappa$-compact and $D \in \CAlg_B(C)$ is $\kappa$-compact, then $D$ is $\kappa$-compact as an object of $\CAlg_A(C)$.
+			\item If $B,D \in \CAlg_A(C)$ are $\kappa$-compact and $B \to D$ is a map in $\CAlg_A(C)$, then $D$ is $\kappa$-compact as an object of $\CAlg_B(C)$.
+		\end{enumerate}
+	\end{lemma}
+	\begin{proof}
+		Part (1) is the general closure property of $\kappa$-compact objects in a $\kappa$-presentable category. For (2), extension of scalars
+		\[
+			A' \otimes_A - \colon \CAlg_A(C) \to \CAlg_{A'}(C)
+		\]
+		is left adjoint to the forgetful functor, and this forgetful functor preserves $\kappa$-filtered colimits.
+
+		For (3), \Cref{lem:Kappa_Compact_Algebra_Iff_Module} shows that $D$ is $\kappa$-compact as a $B$-module. By \Cref{lem:Kappa_Compact_Modules_Change_Of_Scalars}, its underlying $A$-module is $\kappa$-compact, so \Cref{lem:Kappa_Compact_Algebra_Iff_Module} again shows that $D$ is $\kappa$-compact as an $A$-algebra.
+
+		For (4), the underlying $A$-module of $D$ is $\kappa$-compact by \Cref{lem:Kappa_Compact_Algebra_Iff_Module}. Since $B$ is $\kappa$-compact over $A$, \Cref{lem:Kappa_Compact_Modules_Change_Of_Scalars} implies that $D$ is $\kappa$-compact as a $B$-module. Applying \Cref{lem:Kappa_Compact_Algebra_Iff_Module} once more, $D$ is $\kappa$-compact as a $B$-algebra.
+	\end{proof}
+
+	\begin{lemma}\label[lemma]{lem:Kappa_Compact_Algebra_Section}
+		Let $\kappa$ be an uncountable regular cardinal, let $C \in \CAlg(\PrL_{\kappa})$, and let $A \to B$ be $\kappa$-compact in $\CAlg_A(C)$. If $A \to B$ admits an $A$-algebra retraction $B \to A$, then $A$ is $\kappa$-compact as an object of $\CAlg_B(C)$.
+	\end{lemma}
+	\begin{proof}
+		Apply \Cref{lem:Kappa_Compact_Algebra_Closure_Properties}(4) to the map $B \to A$ in $\CAlg_A(C)$: both $B$ and the initial $A$-algebra $A$ are $\kappa$-compact in $\CAlg_A(C)$.
+	\end{proof}
+
+	\section{Compact objects in sheaf categories}
+	\label[section]{sec:Compacts_In_Sheaves}
+
+	We now collect the compactness facts for animae, presheaves, and left
+	exact localizations which are used in the main text.
+
+	\begin{proposition}\label[proposition]{prop:Kappa_Compact_Anima_Kappa_Small_Simplicial}
+		Let $\kappa$ be an uncountable regular cardinal. An anima is
+		$\kappa$-compact if and only if it can be represented by a simplicial
+		set with fewer than $\kappa$ simplices.
+	\end{proposition}
+	\begin{proof}
+		First suppose that $X$ is represented by a simplicial set $K$ with
+		fewer than $\kappa$ simplices. Then $K$ is the colimit of its finite
+		simplicial subsets, indexed by a $\kappa$-small filtered category.
+		Finite simplicial sets are compact in $\An$, and $\kappa$-small
+		colimits of $\kappa$-compact objects are again $\kappa$-compact,
+		because $\kappa$-filtered colimits in $\An$ commute with
+		$\kappa$-small limits. Thus $X$ is $\kappa$-compact.
+
+		Conversely, let $X$ be $\kappa$-compact, and choose a simplicial set
+		$K$ representing it. Let $I$ be the poset of simplicial subsets of $K$
+		with fewer than $\kappa$ simplices. This poset is $\kappa$-filtered,
+		since $\kappa$ is regular, and
+		\[
+			K \simeq \colim_{L \in I} L
+		\]
+		in simplicial sets, hence also in $\An$. By compactness, the identity
+		of $X$ factors through one of the maps $\Piinfty{L} \to X$. Thus $X$ is
+		a retract of an anima represented by a simplicial set with fewer than
+		$\kappa$ simplices. It follows, after applying
+		$\operatorname{Ex}^{\infty}$ if desired, that $\pi_0(X)$ and all
+		higher homotopy groups of $X$ have cardinality $<\kappa$.
+
+		We now use the usual cellular approximation argument. Start with one
+		vertex for each connected component of $X$. Inductively, after the
+		$n$-skeleton has been constructed, attach fewer than $\kappa$ many
+		cells to hit the remaining elements of $\pi_n(X)$ and fewer than
+		$\kappa$ many further cells to kill the kernel on $\pi_n$. Since
+		$\kappa$ is uncountable and regular, the resulting simplicial set $Y$
+		has fewer than $\kappa$ simplices. The map $\Piinfty{Y} \to X$
+		constructed in this way induces an isomorphism on $\pi_0$ and on all
+		higher homotopy groups, hence is an equivalence.
+	\end{proof}
+
+	\begin{proposition}\label[proposition]{prop:Kappa_Compact_Anima_Finite_Limits}
+		Let $\kappa$ be an uncountable regular cardinal. The $\kappa$-compact
+		objects of $\An$ are closed under finite limits.
+	\end{proposition}
+	\begin{proof}
+		By \Cref{prop:Kappa_Compact_Anima_Kappa_Small_Simplicial}, it is enough
+		to prove that finite limits of animae represented by simplicial sets
+		with fewer than $\kappa$ simplices can again be represented by such
+		simplicial sets. The terminal anima is represented by $\Delta^0$, so
+		it remains to consider pullbacks. Let
+		\[
+			X \to Z \leftarrow Y
+		\]
+		be a diagram of such animae, represented by simplicial sets $K,L,M$.
+		Replace $M$ by the Kan complex
+		$M^{\fib}:=\operatorname{Ex}^{\infty}(M)$. This still has fewer than
+		$\kappa$ simplices: for each $n$, the simplicial set
+		$\operatorname{sd}\Delta^n$ is finite, so
+		\[
+			(\operatorname{Ex} N)_n
+			=
+			\Hom_{\sSet}(\operatorname{sd}\Delta^n,N)
+		\]
+		has cardinality $<\kappa$ whenever $N$ has fewer than $\kappa$
+		simplices, and the sequential colimit defining
+		$\operatorname{Ex}^{\infty}$ is still $\kappa$-small because $\kappa$
+		is uncountable.
+
+		Since $M^{\fib}$ is fibrant, the two maps to $Z$ may be represented by
+		actual maps of simplicial sets $K \to M^{\fib}$ and $L \to M^{\fib}$,
+		and the homotopy pullback is represented by
+		\[
+			K
+			\times_{M^{\fib}}
+			(M^{\fib})^{\Delta^1}
+			\times_{M^{\fib}}
+			L.
+		\]
+		The simplicial set $(M^{\fib})^{\Delta^1}$ has fewer than $\kappa$
+		simplices because
+		\[
+			((M^{\fib})^{\Delta^1})_n
+			=
+			\Hom_{\sSet}(\Delta^n \times \Delta^1,M^{\fib}),
+		\]
+		and $\Delta^n \times \Delta^1$ is finite. Finite strict limits of
+		simplicial sets with fewer than $\kappa$ simplices again have fewer
+		than $\kappa$ simplices. Hence the pullback is represented by a
+		$\kappa$-small simplicial set.
+	\end{proof}
+
+	\begin{definition}\label[definition]{def:Necklaces_BS}
+		A \emph{necklace} is a bipointed simplicial set of the form
+		\[
+			N = \Delta^{n_1} \vee \cdots \vee \Delta^{n_r},
+		\]
+		where we glue the final vertex of each bead to the initial vertex of
+		the next one. We write $\mathrm{Nec}$ for the category of necklaces
+		and maps of bipointed simplicial sets.
+	\end{definition}
+
+	Let
+	\[
+		\mathrm{L}_{\mathrm{Seg}}\colon \PSh(\simp) \to \PSh(\simp)
+	\]
+	denote Segalification, i.e. the left adjoint to the inclusion of Segal
+	animae into all simplicial animae. We will use the following form of
+	the Barkan--Steinebrunner necklace formula.
+
+	\begin{proposition}[Barkan--Steinebrunner]\label[proposition]{prop:BS_Mapping_Anima_Formula}
+		Let $X$ be a simplicial anima. Then there is a canonical equivalence
+		\[
+			\mathrm{L}_{\mathrm{Seg}}(X)_1
+			\simeq
+			\colim_{N\in \mathrm{Nec}\catop}\Map_{\PSh(\simp)}(N,X),
+		\]
+		naturally as an object over $X_0\times X_0$. Consequently, if
+		$\mathrm{Cat}(X)$ denotes the $\infty$-category presented by the
+		Segalification of $X$, followed by completion, then for two points
+		$x,y\colon \ast \to X_0$ there is a canonical equivalence
+		\[
+			\Map_{\mathrm{Cat}(X)}(x,y)
+			\simeq
+			\abs{\mathrm{Nec}_{/(X,x,y)}}.
+		\]
+		Here $\mathrm{Nec}_{/(X,x,y)}$ is the $\infty$-category of necklaces
+		$N$ equipped with a map $N\to X$ whose initial vertex is $x$ and whose
+		final vertex is $y$.
+	\end{proposition}
+	\begin{proof}
+		The first assertion is the $1$-simplices case of the
+		Barkan--Steinebrunner formula for Segalification by necklaces. The
+		second assertion is the fiber over $(x,y)$: the right fibration
+		$\mathrm{Nec}_{/X}\to\mathrm{Nec}$ corresponds to the functor
+		$N\mapsto\Map_{\PSh(\simp)}(N,X)$, so its groupoid completion is the
+		colimit of this functor. Since colimits in animae are universal, we
+		may take the fiber over $(x,y)\in X_0\times X_0$ after forming this
+		colimit. Completion of a Segal anima does not change its mapping
+		animae between fixed objects, so the result computes the mapping
+		anima in the $\infty$-category presented by $X$.
+	\end{proof}
+
+	\begin{lemma}\label[lemma]{lem:Finite_Limits_Kappa_Coproducts_Representables}
+		Let $\kappa$ be an uncountable regular cardinal, and let $C$ be a
+		small $\infty$-category with finite limits. Then finite limits of
+		$\kappa$-small coproducts of representables in $\PSh(C)$ are again
+		$\kappa$-small coproducts of representables.
+	\end{lemma}
+	\begin{proof}
+		The terminal object is representable, so it is enough to prove
+		stability under pullbacks. Let
+		\[
+			F=\coprod_{a\in A} y(c_a),
+			\qquad
+			G=\coprod_{b\in B} y(d_b),
+			\qquad
+			H=\coprod_{e\in E} y(h_e)
+		\]
+		with $A,B,E$ $\kappa$-small. Consider maps $F\to H$ and $G\to H$.
+		For each $a\in A$, the restriction $y(c_a)\to H$ chooses a summand
+		$e(a)\in E$ and a map $c_a\to h_{e(a)}$ in $C$. Similarly, for each
+		$b\in B$, the restriction $y(d_b)\to H$ chooses a summand
+		$e'(b)\in E$ and a map $d_b\to h_{e'(b)}$.
+
+		Coproducts in a presheaf $\infty$-topos are disjoint and universal.
+		Therefore the pullback $F\times_H G$ decomposes as
+		\[
+			F\times_H G
+			\simeq
+			\coprod_{\substack{(a,b)\in A\times B\\ e(a)=e'(b)}}
+			\left(y(c_a)\times_{y(h_{e(a)})}y(d_b)\right).
+		\]
+		Since the Yoneda embedding preserves finite limits, the summand is
+		represented by $c_a\times_{h_{e(a)}}d_b$. The displayed coproduct is
+		$\kappa$-small, because $\kappa$ is infinite and $A$ and $B$ are
+		$\kappa$-small. This proves stability under pullbacks, and hence under
+		all finite limits.
+	\end{proof}
+
+	For a small $\infty$-category $C$ and a simplicial object
+	$Y_{\bullet}$ of $\PSh(C)$, we write $R_Y$ for the internal relative
+	Rezk nerve of the category of simplices of $Y_{\bullet}$, with all
+	morphisms inverted. Concretely, $R_Y$ is the simplicial object of
+	$\PSh(C)$ obtained by the following objectwise formula:
+	\[
+		(R_Y)_m(c)
+		=
+		\abs{\Fun([m],C_{Y(c)})},
+		\qquad
+		C_{Y(c)}:=\int_{\simp\catop} Y_{\bullet}(c).
+	\]
+	Equivalently, $(R_Y)_m$ is the geometric realization of a simplicial
+	object whose $q$-simplices are
+	\[
+		\coprod_{\alpha\colon [q]\times [m]\to \simp\catop}
+		\lim_{(a,b)\in [q]\times [m]} Y_{\alpha(a,b)}.
+	\]
+	The coproduct is indexed by a countable set, and the limit is finite.
+	When $N$ is a finite simplicial set, we write
+	$\Map_{\PSh(\simp)}(N,R_Y)$ for the corresponding mapping object in
+	$\PSh(C)$, computed objectwise in $C$.
+
+	\begin{proposition}\label[proposition]{prop:Relation_Object_Kappa_Small_Colimit}
+		Let $\kappa$ be an uncountable regular cardinal, let $C$ be a small
+		$\infty$-category with finite limits, and let $Y_{\bullet}$ be a
+		simplicial object of $\PSh(C)$ such that every $Y_n$ is a
+		$\kappa$-small coproduct of representables. Then
+		\[
+			Y_0\times_{\abs{Y_{\bullet}}}Y_0
+		\]
+		is a $\kappa$-small colimit of representables.
+	\end{proposition}
+	\begin{proof}
+		By the displayed formula for $(R_Y)_m$, each simplicial degree in the
+		geometric realization computing $(R_Y)_m$ is a countable coproduct of
+		finite limits of the $Y_n$. By
+		\Cref{lem:Finite_Limits_Kappa_Coproducts_Representables}, each such
+		finite limit is a $\kappa$-small coproduct of representables. Hence
+		each $(R_Y)_m$ is a $\kappa$-small colimit of $\kappa$-small
+		coproducts of representables, and therefore a $\kappa$-small colimit
+		of representables.
+
+		The same argument applies after mapping out of a finite necklace. Let
+		$N$ be a necklace. Since $N$ is finite,
+		\[
+			\Map_{\PSh(\simp)}(N,R_Y)
+		\]
+		is a finite limit of the values $(R_Y)_m$. Each $(R_Y)_m$ is itself a
+		geometric realization as above. Since $\PSh(C)$ is an $\infty$-topos,
+		colimits are universal, so this finite limit can be computed as a
+		$\kappa$-small colimit of finite limits of the displayed simplicial
+		degrees. These finite limits are again $\kappa$-small coproducts of
+		representables by
+		\Cref{lem:Finite_Limits_Kappa_Coproducts_Representables}. Thus
+		$\Map_{\PSh(\simp)}(N,R_Y)$ is a $\kappa$-small colimit of
+		representables.
+
+		We need the version with endpoints in $Y_0$. Since
+		\[
+			Y_0\times_{(R_Y)_0}\Map_{\PSh(\simp)}(N,R_Y)\times_{(R_Y)_0}Y_0
+		\]
+		is again a finite limit of $Y_0$ and finitely many values $(R_Y)_m$,
+		the same universal-colimit argument shows that it is a
+		$\kappa$-small colimit of representables.
+
+		Now apply \Cref{prop:BS_Mapping_Anima_Formula} to the simplicial anima
+		$R_Y$, objectwise in $C$. The relative Rezk nerve, after
+		Segalification and completion, presents the localization; in our case,
+		with all morphisms inverted, this localization is the groupoid
+		completion
+		\[
+			\abs{C_{Y(c)}}\simeq \abs{Y_{\bullet}(c)}
+		\]
+		for each $c\in C$. Hence, in $\PSh(C)$,
+		\[
+			Y_0\times_{\abs{Y_{\bullet}}}Y_0
+			\simeq
+			\colim_{N\in \mathrm{Nec}\catop}
+			\left(
+			Y_0\times_{(R_Y)_0}
+			\Map_{\PSh(\simp)}(N,R_Y)
+			\times_{(R_Y)_0}Y_0
+			\right).
+		\]
+		The category $\mathrm{Nec}$ is countable. Since $\kappa$ is
+		uncountable regular, this final colimit is still a $\kappa$-small
+		colimit of representables.
+	\end{proof}
+
+	\begin{proposition}\label[proposition]{prop:Kappa_Compact_Presheaves_Finite_Limits}
+		Let $\kappa$ be an uncountable regular cardinal, and let $C$ be a small
+		$\infty$-category with finite limits. Then the $\kappa$-compact objects
+		of $\PSh(C)$ are closed under finite limits.
+	\end{proposition}
+	\begin{proof}
+		The category $\PSh(C)$ is $\kappa$-compactly generated by
+		representables, and its $\kappa$-compact objects are $\kappa$-small
+		colimits of representables. Indeed, the only point is to absorb
+		retracts: if $X$ is a retract of $Y$ in a category with countable
+		colimits, then $X$ can be written as the colimit of the countable
+		diagram $\bbB \N \to \PSh(C)$ encoding the idempotent on $Y$.
+
+		The terminal object of $\PSh(C)$ is representable, hence
+		$\kappa$-compact. We are thus reduced to pullbacks. Let
+		\[
+			X \to Y \leftarrow Z
+		\]
+		be a diagram in which all three objects are $\kappa$-small colimits of
+		representables. We first reduce to the case where $X$ and $Z$ are
+		representable. Write $X \simeq \colim_i X_i$ and
+		$Z \simeq \colim_j Z_j$ as $\kappa$-small colimits of representables,
+		with the induced maps to $Y$. Since colimits in a presheaf topos are
+		universal, pullback in the slice over $Y$ preserves colimits. Hence
+		\[
+			X \times_Y Z
+			\simeq
+			\colim_{i,j}(X_i \times_Y Z_j).
+		\]
+		The indexing category is still $\kappa$-small, so it remains to handle
+		the case where $X$ and $Z$ are representable.
+
+		Write $Y$ as a $\kappa$-small colimit of representables. The simplicial
+		replacement expresses this colimit as the geometric realization of a
+		simplicial object $Y_{\bullet}$ of $\PSh(C)$ such that each $Y_n$ is a
+		$\kappa$-small coproduct of representables. The map
+		$Y_0\to\abs{Y_{\bullet}}$ is an effective epimorphism. Since effective
+		epimorphisms in $\An$ are the $\pi_0$-surjections, maps from
+		representables lift along effective epimorphisms after evaluation.
+		Thus the two maps $X,Z\to\abs{Y_{\bullet}}$ admit lifts to $Y_0$.
+
+		Set
+		\[
+			R := Y_0 \times_{\abs{Y_{\bullet}}} Y_0.
+		\]
+		Then
+		\[
+			X \times_{\abs{Y_{\bullet}}} Z
+			\simeq
+			(X \times Z) \times_{Y_0 \times Y_0} R,
+		\]
+		where the map $X\times Z\to Y_0\times Y_0$ is induced by the chosen
+		lifts. By \Cref{prop:Relation_Object_Kappa_Small_Colimit}, the object
+		$R$ is a $\kappa$-small colimit $\colim_{\ell} R_{\ell}$ of
+		representables. Since colimits in a presheaf topos are universal,
+		\[
+			(X \times Z) \times_{Y_0 \times Y_0} R
+			\simeq
+			\colim_{\ell}
+			\left((X \times Z) \times_{Y_0 \times Y_0} R_{\ell}\right).
+		\]
+		Each term on the right is a finite limit of $\kappa$-small coproducts
+		of representables, hence is itself a $\kappa$-small coproduct of
+		representables by
+		\Cref{lem:Finite_Limits_Kappa_Coproducts_Representables}. Therefore
+		$X\times_Y Z$ is a $\kappa$-small colimit of representables.
+	\end{proof}
+
+	\begin{lemma}\label[lemma]{lem:Compact_Finite_Limits_Localization}
+		Let $\kappa$ be an uncountable regular cardinal, and let
+		\[
+			L\colon C \rightleftarrows D : \iota
+		\]
+		be an accessible localization of presentable categories. Assume that
+		$C$ is $\kappa$-compactly generated, that $C^{\kappa}$ is closed under
+		finite limits, that $L$ preserves finite limits, and that $\iota$
+		preserves $\kappa$-filtered colimits. Then $D$ is
+		$\kappa$-compactly generated, and $D^{\kappa}$ is closed under finite
+		limits.
+	\end{lemma}
+	\begin{proof}
+		Since $\iota$ preserves $\kappa$-filtered colimits, the left adjoint
+		$L$ preserves $\kappa$-compact objects. Thus $LK$ is
+		$\kappa$-compact for every $K \in C^{\kappa}$.
+
+		We next show that these objects generate $D$ under $\kappa$-filtered
+		colimits. In fact, we will exhibit every object $d \in D$ as an
+		explicit $\kappa$-filtered colimit of objects of this form. Observe
+		that the category
+		\[
+			(C^{\kappa})_{/\iota d}
+		\]
+		is $\kappa$-filtered: a $\kappa$-small diagram of maps
+		$K_{\alpha}\to\iota d$ is dominated by the map
+		$\colim_{\alpha}K_{\alpha}\to\iota d$, and $C^{\kappa}$ is closed
+		under $\kappa$-small colimits. Since $C$ is $\kappa$-compactly
+		generated, the canonical map
+		\[
+			\colim_{(K \to \iota d)} K \to \iota d
+		\]
+		is an equivalence. Applying $L$ gives
+		\[
+			\colim_{(K \to \iota d)} LK \simeq d.
+		\]
+		Thus $D$ is $\kappa$-compactly generated by the objects $LK$. Moreover,
+		if $d$ is $\kappa$-compact, then the identity of $d$ factors through
+		one of the structure maps $LK\to d$, so $d$ is a retract of some $LK$.
+
+		Now let $F\colon J\to D^{\kappa}$ be a finite diagram. We apply the
+		previous paragraph not to $D$ itself, but to the induced localization
+		\[
+			\Fun(J,C) \rightleftarrows \Fun(J,D).
+		\]
+		Since $J$ is finite, \Cref{lem:Functor_Category_Presentable} shows that
+		$\Fun(J,C)$ is again $\kappa$-compactly generated, with
+		$\kappa$-compact generators given by diagrams $J\to C^{\kappa}$;
+		similarly, $F$ is $\kappa$-compact as an object of $\Fun(J,D)$. The
+		right adjoint preserves $\kappa$-filtered colimits pointwise. Hence
+		$F$ is a retract, as a diagram, of $LK_{\bullet}$ for some diagram
+		$K_{\bullet}\colon J\to C^{\kappa}$.
+
+		Taking limits, $\lim_J F$ is a retract of
+		\[
+			\lim_J LK_{\bullet} \simeq L\left(\lim_J K_{\bullet}\right),
+		\]
+		where we used that $L$ preserves finite limits. Since $C^{\kappa}$ is
+		closed under finite limits, $\lim_J K_{\bullet}$ lies in $C^{\kappa}$.
+		Therefore $L(\lim_J K_{\bullet})$ is $\kappa$-compact in $D$, and so
+		its retract $\lim_J F$ is $\kappa$-compact.
+	\end{proof}
 	\addtocontents{toc}{\vskip 10pt}
 %	\addcontentsline{toc}{chapter}{Bibliography}
 	\printbibliography[heading=bibintoc]

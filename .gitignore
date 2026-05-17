@@ -13,5 +13,6 @@
 *.out
 *.json
 Talks/
+Literature/
 .claude/
 CLAUDE.md
