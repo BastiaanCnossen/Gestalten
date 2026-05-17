@@ -2447,57 +2447,6 @@
 		$\kappa$-small simplicial set.
 	\end{proof}
 
-	\begin{definition}\label[definition]{def:Necklaces_BS}
-		A \emph{necklace} is a bipointed simplicial set of the form
-		\[
-			N = \Delta^{n_1} \vee \cdots \vee \Delta^{n_r},
-		\]
-		where we glue the final vertex of each bead to the initial vertex of
-		the next one. We write $\mathrm{Nec}$ for the category of necklaces
-		and maps of bipointed simplicial sets.
-	\end{definition}
-
-	Let
-	\[
-		\mathrm{L}_{\mathrm{Seg}}\colon \PSh(\simp) \to \PSh(\simp)
-	\]
-	denote Segalification, i.e. the left adjoint to the inclusion of Segal
-	animae into all simplicial animae. We will use the following form of
-	the Barkan--Steinebrunner necklace formula.
-
-	\begin{proposition}[Barkan--Steinebrunner]\label[proposition]{prop:BS_Mapping_Anima_Formula}
-		Let $X$ be a simplicial anima. Then there is a canonical equivalence
-		\[
-			\mathrm{L}_{\mathrm{Seg}}(X)_1
-			\simeq
-			\colim_{N\in \mathrm{Nec}\catop}\Map_{\PSh(\simp)}(N,X),
-		\]
-		naturally as an object over $X_0\times X_0$. Consequently, if
-		$\mathrm{Cat}(X)$ denotes the $\infty$-category presented by the
-		Segalification of $X$, followed by completion, then for two points
-		$x,y\colon \ast \to X_0$ there is a canonical equivalence
-		\[
-			\Map_{\mathrm{Cat}(X)}(x,y)
-			\simeq
-			\abs{\mathrm{Nec}_{/(X,x,y)}}.
-		\]
-		Here $\mathrm{Nec}_{/(X,x,y)}$ is the $\infty$-category of necklaces
-		$N$ equipped with a map $N\to X$ whose initial vertex is $x$ and whose
-		final vertex is $y$.
-	\end{proposition}
-	\begin{proof}
-		The first assertion is the $1$-simplices case of the
-		Barkan--Steinebrunner formula for Segalification by necklaces. The
-		second assertion is the fiber over $(x,y)$: the right fibration
-		$\mathrm{Nec}_{/X}\to\mathrm{Nec}$ corresponds to the functor
-		$N\mapsto\Map_{\PSh(\simp)}(N,X)$, so its groupoid completion is the
-		colimit of this functor. Since colimits in animae are universal, we
-		may take the fiber over $(x,y)\in X_0\times X_0$ after forming this
-		colimit. Completion of a Segal anima does not change its mapping
-		animae between fixed objects, so the result computes the mapping
-		anima in the $\infty$-category presented by $X$.
-	\end{proof}
-
 	\begin{lemma}\label[lemma]{lem:Finite_Limits_Kappa_Coproducts_Representables}
 		Let $\kappa$ be an uncountable regular cardinal, and let $C$ be a
 		small $\infty$-category with finite limits. Then finite limits of
@@ -2535,28 +2484,60 @@
 		all finite limits.
 	\end{proof}
 
-	For a small $\infty$-category $C$ and a simplicial object
-	$Y_{\bullet}$ of $\PSh(C)$, we write $R_Y$ for the internal relative
-	Rezk nerve of the category of simplices of $Y_{\bullet}$, with all
-	morphisms inverted. Concretely, $R_Y$ is the simplicial object of
-	$\PSh(C)$ obtained by the following objectwise formula:
-	\[
-		(R_Y)_m(c)
-		=
-		\abs{\Fun([m],C_{Y(c)})},
-		\qquad
-		C_{Y(c)}:=\int_{\simp\catop} Y_{\bullet}(c).
-	\]
-	Equivalently, $(R_Y)_m$ is the geometric realization of a simplicial
-	object whose $q$-simplices are
-	\[
-		\coprod_{\alpha\colon [q]\times [m]\to \simp\catop}
-		\lim_{(a,b)\in [q]\times [m]} Y_{\alpha(a,b)}.
-	\]
-	The coproduct is indexed by a countable set, and the limit is finite.
-	When $N$ is a finite simplicial set, we write
-	$\Map_{\PSh(\simp)}(N,R_Y)$ for the corresponding mapping object in
-	$\PSh(C)$, computed objectwise in $C$.
+	\begin{lemma}\label[lemma]{lem:Two_Sided_Bar_Relation_Object}
+		Let $C$ be a small $\infty$-category, let $I$ be an ordinary small
+		category, let $F\colon I \to \PSh(C)$ be a diagram, and let
+		$i,j\in I$. There is a simplicial object
+		\[
+			B^{i,j}_{\bullet}(F)\in \Fun(\simp\catop,\PSh(C))
+		\]
+		with a natural equivalence
+		\[
+			\abs{B^{i,j}_{\bullet}(F)}
+			\simeq
+			F(i)\times_{\colim_I F}F(j).
+		\]
+		Moreover, each $B^{i,j}_q(F)$ is a coproduct, indexed by the
+		$q$-simplices in the Bousfield--Kan category of finite zigzags in
+		$I$ from $i$ to $j$, of objects of the form
+		\[
+			\lim_{K} F,
+		\]
+		where $K\to I$ is a finite diagram whose underlying graph is a finite
+		zigzag from $i$ to $j$ together with the finitely many coherences
+		appearing in a $q$-simplex, and $\lim_K F$ denotes the limit of the
+		composite $K\to I\xrightarrow{F}\PSh(C)$. In particular, if $I$ is
+		countable, then each $B^{i,j}_q(F)$ is a countable coproduct of finite
+		limits of values of $F$.
+	\end{lemma}
+	\begin{proof}
+		It is enough to check after evaluation at each object of $C$, since
+		evaluation preserves limits and colimits. Thus we may assume
+		$F\colon I\to\An$. Let
+		\[
+			D:=\int_I F
+		\]
+		be the category of elements. Then $\colim_I F$ is the groupoid
+		completion $\abs{D}$. For points $x\in F(i)$ and $y\in F(j)$, the
+		fiber of the left-hand side over $(x,y)$ is the mapping anima
+		\[
+			\Map_{\abs{D}}((i,x),(j,y)).
+		\]
+		The standard Bousfield--Kan path model for the classifying anima
+		$\abs{D}$ identifies this mapping anima with the realization of the
+		simplicial anima of finite zigzags in $D$ from $(i,x)$ to $(j,y)$.
+		Letting $(x,y)$ vary gives the simplicial object
+		$B^{i,j}_{\bullet}(F)$. A fixed $q$-simplex in the zigzag category
+		still involves only finitely many objects of $D$ and morphisms between
+		them, even though the set of such $q$-simplices may be infinite. After
+		projecting this finite diagram to $I$, the space of lifts to
+		$D=\int_I F$ is the corresponding finite limit of values of $F$. Here
+		we use that the fibers of $D\to I$ are animae: whenever an intermediate
+		vertex is allowed to vary over one such fiber, the usual co-Yoneda
+		lemma contracts that variable to evaluation, so no additional colimit
+		remains. This gives the stated description of the simplicial degrees
+		and proves the lemma.
+	\end{proof}
 
 	\begin{proposition}\label[proposition]{prop:Relation_Object_Kappa_Small_Colimit}
 		Let $\kappa$ be an uncountable regular cardinal, let $C$ be a small
@@ -2569,60 +2550,17 @@
 		is a $\kappa$-small colimit of representables.
 	\end{proposition}
 	\begin{proof}
-		By the displayed formula for $(R_Y)_m$, each simplicial degree in the
-		geometric realization computing $(R_Y)_m$ is a countable coproduct of
+		Apply \Cref{lem:Two_Sided_Bar_Relation_Object} to the ordinary
+		category $I=\simp\catop$, the two objects $i=j=[0]$, and the diagram
+		$Y_{\bullet}\colon \simp\catop\to\PSh(C)$. Since $\simp\catop$ is
+		countable, the relation object is the geometric realization of a
+		simplicial object whose $q$-simplices are countable coproducts of
 		finite limits of the $Y_n$. By
 		\Cref{lem:Finite_Limits_Kappa_Coproducts_Representables}, each such
-		finite limit is a $\kappa$-small coproduct of representables. Hence
-		each $(R_Y)_m$ is a $\kappa$-small colimit of $\kappa$-small
-		coproducts of representables, and therefore a $\kappa$-small colimit
-		of representables.
-
-		The same argument applies after mapping out of a finite necklace. Let
-		$N$ be a necklace. Since $N$ is finite,
-		\[
-			\Map_{\PSh(\simp)}(N,R_Y)
-		\]
-		is a finite limit of the values $(R_Y)_m$. Each $(R_Y)_m$ is itself a
-		geometric realization as above. Since $\PSh(C)$ is an $\infty$-topos,
-		colimits are universal, so this finite limit can be computed as a
-		$\kappa$-small colimit of finite limits of the displayed simplicial
-		degrees. These finite limits are again $\kappa$-small coproducts of
-		representables by
-		\Cref{lem:Finite_Limits_Kappa_Coproducts_Representables}. Thus
-		$\Map_{\PSh(\simp)}(N,R_Y)$ is a $\kappa$-small colimit of
-		representables.
-
-		We need the version with endpoints in $Y_0$. Since
-		\[
-			Y_0\times_{(R_Y)_0}\Map_{\PSh(\simp)}(N,R_Y)\times_{(R_Y)_0}Y_0
-		\]
-		is again a finite limit of $Y_0$ and finitely many values $(R_Y)_m$,
-		the same universal-colimit argument shows that it is a
-		$\kappa$-small colimit of representables.
-
-		Now apply \Cref{prop:BS_Mapping_Anima_Formula} to the simplicial anima
-		$R_Y$, objectwise in $C$. The relative Rezk nerve, after
-		Segalification and completion, presents the localization; in our case,
-		with all morphisms inverted, this localization is the groupoid
-		completion
-		\[
-			\abs{C_{Y(c)}}\simeq \abs{Y_{\bullet}(c)}
-		\]
-		for each $c\in C$. Hence, in $\PSh(C)$,
-		\[
-			Y_0\times_{\abs{Y_{\bullet}}}Y_0
-			\simeq
-			\colim_{N\in \mathrm{Nec}\catop}
-			\left(
-			Y_0\times_{(R_Y)_0}
-			\Map_{\PSh(\simp)}(N,R_Y)
-			\times_{(R_Y)_0}Y_0
-			\right).
-		\]
-		The category $\mathrm{Nec}$ is countable. Since $\kappa$ is
-		uncountable regular, this final colimit is still a $\kappa$-small
-		colimit of representables.
+		finite limit is a $\kappa$-small coproduct of representables. Since
+		$\kappa$ is uncountable regular, countable coproducts and countable
+		geometric realizations of $\kappa$-small coproducts of representables
+		are $\kappa$-small colimits of representables. This proves the claim.
 	\end{proof}
 
 	\begin{proposition}\label[proposition]{prop:Kappa_Compact_Presheaves_Finite_Limits}
