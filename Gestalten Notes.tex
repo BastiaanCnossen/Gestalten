@@ -11,7 +11,7 @@
 	\pagenumbering{roman}
 	
 	\title{Gestalten\\ \vspace{10pt}
-	\Large  Univerity of Regensburg, Summer term 2026}
+	\Large University of Regensburg, Summer term 2026}
 	\author{\large Organizers: Bastiaan Cnossen and Sil Linskens \\ Note-taker: Bastiaan Cnossen}
 	
 	\maketitle
@@ -41,7 +41,7 @@
 	Concepts we should know:
 	\begin{enumerate}
 		\item[(-2)] \emph{Regular cardinal $\kappa$}: any union of sets of cardinality $< \kappa$ indexed by a set of cardinality $< \kappa$ has cardinality $< \kappa$.
-		\item[(-1)] \emph{Essentially $\kappa$-small ($\infty$-)category $C$}: (If $\kappa$ uncountable) The set of isomorphism classes of $C$ has cardinality $< \kappa$, and for all $x,y \in C$ the homotopy groups $\pi_i\hom_C(X,Y)$ have cardinality $<\kappa$ (For $\kappa = \aleph_0$ one would take the smallest subcategory of $\Cat_{\infty}$ generated under finite colimits by $[0]$ and $[1]$);
+		\item[(-1)] \emph{Essentially $\kappa$-small ($\infty$-)category $C$}: (If $\kappa$ uncountable) The set of isomorphism classes of $C$ has cardinality $< \kappa$, and for all $x,y \in C$ the homotopy groups $\pi_i\hom_C(x,y)$ have cardinality $<\kappa$ (For $\kappa = \aleph_0$ one would take the smallest subcategory of $\Cat_{\infty}$ generated under finite colimits by $[0]$ and $[1]$);
 		\item[(0)] \emph{$\kappa$-filtered category $I$}: Every $\kappa$-small diagram in $I$ admits a cocone;
 		\item[(1)] \emph{$\kappa$-compact object $X \in C$}: $\Hom_C(X,-)\colon C \to \An$ preserves $\kappa$-filtered colimits;
 		\item[(2)] \emph{$\kappa$-presentable categories}: A category $C$ which has small colimits and such that every object is a $\kappa$-filtered colimit of $\kappa$-compact objects;
@@ -118,7 +118,7 @@
 		Let $F\colon C \to D$ be a morphism in $\PrL_{\kappa}$, and let $G$ denote its right adjoint. Then the following are equivalent:
 		\begin{enumerate}[(1)]
 			\item The functor $F$ is fully faithful;
-			\item Fhe induced functor
+			\item The induced functor
 			\[
 				F^{\kappa}\colon C^{\kappa} \to D^{\kappa}
 			\]
@@ -127,7 +127,7 @@
 		\end{enumerate}
 	\end{lemma}
 	\begin{proof}
-		The implication $(1) \Rightarrow (3)$ is the usual adjunction criterion for full faithfulness. The implication $(3) \Rightarrow (2)$ follows from the adjunction: for $X,Y \in C^{\kappa}$, we have
+		The implication $(1) \Rightarrow (3)$ is the usual adjunction criterion for a functor to be fully faithful. The implication $(3) \Rightarrow (2)$ follows from the adjunction: for $X,Y \in C^{\kappa}$, we have
 		\[
 			\Hom_D(FX,FY) \simeq \Hom_C(X,GFY) \simeq \Hom_C(X,Y).
 		\]
@@ -181,7 +181,7 @@
 		Let $I$ be a set.
 		\begin{enumerate}
 			\item The product $\prod_{i \in I} C_i$ in $\PrL$ is just the product of underlying categories. But the product in $\PrL_{\kappa}$ would be $\Ind_{\kappa}(\prod_{i \in I} C_i^{\kappa})$.
-			\item The coproduct $\coprod_{i \in I} C_i$ in $\PrL$ is also the product $\prod_{i \in i} C_i$ in $\Cat$. So is the coproduct in $\PrL_{\kappa}$.
+			\item The coproduct $\coprod_{i \in I} C_i$ in $\PrL$ is also the product $\prod_{i \in I} C_i$ in $\Cat$. So is the coproduct in $\PrL_{\kappa}$.
 			\item The pushout of $*/H$ and $*/G$ over $*$ is $*/(G \star H)$, where $G \star H$ is the free product of $G$ and $H$, and where $*/G$ denotes the classifying anima of $G$. But the pushout $\lra{*/H} \sqcup_{\lra{*}} \lra{*/G}$ is given by the pullback $\lra{*/H} \times_{\An} \lra{*/G}$ in $\Cat$.
 		\end{enumerate}
 	\end{example}
@@ -203,7 +203,7 @@
 	\end{proposition}
 
 	\begin{proof}
-		We may set $\lra{S} \otimes \lra{D} = \lra{S \times T}$. Moreover, we may set $\lra{S}[R^{-1}] \otimes \lra{T}[Q^{-1}] = \lra{S \times T}[(R \times Q)^{-1}]$.
+		We may set $\lra{S} \otimes \lra{T} = \lra{S \times T}$. Moreover, we may set $\lra{S}[R^{-1}] \otimes \lra{T}[Q^{-1}] = \lra{S \times T}[(R \times Q)^{-1}]$.
 	\end{proof}
 
 	\begin{corollary}
@@ -333,24 +333,24 @@
 	\end{definition}
 
 	\begin{notation}\label[notation]{nota:Absolute_Transition_Adjunctions}
-		For every $n \geq 0$, the module-endomorphism adjunction gives an adjunction
+		For every $n \geq 1$, the module-endomorphism adjunction gives an adjunction
 		\[
-			\Mod^{\bbP}_n\colon \CAlg(n\Pr) \rightleftarrows \CAlg((n+1)\Pr) \noloc \End^{\bbP}_n,
+			\Mod^{\bbP}_n\colon \CAlg((n-1)\Pr) \rightleftarrows \CAlg(n\Pr) \noloc \End^{\bbP}_n,
 		\]
 		where
 		\[
-			\Mod^{\bbP}_n(R) := \Mod_R(n\Pr), \qquad \End^{\bbP}_n(D) := \End_D(\unit_D).
+			\Mod^{\bbP}_n(R) := \Mod_R((n-1)\Pr), \qquad \End^{\bbP}_n(D) := \End_D(\unit_D).
 		\]
 	\end{notation}
 
 	\begin{definition}
 		We define the category of \emph{Stefanich rings} as the colimit
 		\[
-			\StRing \; := \; \colim_{1\Pr}\bigl(\CAlg(\An) \xrightarrow{\Mod^{\bbP}_0} \CAlg(1\Pr) \xrightarrow{\Mod^{\bbP}_1} \CAlg(2\Pr) \xrightarrow{\Mod^{\bbP}_2} \dots\bigr).
+			\StRing \; := \; \colim_{1\Pr}\bigl(\CAlg(\An) \xrightarrow{\Mod^{\bbP}_1} \CAlg(1\Pr) \xrightarrow{\Mod^{\bbP}_2} \CAlg(2\Pr) \xrightarrow{\Mod^{\bbP}_3} \dots\bigr).
 		\]
 		Equivalently, passing to the right adjoints gives
 		\[
-			\StRing \simeq \lim_{\CAT}\bigl(\CAlg(\An) \xleftarrow{\End^{\bbP}_0} \CAlg(1\Pr) \xleftarrow{\End^{\bbP}_1} \CAlg(2\Pr) \xleftarrow{\End^{\bbP}_2} \dots\bigr).
+			\StRing \simeq \lim_{\CAT}\bigl(\CAlg(\An) \xleftarrow{\End^{\bbP}_1} \CAlg(1\Pr) \xleftarrow{\End^{\bbP}_2} \CAlg(2\Pr) \xleftarrow{\End^{\bbP}_3} \dots\bigr).
 		\]
 	\end{definition}
 
@@ -416,23 +416,23 @@
 	\begin{observation}
 		Recall from \Cref{nota:Absolute_Transition_Adjunctions} the fully faithful functor
 		\[
-			\Mod^{\bbP}_n\colon \CAlg(n\Pr) \hookrightarrow \CAlg((n+1)\Pr), \qquad R \mapsto \Mod_R(n\Pr),
+			\Mod^{\bbP}_n\colon \CAlg((n-1)\Pr) \hookrightarrow \CAlg(n\Pr), \qquad R \mapsto \Mod_R((n-1)\Pr),
 		\]
 		with right adjoint $\End^{\bbP}_n(D) := \End_D(\unit_D)$. Note that for $A \in \CAlg(\Sp)$, there is a canonical equivalence
 		\[
-			n\Pr_A = \Mod_{(n-1)\Pr_A}(1\Pr) \simeq \Mod_{(n-1)\Pr_A}(\Mod_{(n-1)\Pr}(1\Pr)) = \Mod_{(n-1)\Pr_A}(n\Pr) = \Mod^{\bbP}_n((n-1)\Pr_A).
+			n\Pr_A = \Mod_{(n-1)\Pr_A}(1\Pr) \simeq \Mod_{(n-1)\Pr_A}(\Mod_{(n-1)\Pr}(1\Pr)) = \Mod_{(n-1)\Pr_A}(n\Pr) = \Mod^{\bbP}_{n+1}((n-1)\Pr_A).
 		\]
-		In particular, by fully faithfulness of $\Mod^{\bbP}_n$ there is a canonical equivalence
+		In particular, since $\Mod^{\bbP}_{n+1}$ is fully faithful, there is a canonical equivalence
 		\begin{equation}
 		\label{eq:Structure_Maps_St(A)}
-			\End^{\bbP}_n(n\Pr_A) \simeq (n-1)\Pr_A.
+			\End^{\bbP}_{n+1}(n\Pr_A) \simeq (n-1)\Pr_A.
 		\end{equation}
 	\end{observation}
 
 	\begin{definition}
 		Given a commutative ring spectrum $A$, we define its associated Stefanich ring
 		\[
-			\St(A) \qin \StRing \; = \; \lim_{\CAT}\bigl(\CAlg(\An) \xleftarrow{\End^{\bbP}_0} \CAlg(1\Pr) \xleftarrow{\End^{\bbP}_1} \CAlg(2\Pr) \xleftarrow{\End^{\bbP}_2} \dots\bigr)
+			\St(A) \qin \StRing \; = \; \lim_{\CAT}\bigl(\CAlg(\An) \xleftarrow{\End^{\bbP}_1} \CAlg(1\Pr) \xleftarrow{\End^{\bbP}_2} \CAlg(2\Pr) \xleftarrow{\End^{\bbP}_3} \dots\bigr)
 		\]
 		to be the sequence
 		\[
@@ -441,20 +441,50 @@
 		equipped with the structure maps from \eqref{eq:Structure_Maps_St(A)}.
 	\end{definition}
 
+	\begin{lemma}\label[lemma]{lem:Colimit_Of_Fully_Faithful_Left_Adjoints}
+		Let $(C_n)_{n \geq n_0}$ be a sequence of objects of $1\Pr$, together with fully faithful left adjoints $F_n\colon C_n \to C_{n+1}$ with right adjoints $G_n\colon C_{n+1} \to C_n$. Let
+		\[
+			C := \colim_{1\Pr}(C_{n_0} \xhookrightarrow{F_{n_0}} C_{n_0+1} \xhookrightarrow{F_{n_0+1}} \dots).
+		\]
+		Then for every $n \geq n_0$ the canonical functor $\iota_n\colon C_n \to C$ is fully faithful.
+	\end{lemma}
+	\begin{proof}
+		Since the $F_n$ are left adjoints, the colimit defining $C$ may equivalently be computed as the limit along the right adjoints,
+		\[
+			C \simeq \lim_{\CAT}( \dots \xrightarrow{G_{n+1}} C_{n+1} \xrightarrow{G_n} C_n),
+		\]
+		and under this identification $\iota_n$ is left adjoint to the projection $q_n\colon C \to C_n$. We must show that the unit map $R \to q_n\iota_n(R)$ is an isomorphism for each $R \in C_n$. Since the functors $F_m$ are fully faithful, the sequence of objects
+		\[
+			X_j = F_{j-1}F_{j-2}\cdots F_n(R) \qin C_j
+		\]
+		for $j \geq n$ defines an object $X := (X_j)_{j \geq n}$ in this limit. We claim that the identification $R = X_n = q_n(X)$ exhibits $X$ as a left-adjoint object to $R$ under $q_n$ (that is, it induces an isomorphism $X \cong \iota_n(R)$). Indeed, for any object $B = (B_j)_{j \geq n}$ of the limit, we have
+		\[
+			\begin{aligned}
+				\Hom_{C}(X, B)
+				&\simeq \lim_{j \geq n} \Hom_{C_j}(X_j,B_j) \\
+				&\simeq \lim_{j \geq n} \Hom_{C_n}(R,G_n \cdots G_{j-1}(B_j)) \\
+				&\simeq \Hom_{C_n}(R,B_n).
+			\end{aligned}
+		\]
+		Here the second equivalence uses the adjunctions $F_m \dashv G_m$, and the last equivalence uses the compatibility equivalences $G_i(B_{i+1}) \simeq B_i$ defining the object $B$ of the limit.
+		This shows that the unit of the adjunction $\iota_n \dashv q_n$ at $R \in C_n$ is the identity map $R \to R$, hence is an isomorphism, showing that $\iota_n$ is fully faithful.
+	\end{proof}
+
 	\begin{lemma}
+		\label[lemma]{lem:Affine_Stefanich_Rings}
 		The assignment $A \mapsto \St(A)$ defines a fully faithful functor
 		\[
 			\St\colon \CAlg(\Sp) \hookrightarrow \StRing.
 		\]
 	\end{lemma}
 	\begin{proof}
-		Since we have $n\Pr_A = \Mod^{\bbP}_n((n-1)\Pr_A)$ for all $n$, this assignment is equivalent to the following composite:
+		Since we have $n\Pr_A = \Mod^{\bbP}_{n+1}((n-1)\Pr_A)$ for all $n$, this assignment is equivalent to the following composite:
 		\[
 			\CAlg(\Sp) \xrightarrow{\Mod_{(-)}(\Sp)} \CAlg(1\Pr) \hookrightarrow \StRing,
 		\]
-		where the second functor is fully faithful as it is a colimit over the fully faithful functors
+		where the second functor is fully faithful by \Cref{lem:Colimit_Of_Fully_Faithful_Left_Adjoints}, being a colimit over the fully faithful left adjoints
 		\[
-			\Mod^{\bbP}_n\colon \CAlg(n\Pr) \hookrightarrow \CAlg((n-1)\Pr).
+			\Mod^{\bbP}_n\colon \CAlg((n-1)\Pr) \hookrightarrow \CAlg(n\Pr).
 		\]
 		But also the first functor is fully faithful, as it factors as
 		\[
@@ -593,7 +623,7 @@
 
 	\begin{theorem}
 		\label[theorem]{thm:Six_Functor_Formalism_Pr_On_Affines}
-		For every $n \geq 0$, there exists a 6-functor formalism
+		For every $n \geq 0$, there exists a six-functor formalism
 		\begin{align*}
 			\Span(\Aff_{\S}, \mathrm{all}, \textup{countably presented maps}) \quad &\to \qquad (n+1)\Pr \\
 			\Spec(A) \qquad \qquad\qquad \quad & \mapsto \qquad n\Pr_A
@@ -776,7 +806,7 @@
 		\begin{itemize}
 			\item For a static ring $B_0 \in \CAlg(\Ab)$ and a static $B_0$-module $M_0$, we say that $M_0$ is \emph{flat} if the functor $M_0 \otimes_{B_0} -\colon \Mod_{B_0}(\Ab) \to \Ab$ is exact. It is called \emph{faithfully flat} if, in addition, the functor $M_0 \otimes_{B_0} -$ is conservative, i.e.\ detects isomorphisms. (Equivalently it detects exact sequences.)
 			\item A morphism $B_0 \to A_0$ in $\CAlg(\Ab)$ is called \emph{(faithfully) flat} if $A_0$ is (faithfully) flat as a $B_0$-module.
-			\item A morphism $B \to A$ in $\CAlg(\Sp)$ is \emph{(faithfully) flat} if the map $\pi_0 A \to \pi_0 B$ in $\CAlg(\Ab)$ is (faithfully) flat and for each $i \in \Z$ the multiplication map $\pi_i B \otimes_{\pi_0 B} \pi_0 A \to \pi_i A$ is an isomorphism.
+			\item A morphism $B \to A$ in $\CAlg(\Sp)$ is \emph{(faithfully) flat} if the map $\pi_0 B \to \pi_0 A$ in $\CAlg(\Ab)$ is (faithfully) flat and for each $i \in \Z$ the multiplication map $\pi_i B \otimes_{\pi_0 B} \pi_0 A \to \pi_i A$ is an isomorphism.
 			\item A morphism $\Spec(A) \to \Spec(B)$ in $\Aff_{\S}$ is called (faithfully) flat if its associated map $B \to A$ in $\CAlg(\Sp)$ is.
 		\end{itemize}
 	\end{definition}
@@ -788,7 +818,7 @@
 	Observe that a functor $F\colon \Aff_{\S}\catop \to C$ is a hypersheaf with respect to the fpqc topology if and only if the following two properties are satisfied:
 	\begin{itemize}
 		\item The functor $F$ preserves finite products.
-		\item For an fpqc hypercover $\Spec(A_{\bullet}) \to \Spec(A)$, the induced map
+		\item For an fpqc-hypercover $\Spec(A_{\bullet}) \to \Spec(A)$, the induced map
 		\[
 			F(\Spec(A)) \to \lim_{[n] \in \simp} F(\Spec(A_n))
 		\]
@@ -797,20 +827,20 @@
 
 	The proof has three parts:
 	\begin{itemize}
-		\item The main argument treats countably presented fpqc hypercovers; the final section reduces arbitrary fpqc hypercovers to this case.
+		\item The main argument treats countably presented fpqc-hypercovers; the final section reduces arbitrary fpqc-hypercovers to this case.
 		\item We first prove the theorem for $n = 0$.
 		\item We then prove the general case by induction on $n$.
 	\end{itemize}
 
 	\section{The base case \texorpdfstring{$n = 0$}{n = 0}}
 
-	We will start by showing that the assignment $\Spec(A) \mapsto \D(A)$ satisfies fpqc-hyperdescent. Since we have $\D(\prod_i A_i) \iso \prod_i \D(A_i)$, it remains to show that for an fpqc hypercover $\Spec(A_{\bullet}) \to \Spec(A)$ in $\Aff_{\S}$ the functor
+	We will start by showing that the assignment $\Spec(A) \mapsto \D(A)$ satisfies fpqc-hyperdescent. Since we have $\D(\prod_i A_i) \iso \prod_i \D(A_i)$, it remains to show that for an fpqc-hypercover $\Spec(A_{\bullet}) \to \Spec(A)$ in $\Aff_{\S}$ the functor
 	\[
 		\D(A) \iso \lim_{[n] \in \simp}^! \D(A_{\bullet})
 	\]
 	is an equivalence. Here the limit on the right is taken along the functors $f^!$.
 
-	\subsection{Step 1: Fully faithfulness}
+	\subsection{Step 1: The functor is fully faithful}
 
 	We start by showing that this comparison functor is fully faithful.
 
@@ -867,7 +897,7 @@
 	In light of the lemma, it remains to show that each map $C_{m+1} \to C_m$ is a phantom map. We now make the following claim:
 
 	\begin{claim}\label[claim]{cl:CountablyGeneratedFlat}
-		For each $m \geq 0$, the $A$-module $C_m := \cofib(A \to \lim_{\simp_{\leq m}} A_\bullet)$ is a countably generated flat $A$-module in degree $m-1$, i.e.\ $C_m[-(m-1)]$ is a flat $A$-module.
+		For each $m \geq 0$, the $A$-module $C_m := \cofib(A \to \lim_{\simp_{\leq m}} A_\bullet)$ is a countably presented flat $A$-module in degree $m-1$, i.e.\ $C_m[-(m-1)]$ is a flat $A$-module.
 	\end{claim}
 
 	We will prove this claim below, but let us first explain why it implies that $C_{m+1} \to C_m$ is phantom. For this, recall the following spectral analogue of Lazard's theorem:
@@ -887,23 +917,23 @@
 	\[
 		A \to A_0 \to A_1 \to \dots
 	\]
-	by taking the alternating sums of the face maps (the unreduced version of Dold--Kan). We claim that this is an exact sequence. We may test this after base change along faithfully flat maps $A \to B$. Since our cosimplicial object is an fpqc hypercover, we may then base change to objects after which the sequence becomes split, hence exact. Details are omitted here.
+	by taking the alternating sums of the face maps (the unreduced version of Dold--Kan). We claim that this is an exact sequence. We may test this after base change along faithfully flat maps $A \to B$. Since our cosimplicial object is an fpqc-hypercover, we may then base change to objects after which the sequence becomes split, hence exact. Details are omitted here.
 
 	It then follows (why?) that
 	\[
 		C_m = \cofib(A \to \lim_{\simp_{\leq m}} A_{\bullet}) \simeq \coker(A_{m-1} \to A_m)[m-1].
 	\]
-	Thus, \Cref{cl:CountablyGeneratedFlat} reduces to the claim that $\coker(A_{m-1} \to A_m)$ is a countably generated static flat $A$-module.
+	Thus, \Cref{cl:CountablyGeneratedFlat} reduces to the claim that $\coker(A_{m-1} \to A_m)$ is a countably presented static flat $A$-module.
 
 	Scholze says the following about this: ``Moreover, the same holds true after any base change in $A$, in particular along a quotient map $A \to A/I$; this shows that this cokernel is flat over $A$.''
 
-	All in all, we have now proved the fully faithfulness of the functor $\D(A) \to \lim_{[n] \in \simp}^! \D(A_n)$.
+	All in all, we have now shown that the functor $\D(A) \to \lim_{[n] \in \simp}^! \D(A_n)$ is fully faithful.
 
 	\subsection{Step 2: Essential surjectivity}
 
 	We now show the functor $\D(A) \to \lim_{[n] \in \simp}^! \D(A_n)$ is an equivalence.
 
-	\textbf{Step 2a)} We first reduce to the case where $A_{\bullet}$ is a \v{C}ech cover. To this end, consider the following commutative square:
+	\textbf{Step 2a:} We first reduce to the case where $A_{\bullet}$ is a \v{C}ech cover. To this end, consider the following commutative square:
 	\[
 		\begin{tikzcd}
 			A \rar \dar & A_i \dar \\
@@ -920,7 +950,7 @@
 	\]
 	which is the special case of \v{C}ech descent.
 
-	\textbf{Step 2b)} Assume now that $A_i \cong A_0^{\otimes_A i}$ is the \v{C}ech cover of $A \to A_0$. To show that the map $\D(A) \to \lim_{[n] \in \simp}^! \D(A_n)$ is an isomorphism in $\PrR$, we may pass to left adjoints and show that
+	\textbf{Step 2b:} Assume now that $A_i \cong A_0^{\otimes_A i}$ is the \v{C}ech cover of $A \to A_0$. To show that the map $\D(A) \to \lim_{[n] \in \simp}^! \D(A_n)$ is an isomorphism in $\PrR$, we may pass to left adjoints and show that
 	\[
 		\colim_{[n] \in \simp\catop} \D(A_n) \to \D(A)
 	\]
@@ -938,9 +968,9 @@
 
 	We now assume that $n > 0$, and that we have already proved the claim for $n - 1$. Observe that we again have an adjunction
 	\[
-		F_n^*\colon n\Pr_A \leftrightarrows \lim n\Pr_{A_{\bullet}} \colon F_{n,\sharp}.
+		F_n^*\colon n\Pr_A \rightleftarrows \lim n\Pr_{A_{\bullet}} \colon F_{n,\sharp}.
 	\]
-	Also, in this case each of the individual adjunctions $n\Pr_A \leftrightarrows n\Pr_{A_{\bullet}}$ is an ambidextrous adjunction.
+	Also, in this case each of the individual adjunctions $n\Pr_A \rightleftarrows n\Pr_{A_{\bullet}}$ is an ambidextrous adjunction.
 
 	We first show that $F_n^*$ is fully faithful, or equivalently that the counit map
 	\[
@@ -964,9 +994,21 @@
 		Every faithfully flat map $A \to B$ of commutative ring spectra is an $\aleph_1$-filtered colimit of countably presented such maps.
 	\end{lemma}
 
-	The proof is omitted; we refer to Scholze's notes.
+	\begin{proof}
+		First, if $A$ is static, then so is $B$. This case is due to Waterhouse;\footnote{W.\ C.\ Waterhouse, \emph{Basically bounded functors and flat sheaves}, Pacific J.\ Math.\ \textbf{57} (1975), no.~2, 597--610.} let us quickly recall the argument. By Lazard's theorem, the flat $A$-modules are the Ind-category of the finite projective $A$-modules, so we can write the underlying module of $B$ as an $\aleph_1$-filtered colimit of countably presented flat modules $M_i$. Since each $M_i$ is countably presented, it is $\aleph_1$-compact as an $A$-module, so $\Hom_A(M_i, -)$ commutes with $\aleph_1$-filtered colimits. We will use two consequences of this: any map from a countably presented $A$-module into $B = \colim_i M_i$ factors through some $M_i$, and any two such maps that agree after composing to $B$ already agree at some stage $M_i$.
 
-	As a consequence, every fpqc hypercover is an $\aleph_1$-filtered colimit of countably presented fpqc hypercovers.
+		The tensor product $M_i \otimes_A M_i$ is again countably presented, so the composite $M_i \otimes_A M_i \to B \otimes_A B \to B$ of the canonical map with the multiplication of $B$ factors through some $M_j$, $j = j(i)$, compatibly with the maps to $B$; similarly the unit $A \to B$ factors through some $M_{i_0}$. Choosing inductively a sequence $i_0, i_1, \ldots$ with $i_{n+1} \geq j(i_n)$ yields compatible maps $M_{i_n} \otimes_A M_{i_n} \to M_{i_{n+1}}$, and the colimit $M := \colim(M_{i_0} \to M_{i_1} \to \ldots)$ acquires a multiplication
+		\[
+			M \otimes_A M = \colim_n ( M_{i_n} \otimes_A M_{i_n} ) \to \colim_n M_{i_{n+1}} = M
+		\]
+		and a unit $A \to M_{i_0} \to M$, both compatible with $M \to B$.
+
+		The commutativity, associativity, and unitality of this multiplication each amount to an equality of two maps out of a countably presented module ($M_{i_n}^{\otimes 2}$, resp.\ $M_{i_n}^{\otimes 3}$, resp.\ $M_{i_n}$) that holds after composing into the commutative $A$-algebra $B$. By the second consequence above, each such identity holds after passing to a later stage; as there are only countably many of them, they can all be arranged to hold on a single cofinal subsystem. On such a subsystem $M$ is a countably presented flat $A$-subalgebra of $B$, and these subalgebras form an $\aleph_1$-filtered system with colimit $B$. This writes $B$ in the desired form.
+
+		In general, write the map $A \to B$ as the $\aleph_1$-filtered colimit of all countably presented $A$-algebras $B_i$ mapping to $B$. We want to see that the set of $i$ for which $A \to B_i$ is faithfully flat is cofinal. We get a similar presentation of $\pi_0 A$ as the colimit of the $\pi_0 B_i$, and by the static case, for any $i$ there is some $j$ so that $\pi_0 B_i \to \pi_0 B_j$ factors over a faithfully flat $\pi_0 A$-algebra. Taking a sequence $i_0, i_1, \ldots$ so that each map $\pi_0 B_{i_0} \to \pi_0 B_{i_1} \to \ldots$ factors over a faithfully flat $\pi_0 A$-algebra, the colimit $B_j = \colim(B_{i_0} \to B_{i_1} \to \ldots)$ is still countably presented, and has the property that $\pi_0 A \to \pi_0 B_j$ is faithfully flat. Using a similar argument, we can arrange that $\pi_0 B_i \otimes_{\pi_0 A} \pi_n A \to \pi_n B_i$ is an isomorphism for any given $i$, and hence for all $i$ by a further countable colimit.
+	\end{proof}
+
+	As a consequence, every fpqc-hypercover is an $\aleph_1$-filtered colimit of countably presented fpqc-hypercovers.
 
 	Now, given any hypercover $\Spec(A_{\bullet}) \to \Spec(A)$, we have
 	\[
@@ -1022,9 +1064,9 @@
 	We will now extend the assignment $X \mapsto n\Pr_X$ to a six-functor formalism. We may think of this as a `higher' version of the six-functor formalism on $X \mapsto D(X)$. A first question is: what are the $!$-able maps? It turns out that at the higher categorical level, the class of $!$-able maps contains essentially \emph{all} maps. The relevant class of maps is the following:
 
 	\begin{definition}\label[definition]{def:Bi_Countably_Presented}
-		Let $A \in \CAlg(\Sp)$. A map $Z \to \Spec(A)$ of fpqc sheaves is \emph{bi-countably presented over $\Spec(A)$} if $Z$ is a countable colimit, in $\Shv_{\fpqc}(\Aff_{\S})_{/\Spec(A)}$, of affines $\Spec(B_i)$ with $A \to B_i$ countably presented.
+		Let $A \in \CAlg(\Sp)$. A map $Z \to \Spec(A)$ of fpqc-sheaves is \emph{bi-countably presented over $\Spec(A)$} if $Z$ is a countable colimit, in $\Shv_{\fpqc}(\Aff_{\S})_{/\Spec(A)}$, of affines $\Spec(B_i)$ with $A \to B_i$ countably presented.
 
-		A map $f\colon Y \to X$ of fpqc stacks is \emph{bi-countably presented} if for every affine $\Spec(A) \to X$, the fiber product $Y \times_X \Spec(A)$ is bi-countably presented over $\Spec(A)$. Let $E$ denote the class of bi-countably presented maps.
+		A map $f\colon Y \to X$ of fpqc-stacks is \emph{bi-countably presented} if for every affine $\Spec(A) \to X$, the fiber product $Y \times_X \Spec(A)$ is bi-countably presented over $\Spec(A)$. Let $E$ denote the class of bi-countably presented maps.
 	\end{definition}
 
 	\begin{lemma}\label[lemma]{lem:Section_Of_Bicountably_Presented_Affine_Base}
@@ -1036,12 +1078,12 @@
 		presented. A map $W \to S$ is bi-countably presented if and only if its
 		base change $W_{S'} \to S'$ is bi-countably presented. The forward
 		implication is base change. Conversely, write
-		$S'_{\bullet}$ for the Cech nerve of $S' \to S$. Since
+		$S'_{\bullet}$ for the \v{C}ech nerve of $S' \to S$. Since
 		$A \to A'$ is countably presented, each $S'_m \to S$ is countably
 		presented by \Cref{lem:Affine_Countably_Presented_Calculus}. If
 		$W_{S'}$ is a countable colimit of affines countably presented over
 		$S'$, then each $W_{S'_m}$ is a countable colimit of affines countably
-		presented over $S$. By fpqc descent,
+		presented over $S$. By fpqc-descent,
 		\[
 			W \simeq \abs{W_{S'_{\bullet}}},
 		\]
@@ -1061,7 +1103,7 @@
 			Z_T \simeq \colim_{i \in I} \Spec(B_i\otimes_A C).
 		\]
 		Indeed, by the definition of sheafification, this factorization exists
-		after some fpqc cover of $T$. By
+		after some fpqc-cover of $T$. By
 		\Cref{lem:Faithfully_Flat_Approximation}, and because the stages are
 		countably presented over $T$, this cover can be refined by a
 		faithfully flat countably presented affine cover. For finitely many
@@ -1103,7 +1145,7 @@
 		\[
 			T \times_{Z_T} T \simeq T \times_Z S.
 		\]
-		Thus, fpqc locally on $T$, the map $T \times_Z S \to T$ is
+		Thus, fpqc-locally on $T$, the map $T \times_Z S \to T$ is
 		bi-countably presented. The first reduction descends this conclusion
 		to $T$ itself.
 	\end{proof}
@@ -1151,18 +1193,18 @@
 	\[
 		f_n^*\colon n\Pr_X \to n\Pr_Y,
 	\]
-	and its right adjoint by $f_{n*}$. We denote by $\otimes_{n\Pr_X}$ the tensor product of $n\Pr_X$.
+	and its right adjoint by $f_{n,*}$. We denote by $\otimes_{n\Pr_X}$ the tensor product of $n\Pr_X$.
 
 	\begin{remark}
 		Throughout this talk, we will frequently abuse notation and regard $n\Pr_Y$ as an object of $(n+1)\Pr_X$ by setting
 		\[
 			n\Pr_Y := f_{n+1,*}(\unit_Y) \qin (n+1)\Pr_X.
 		\]
-		For $p_X: X \to \pt$, we get a `forgetful functor' $p_{X,n+1,*} \colon (n+1)\Pr_X \to (n+1)\Pr$, and we claim that that the image of $f_{n+1,*}(\unit_Y)$ under this functor is $n\Pr_Y$. Indeed, if we write $Y \simeq \colim_{\Spec(A) \to Y} \Spec(A)$, then we may write $p_{X,n+1,*}f_{n+1,*}(\unit) = p_{Y,n+1,*}(\unit)$ as a limit over $p_{A,n+1}(\unit) = n\Pr_A$, which is $n\Pr_Y$ by definition.
+		For $p_X: X \to \pt$, we get a `forgetful functor' $p_{X,n+1,*} \colon (n+1)\Pr_X \to (n+1)\Pr$, and we claim that the image of $f_{n+1,*}(\unit_Y)$ under this functor is $n\Pr_Y$. Indeed, if we write $Y \simeq \colim_{\Spec(A) \to Y} \Spec(A)$, then we may write $p_{X,n+1,*}f_{n+1,*}(\unit) = p_{Y,n+1,*}(\unit)$ as a limit over $p_{A,n+1}(\unit) = n\Pr_A$, which is $n\Pr_Y$ by definition.
 	\end{remark}
 
 	\begin{theorem}\label[theorem]{thm:Six_Functors_For_nPr}
-		Let $f\colon Y \to X$ be a bi-countably presented map of fpqc stacks, and let $n \geq 1$.
+		Let $f\colon Y \to X$ be a bi-countably presented map of fpqc-stacks, and let $n \geq 1$.
 		\begin{enumerate}[(i)]
 			\item The functor
 			\[
@@ -1177,7 +1219,7 @@
 					X' \rar["u"'] & X
 				\end{tikzcd}
 			\]
-			the Beck-Chevalley transformation
+			the Beck--Chevalley transformation
 			\[
 				u_n^* f_{n,\sharp} \to f'_{n,\sharp} v_n^*
 			\]
@@ -1222,7 +1264,7 @@
 		\[
 			u_n^* (g_i)_{n,\sharp} \simeq (g_i')_{n,\sharp} (v_i)_n^*.
 		\]
-		Thus base change carries the diagram whose colimit defines $f_{n,\sharp}$ to the diagram whose colimit defines $f'_{n,\sharp}$. Since the indexing category $I$ is countable, this colimit is taken inside $1\Pr$, and we obtain the desired Beck-Chevalley equivalence
+		Thus base change carries the diagram whose colimit defines $f_{n,\sharp}$ to the diagram whose colimit defines $f'_{n,\sharp}$. Since the indexing category $I$ is countable, this colimit is taken inside $1\Pr$, and we obtain the desired Beck--Chevalley equivalence
 		\[
 			u_n^* f_{n,\sharp} \simeq f'_{n,\sharp} v_n^*.
 		\]
@@ -1245,7 +1287,7 @@
 		\[
 			((n+1)\Pr_{X})^{\aleph_1} = \lim_{\Spec(A) \to X} ((n+1)\Pr_{A})^{\aleph_1}.
 		\]
-		Letting $Y_A := \Spec(A) \times_X Y$, we have already established that $n\Pr_{Y_A}$ is $\aleph_1$-compact in $(n+1)\Pr_A$, thus giving the $\aleph_1$-compactness of $n\Pr_Y$ in $(n+1)\Pr_X$. Moreover, to check that $f_n^*\colon n\Pr_X \to n\Pr_Y$ admits a left adjoint in $((n+1)\Pr_{X})^{\aleph_1}$, it will suffice to show that all maps $(f_A)_n^*: n\Pr_A \to n\Pr_{Y_A}$ admit a left adjoints compatible with base change, which we established in Step 1. Similarly, the dualizability of $f_{n,\sharp}(\unit) \in n\Pr_X$ may be checked after pullback to affines.
+		Letting $Y_A := \Spec(A) \times_X Y$, we have already established that $n\Pr_{Y_A}$ is $\aleph_1$-compact in $(n+1)\Pr_A$, thus giving the $\aleph_1$-compactness of $n\Pr_Y$ in $(n+1)\Pr_X$. Moreover, to check that $f_n^*\colon n\Pr_X \to n\Pr_Y$ admits a left adjoint in $((n+1)\Pr_{X})^{\aleph_1}$, it will suffice to show that all maps $(f_A)_n^*: n\Pr_A \to n\Pr_{Y_A}$ admit left adjoints compatible with base change, which we established in Step 1. Similarly, the dualizability of $f_{n,\sharp}(\unit) \in n\Pr_X$ may be checked after pullback to affines.
 
 		\textbf{Step 3: Ambidexterity.} For (v), we use the general ambidexterity result again: it suffices to check that the unit and counit of the adjunction $f_n^* \dashv f_{n,\sharp}$ admit right adjoints. For the counit $f_{n,\sharp} f_n^* \to \id$, we use that under the equivalence $\End_{(n+1)\Pr_X}(n\Pr_X,n\Pr_X) \simeq n\Pr_X$ this map corresponds to the map $f_{n,\sharp}(\unit) \to \unit$, so we need to show this admits a right adjoint in $n\Pr_X$. By (iv), the object $f_{n,\sharp}(\unit)$ is dualizable, so this is equivalent to its dual $\unit \to f_{n,\ast}(\unit)$ admitting a left adjoint in $n\Pr_X$. But this dual map is the map $(n-1)\Pr_X \to (n-1)\Pr_Y$, which has a left adjoint in $n\Pr_X$ by part (i) applied one level down (which uses $n - 1 \geq 1$).
 
@@ -1410,7 +1452,7 @@
 			\Shv_{\fpqc}(\Aff_{\S}) \hookrightarrow \PSh(\Aff_{\S})
 		\]
 		preserves $\aleph_1$-filtered colimits. The same holds for the
-		corresponding fpqc sheaf categories on affines over any fixed affine
+		corresponding fpqc-sheaf categories on affines over any fixed affine
 		base.
 
 		Moreover, these sheaf categories are $\aleph_1$-compactly generated by
@@ -1426,7 +1468,7 @@
 		By definition of the fpqc topology on affines, covering sieves are
 		tested on finite covering families. Since finite sets are
 		$\aleph_1$-small, \Cref{lem:Kappa_Compact_Covering_Sieves_Filtered_Colimits}
-		shows that fpqc sheaves are closed under $\aleph_1$-filtered colimits
+		shows that fpqc-sheaves are closed under $\aleph_1$-filtered colimits
 		in presheaves. The same argument applies on the fpqc site of affines
 		over a fixed affine base.
 
@@ -1614,7 +1656,7 @@
 	\begin{corollary}\label[corollary]{cor:StRing_Functor_Properties}
 		The functor
 		\[
-			\Shv\nolimits_{\textup{fpqc}}(C)^{\aleph_1} \to \StRing\catop_{\S/}, \qquad X \mapsto \St(X)
+			\Shv_{\fpqc}(\Aff_{\S})^{\aleph_1} \to (\StRing_{\S/})\catop, \qquad X \mapsto \St(X)
 		\]
 		commutes with countable colimits and finite limits.
 	\end{corollary}
@@ -1629,7 +1671,7 @@
 				Y \rar["f"'] & X
 			\end{tikzcd}
 		\]
-		of $\aleph_1$-compact fpqc stacks. A priori, to compute the pushout of Stefanich rings, we would start by forming the infinite tuple
+		of $\aleph_1$-compact fpqc-stacks. A priori, to compute the pushout of Stefanich rings, we would start by forming the infinite tuple
 		\[
 			\big(\,\Oo(Y) \otimes_{\Oo(X)} \Oo(Y'),\quad \D(Y) \otimes_{\D(X)} \D(Y'),\quad 1\Pr_Y \otimes_{1\Pr_X} 1\Pr_{Y'},\quad \ldots\,\big),
 		\]
@@ -1650,109 +1692,21 @@
 		A general slogan in this area is that ``everything becomes affine under sufficient categorification''. The Künneth formulas above, which hold from level $1\Pr$ onwards, justify this slogan in some form. The slogan is a bit imprecise, however: stacks like $B^n \bbG_m$ are $n$-affine (in a sense to be made precise in the next talk) but not $k$-affine for $k < n$, so in particular $\bigsqcup_k B^k \bbG_m$ is not $n$-affine for any $n$. We will later see that even the infinite-dimensional affine space $\bbA^{\infty} = \colim_n \bbA^n$ is not $n$-affine for any $n$, although all its terms are $0$-affine and the transition maps are cohomologically smooth (since complete intersections are cohomologically smooth in the quasicoherent six-functor formalism).
 	\end{remark}
 
-	% \chapter*{Appendix to Talk 4}
-
-	% \red{WARNING: ALL OF THESE PROOFS ARE FLAWED!!!!}
-
-	% We record some more facts about bi-countably presented maps.
-
-	% \begin{lemma}\label[lemma]{lem:Bicountably_Presented_fpqc_Local_Affine}
-	% 	Let $Y \to \Spec(A)$ be a map of fpqc sheaves. The condition that $Y$ is a countable colimit of affines $\Spec(B_i)$ with $A \to B_i$ countably presented is fpqc-local on $\Spec(A)$.
-	% \end{lemma}
-	% \begin{proof}
-	% 	Base change preserves countably presented maps and countable colimits, so the condition is stable under fpqc base change. We prove the converse.
-		
-	% 	First suppose that $A \to A'$ is faithfully flat and countably presented, and that $Y_{A'}$ has such a presentation. Let
-	% 	\[
-	% 		A'_n := A' \otimes_A \cdots \otimes_A A'
-	% 	\]
-	% 	(with $n+1$ factors) be the Cech nerve. Since $A \to A'$ is countably presented, each $A \to A'_n$ is countably presented. By fpqc descent,
-	% 	\[
-	% 		Y \simeq \colim_{[n] \in \simp\catop} Y_{A'_n}.
-	% 	\]
-	% 	Each $Y_{A'_n}$ is obtained from $Y_{A'}$ by base change, hence is a countable colimit of affines countably presented over $A'_n$, and therefore of affines countably presented over $A$. Since $\simp$ is countable, the geometric realization above is again a countable colimit of affines countably presented over $A$.
-		
-	% 	Now let $A \to A'$ be an arbitrary faithfully flat map. By the approximation lemma for faithfully flat maps, write $A'$ as an $\aleph_1$-filtered colimit of countably presented faithfully flat $A$-algebras $A_{\lambda}$. If $Y_{A'}$ is a countable colimit of countably presented affines, then this countable presentation, together with the map from its colimit to $Y_{A'}$, descends to some $A_{\lambda}$: countably presented algebras, countable diagrams, and equivalences between their associated sheaves are all detected after passing to a sufficiently large stage of an $\aleph_1$-filtered system. Thus $Y_{A_{\lambda}}$ has the desired form. The previous paragraph applied to the countably presented faithfully flat map $A \to A_{\lambda}$ shows that $Y$ has the desired form over $A$.
-		
-	% 	Finally, a finite fpqc family $\{\Spec(A_r) \to \Spec(A)\}_{r=1}^m$ may be replaced by the single faithfully flat map $A \to \prod_{r=1}^m A_r$.
-	% \end{proof}
-
-	% \begin{corollary}
-	% 	\label[corollary]{cor:Characterization_Bicountably_Presented}
-	% 	Suppose that $X \simeq \colim_{j \in J} \Spec(A_j)$ is a countable colimit of affines. Then a map $Y \to X$ is bi-countably presented if and only if each base change
-	% 	\[
-	% 		Y_j := Y \times_X \Spec(A_j) \to \Spec(A_j)
-	% 	\]
-	% 	is bi-countably presented.
-	% \end{corollary}
-	% \begin{proof}
-	% 	The forward implication follows from stability under base change. Conversely, assume that each $Y_j \to \Spec(A_j)$ is bi-countably presented. Let $\Spec(A) \to X$ be any affine test object. We must show that
-	% 	\[
-	% 		Y_A := Y \times_X \Spec(A)
-	% 	\]
-	% 	is a countable colimit of affines countably presented over $A$.
-		
-	% 	The map
-	% 	\[
-	% 		\coprod_{j \in J} \Spec(A_j) \to X
-	% 	\]
-	% 	is an effective epimorphism of fpqc sheaves. Hence, after replacing $\Spec(A)$ by a finite affine fpqc cover $\{\Spec(A_r) \to \Spec(A)\}$, each composite $\Spec(A_r) \to X$ factors through some $\Spec(A_{j(r)})$. Pulling back $Y$ along this factorization gives
-	% 	\[
-	% 		Y_A \times_{\Spec(A)} \Spec(A_r)
-	% 			\simeq
-	% 		Y_{j(r)} \times_{\Spec(A_{j(r)})} \Spec(A_r).
-	% 	\]
-	% 	By assumption $Y_{j(r)} \to \Spec(A_{j(r)})$ is bi-countably presented, so the right-hand side is a countable colimit of affines countably presented over $A_r$. Thus $Y_A$ has the required form fpqc-locally on $\Spec(A)$. By \Cref{lem:Bicountably_Presented_fpqc_Local_Affine}, it has the required form over $\Spec(A)$ itself.
-	% \end{proof}
-	% 
-	% \begin{lemma}\label[lemma]{lem:Affine_Stage_Intersections_Bicountably_Presented}
-	% 	Let $A \in \CAlg(\Sp)$, and let
-	% 	\[
-	% 		Z \simeq \colim_{i \in I} \Spec(B_i)
-	% 	\]
-	% 	be a countable colimit in $\Shv_{\fpqc}(\Aff_{\S})_{/\Spec(A)}$, where $I$ is a countable category and each $A \to B_i$ is countably presented. Then for any two objects $i,j \in I$, the intersection
-	% 	\[
-	% 		\Spec(B_i) \times_Z \Spec(B_j)
-	% 	\]
-	% 	is again a countable colimit of affines countably presented over $A$.
-	% \end{lemma}
-	% \begin{proof}
-	% 	Let $\Path_I(i,j)$ denote the category of finite zigzags in $I$ starting at $i$ and ending at $j$. Thus an object is a finite sequence
-	% 	\[
-	% 		i = i_0 \leftrightarrow i_1 \leftrightarrow \cdots \leftrightarrow i_n = j
-	% 	\]
-	% 	where each arrow may point in either direction. For such a zigzag $\gamma$, let $T_\gamma$ be the limit of the corresponding finite diagram of affines
-	% 	\[
-	% 		\Spec(B_{i_0}) \leftrightarrow \Spec(B_{i_1}) \leftrightarrow \cdots \leftrightarrow \Spec(B_{i_n}).
-	% 	\]
-	% 	Equivalently, $T_\gamma$ is obtained by imposing the finite list of compatibilities prescribed by the zigzag. It is therefore a finite limit of affines over $\Spec(A)$, hence affine. Dually, its coordinate algebra is obtained from the finitely many $B_{i_r}$ by finite colimits in $\CAlg_A(\Sp)$. Since the countably presented $A$-algebras are closed under finite colimits, each $T_\gamma$ is countably presented over $A$.
-
-	% 	The standard path-space form of the simplicial replacement of the diagram $i \mapsto \Spec(B_i)$ gives a canonical equivalence
-	% 	\[
-	% 		\Spec(B_i) \times_Z \Spec(B_j)
-	% 		\simeq
-	% 		\colim_{\gamma \in \Path_I(i,j)} T_\gamma.
-	% 	\]
-	% 	Let us spell out what is meant here. The simplicial replacement expresses $Z$ as the geometric realization of a simplicial object whose $n$-simplices are indexed by strings of $n$ composable arrows in $I$. To compute the pullback of two stages over this realization, one must compute the diagonal of the realization, or equivalently its path object. This is not obtained by a naive levelwise pullback of the simplicial replacement. Instead one uses the usual necklace, or edgewise-subdivision, model for paths in a geometric realization: a path is represented by a finite concatenation of simplices, each of which may be traversed from either end. For the simplicial replacement, such concatenations are exactly finite zigzags in $I$. Pulling this path object back along the endpoints $\Spec(B_i)$ and $\Spec(B_j)$ leaves the summand indexed by a zigzag $\gamma$ from $i$ to $j$, and the corresponding matching object is precisely the finite limit $T_\gamma$ defined above.
-
-	% 	Since $I$ is countable, $\Path_I(i,j)$ is countable. The right-hand side is therefore a countable colimit of affines countably presented over $A$.
-	% \end{proof}
-
 	\chapter{Stefanich rings}
 
 	\emph{Talk given by Yiming.}
 
 	Recall that we defined the $\aleph_1$-presentable category $\StRing$ of \emph{Stefanich rings} as
 	\begin{align*}
-		\StRing &:= \colim_{1\Pr}(\CAlg(\An) \xrightarrow{\Mod^{\bbP}_0} \CAlg(1\Pr) \xrightarrow{\Mod^{\bbP}_1} \CAlg(2\Pr) \xrightarrow{\Mod^{\bbP}_2} \dots) \\
-		& \simeq \lim_{\CAT}(\CAlg(\An) \xleftarrow{\End^{\bbP}_0} \CAlg(1\Pr) \xleftarrow{\End^{\bbP}_1} \CAlg(2\Pr) \xleftarrow{\End^{\bbP}_2} \dots),
+		\StRing &:= \colim_{1\Pr}(\CAlg(\An) \xrightarrow{\Mod^{\bbP}_1} \CAlg(1\Pr) \xrightarrow{\Mod^{\bbP}_2} \CAlg(2\Pr) \xrightarrow{\Mod^{\bbP}_3} \dots) \\
+		& \simeq \lim_{\CAT}(\CAlg(\An) \xleftarrow{\End^{\bbP}_1} \CAlg(1\Pr) \xleftarrow{\End^{\bbP}_2} \CAlg(2\Pr) \xleftarrow{\End^{\bbP}_3} \dots),
 	\end{align*}
-	where we write $\Mod^{\bbP}_n(R) := \Mod_R(n\Pr)$ and $\End^{\bbP}_n(D) := \End_D(\unit_D)$.
+	where we write $\Mod^{\bbP}_n(R) := \Mod_R((n-1)\Pr)$ and $\End^{\bbP}_n(D) := \End_D(\unit_D)$.
 
-	We denote the objects of this category as $A = (A_0,A_1,A_2, \dots)$, where $A_n \in \CAlg(n\Pr)$ and the structure isomorphisms $A_n \simeq \End^{\bbP}_n(A_{n+1})$ are left implicit in the notation. Similarly, morphisms from $A$ to $B$ are collections of maps $f_{n-1}^*\colon A_n \to B_n$ compatible with the structural isomorphisms.
+	We denote the objects of this category as $A = (A_0,A_1,A_2, \dots)$, where $A_n \in \CAlg(n\Pr)$ and the structure isomorphisms $A_n \simeq \End^{\bbP}_{n+1}(A_{n+1})$ are left implicit in the notation. Similarly, morphisms from $A$ to $B$ are collections of maps $f_{n-1}^*\colon A_n \to B_n$ compatible with the structural isomorphisms.
 
 	\begin{remark}
-		Given an fpqc stack $X$, the associated Stefanich ring has $A_n = (n-1)\Pr_X$. The indexing convention for $f_{n-1}^*\colon A_n \to B_n$ reflects the convention from the previous lecture.
+		Given an fpqc-stack $X$, the associated Stefanich ring has $A_n = (n-1)\Pr_X$. The indexing convention for $f_{n-1}^*\colon A_n \to B_n$ reflects the convention from the previous lecture.
 	\end{remark}
 
 	We may equip $\StRing$ with the cocartesian monoidal structure; we will have a look at the resulting ``tensor product'' of Stefanich rings in more detail below. Since the functors $\End^{\bbP}_n$ preserve the monoidal unit, we see that the monoidal unit in $\StRing$ is the initial Stefanich ring $\bbP := (*, \An, 1\Pr, 2\Pr, \dots)$, with $n$-th component $\bbP_n := (n-1)\Pr$.
@@ -1772,9 +1726,9 @@
 		Observe that we have $a_{n-1,*}((A/A)_{n-1}) = \End_{A_n}(\unit_{A_n}) = A_{n-1}$.
 	\end{notation}
 
-	\section{Slices over Stefanich rings}
+	\section{Internal Stefanich rings}
 
-	We will now provide a limit description of the slice category $\StRing_{A/}$ under any Stefanich ring $A$.
+	We will now provide a limit description of the slice category $\StRing_{A/}$ under any Stefanich ring $A$, exhibiting $A$-algebras in Stefanich rings as some form of internal Stefanich rings in $A$.
 
 	\begin{construction}\label[construction]{con:Lift_To_Algebra}
 		Let $f\colon A \to B$ be a morphism of Stefanich rings. For any $n \geq 1$, the symmetric monoidal functor $f_{n-1}^*\colon A_n \to B_n$ admits a lax symmetric monoidal right adjoint $f_{n-1,*}\colon B_n \to A_n$, which therefore induces a functor of the form
@@ -1790,8 +1744,14 @@
 		Note that the underlying $(n-1)$-presentable category of $(B/A)_{n-1}$ is $B_{n-1}$. So we may think of $(B/A)_{n-1}$ as a lift of $B_{n-1}$ to a commutative algebra in $A_n$. For $f = \id_A$ this recovers \Cref{nota:(A/A)_n}.
 	\end{construction}
 
-	\begin{notation}
-		\label[notation]{nota:Slice_Transition_Adjunctions}
+	\begin{construction}
+		\label[construction]{con:Internal_Module_Endomorphism_Adjunction}
+		We now construct an internal form of the module-endomorphism adjunction. Namely, for a Stefanich ring $A$ and $m \geq 1$, we will produce an adjunction
+		\[
+			\begin{tikzcd}
+				\CAlg(A_m) \rar[shift left]{\Mod^A_m} & \CAlg(A_{m+1}). \lar[shift left]{\End^A_m}
+			\end{tikzcd}
+		\]
 		Recall from \Cref{nota:Module_Endomorphism_Adjunction} that, more generally, for $n \geq 1$ and $C \in \CAlg(n\Pr)$ we have an adjunction
 		\[
 			\begin{tikzcd}
@@ -1814,60 +1774,22 @@
 		\[
 			\Mod^A_m := L^A_m \circ \Mod_{(-)}(A_m)\colon \CAlg(A_m) \to \CAlg(A_{m+1})
 		\]
-		for the relative module transition, and
+		for the internal module functor, and
 		\[
 			\End^A_m := \End_{(-)}(\unit) \circ U^A_m\colon \CAlg(A_{m+1}) \to \CAlg(A_m)
 		\]
 		for its right adjoint. Explicitly, $\Mod^A_m(R) = L^A_m(\Mod_R(A_m))$ and $\End^A_m(D) = \End_{U^A_m(D)}(\unit)$.
-	\end{notation}
+	\end{construction}
 
-	\begin{proposition}\label[proposition]{prop:Slice_Description}
-		Given $A \in \StRing$ and $n \geq 1$, there exists a fully faithful functor
+	\begin{proposition}\label[proposition]{prop:Mod_Transition_Fully_Faithful}
+		Let $A \in \StRing$ and $m \geq 1$. The internal module functor
 		\[
-			\CAlg(A_n) \hookrightarrow \StRing_{A/}
+			\Mod^A_m\colon \CAlg(A_m) \to \CAlg(A_{m+1})
 		\]
-		which is left adjoint to the assignment $B \mapsto (B/A)_{n-1}$. These functors assemble into an equivalence
-		\[
-			\StRing_{A/} \simeq \colim_{1\Pr}(\CAlg(A_1) \xrightarrow{\Mod^A_1} \CAlg(A_2) \xrightarrow{\Mod^A_2} \dots),
-		\]
-		or equivalently
-		\[
-			\StRing_{A/} \simeq \lim_{\CAT}(\CAlg(A_1) \xleftarrow{\End^A_1} \CAlg(A_2) \xleftarrow{\End^A_2} \dots).
-		\]
-		The equivalence sends $B$ to the tuple $((B/A)_0, (B/A)_1, (B/A)_2, \dots)$.
+		is fully faithful.
 	\end{proposition}
 	\begin{proof}
-		\emph{Step 1:} We start by proving the limit description. By passing to slices, we obtain
-		\[
-			\StRing_{A/} = \lim_{\CAT}(\dots \xrightarrow{\End^{\bbP}_2} \CAlg(2\Pr)_{A_2/} \xrightarrow{\End^{\bbP}_1} \CAlg(1\Pr)_{A_1/} \xrightarrow{\End^{\bbP}_0} \CAlg(\An)_{A_0/}).
-		\]
-		The entry $\CAlg(\An)_{A_0/}$ is redundant for the limit, and we will ignore it. Under the equivalences $\CAlg(m\Pr)_{A_m/} \simeq \CAlg(\Mod_{A_m}(m\Pr))$, the transition maps $\CAlg((m+1)\Pr)_{A_{m+1}/} \to \CAlg(m\Pr)_{A_m/}$ admit the following simple description. An object $D$ of the source is an $A_{m+1}$-linear monoidal category; the transition sends it to $\End_D(\unit_D)$, regarded over $\End_{A_{m+1}}(\unit_{A_{m+1}}) \simeq A_m$. Thus the transition factors as
-		\[
-			\CAlg(\Mod_{A_{m+1}}((m+1)\Pr)) \xrightarrow{\End_{(-)}(\unit)} \CAlg(A_{m+1}) \xrightarrow{U^A_m} \CAlg(\Mod_{A_m}(m\Pr)),
-		\]
-		where we use the notation from \Cref{nota:Slice_Transition_Adjunctions}. Hence we may alternatively compute $\StRing_{A/}$ as the limit of the chain
-		\[
-			\dots \to \CAlg(\Mod_{A_{m+1}}((m+1)\Pr)) \xrightarrow{\End_{(-)}(\unit)} \CAlg(A_{m+1}) \xrightarrow{U^A_m} \CAlg(\Mod_{A_m}(m\Pr)) \xrightarrow{\End_{(-)}(\unit)} \CAlg(A_m) \to \dots.
-		\]
-		Removing the intermediate $\CAlg(\Mod_{A_m}(m\Pr))$-vertices gives the limit over the composites
-		\[
-			\End^A_m = \End_{(-)}(\unit) \circ U^A_m\colon \CAlg(A_{m+1}) \to \CAlg(A_m),
-		\]
-		hence the desired description
-		\[
-			\StRing_{A/} \simeq \lim_{\CAT}(\CAlg(A_1) \xleftarrow{\End^A_1} \CAlg(A_2) \xleftarrow{\End^A_2} \dots).
-		\]
-		Under this equivalence, an object $f\colon A \to B$ is sent in degree $n \geq 1$ to
-		\[
-			f_{n-1,*}(\unit_{B_n}) = (B/A)_{n-1} \qin \CAlg(A_n).
-		\]
-
-		Since each functor $\End^A_m$ admits the left adjoint $\Mod^A_m$, we may alternatively compute $\StRing_{A/}$ as a colimit in $1\Pr$ over these left adjoints:
-		\[
-			\StRing_{A/} \simeq \colim_{1\Pr}(\CAlg(A_1) \xrightarrow{\Mod^A_1} \CAlg(A_2) \xrightarrow{\Mod^A_2} \dots).
-		\]
-
-		\emph{Step 2:} We next show that each transition functor $\Mod^A_m\colon \CAlg(A_m) \to \CAlg(A_{m+1})$ in the colimit description is fully faithful. Since $\Mod^A_m$ is a morphism in $1\Pr$, \Cref{lem:Fully_Faithful_On_Aleph1_Compacts} shows that it suffices to check that the unit of the adjunction $\Mod^A_m \dashv \End^A_m$ is an equivalence on $\aleph_1$-compact objects, i.e.\ on countably presented objects of $\CAlg(A_m)$. Let $R \in \CAlg(A_m)$ be countably presented. Since $\Mod^A_m(R) = L^A_m(\Mod_R(A_m))$, we get
+		Since $\Mod^A_m$ is a morphism in $1\Pr$, \Cref{lem:Fully_Faithful_On_Aleph1_Compacts} shows that it suffices to check that the unit of the adjunction $\Mod^A_m \dashv \End^A_m$ is an equivalence on $\aleph_1$-compact objects, i.e.\ on countably presented objects of $\CAlg(A_m)$. Let $R \in \CAlg(A_m)$ be countably presented. Since $\Mod^A_m(R) = L^A_m(\Mod_R(A_m))$, we get
 		\[
 			\End^A_m(\Mod^A_m(R)) \simeq \End_{L^A_m(\Mod_R(A_m))}(\unit).
 		\]
@@ -1889,33 +1811,71 @@
 			& = R.
 		\end{align*}
 		Under this identification, the unit map $R \to \End^A_m(\Mod^A_m(R))$ is the map induced by the action of $R$ on the free rank-one $R$-module $F_R(\unit_{A_m})$. Under the adjunction $L^A_m(F_R) \dashv L^A_m(G_R)$, this action corresponds to the identity of $G_RF_R(\unit_{A_m}) \simeq R$. Thus the unit is an equivalence on countably presented $R$, and $\Mod^A_m$ is fully faithful.
-
-		\emph{Step 3:} Finally we show that the canonical functors
-		\[
-			p_n\colon \CAlg(A_n) \to \StRing_{A/}
-		\] 
-		are fully faithful. Under the equivalence
-		\[
-			\StRing_{A/} \; \simeq \; \lim_{\CAT}( \dots \xrightarrow{\End^A_{n+1}} \CAlg(A_{n+1}) \xrightarrow{\End^A_n}\CAlg(A_n))
-		\]
-		$p_n$ is left adjoint to the projection $q_n\colon \StRing_{A/} \to \CAlg(A_n)$. We must show that the unit map $R \to q_np_n(R)$ is an isomorphism for each $R \in \CAlg(A_n)$. Observe that by fully faithfulness of the functors $\Mod^A_m$, the sequence of objects
-		\[
-			X_j = \Mod^A_{j-1}\Mod^A_{j-2}\cdots \Mod^A_n(R) \qin \CAlg(A_j)
-		\]
-		for $j \geq n$ defines an object $X := (X_j)_{j \geq n}$ in this limit. We claim that the identification $R = X_n = q_n(X)$ exhibits $X$ as a left-adjoint object to $R$ under $q_n$ (that is, it induces an isomorphism $X \cong p_n(R)$). Indeed, for any $B \in \StRing_{A/}$, we have
-		\[
-			\begin{aligned}
-				\Hom_{\StRing_{A/}}(X, B)
-				&\simeq \lim_{j \geq n} \Hom_{\CAlg(A_j)}(X_j,(B/A)_{j-1}) \\
-				&\simeq \lim_{j \geq n} \Hom_{\CAlg(A_n)}(R,\End^A_n \cdots \End^A_{j-1}((B/A)_{j-1})) \\
-				&\simeq \Hom_{\CAlg(A_n)}(R,(B/A)_{n-1}).
-			\end{aligned}
-		\]
-		Here the last equivalence uses the compatibility equivalences $\End^A_i((B/A)_i) \simeq (B/A)_{i-1}$ defining the object $B$ of the limit.
-		This shows that the unit of the adjunction $p_n \dashv q_n$ at $R \in \CAlg(A_n)$ is the identity map $R \to R$, hence is an isomorphism, showing the fully faithfulness of $p_n$.
 	\end{proof}
 
-	In the proof of the proposition, we showed that the composite
+	\begin{definition}\label[definition]{def:Internal_Stefanich_Rings}
+		Let $A \in \StRing$. The category of \emph{internal Stefanich rings in $A$} is the colimit
+		\[
+			\StRing(A) := \colim_{1\Pr}(\CAlg(A_1) \xhookrightarrow{\Mod^A_1} \CAlg(A_2) \xhookrightarrow{\Mod^A_2} \dots)
+		\]
+		formed along the internal module functors. Equivalently, since each $\Mod^A_m$ is a left adjoint with right adjoint $\End^A_m$, it may be computed as the limit
+		\[
+			\StRing(A) \simeq \lim_{\CAT}(\CAlg(A_1) \xleftarrow{\End^A_1} \CAlg(A_2) \xleftarrow{\End^A_2} \dots).
+		\]
+	\end{definition}
+
+	We now show that $A$-algebras in Stefanich rings are the same as Stefanich rings internal to $A$.
+
+	\begin{proposition}\label[proposition]{prop:Slice_Description}
+		Let $A \in \StRing$. The assignments $B \mapsto (B/A)_n$, for $n \geq 0$, determine an equivalence
+		\[
+			\StRing_{A/} \iso \StRing(A), \qquad B \mapsto ((B/A)_0, (B/A)_1, (B/A)_2, \dots).
+		\]
+	\end{proposition}
+	\begin{proof}
+		By passing to slices, we obtain
+		\[
+			\StRing_{A/} = \lim_{\CAT}(\dots \xrightarrow{\End^{\bbP}_3} \CAlg(2\Pr)_{A_2/} \xrightarrow{\End^{\bbP}_2} \CAlg(1\Pr)_{A_1/} \xrightarrow{\End^{\bbP}_1} \CAlg(\An)_{A_0/}).
+		\]
+		The entry $\CAlg(\An)_{A_0/}$ is redundant for the limit, and we will ignore it. Under the equivalences $\CAlg(m\Pr)_{A_m/} \simeq \CAlg(\Mod_{A_m}(m\Pr))$, the transition maps $\CAlg((m+1)\Pr)_{A_{m+1}/} \to \CAlg(m\Pr)_{A_m/}$ admit the following simple description. An object $D$ of the source is an $A_{m+1}$-linear monoidal category; the transition sends it to $\End_D(\unit_D)$, regarded over $\End_{A_{m+1}}(\unit_{A_{m+1}}) \simeq A_m$. Thus the transition factors as
+		\[
+			\CAlg(\Mod_{A_{m+1}}((m+1)\Pr)) \xrightarrow{\End_{(-)}(\unit)} \CAlg(A_{m+1}) \xrightarrow{U^A_m} \CAlg(\Mod_{A_m}(m\Pr)),
+		\]
+		where we use the notation from \Cref{con:Internal_Module_Endomorphism_Adjunction}. Hence we may alternatively compute $\StRing_{A/}$ as the limit of the chain
+		\[
+			\dots \to \CAlg(\Mod_{A_{m+1}}((m+1)\Pr)) \xrightarrow{\End_{(-)}(\unit)} \CAlg(A_{m+1}) \xrightarrow{U^A_m} \CAlg(\Mod_{A_m}(m\Pr)) \xrightarrow{\End_{(-)}(\unit)} \CAlg(A_m) \to \dots.
+		\]
+		Removing the intermediate $\CAlg(\Mod_{A_m}(m\Pr))$-vertices gives the limit over the composites
+		\[
+			\End^A_m = \End_{(-)}(\unit) \circ U^A_m\colon \CAlg(A_{m+1}) \to \CAlg(A_m),
+		\]
+		hence the identification
+		\[
+			\StRing_{A/} \simeq \lim_{\CAT}(\CAlg(A_1) \xleftarrow{\End^A_1} \CAlg(A_2) \xleftarrow{\End^A_2} \dots) = \StRing(A),
+		\]
+		where the last equality is the limit description of \Cref{def:Internal_Stefanich_Rings}. Under this equivalence, an object $f\colon A \to B$ is sent in degree $n \geq 1$ to
+		\[
+			f_{n-1,*}(\unit_{B_n}) = (B/A)_{n-1} \qin \CAlg(A_n),
+		\]
+		that is, to the tuple $((B/A)_0, (B/A)_1, (B/A)_2, \dots)$, as claimed.
+	\end{proof}
+
+	\begin{corollary}
+		\label[corollary]{cor:Inclusion_n_Affine_A_Algebras}
+		The functor $\StRing_{A/} \to \CAlg(A_n), B \mapsto (B/A)_n$ admits a fully faithful left adjoint
+		\[
+			\CAlg(A_n) \hookrightarrow \StRing_{A/}.
+		\]
+	\end{corollary}
+	\begin{proof}
+		By \Cref{prop:Mod_Transition_Fully_Faithful}, the internal module functors $\Mod^A_m$ are fully faithful left adjoints. Hence \Cref{lem:Colimit_Of_Fully_Faithful_Left_Adjoints} shows that, for every $n \geq 1$, the canonical functor
+		\[
+			\CAlg(A_n) \hookrightarrow \StRing(A)
+		\]
+		is fully faithful and left adjoint to the projection $\StRing(A) \to \CAlg(A_n)$. The claim now follows from the equivalence $\StRing_{A/} \simeq \StRing(A)$ of \Cref{prop:Slice_Description}, under which this projection corresponds to the functor $B \mapsto (B/A)_n$.
+	\end{proof}
+
+	In \Cref{prop:Mod_Transition_Fully_Faithful} we showed that the composite
 	\[
 		\Mod^A_m\colon \CAlg(A_m) \xhookrightarrow{\Mod_{(-)}(A_m)} \CAlg(\Mod_{A_m}(m\Pr)) \xrightarrow{L^A_m} \CAlg(A_{m+1})
 	\]
@@ -1942,7 +1902,7 @@
 		\[
 			\Hom_D(L^A_m(X \otimes Y^{\vee}),\unit_D) \simeq \Hom_C(X \otimes Y^{\vee},U^A_m(\unit_D))
 		\]
-		we see that it suffices to show that the unit map $\unit_C \to U^A_mL^A_m\unit_C = U^A_m\unit_D$ is an isomorphism. But this map is canonical comparison map $A_m \iso \End_{A_{m+1}}(\unit_{A_{m+1}})$, which is an isomorphism as $A$ is a Stefanich ring.
+		we see that it suffices to show that the unit map $\unit_C \to U^A_mL^A_m\unit_C = U^A_m\unit_D$ is an isomorphism. But this map is the canonical comparison map $A_m \iso \End_{A_{m+1}}(\unit_{A_{m+1}})$, which is an isomorphism as $A$ is a Stefanich ring.
 	\end{proof}
 
 	\section{Shifting}
@@ -2001,69 +1961,69 @@
 	\section{Spectrification and colimits of Stefanich rings}
 	\label[section]{sec:Spectrification}
 
-	Limits and $\aleph_1$-filtered colimits in $\StRing$ are computed pointwise, since they are preserved by the transition functors $\End^{\bbP}_n$ in the limit defining $\StRing$. Arbitrary colimits are harder to describe directly, since they are not (necessarily) preserved by the endomorphism functors.
+	Throughout this section we fix a Stefanich ring $A$ and study colimits in the category $\StRing(A)$ of internal Stefanich rings in $A$. Limits and $\aleph_1$-filtered colimits in $\StRing(A)$ are computed pointwise, since they are preserved by the transition functors $\End^A_n$ in the limit description of \Cref{def:Internal_Stefanich_Rings}. Arbitrary colimits are harder to describe directly, since they are not (necessarily) preserved by the functors $\End^A_n$.
 
 	\begin{definition}\label[definition]{def:PreStRing}
 		Let
 		\[
-			\mathcal{P} := \prod_{n \geq 0} \CAlg(n\Pr),
+			\mathcal{P}_A := \prod_{n \geq 1} \CAlg(A_n),
 		\]
 		and define an endofunctor
 		\[
-			\Theta\colon \mathcal{P} \to \mathcal{P}, \qquad (D_n)_{n \geq 0} \mapsto (\End^{\bbP}_n(D_{n+1}))_{n \geq 0}.
+			\End^A_\bullet\colon \mathcal{P}_A \to \mathcal{P}_A, \qquad (D_n)_{n \geq 1} \mapsto (\End^A_n(D_{n+1}))_{n \geq 1}.
 		\]
-		The category of \emph{preStefanich rings} is the lax equalizer
+		The category of \emph{internal preStefanich rings in $A$} is the lax equalizer
 		\[
-			\PreStRing
+			\PreStRing(A)
 			:=
-			\mathcal{P} \times_{\mathcal{P} \times \mathcal{P}} \Ar(\mathcal{P}),
+			\mathcal{P}_A \times_{\mathcal{P}_A \times \mathcal{P}_A} \Ar(\mathcal{P}_A),
 		\]
-		where $\mathcal{P} \to \mathcal{P} \times \mathcal{P}$ is $(\id,\Theta)$ and $\Ar(\mathcal{P}) \to \mathcal{P} \times \mathcal{P}$ is the source-target functor.
-		Thus a preStefanich ring is a tuple $D = (D_0,D_1,D_2,\dots)$ together with structure maps
+		where $\mathcal{P}_A \to \mathcal{P}_A \times \mathcal{P}_A$ is $(\id,\End^A_\bullet)$ and $\Ar(\mathcal{P}_A) \to \mathcal{P}_A \times \mathcal{P}_A$ is the source-target functor.
+		Thus an internal preStefanich ring is a tuple $D = (D_1,D_2,D_3,\dots)$ with $D_n \in \CAlg(A_n)$, together with structure maps
 		\[
-			\alpha_n\colon D_n \to \End^{\bbP}_n(D_{n+1})
+			\alpha_n\colon D_n \to \End^A_n(D_{n+1})
 		\]
-		that are not assumed to be equivalences. The category $\StRing$ identifies with the full subcategory of $\PreStRing$ spanned by those objects for which all $\alpha_n$ are equivalences.
+		that are not assumed to be equivalences. By \Cref{def:Internal_Stefanich_Rings}, the category $\StRing(A)$ identifies with the full subcategory of $\PreStRing(A)$ spanned by those objects for which all $\alpha_n$ are equivalences.
 	\end{definition}
 
 	\begin{lemma}\label[lemma]{lem:Colimits_In_PreStRing}
-		The category $\PreStRing$ admits small colimits, and the projection $\PreStRing \to \mathcal{P}$ creates them. In particular, colimits in $\PreStRing$ are computed pointwise.
+		The category $\PreStRing(A)$ admits small colimits, and the projection $\PreStRing(A) \to \mathcal{P}_A$ creates them. In particular, colimits in $\PreStRing(A)$ are computed pointwise.
 	\end{lemma}
 	\begin{proof}
-		Let $I \to \PreStRing$ be a diagram, written as $(D^i,\alpha^i)$ for $i \in I$. Let $D := \colim_i D^i$ in $\mathcal{P}$, so that $D_n \simeq \colim_i D^i_n$ in $\CAlg(n\Pr)$. The maps $\alpha^i\colon D^i \to \Theta(D^i)$ assemble to a morphism of diagrams $D^{\bullet} \to \Theta(D^{\bullet})$. Hence we obtain a structure map
+		Let $I \to \PreStRing(A)$ be a diagram, written as $(D^i,\alpha^i)$ for $i \in I$. Let $D := \colim_i D^i$ in $\mathcal{P}_A$, so that $D_n \simeq \colim_i D^i_n$ in $\CAlg(A_n)$. The maps $\alpha^i\colon D^i \to \End^A_\bullet(D^i)$ assemble to a morphism of diagrams $D^{\bullet} \to \End^A_\bullet(D^{\bullet})$. Hence we obtain a structure map
 		\[
-			D \simeq \colim_i D^i \to \colim_i \Theta(D^i) \to \Theta(\colim_i D^i) = \Theta(D),
+			D \simeq \colim_i D^i \to \colim_i \End^A_\bullet(D^i) \to \End^A_\bullet(\colim_i D^i) = \End^A_\bullet(D),
 		\]
-		where the second arrow is the canonical comparison map induced by the cocone $D^i \to D$. This defines an object $(D,\alpha)$ of $\PreStRing$.
+		where the second arrow is the canonical comparison map induced by the cocone $D^i \to D$. This defines an object $(D,\alpha)$ of $\PreStRing(A)$.
 
-		For any $(Y,\beta) \in \PreStRing$, the hom anima $\Hom_{\PreStRing}((D,\alpha),(Y,\beta))$ is the homotopy equalizer of the two maps
+		For any $(Y,\beta) \in \PreStRing(A)$, the hom anima $\Hom_{\PreStRing(A)}((D,\alpha),(Y,\beta))$ is the homotopy equalizer of the two maps
 		\[
-			\Hom_{\mathcal{P}}(D,Y) \rightrightarrows \Hom_{\mathcal{P}}(D,\Theta Y)
+			\Hom_{\mathcal{P}_A}(D,Y) \rightrightarrows \Hom_{\mathcal{P}_A}(D,\End^A_\bullet Y)
 		\]
-		defined by $\beta \circ (-)$ and $\Theta(-)\circ \alpha$. Since $D$ is the colimit of the $D^i$ in $\mathcal{P}$, this homotopy equalizer identifies with
+		defined by $\beta \circ (-)$ and $\End^A_\bullet(-)\circ \alpha$. Since $D$ is the colimit of the $D^i$ in $\mathcal{P}_A$, this homotopy equalizer identifies with
 		\[
-			\lim_i \Hom_{\PreStRing}((D^i,\alpha^i),(Y,\beta)).
+			\lim_i \Hom_{\PreStRing(A)}((D^i,\alpha^i),(Y,\beta)).
 		\]
 		Thus $(D,\alpha)$ has the universal property of the colimit.
 	\end{proof}
 
-	What we will do is to embed $\StRing$ in $\PreStRing$ and then reflect back.
+	What we will do is to embed $\StRing(A)$ in $\PreStRing(A)$ and then reflect back.
 
 	\begin{lemma}\label[lemma]{lem:Spectrification_Left_Adjoint}
-		The inclusion $\StRing \hookrightarrow \PreStRing$ admits a left adjoint.
+		The inclusion $\StRing(A) \hookrightarrow \PreStRing(A)$ admits a left adjoint.
 	\end{lemma}
 	\begin{proof}
 		Define a functor
 		\[
-			T \colon \PreStRing \to \PreStRing, \qquad (D_n)_{n \in \N} \mapsto (D'_n)_{n \in \N},
+			T \colon \PreStRing(A) \to \PreStRing(A), \qquad (D_n)_{n \geq 1} \mapsto (D'_n)_{n \geq 1},
 		\]
-		by setting $D'_n = \End^{\bbP}_n(D_{n+1})$, with structure maps obtained by applying the functors $\End^{\bbP}_n$ to the structure maps of $D$. This admits a natural transformation $\eta\colon \id \to T$, given by the structure maps of a preStefanich ring. For $X \in \PreStRing$, define $X^{(0)} := X$, $X^{(\alpha + 1)} := T(X^{(\alpha)})$, and
+		by setting $D'_n = \End^A_n(D_{n+1})$, with structure maps obtained by applying the functors $\End^A_n$ to the structure maps of $D$. This admits a natural transformation $\eta\colon \id \to T$, given by the structure maps of an internal preStefanich ring. For $X \in \PreStRing(A)$, define $X^{(0)} := X$, $X^{(\alpha + 1)} := T(X^{(\alpha)})$, and
 		\[
 			X^{(\lambda)} := \colim_{\alpha < \lambda} X^{(\alpha)}
 		\]
 		for limit ordinals $\lambda$.
 
-		We first show that $X^{(\omega_1)}$ lies in $\StRing$. Since each $\End^{\bbP}_n$ preserves $\aleph_1$-filtered colimits, the functor $T$ preserves $\aleph_1$-filtered colimits. Hence
+		We first show that $X^{(\omega_1)}$ lies in $\StRing(A)$. Each $\End^A_n$ is the right adjoint of the morphism $\Mod^A_n$ of $1\Pr$ from \Cref{con:Internal_Module_Endomorphism_Adjunction}, hence preserves $\aleph_1$-filtered colimits; therefore the functor $T$ preserves $\aleph_1$-filtered colimits. Hence
 		\[
 			T(X^{(\omega_1)})
 			\simeq
@@ -2079,42 +2039,47 @@
 		\[
 			\colim_{\alpha < \omega_1} X^{(\alpha)} \to \colim_{\alpha < \omega_1} X^{(\alpha+1)},
 		\]
-		hence is an equivalence. Thus $X^{(\omega_1)}$ is a Stefanich ring.
+		hence is an equivalence. Thus $X^{(\omega_1)}$ is an internal Stefanich ring in $A$.
 
-		It remains to prove the universal property. Let $Y \in \StRing$. We claim by transfinite induction that the natural map
+		It remains to prove the universal property. Let $Y \in \StRing(A)$. We claim by transfinite induction that the natural map
 		\[
-			\Hom_{\PreStRing}(X^{(\alpha)},Y) \to \Hom_{\PreStRing}(X,Y)
+			\Hom_{\PreStRing(A)}(X^{(\alpha)},Y) \to \Hom_{\PreStRing(A)}(X,Y)
 		\]
 		is an equivalence for every ordinal $\alpha \leq \omega_1$. The claim is clear for $\alpha = 0$. For a successor ordinal, it suffices to show that
 		\[
-			\eta_{X^{(\alpha)}}^*\colon \Hom_{\PreStRing}(T X^{(\alpha)},Y) \to \Hom_{\PreStRing}(X^{(\alpha)},Y)
+			\eta_{X^{(\alpha)}}^*\colon \Hom_{\PreStRing(A)}(T X^{(\alpha)},Y) \to \Hom_{\PreStRing(A)}(X^{(\alpha)},Y)
 		\]
-		is an equivalence. Since $Y$ is a Stefanich ring, the map $\eta_Y\colon Y \to TY$ is an equivalence. An inverse to $\eta_{X^{(\alpha)}}^*$ is therefore given by applying $T$ to a map $X^{(\alpha)} \to Y$ and then using $\eta_Y^{-1}$ to identify $TY$ with $Y$.
+		is an equivalence. Since $Y$ lies in $\StRing(A)$, the map $\eta_Y\colon Y \to TY$ is an equivalence. An inverse to $\eta_{X^{(\alpha)}}^*$ is therefore given by applying $T$ to a map $X^{(\alpha)} \to Y$ and then using $\eta_Y^{-1}$ to identify $TY$ with $Y$.
 
 		For a limit ordinal $\lambda$, the object $X^{(\lambda)}$ is the colimit of the $X^{(\alpha)}$ for $\alpha < \lambda$, so
 		\[
-			\Hom_{\PreStRing}(X^{(\lambda)},Y)
+			\Hom_{\PreStRing(A)}(X^{(\lambda)},Y)
 			\simeq
-			\lim_{\alpha < \lambda} \Hom_{\PreStRing}(X^{(\alpha)},Y)
+			\lim_{\alpha < \lambda} \Hom_{\PreStRing(A)}(X^{(\alpha)},Y)
 			\simeq
-			\Hom_{\PreStRing}(X,Y).
+			\Hom_{\PreStRing(A)}(X,Y).
 		\]
 		Taking $\alpha = \omega_1$ gives
 		\[
-			\Hom_{\StRing}(X^{(\omega_1)},Y)
+			\Hom_{\StRing(A)}(X^{(\omega_1)},Y)
 			\simeq
-			\Hom_{\PreStRing}(X,Y),
+			\Hom_{\PreStRing(A)}(X,Y),
 		\]
 		naturally in $X$ and $Y$. Thus $X \mapsto X^{(\omega_1)}$ is left adjoint to the inclusion.
 	\end{proof}
 
 	\begin{corollary}\label[corollary]{cor:Colimits_In_StRing}
-		We may compute colimits in $\StRing$ by computing them in $\PreStRing$ (where they are computed pointwise) and then reflect them back into $\StRing$. \qed
+		We may compute colimits in $\StRing(A)$ by computing them in $\PreStRing(A)$ (where they are computed pointwise) and then reflecting them back into $\StRing(A)$. \qed
 	\end{corollary}
 
-	\section{Tensor products of Stefanich rings}
+	\begin{remark}\label[remark]{rem:Absolute_Spectrification}
+		The Stefanich ring $\bbP$ is initial in $\StRing$, so the slice $\StRing_{\bbP/}$ is all of $\StRing$. Hence \Cref{prop:Slice_Description} yields an equivalence $\StRing \simeq \StRing(\bbP)$, and we abbreviate $\PreStRing := \PreStRing(\bbP)$. Specializing the above to $A = \bbP$, colimits in $\StRing$ are computed pointwise in $\PreStRing$ and then spectrified.
+	\end{remark}
 
-	Consider a diagram of the form $B \leftarrow A \to C$. We wish to compute the pushout $B \otimes_A C$ in $\StRing$. As we showed in \Cref{cor:Colimits_In_StRing}, we can do this by computing the pushout in $\PreStRing$, where colimits are pointwise by \Cref{lem:Colimits_In_PreStRing}. This gives the preStefanich ring
+	\section{Tensor products of Stefanich rings}
+	\label[section]{sec:Tensor_Products_Stefanich_Rings}
+
+	Consider a diagram of the form $B \leftarrow A \to C$. We wish to compute the pushout $B \otimes_A C$ in $\StRing$. By \Cref{rem:Absolute_Spectrification} (the case $A = \bbP$ of \Cref{cor:Colimits_In_StRing}), we can do this by computing the pushout in $\PreStRing$, where colimits are pointwise by \Cref{lem:Colimits_In_PreStRing}. This gives the preStefanich ring
 	\[
 		(B_0 \otimes_{A_0} C_0, B_1 \otimes_{A_1} C_1, \dots),
 	\]
@@ -2123,41 +2088,15 @@
 	In certain situations, it is useful to do a relative version of the same construction which uses the slice description from \Cref{prop:Slice_Description}.
 
 	\begin{construction}\label[construction]{con:Tensor_Product_In_Slice}
-		Fix a Stefanich ring $A \in \StRing$, and write
-		\[
-			\StRing_{A/}
-			\simeq
-			\lim_{\CAT}(\CAlg(A_1) \xleftarrow{\End^A_1} \CAlg(A_2) \xleftarrow{\End^A_2} \dots).
-		\]
-		Let
-		\[
-			\mathcal{P}_A := \prod_{m \geq 0} \CAlg(A_{m+1})
-		\]
-		and define
-		\[
-			\Theta_A\colon \mathcal{P}_A \to \mathcal{P}_A,
-			\qquad
-			(R_m)_{m \geq 0} \mapsto (\End^A_{m+1}(R_{m+1}))_{m \geq 0}.
-		\]
-		We define the category of \emph{preStefanich rings under $A$} by the analogous lax equalizer
-		\[
-			\PreStRing_{A/}
-			:=
-			\mathcal{P}_A \times_{\mathcal{P}_A \times \mathcal{P}_A} \Ar(\mathcal{P}_A).
-		\]
-		Thus an object is a sequence $R_m \in \CAlg(A_{m+1})$ equipped with maps
-		\[
-			R_m \to \End^A_{m+1}(R_{m+1}).
-		\]
-		The category $\StRing_{A/}$ is the full subcategory where all these maps are equivalences. Just as before, colimits in $\PreStRing_{A/}$ are computed pointwise, and the inclusion $\StRing_{A/} \hookrightarrow \PreStRing_{A/}$ admits a left adjoint obtained by iterating $\Theta_A$; here we use that the functors $\End^A_m$ preserve $\aleph_1$-filtered colimits, as they are right adjoints of the morphisms $\Mod^A_m$ in $1\Pr$.
+		Fix a Stefanich ring $A \in \StRing$. By \Cref{prop:Slice_Description} we have $\StRing_{A/} \simeq \StRing(A)$, and by \Cref{cor:Colimits_In_StRing} colimits in $\StRing(A)$ are computed by passing to $\PreStRing(A)$, where they are pointwise, and then spectrifying.
 
-		Now let $B,C \in \StRing_{A/}$. Under the equivalence of \Cref{prop:Slice_Description}, they correspond to the sequences $((B/A)_m)_{m \geq 0}$ and $((C/A)_m)_{m \geq 0}$. Their coproduct in the relative preStefanich category is therefore the pointwise tensor product
+		Now let $B,C \in \StRing_{A/}$. Under the equivalence of \Cref{prop:Slice_Description}, they correspond to the objects of $\PreStRing(A)$ given by the sequences $((B/A)_m)_{m \geq 0}$ and $((C/A)_m)_{m \geq 0}$, where $(B/A)_m \in \CAlg(A_{m+1})$. Their coproduct in $\PreStRing(A)$ is therefore the pointwise tensor product
 		\[
 			\bigl((B/A)_0 \otimes (C/A)_0,\;
 			(B/A)_1 \otimes (C/A)_1,\;
 			\dots\bigr),
 		\]
-		where the $m$-th tensor product is formed in $\CAlg(A_{m+1})$. The coproduct in $\StRing_{A/}$ is obtained by spectrifying this relative preStefanich ring.
+		where the $m$-th tensor product is formed in $\CAlg(A_{m+1})$. The coproduct in $\StRing_{A/}$ is obtained by spectrifying this internal preStefanich ring.
 	\end{construction}
 
 	Note that this method of computing the tensor product was already used at the end of the previous talk, in the proof of \Cref{cor:StRing_Functor_Properties}.
@@ -2167,11 +2106,11 @@
 		\[
 			g^*\colon \StRing_{A/} \to \StRing_{C/}, \qquad B \mapsto B \otimes_A C
 		\]
-		is computed by passing from the relative preStefanich category under $A$ to the relative preStefanich category under $C$. Namely, first apply levelwise extension of scalars
+		is computed by passing from $\PreStRing(A)$ to $\PreStRing(C)$. Namely, first apply levelwise extension of scalars
 		\[
 			g_m^*\colon \CAlg(A_{m+1}) \to \CAlg(C_{m+1})
 		\]
-		to the sequence attached to $B$. This produces the preStefanich ring under $C$
+		to the sequence attached to $B$. This produces the internal preStefanich ring in $C$
 		\[
 			(g_0^*(B/A)_0,\; g_1^*(B/A)_1,\; g_2^*(B/A)_2,\; \dots).
 		\]
@@ -2184,7 +2123,7 @@
 		\[
 			g_m^*R_m \to g_m^*\End^A_{m+1}(R_{m+1}) \to \End^C_{m+1}(g_{m+1}^*R_{m+1}).
 		\]
-		Spectrifying this pre-object in $\PreStRing_{C/}$ gives $B \otimes_A C$. Thus the displayed tuple should be viewed as the first approximation to the base change; the spectrification step is what forces the transition maps to become equivalences.
+		Spectrifying this pre-object in $\PreStRing(C)$ gives $B \otimes_A C$. Thus the displayed tuple should be viewed as the first approximation to the base change; the spectrification step is what forces the transition maps to become equivalences.
 	\end{construction}
 
 	\emph{During the seminar, this talk also covered the theory of affine maps of Stefanich rings. For the sake of exposition, that material has been collected in \Cref{sec:Affine_Maps} of the following chapter.}
@@ -2197,66 +2136,77 @@
 	In this talk, we will introduce a variety of properties of maps of Stefanich rings: affine maps, prim maps, proper maps, suave maps, and étale maps.
 
 	\section{Recollections and notations}
+	\label[section]{sec:Recollections_And_Notations}
 
-
-
-	Before we start, we recall how the transition maps look for a morphism of Stefanich rings. Let
+	Before we start, let us recall the notation for the transition maps attached to a morphism of Stefanich rings. First recall the external construction. Let
 	\[
 		\bbP = (\ast, \An,1\Pr,2\Pr,\dots)
 	\]
 	denote the initial Stefanich ring, with $\bbP_n = (n-1)\Pr$. The absolute transition adjunctions are the adjunctions
 	\[
-		\Mod^{\bbP}_n\colon \CAlg(n\Pr)
+		\Mod^{\bbP}_n\colon \CAlg((n-1)\Pr)
 		\rightleftarrows
-		\CAlg((n+1)\Pr) \noloc
+		\CAlg(n\Pr) \noloc
 		\End^{\bbP}_n.
 	\]
-	A Stefanich ring $A$ is, among other things, a compatible system of algebras over these absolute transitions. Equivalently, its structural equivalences can be adjointed to the functors
+	Thus a Stefanich ring $A$ consists of objects $A_n \in \CAlg(n\Pr)$ together with structure equivalences
+	\[
+		A_n \iso \End^{\bbP}_{n+1}(A_{n+1}) = \End_{A_{n+1}}(\unit_{A_{n+1}}).
+	\]
+	By adjunction, these are equivalently encoded by symmetric monoidal left adjoints
 	\[
 		L^A_n\colon \Mod_{A_n}(n\Pr) \to A_{n+1}.
 	\]
 
-	Now fix a map $f\colon A \to B$. The map $\bbP \to A \to B$ gives a commutative diagram
+	In the previous talk, we repeated this construction internally to a fixed Stefanich ring $A$. Namely, for $m \geq 1$ there are internal module-endomorphism adjunctions
 	\[
-		\begin{tikzcd}
-			\bbP_n \rar \dar["\ast"'] & A_n \rar \dar["\ast"'] & B_n \dar["\ast"'] \\
-			\bbP_{n+1} \rar & A_{n+1} \rar & B_{n+1},
-		\end{tikzcd}
+		\Mod^A_m\colon \CAlg(A_m)
+		\rightleftarrows
+		\CAlg(A_{m+1}) \noloc
+		\End^A_m.
 	\]
-	in the Grothendieck construction of the absolute transitions $\Mod^{\bbP}$. The maps marked by $\ast$ are cartesian: after passing to the right adjoint transitions they induce the structural equivalences $A_n \iso \End^{\bbP}_n(A_{n+1})$ and $B_n \iso \End^{\bbP}_n(B_{n+1})$.
-
-	Writing $a\colon \bbP \to A$ for the structure map, we also obtain an adjunction
-	\[
-		a_n^*\colon \CAlg(n\Pr) \rightleftarrows \CAlg(A_{n+1}) \noloc \fgt.
-	\]
-	By \Cref{con:Lift_To_Algebra}, the map $f$ determines relative algebras
+	These adjunctions give the category $\StRing(A)$ of Stefanich rings internal to $A$, and \Cref{prop:Slice_Description} identifies it with the slice category $\StRing_{A/}$. Under this equivalence, a map $f\colon A \to B$ is sent to the internal Stefanich ring $B/A$ whose degree $n$ term is
 	\[
 		(B/A)_n = f_{n,*}(\unit_{B_{n+1}}) \qin \CAlg(A_{n+1}),
 	\]
-	whose underlying $n$-category is $B_n$. The relative transition functor
+	as in \Cref{con:Lift_To_Algebra}. In particular, $B/A$ comes equipped with internal structure equivalences
 	\[
-		\CAlg(A_{n+1}) \xhookrightarrow{\Mod_{(-)}(A_{n+1})} \CAlg(\Mod_{A_{n+1}}((n+1)\Pr)) \xrightarrow{L^A_{n+1}} \CAlg(A_{n+2}),
+		(B/A)_n \iso \End^A_{n+1}((B/A)_{n+1}).
 	\]
-	is $\Mod^A_{n+1}$. The Stefanich-ring structure of $B$ over $A$ gives a canonical comparison map
+	Adjointing these equivalences gives maps in $\CAlg(A_{n+2})$
 	\[
-		L^{B/A}_n\colon \Mod^A_{n+1}((B/A)_n) \to (B/A)_{n+1}.
+		L^{B/A}_n\colon
+		\Mod^A_{n+1}((B/A)_n)
+		=
+		L^A_{n+1}\bigl(\Mod_{(B/A)_n}(A_{n+1})\bigr)
+		\to
+		(B/A)_{n+1}.
 	\]
-	The index is chosen so that for the absolute map $\bbP \to A$, the map $L^{A/\bbP}_n$ identifies with the structural functor $L^A_n$. Concretely, $L^{B/A}_n$ is the lower vertical comparison in the diagram
+	For $B=A$, this gives the corresponding maps $L^{A/A}_n$ for the unit internal Stefanich ring $A/A$.
+
+	Now regard $f$ as a morphism $A/A \to B/A$ in $\StRing(A)$. In degree $n$, this gives a map
+	\[
+		(f/A)^*_{n-1}\colon (A/A)_n \to (B/A)_n
+	\]
+	in $\CAlg(A_{n+1})$; the shifted subscript follows the convention used for pullback functors. The fact that these maps define a morphism of internal Stefanich rings means that they are compatible with the internal structure equivalences. After adjunction, this compatibility says that the square
 	\[
 		\begin{tikzcd}
-			\unit = (A/A)_n \rar \dar["!"', "\ast"] & (B/A)_n \dar["!"', "\ast"] \\
-			A_{n+1} = \Mod_{(A/A)_n}(A_{n+1}) \rar["\mathrm{free}"] \dar["!"', "\ast"] & \Mod_{(B/A)_n}(A_{n+1}) \dar["L^{B/A}_n"] \\
-			\unit = (A/A)_{n+1} \rar & (B/A)_{n+1}.
+			\Mod^A_{n+1}((A/A)_n) \rar["\Mod^A_{n+1}((f/A)^*_{n-1})"] \dar["L^{A/A}_n"'] & \Mod^A_{n+1}((B/A)_n) \dar["L^{B/A}_n"] \\
+			(A/A)_{n+1} \rar["(f/A)^*_n"'] & (B/A)_{n+1}
 		\end{tikzcd}
 	\]
-
-	The properties below are all conditions on the maps obtained from this diagram in high degrees. For each $i$, we will consider the composite in $\CAlg(A_{i+2})$
+	commutes. Since $\Mod^A_{n+1}$ preserves monoidal units, $L^{A/A}_n$ is an equivalence, and thus we see that the map $(f/A)^*_n$ factors as follows:
 	\[
-		(A/A)_{i+1} \to \Mod^A_{i+1}((B/A)_i) \xrightarrow{L^{B/A}_i} (B/A)_{i+1}.
+		(A/A)_{n+1} \to \Mod^A_{n+1}((B/A)_n) \xrightarrow{L^{B/A}_n} (B/A)_{n+1}.
 	\]
-	We denote this composite by
+
+	For later use, we also fix notation for internal Hom objects relative to $A$. Let $m \geq 1$ and let $D \in \CAlg(A_{m+1})$. For $X,Y \in D$, we write
 	\[
-		(f/A)^*_i\colon (A/A)_{i+1} \to (B/A)_{i+1}.
+		\iHom^A_D(X,Y) := \iHom_{U^A_m(D)}(X,Y) \qin A_m,
+	\]
+	where $U^A_m\colon A_{m+1} \to \Mod_{A_m}(m\Pr)$ is the right adjoint from \Cref{con:Internal_Module_Endomorphism_Adjunction}. In particular,
+	\[
+		\End^A_m(D) = \iHom^A_D(\unit_D,\unit_D).
 	\]
 
 	\section{Affine maps}
@@ -2285,7 +2235,7 @@
 	\]
 	are equivalences for all $m \geq n$.
 
-	The role of \Cref{lem:Lm_Fully_Faithful_On_Dualizables} is that this recursive construction does not lose information on the objects that occur here. Indeed, if $R \in \CAlg(A_{m+1})$ is countably presented, then $\Mod_R(A_{m+1})$ is dualizable in $\Mod_{A_{m+1}}((m+1)\Pr)$. More generally, after writing $R$ as an $\aleph_1$-filtered colimit of countably presented algebras, $\Mod_R(A_{m+1})$ is an $\aleph_1$-filtered colimit of dualizable objects. On this class, the functor
+	The fully faithful embedding $\CAlg(A_{n+1}) \hookrightarrow \StRing_{A/}$ already says that the recursive construction of an $n$-affine object does not lose information. We will also need a slightly different recovery statement: in high degrees, the relative algebra $(B/A)_{m+1}$ is obtained by applying $L^A_{m+1}$ to the $A_{m+1}$-linear category $\Mod_{(B/A)_m}(A_{m+1})$, and we want to recover this linear category from its image in $A_{m+2}$. This is where \Cref{lem:Lm_Fully_Faithful_On_Dualizables} enters. If $R \in \CAlg(A_{m+1})$ is countably presented, then $\Mod_R(A_{m+1})$ is dualizable in $\Mod_{A_{m+1}}((m+1)\Pr)$. More generally, after writing $R$ as an $\aleph_1$-filtered colimit of countably presented algebras, and using that $R \mapsto \Mod_R(A_{m+1})$ preserves such colimits, $\Mod_R(A_{m+1})$ is an $\aleph_1$-filtered colimit of dualizable objects. On this class, the functor
 	\[
 		L^A_{m+1}\colon \Mod_{A_{m+1}}((m+1)\Pr) \to A_{m+2}
 	\]
@@ -2339,7 +2289,7 @@
 		\]
 		as desired.
 
-		(3) We use the description of cobase change from \Cref{con:Tensor_Product_By_Cobase_Change}. The pre-object whose spectrification computes $g^*B$ is represented in $\PreStRing_{C/}$ by the sequence
+		(3) We use the description of cobase change from \Cref{con:Tensor_Product_By_Cobase_Change}. The pre-object whose spectrification computes $g^*B$ is represented in $\PreStRing(C)$ by the sequence
 		\[
 			(g_0^*(B/A)_0,\; g_1^*(B/A)_1,\; g_2^*(B/A)_2,\; \dots).
 		\]
@@ -2390,13 +2340,13 @@
 	\begin{remark}
 		The converse to part (2) is \emph{not} necessarily true. Let $k$ be a field, let
 		\[
-			f\colon * \to \bbB^2 \bbG_m
+			f\colon * \to B^2 \bbG_m
 		\]
 		be the base point, and let $A \to B$ be the corresponding map of Stefanich rings. One can show that $f$ is $1$-affine, so the comparison in part (2) is an equivalence for $m \geq 1$. It is also an equivalence for $m = 0$: here $A_1 = B_1 = \D(k)$ and $(B/A)_0 = k$, so the comparison is just
 		\[
 			\Mod_k(\D(k)) \simeq \D(k).
 		\]
-		Nevertheless $f$ is not $0$-affine. Indeed, if it were $0$-affine, then $B$ would be determined over $A$ by the algebra $(B/A)_0 \in \CAlg(A_1)$. But $(B/A)_0 = k$ is the unit algebra, and the $0$-affine object corresponding to the unit is just the identity object $A \in \StRing_{A/}$. This would force $A \simeq B$, i.e.\ $* \simeq \bbB^2 \bbG_m$, which is false.
+		Nevertheless $f$ is not $0$-affine. Indeed, if it were $0$-affine, then $B$ would be determined over $A$ by the algebra $(B/A)_0 \in \CAlg(A_1)$. But $(B/A)_0 = k$ is the unit algebra, and the $0$-affine object corresponding to the unit is just the identity object $A \in \StRing_{A/}$. This would force $A \simeq B$, i.e.\ $* \simeq B^2 \bbG_m$, which is false.
 	\end{remark}
 
 	\section{Prim maps}
@@ -2415,17 +2365,17 @@
 		\[
 			(f/A)_{i,*}\colon (B/A)_{i+1} \to (A/A)_{i+1}
 		\]
-		in $A_{i+2}$. We may describe this right adjoint as
+		in $A_{i+2}$. For $M \in (B/A)_{i+1}$, this right adjoint is given by the $A$-internal Hom
 		\[
-			(f/A)_{i,*}(M) = \Hom_{(B/A)_{i+1}}(\unit, M).
+			(f/A)_{i,*}(M) \simeq \iHom^A_{(B/A)_{i+1}}(\unit_{(B/A)_{i+1}},M).
 		\]
 		In particular, we see that
 		\[
-			(f/A)_{i,*} (f/A)^*_i \unit = \Hom_{(B/A)_{i+1}}(\unit, \unit) = \End_{(B/A)_{i+1}}(\unit).
+			(f/A)_{i,*} (f/A)^*_i \unit \simeq \iHom^A_{(B/A)_{i+1}}(\unit_{(B/A)_{i+1}},\unit_{(B/A)_{i+1}}) = \End^A_{i+1}((B/A)_{i+1}).
 		\]
-		(Note that this is just $(B/A)_i$, so this allows us to think of $(B/A)$ as a relative Stefanich ring in $\StRing_{A/}$.)
+		By the internal Stefanich-ring structure on $B/A$, this is just $(B/A)_i$.
 
-		Under the equivalence $\End_{A_{i+2}}(\unit) \iso A_{i+1}$ (given by ``evaluating at the unit''), this means that we can think of $(B/A)_i$ as the endomorphism $(f/A)_{i,*} (f/A)^*_i$ of the unit of $(B/A)_{i+1}$.
+		Thus, under the equivalence $\End_{A_{i+2}}(\unit) \iso A_{i+1}$ given by evaluating at the unit, the algebra $(B/A)_i$ is the value of the monad $(f/A)_{i,*}(f/A)^*_i$ on the unit of $(A/A)_{i+1}$.
 	\end{observation}
 
 	\begin{proposition}\label[proposition]{prop:Prim_Properties}
@@ -2472,10 +2422,29 @@
 			F^R F = \colim_{i \in I} F_i^R F_i \qin \bbC(X_0, X_0).
 		\]
 	\end{lemma}
+	\begin{proof}
+		We argue by the (enriched) Yoneda lemma. For each object $Y \in \bbC$, the represented functor
+		\[
+			\bbC(-, Y)\colon \bbC^{\catop} \to 1\Pr
+		\]
+		sends a $1$-morphism that is a left adjoint in $\bbC$ to a right adjoint functor of categories. Conversely, a $1$-morphism $G$ of $\bbC$ is a left adjoint as soon as $\bbC(-, Y)(G)$ admits a right adjoint for every $Y$, and these right adjoints are compatible with the maps $\bbC(-, Y) \to \bbC(-, Y')$ induced by morphisms $Y \to Y'$ (the Beck--Chevalley condition); as usual, it suffices to test this on $Y = X_0$ and $Y = \colim X$. We may therefore assume $\bbC = 1\Pr$.
+
+		In $1\Pr$ this is the standard comparison between the colimit presentation $\colim_{i \in I} X_i$ in $\PrL$ and the limit presentation $\lim_{i \in I^{\catop}} X_i$ formed along the right adjoints. Writing $\iota_i\colon X_i \to \colim X$ for the structure maps, each $\iota_i$ admits a right adjoint $\iota_i^R$; since $0 \in I$ is initial we have $F = \iota_0$, and hence a right adjoint $F^R := \iota_0^R$. Under the limit presentation $F^R$ is computed by the partial right adjoints, and the Beck--Chevalley condition required above holds by construction. Tracing through this description, the composite $F^R F$ is computed as the colimit
+		\[
+			F^R F = \colim_{i \in I} F_i^R F_i \qin \bbC(X_0, X_0),
+		\]
+		the colimit being filtered, so that it is again computed in $\bbC(X_0, X_0)$ compatibly with the structure maps; the unit $\id \to F^R F$ is the inclusion of the initial index $i = 0$, for which $F_0 = \id_{X_0}$. Alternatively, one writes down the unit and counit of the adjunction explicitly and checks the triangle identities directly.
+	\end{proof}
 
 	\section{Proper maps}
 
-	Note that one missing feature of the previous proposition is that $n$-prim maps are not necessarily closed under diagonals. This motivates the following definition.
+	Note that one missing feature of the previous proposition is that $n$-prim maps are not necessarily closed under diagonals.
+
+	\begin{example}\label[example]{ex:DeRham_Stack}
+		Let $k$ be a field of characteristic $0$ (for simplicity), and let $X$ be a variety over $k$. The map of Stefanich rings corresponding to the de Rham stack $X_{\mathrm{dR}} \to \Spec(k)$ is $0$-prim over $k$, but its diagonal is not. Thus $n$-primness genuinely fails to be stable under passage to diagonals.
+	\end{example}
+
+	This motivates the following definition.
 
 	\begin{definition}\label[definition]{def:N_Proper}
 		A map $f\colon A \to B$ of Stefanich rings is called \emph{$n$-proper} if $f$ and all its iterated codiagonals
@@ -2494,6 +2463,49 @@
 			\item Let $f\colon A \to B$ be $n$-proper, and let $g\colon B \to C$ be a map. Then $g$ is $n$-prim if and only if $gf$ is $n$-prim. Moreover, $g$ is $n$-proper if and only if $gf$ is $n$-proper.
 		\end{enumerate}
 	\end{proposition}
+	\begin{proof}
+		All four statements follow from \Cref{prop:Prim_Properties}, together with the fact that $n$-affine maps are stable under passing to iterated codiagonals. The latter holds because, up to the identifications of \Cref{prop:Affineness_Properties}, the codiagonal of an $n$-affine map is a cobase change of an $n$-affine map.
+
+		(1) If $B$ is $n$-affine and countably presented over $A$, then so is every iterated codiagonal of $f\colon A \to B$, by the stability just mentioned and the fact that countable presentability is preserved under cobase change. Hence each iterated codiagonal is $n$-prim by \Cref{prop:Prim_Properties}(1), so $f$ is $n$-proper.
+
+		(2) It suffices to treat sifted colimits and finite coproducts separately. For a sifted colimit, every iterated codiagonal of the colimit map is itself a sifted colimit of cobase changes of the corresponding iterated codiagonals of the diagram, so \Cref{prop:Prim_Properties}(2) and (3) apply degreewise. Finite coproducts reduce to stability under cobase change and composition, which are parts (3) and (4) below.
+
+		(3) The formation of iterated codiagonals commutes with cobase change. Hence, if all codiagonals of $f$ are $n$-prim, then \Cref{prop:Prim_Properties}(3) shows that all codiagonals of the cobase change $f'$ are $n$-prim as well, i.e.\ $f'$ is $n$-proper.
+
+		(4) An iterated codiagonal of a composite can be written as a composite of cobase changes of the iterated codiagonals of the two individual maps. Together with \Cref{prop:Prim_Properties}(3) and (4), this shows that $n$-prim and $n$-proper maps are closed under composition; in particular, if $g$ is $n$-prim (resp.\ $n$-proper), then so is $gf$. For the converse, assume $f$ is $n$-proper and $gf$ is $n$-prim (resp.\ $n$-proper). Factor $g$ as
+		\[
+			B \to B \otimes_A C \to C,
+		\]
+		where the first map is the cobase change of $gf\colon A \to C$ along $f$, hence $n$-prim (resp.\ $n$-proper), and the second map is a cobase change of the codiagonal $\nabla_f\colon B \otimes_A B \to B$, hence $n$-proper, and in particular $n$-prim. By the composition statement just proved, $g$ is $n$-prim (resp.\ $n$-proper).
+	\end{proof}
+
+	Being $0$-proper is closely related to being \emph{rigid} in the sense of Gaitsgory--Rozenblyum \citep{GaitsgoryRozenbluym2017StudyDAG}.
+
+	\begin{proposition}\label[proposition]{prop:Proper_Rigid}
+		Let $A \in \StRing$, and let $B$ be a countably presented $1$-affine Stefanich $A$-algebra. Then $B$ is $0$-proper over $A$ if and only if $(B/A)_1 \in \CAlg(A_2)$ is \emph{rigid} in $A_2$, i.e.\ the following two conditions hold.
+		\begin{enumerate}
+			\item The unit map $\unit \to (B/A)_1$ admits a right adjoint in $A_2$.
+			\item The multiplication map $(B/A)_1 \otimes_{A_2} (B/A)_1 \to (B/A)_1$ admits a right adjoint in $\Mod_{(B/A)_1 \otimes_{A_2} (B/A)_1}(A_2)$.
+		\end{enumerate}
+	\end{proposition}
+	\begin{proof}
+		Since $B$ is $1$-affine and countably presented, it is automatically $1$-proper by \Cref{prop:Proper_Properties}(1). Thus being $0$-proper amounts to having, in addition, the relevant right adjoints at the lowest level.
+
+		If $B$ is $0$-proper, then (1) and (2) hold by applying the $0$-prim condition to $f\colon A \to B$ and to its codiagonal $\nabla_f\colon B \otimes_A B \to B$, using that by \Cref{prop:Affineness_Properties}(2) we have $(B \otimes_A B)_2 \simeq \Mod_{(B/A)_1 \otimes_{A_2} (B/A)_1}(A_2)$.
+
+		Conversely, it suffices to show that (1) and (2) imply that the codiagonal $\nabla_f\colon B \otimes_A B \to B$ is $0$-affine. Indeed, the codiagonal is then certainly $0$-proper, and together with $A \to B$ being $0$-prim this shows that $f$ is $0$-proper. Now the codiagonal is $1$-affine and $0$-prim, and it admits a section (the diagonal). Hence it is $0$-affine by \Cref{lem:Reduce_Affineness}.
+	\end{proof}
+
+	The following lemma is often useful to reduce the level of affineness.
+
+	\begin{lemma}\label[lemma]{lem:Reduce_Affineness}
+		Let $f\colon A \to B$ be a map of Stefanich rings. Assume that $f$ is $(n+1)$-affine and $n$-prim, and that there is an $(n+1)$-affine map $g\colon B \to A$ with $fg = \id_B$. Then $f$ is $n$-affine.
+	\end{lemma}
+	\begin{proof}
+		By shifting we may assume $n = 0$. Replacing $A$ by the image of $(B/A)_0 \in \CAlg(A_1)$ in $\StRing_{A/}$, we may assume that $(B/A)_0 = \unit \in \CAlg(A_1)$; we must then show that $A \to B$ is an equivalence. By $1$-affineness it suffices to show that $\unit \to (B/A)_1$ is an equivalence.
+
+		Since $f$ is $0$-prim, the map $(f/A)^*_0\colon \unit \to (B/A)_1$ admits a right adjoint $(f/A)_{0,*}$ in $A_2$. Moreover, the unit $\id \to (f/A)_{0,*} (f/A)^*_0$ in $A_1 \simeq \End_{A_2}(\unit)$ is an equivalence, since it is the map $\unit \to (B/A)_0 = \unit$. We would like to conclude that $\unit \to (B/A)_1$ is an equivalence because $g$ splits it; this is not quite true, but the following weaker statement is. After applying $g_1$, the map $\unit \to (B/A)_1$ becomes the map $(A/B)_1 \to \unit$, which is split by $g_0\colon \unit \to (A/B)_1$. Since $g_1$ preserves the fully faithful adjunction, $\unit \to (B/A)_1$ becomes an equivalence after applying $g_1$. But $g$ is $1$-affine, so $g_1\colon A_2 \simeq \Mod_{(A/B)_1}(B_2) \to B_2$ is conservative, which finishes the proof.
+	\end{proof}
 
 	\section{Suave maps}
 
@@ -2532,10 +2544,29 @@
 
 	\begin{proposition}\label[proposition]{prop:Suave_Properties}
 		\begin{enumerate}
-			\item The $n$-suave maps are closed under cobase change.
+			\item The $n$-suave maps are closed under cobase change. More precisely, if $f\colon A \to B$ is $n$-suave and $g\colon A \to C$ is any map of Stefanich rings, then the cobase change $f'\colon C \to B \otimes_A C$ is $n$-suave, and $g_m^*(B/A)^!_m \simeq (B \otimes_A C/C)^!_m$ for $m \geq n$.
 			\item The $n$-suave maps are closed under composition.
 		\end{enumerate}
 	\end{proposition}
+	\begin{proof}
+		By shifting we may assume $n = 0$. The argument is dual to that of \Cref{prop:Prim_Properties}; recall from the discussion after \Cref{def:N_Suave} that under the duality $(-)^{\vee}$ of $(A/A)_{i+1}$ the suave datum of $f$ corresponds to the prim datum, with $\bigl((B/A)^!_i\bigr)^{\vee} \simeq (B/A)_i$.
+
+		(1) For each $i \geq 0$, the first suave condition is an internal adjunction $(f/A)_{i,\sharp} \dashv (f/A)^*_i$ in $A_{i+2}$. The cobase-change $2$-functor $g_{i+1}^*\colon A_{i+2} \to C_{i+2}$ preserves adjunctions, so it carries this to an adjunction in $C_{i+2}$, exhibiting a left adjoint of $g_{i+1}^*\bigl((f/A)^*_i\bigr)$. As in the proof of \Cref{prop:Prim_Properties}(3), one checks that the base-changed system $g^*(B/A)^!_\bullet$ is already a Stefanich ring, so that no spectrification is needed: applying $(-)^{\vee}$ identifies the suave adjunction with the prim adjunction, and since $(-)^{\vee}$ commutes with $g_{i+1}^*$, the endomorphism computation of \Cref{prop:Prim_Properties}(3) applies verbatim. Hence $g_{i+1}^*\bigl((f/A)^*_i\bigr) = (f'/C)^*_i$, and we obtain
+		\[
+			g_m^*(B/A)^!_m \simeq (B \otimes_A C/C)^!_m \qquad (m \geq 0).
+		\]
+		Finally $g_{i+1}^*$ also carries the adjunction $(f/A)_{i-1,!} \dashv (f/A)^!_{i-1}$ of the second suave condition to the corresponding adjunction for $f'$. Thus $f'$ is $0$-suave.
+
+		(2) Let $f\colon A \to B$ and $g\colon B \to C$ be $0$-suave, with composite $h\colon A \to C$. For $i \geq 0$ the forgetful $2$-functor $B_{i+2} \to A_{i+2}$ preserves left adjoints, so the left adjoint of $(g/B)^*_i$ in $B_{i+2}$ yields a left adjoint of the induced map $(B/A)_{i+1} \to (C/A)_{i+1}$ in $A_{i+2}$. Composing left adjoints along
+		\[
+			(A/A)_{i+1} \xrightarrow{(f/A)^*_i} (B/A)_{i+1} \to (C/A)_{i+1}
+		\]
+		produces a left adjoint of $(h/A)^*_i$, which is the first suave condition for $h$. For the second condition, the resulting maps
+		\[
+			(C/A)^!_i \to (B/A)^!_i \to (A/A)_i
+		\]
+		each admit a right adjoint (the first since $g$ is $0$-suave, the second since $f$ is), hence so does their composite. Thus $h$ is $0$-suave.
+	\end{proof}
 
 	\section{Étale maps}
 
@@ -2544,11 +2575,20 @@
 	\end{definition}
 
 	\begin{proposition}\label[proposition]{prop:Etale_Properties}
-		The $n$-\'etale maps satisfy cobase change and cancellation.
+		Let $A \in \StRing$ and $n \geq 0$.
+		\begin{enumerate}
+			\item If $f\colon A \to B$ is $n$-\'etale and $g\colon A \to C$ is any map of Stefanich rings, then the cobase change $f'\colon C \to B \otimes_A C$ is $n$-\'etale.
+			\item Let $f\colon A \to B$ be $n$-\'etale, and let $g\colon B \to C$ be a map. Then $g$ is $n$-suave if and only if $gf$ is $n$-suave, and $g$ is $n$-\'etale if and only if $gf$ is $n$-\'etale.
+		\end{enumerate}
 	\end{proposition}
+	\begin{proof}
+		Since $f$ is $n$-\'etale precisely when $f$ and all of its iterated codiagonals are $n$-suave, both statements follow from \Cref{prop:Suave_Properties} by exactly the argument used to deduce \Cref{prop:Proper_Properties} from \Cref{prop:Prim_Properties}. Concretely, the iterated codiagonals of a cobase change (resp.\ of a composite) are cobase changes (resp.\ composites of cobase changes) of the iterated codiagonals of the original map(s), and $n$-suave maps are closed under cobase change and composition by \Cref{prop:Suave_Properties}.
+	\end{proof}
 
 	\section{Ambidexterity}
 	\label[section]{sec:Ambidexterity_Stefanich_Rings}
+
+	In the previous talks we saw that, for $n \geq 1$, all bi-countably presented fpqc stacks give rise to ambidextrous adjunctions, so that the corresponding maps of Stefanich rings are $1$-\'etale and $2$-proper. Abstracting that argument, with the general ambidexterity result \Cref{prop:General_Ambidexterity} in place of the geometric input, yields the following.
 
 	\begin{proposition}\label[proposition]{prop:Ambidexterity_Stefanich_Rings}
 		Let $f\colon A \to B$ be a map of Stefanich rings.
@@ -2558,8 +2598,55 @@
 			\item If $f$ and $\nabla_f$ are $n$-suave, then $f$ is $(n+1)$-prim.
 			\item If $f$ is $n$-\'etale, then $f$ is $(n+1)$-proper.
 		\end{enumerate}
-		Moreover, in any of these cases, we have an identification $f_{m,\sharp} \cong f_{m,*}$ for each $m \geq n+2$.
+		Moreover, in any of these cases, we have an identification $f_{m,\sharp} \cong f_{m,*}$ for each $m \geq n+1$.
 	\end{proposition}
+	\begin{proof}
+		By shifting we may assume $n = 0$.
+
+		(1) Suppose $f$ and $\nabla_f$ are $0$-prim. Fix $m \geq 1$ and consider the map
+		\[
+			(f/A)^*_m\colon \unit = (A/A)_{m+1} \to (B/A)_{m+1}
+		\]
+		in the $(\infty,3)$-category $A_{m+2}$ (which lies in $(m+2)\Pr$, hence in $3\Pr$, since $m \geq 1$). As $f$ is $0$-prim, $(f/A)^*_m$ admits a right adjoint $(f/A)_{m,*}$ in $A_{m+2}$; we verify that the unit $\eta$ and counit $\epsilon$ of this adjunction admit right adjoints, so that \Cref{prop:General_Ambidexterity} applies.
+
+		For $\eta$, evaluation at the unit gives an equivalence $\End_{A_{m+2}}(\unit) \iso A_{m+1}$, under which, as in the observation following \Cref{def:N_Prim}, the unit $\eta\colon \id \to (f/A)_{m,*}(f/A)^*_m$ corresponds to the map $(f/A)^*_{m-1}\colon \unit \to (B/A)_m$. Since $f$ is $0$-prim and $m - 1 \geq 0$, this map admits a right adjoint in $A_{m+1}$.
+
+		For $\epsilon$, the counit lies in $\End_{A_{m+2}}((B/A)_{m+1})$. As in the proof of the ambidexterity property of the functors $f_{n,*}$ in \Cref{sec:Ambidexterity}, there is an equivalence
+		\[
+			\End_{A_{m+2}}\bigl((B/A)_{m+1}\bigr) \simeq \Mod_{(B \otimes_A B/A)_m}(A_{m+2}),
+		\]
+		under which $\epsilon$ corresponds to the relative map of the codiagonal $\nabla_f\colon B \otimes_A B \to B$ at level $m$. Since $\nabla_f$ is $0$-prim, this map admits a right adjoint.
+
+		Hence \Cref{prop:General_Ambidexterity}, applied in $A_{m+2}$, shows that $(f/A)_{m,*}$ is also a left adjoint $(f/A)_{m,\sharp}$ of $(f/A)^*_m$, and provides a canonical identification $(f/A)_{m,\sharp} \simeq (f/A)_{m,*}$ for $m \geq 1$. By \Cref{lem:Linear_Adjoint_Preserves_Dualizable} this common functor preserves dualizable objects; in particular $(B/A)^!_m = (f/A)_{m,\sharp}(\unit)$ is dualizable for $m \geq 1$. As recorded after \Cref{def:N_Suave}, the second suave condition is automatic once $(B/A)^!_m$ is dualizable. Thus $f$ is $1$-suave.
+
+		(2) If $f$ is $0$-proper, then every iterated codiagonal $\xi$ of $f$ has the property that $\xi$ and $\nabla_{\xi}$ are again $0$-prim, since the iterated codiagonals of $\xi$ are among those of $f$. By part (1), each such $\xi$ is $1$-suave, so $f$ is $1$-\'etale.
+
+		(3) Suppose $f$ and $\nabla_f$ are $0$-suave. For $m \geq 1$, the map $(f/A)^*_m$ admits a left adjoint $(f/A)_{m,\sharp}$ in $A_{m+2}$, as $f$ is $0$-suave. We apply the dual version of \Cref{prop:General_Ambidexterity} (cf.\ the remark following it), and so must check that the unit and counit of $(f/A)_{m,\sharp} \dashv (f/A)^*_m$ admit right adjoints. The counit corresponds, via the equivalence $\End_{A_{m+2}}(\unit) \iso A_{m+1}$, to the map $(f/A)_{m-1,!}$, which admits a right adjoint by the second condition in the definition of $0$-suave for $f$. The unit corresponds, under the relation-object identification used in part (1), to the analogous datum for the codiagonal $\nabla_f$, which admits a right adjoint since $\nabla_f$ is $0$-suave. Hence the dual ambidexterity result shows that $(f/A)_{m,\sharp}$ is also a right adjoint of $(f/A)^*_m$ for $m \geq 1$, so $f$ is $1$-prim.
+
+		(4) If $f$ is $0$-\'etale, then every iterated codiagonal $\xi$ of $f$ has $\xi$ and $\nabla_{\xi}$ both $0$-suave, so $\xi$ is $1$-prim by part (3); hence $f$ is $1$-proper.
+
+		Finally, the argument above produces the ambidextrous identification for $(f/A)^*_m$ with $m \geq 1$ in the shifted ($n = 0$) picture; unshifting, the canonical identification of \Cref{prop:General_Ambidexterity} reads $(f/A)_{m,\sharp} \simeq (f/A)_{m,*}$ for $m \geq n+1$ in cases (1) and (3), and the same identification holds in cases (2) and (4), applied to $f$ itself. By \Cref{lem:Linear_Adjoint_Preserves_Dualizable} this common functor preserves dualizable objects.
+	\end{proof}
+
+	The following lemma was used above; in particular, being both $n$-prim and $n$-suave forces $f_{m,*}$ and $f_{m,\sharp}$ to preserve dualizable objects.
+
+	\begin{lemma}\label[lemma]{lem:Linear_Adjoint_Preserves_Dualizable}
+		Let $\varphi\colon \Cc \to \Dd$ be a morphism in $\CAlg(\PrL)$, and suppose $\varphi$ admits both a $\Cc$-linear left adjoint $\varphi_{\sharp}$ and a $\Cc$-linear right adjoint $\varphi_{*}$. Then both $\varphi_{\sharp}$ and $\varphi_{*}$ preserve dualizable objects.
+	\end{lemma}
+	\begin{proof}
+		Let $N \in \Dd$ be dualizable, with dual $N^{\vee}$. Since $\varphi$ is symmetric monoidal, it preserves dualizable objects, and $\Cc$-linearity of the adjoints yields the projection formulas
+		\[
+			\varphi_{\sharp}\bigl(Y \otimes \varphi(M)\bigr) \simeq \varphi_{\sharp}(Y) \otimes M, \qquad \varphi_{*}\bigl(Y \otimes \varphi(M)\bigr) \simeq \varphi_{*}(Y) \otimes M
+		\]
+		for $Y \in \Dd$ and $M \in \Cc$. Using the adjunction $\varphi_{\sharp} \dashv \varphi \dashv \varphi_{*}$ together with these formulas, we compute, naturally in $M \in \Cc$,
+		\[
+			\Hom_{\Cc}(\varphi_{\sharp} N, M)
+			\simeq \varphi_{*}\Hom_{\Dd}(N, \varphi(M))
+			\simeq \varphi_{*}\bigl(N^{\vee} \otimes \varphi(M)\bigr)
+			\simeq \varphi_{*}(N^{\vee}) \otimes M.
+		\]
+		Setting $M = \unit$ gives $\Hom_{\Cc}(\varphi_{\sharp} N, \unit) \simeq \varphi_{*}(N^{\vee})$, so the displayed natural equivalence becomes $\Hom_{\Cc}(\varphi_{\sharp} N, M) \simeq \Hom_{\Cc}(\varphi_{\sharp} N, \unit) \otimes M$. Hence $\varphi_{\sharp} N$ is dualizable, with dual $\varphi_{*}(N^{\vee})$. The symmetric computation, exchanging the roles of the two adjoints, shows that $\varphi_{*}$ likewise preserves dualizable objects.
+	\end{proof}
 
 	\chapter{Gestalten}
 
@@ -2742,162 +2829,148 @@
 		all finite limits.
 	\end{proof}
 
+	\begin{lemma}\label[lemma]{lem:Ex_Infinity_Countable_Control}
+		Let $C$ be a small category, and let
+		$Y_{\bullet}\in\Fun(\simp\catop,\PSh(C))$ be a simplicial presheaf.
+		For a finite simplicial set $K$, write
+		\[
+			Y(K):=\lim_{\Delta^n\to K}Y_n
+		\]
+		for the right Kan extension of $Y_{\bullet}$ from simplices to finite
+		simplicial sets. For $r\geq 0$, set
+		\[
+			(\Ex^{r}(Y))_q:=Y(\sd^r\Delta^q),
+			\qquad
+			\Ex^{\infty}(Y):=\colim_{r\in\N}\Ex^{r}(Y).
+		\]
+		Then:
+		\begin{enumerate}[(1)]
+			\item Each $(\Ex^{r}(Y))_q$ is a finite limit of values of
+			$Y_{\bullet}$.
+			\item The natural map $Y_{\bullet}\to\Ex^{\infty}(Y)$ induces an
+			equivalence on geometric realizations, and
+			$(\Ex^{\infty}(Y))_0\simeq Y_0$.
+			\item The simplicial presheaf $\Ex^{\infty}(Y)$ is a Kan complex
+			in $\PSh(C)$, i.e.\ the maps
+			\[
+				\Ex^{\infty}(Y)(\Delta^n)\to
+				\Ex^{\infty}(Y)(\partial\Delta^n)
+			\]
+			are effective epimorphisms, equivalently pointwise surjective on
+			$\pi_0$.
+			\item If every $Y_n$ is a $\kappa$-small coproduct of
+			representables, then each
+			\[
+				(\Ex^{\infty}(Y))_{q+1}
+				\times_{(\Ex^{\infty}(Y))_q}
+				(\Ex^{\infty}(Y))_{q+1}
+			\]
+			is the countable colimit, over $r$, of $\kappa$-small coproducts of
+			representables.
+		\end{enumerate}
+	\end{lemma}
+	\begin{proof}
+		The simplicial set $\sd^r\Delta^q$ is finite. Hence its simplex
+		category is finite, and the formula defining $(\Ex^{r}(Y))_q$ expresses it
+		as a finite limit of the objects $Y_n$.
+
+		The remaining assertions are the usual internal properties of the
+		$\Ex^{\infty}$ fibrant replacement in an $\infty$-topos.\footnote{See
+		the nLab entry on Kan fibrant replacement,
+		\url{https://ncatlab.org/nlab/show/Kan+fibrant+replacement}.}
+		The degree-zero assertion follows directly from
+		$\sd^r\Delta^0=\Delta^0$.
+
+		For (4), write $Y^{(r)}=\Ex^{r}(Y)$. By (1) and
+		\Cref{lem:Finite_Limits_Kappa_Coproducts_Representables}, every
+		$Y^{(r)}_q$ is a $\kappa$-small coproduct of representables. Since
+		filtered colimits commute with finite limits in presheaves of animae,
+		we have
+		\[
+		\begin{aligned}
+			&(\Ex^{\infty}(Y))_{q+1}
+			\times_{(\Ex^{\infty}(Y))_q}
+			(\Ex^{\infty}(Y))_{q+1} \\
+			&\qquad\simeq
+			\colim_{r\in\N}
+			\left(
+			Y^{(r)}_{q+1}\times_{Y^{(r)}_q}Y^{(r)}_{q+1}
+			\right).
+		\end{aligned}
+		\]
+		Each term in the final colimit is again a $\kappa$-small coproduct of
+		representables by
+		\Cref{lem:Finite_Limits_Kappa_Coproducts_Representables}.
+	\end{proof}
+
 	\begin{proposition}\label[proposition]{prop:Two_Sided_Bar_Relation_Object}
-		Let $C$ be a small category, let $I$ be an ordinary small
-		category, let $F\colon I \to \PSh(C)$ be a diagram, and let
-		$i,j\in I$. There is a simplicial object
+		Let $C$ be a small category, and let
+		$Y_{\bullet}\in\Fun(\simp\catop,\PSh(C))$ be a simplicial presheaf.
+		There is a simplicial object $B_{\bullet}(Y)$, natural in
+		$Y_{\bullet}$, with a natural equivalence
 		\[
-			B^{i,j}_{\bullet}(F)\in \Fun(\simp\catop,\PSh(C)),
-		\]
-		defined naturally in $F$, with a natural equivalence
-		\[
-			\abs{B^{i,j}_{\bullet}(F)}
+			\abs{B_{\bullet}(Y)}
 			\simeq
-			F(i)\times_{\colim_I F}F(j).
+			Y_0\times_{\abs{Y_{\bullet}}}Y_0.
 		\]
-		Moreover, each $B^{i,j}_q(F)$ is a coproduct, indexed by a set of
-		finite necklace diagrams in $I$ from $i$ to $j$, of objects of the form
+		Moreover, if $Y^{\fib}_{\bullet}:=\Ex^{\infty}(Y)$, then
 		\[
-			\lim_{K} F,
+			B_q(Y)\simeq
+			Y^{\fib}_{q+1}\times_{Y^{\fib}_q}Y^{\fib}_{q+1},
 		\]
-		where $K\to I$ is the finite diagram attached to the necklace datum,
-		and $\lim_K F$ denotes the limit of the composite
-		$K\to I\xrightarrow{F}\PSh(C)$. In particular, if $I$ is countable,
-		then each $B^{i,j}_q(F)$ is a countable coproduct of finite limits of
-		values of $F$.
+		where the two maps $Y^{\fib}_{q+1}\to Y^{\fib}_q$ are the last and
+		first face maps.
 	\end{proposition}
 	\begin{proof}
-		We may alternatively interpret $F$ as a functor
-		$C\catop \to \Fun(I,\An)$. Similarly, we will interpret the
-		simplicial objects $B^{i,j}_{\bullet}$ as functors
-		$C\catop \to \Fun(\simp\catop,\An)$. Since the construction we give
-		is natural in $F$, and limits and colimits in $\PSh(C)$ are computed
-		objectwise, we may assume that $F\colon I\to\An$.
-
-		Let
+		Set $Y^{\fib}_{\bullet}:=\Ex^{\infty}(Y)$. By
+		\Cref{lem:Ex_Infinity_Countable_Control}, the map
+		$Y_{\bullet}\to Y^{\fib}_{\bullet}$ induces an equivalence on
+		geometric realizations and identifies degree zero. It is therefore
+		enough to compute
 		\[
-			p\colon D:=\int_I F\longrightarrow I
-		\]
-		be the left fibration classifying $F$, given by the covariant Grothendieck
-		construction. The fiber $D_i$ is the anima $F(i)$, and a
-		morphism of $D$ over $\alpha\colon i\to i'$ in $I$ amounts to a point
-		$x\in F(i)$ together with a path $F(\alpha)(x)\simeq x'$ in $F(i')$.
-		The colimit of $F$ is the groupoid completion of its category
-		of elements,
-		\[
-			\colim_I F\;\simeq\;\abs{D},
-		\]
-		where $\abs{D}$ denotes the geometric realization of the nerve of
-		$D$. Under this equivalence
-		the canonical map $F(i)\to\colim_I F$ is the composite
-		$D_i\hookrightarrow D\to\abs{D}$. We must compute the pullback $D_i \times_{\abs{D}} D_j$.
-
-		We now use the necklace formula for mapping spaces in $\abs{D}$. Let
-		$\mathsf{Nec}$ denote the ordinary category of necklaces: its objects
-		are bipointed simplicial sets of the form
-		\[
-			N=\Delta^{n_1}\vee\cdots\vee\Delta^{n_r},
-		\]
-		and its morphisms are maps of bipointed simplicial sets. If
-		$X\colon\simp\catop\to\An$ is a simplicial anima, then a map
-		$N\to X$ has two endpoint evaluations in $X_0$. For maps
-		$A\to X_0$ and $B\to X_0$ of animae, we write
-		$\mathsf{Nec}_{/(X,A,B)}$ for the Grothendieck construction of the
-		functor
-		\[
-			\mathsf{Nec}\catop\longrightarrow\An,\qquad
-			N\longmapsto
-			A\times_{X_0}
-			\Map_{\PSh(\simp)}(N,X)
-			\times_{X_0}B .
-		\]
-		For points $a,b\in X_0$ this specializes to a category
-		$\mathsf{Nec}_{/(X,a,b)}$ by taking $A=\{a\}$ and $B=\{b\}$.
-
-		For a category $E$, let
-		$\mathsf R(E)\colon \simp\catop \to \An$ denote the Rezk
-		classification diagram of the relative category $(E,E)$, so that
-		\[
-			\mathsf R(E)_n
-			=
-			\abs{\Fun([n],E)} .
-		\]
-		Its associated complete Segal space presents the localization
-		$E[E^{-1}]=\abs{E}$. If $a,b\in E$, the necklace formula of
-		\citet[Theorem~A and the mapping-space formula of
-		Section~2]{Barkan_Steinebrunner_Segalification}
-		applied to $\mathsf R(E)$ gives
-		\[
-			\abs{\mathsf{Nec}_{/(\mathsf R(E),a,b)}}
-			\simeq
-			\Map_{\abs{E}}(a,b),
-		\]
-		where the objects $a,b\in E$ are viewed as points of
-		$\mathsf R(E)_0=\abs{E}$. Letting the endpoints vary in arbitrary
-		animae $A,B$ equipped with maps to $\abs E$, and using universality of
-		colimits in $\An$, gives a natural equivalence
-		\[
-			\abs{\mathsf{Nec}_{/(\mathsf R(E),A,B)}}
-			\simeq
-			A\times_{\abs{E}}B .
+			Y^{\fib}_0\times_{\abs{Y^{\fib}_{\bullet}}}Y^{\fib}_0.
 		\]
 
-		Apply this with $E=D$, $A=D_i\simeq F(i)$, and
-		$B=D_j\simeq F(j)$. Define $B^{i,j}_{\bullet}(F)$, after the present
-		objectwise reduction, to be the simplicial anima underlying
-		$\mathsf{Nec}_{/(\mathsf R(D),D_i,D_j)}$, expanded by writing each
-		space $\abs{\Fun([n],D)}$ as the geometric realization of the nerve of
-		$\Fun([n],D)$. Then
+		Let $\mathsf{Dec}_{\bot}(Y^{\fib})$ and
+		$\mathsf{Dec}_{\top}(Y^{\fib})$ be the two decalages. Thus both have
+		$q$-simplices $Y^{\fib}_{q+1}$: the first forgets the last face and
+		degeneracy, and the second forgets the first face and degeneracy. They
+		carry natural maps to $Y^{\fib}_{\bullet}$, given respectively by the
+		last and first face maps. The augmented simplicial animae
 		\[
-			\abs{B^{i,j}_{\bullet}(F)}
-			\simeq
-			F(i)\times_{\colim_I F}F(j).
+			\mathsf{Dec}_{\bot}(Y^{\fib})\to Y^{\fib}_0,
+			\qquad
+			\mathsf{Dec}_{\top}(Y^{\fib})\to Y^{\fib}_0
 		\]
-		Doing the same construction objectwise gives the desired simplicial
-		object in presheaves.
+		have extra degeneracies, hence their realizations are both equivalent
+		to $Y^{\fib}_0$.
 
-		It remains to identify the degrees. Unwinding the Grothendieck
-		construction above, a $q$-simplex consists of a chain of necklaces
+		Since $Y^{\fib}_{\bullet}$ is Kan in $\PSh(C)$, the maps
+		$\mathsf{Dec}_{\bot}(Y^{\fib})\to Y^{\fib}_{\bullet}$ and
+		$\mathsf{Dec}_{\top}(Y^{\fib})\to Y^{\fib}_{\bullet}$ are Kan
+		fibrations in $\PSh(C)$.\footnote{For the decalage path fibration, see the
+		nLab entry on decalage, \url{https://ncatlab.org/nlab/show/decalage};
+		for preservation of homotopy pullbacks along such realization
+		fibrations, compare Rezk, \emph{When are homotopy colimits compatible
+		with homotopy base change?},
+		\url{https://ncatlab.org/nlab/files/RezkHomotopyColimitsBaseChange.pdf}.}
+		Thus geometric realization preserves the pullback defining
 		\[
-			N_0\to\cdots\to N_q
+			B_{\bullet}(Y):=
+			\mathsf{Dec}_{\bot}(Y^{\fib})
+			\times_{Y^{\fib}_{\bullet}}
+			\mathsf{Dec}_{\top}(Y^{\fib}).
 		\]
-		in $\mathsf{Nec}$ and a $q$-simplex of
+		We obtain
 		\[
-			A\times_{\mathsf R(E)_0}
-			\Map_{\PSh(\simp)}(N_q,\mathsf R(E))
-			\times_{\mathsf R(E)_0}B .
-		\]
-		Since $N_q$ is a finite gluing of simplices, the middle mapping anima
-		is a finite limit of terms $\mathsf R(E)_n=\abs{\Fun([n],E)}$.
-		After replacing each such realization by the nerve of
-		$\Fun([n],E)$, a simplex over $I$ is therefore described by finitely
-		many ordinals, maps between the corresponding necklaces, functors from
-		these finite ordinals to $I$, and natural transformations between such
-		functors, subject to the finitely many compatibility conditions imposed
-		by the gluing of the necklace and by the endpoints $i,j$. Equivalently,
-		it determines a finite category $K_\sigma$ and a functor
-		$u_\sigma\colon K_\sigma\to I$.
-		The summand of $B^{i,j}_q(F)$ lying over $\sigma$ is the anima of
-		lifts of $u_\sigma$ along the left fibration $p$, or equivalently the
-		anima of sections of $u_\sigma^{*}D\to K_\sigma$. By straightening over
-		$K_\sigma$, this anima is
-		\[
-			\Map_{\Fun(K_\sigma,\An)}
-			\bigl(\ast,F\circ u_\sigma\bigr)
+			\abs{B_{\bullet}(Y)}
 			\simeq
-			\lim_{K_\sigma}(F\circ u_\sigma).
-		\]
-		Therefore
-		\[
-			B^{i,j}_q(F)
+			Y^{\fib}_0\times_{\abs{Y^{\fib}_{\bullet}}}Y^{\fib}_0
 			\simeq
-			\coprod_{\sigma}\lim_{K_\sigma}(F\circ u_\sigma),
+			Y_0\times_{\abs{Y_{\bullet}}}Y_0.
 		\]
-		where $\sigma$ runs over the finite necklace diagrams in $I$ of
-		simplicial degree $q$ with endpoints $i$ and $j$. Each $K_\sigma$ is
-		finite. If $I$ is countable, then there are only countably many such
-		finite diagrams. Hence each $B^{i,j}_q(F)$ is a countable coproduct of
-		finite limits of values of $F$.
+		The formula for $B_q(Y)$ is immediate from the definition of the two
+		decalages.
 	\end{proof}
 
 	\begin{corollary}\label[corollary]{cor:Relation_Object_Kappa_Small_Colimit}
@@ -2909,19 +2982,16 @@
 			Y_0\times_{\abs{Y_{\bullet}}}Y_0
 		\]
 		is a $\kappa$-small colimit of representables.
+		More precisely, as an object over $Y_0\times Y_0$, it is the
+		geometric realization of a simplicial object whose $q$-simplices are
+		countable colimits of $\kappa$-small coproducts of representables.
 	\end{corollary}
 	\begin{proof}
-		Apply \Cref{prop:Two_Sided_Bar_Relation_Object} to the ordinary
-		category $I=\simp\catop$, the two objects $i=j=[0]$, and the diagram
-		$Y_{\bullet}\colon \simp\catop\to\PSh(C)$. Since $\simp\catop$ is
-		countable, the relation object is the geometric realization of a
-		simplicial object whose $q$-simplices are countable coproducts of
-		finite limits of the $Y_n$. By
-		\Cref{lem:Finite_Limits_Kappa_Coproducts_Representables}, each such
-		finite limit is a $\kappa$-small coproduct of representables. Since
-		$\kappa$ is uncountable regular, countable coproducts and countable
-		geometric realizations of $\kappa$-small coproducts of representables
-		are $\kappa$-small colimits of representables. This proves the claim.
+		This follows from \Cref{prop:Two_Sided_Bar_Relation_Object} and
+		part (4) of \Cref{lem:Ex_Infinity_Countable_Control}. Since $\kappa$ is
+		uncountable regular, the countable colimits in the simplicial degrees
+		and the countable geometric realization together form a
+		$\kappa$-small colimit of representables.
 	\end{proof}
 
 	\begin{proposition}\label[proposition]{prop:Kappa_Compact_Presheaves_Finite_Limits}
@@ -2980,19 +3050,30 @@
 			(X \times Z) \times_{Y_0 \times Y_0} R,
 		\]
 		where the map $X\times Z\to Y_0\times Y_0$ is induced by the chosen
-		lifts. By \Cref{cor:Relation_Object_Kappa_Small_Colimit}, the object
-		$R$ is a $\kappa$-small colimit $\colim_{\ell} R_{\ell}$ of
-		representables. Since colimits in a presheaf topos are universal,
+		lifts. By \Cref{cor:Relation_Object_Kappa_Small_Colimit}, the map
+		$R\to Y_0\times Y_0$ is the geometric realization, in the slice over
+		$Y_0\times Y_0$, of a simplicial object $R_{\bullet}$ such that every
+		$R_q$ is a countable colimit $\colim_s R_{q,s}$ of $\kappa$-small
+		coproducts of representables, compatibly over $Y_0\times Y_0$. Since
+		colimits in a presheaf topos are universal,
 		\[
 			(X \times Z) \times_{Y_0 \times Y_0} R
 			\simeq
-			\colim_{\ell}
-			\left((X \times Z) \times_{Y_0 \times Y_0} R_{\ell}\right).
+			\abs{(X \times Z) \times_{Y_0 \times Y_0} R_{\bullet}}.
 		\]
-		Each term on the right is a finite limit of $\kappa$-small coproducts
-		of representables, hence is itself a $\kappa$-small coproduct of
-		representables by
-		\Cref{lem:Finite_Limits_Kappa_Coproducts_Representables}. Therefore
+		The $q$-simplices on the right are
+		\[
+			\colim_s
+			\left((X \times Z)\times_{Y_0\times Y_0}R_{q,s}\right).
+		\]
+		Here $X\times Z$ is representable, and $Y_0\times Y_0$ is a
+		$\kappa$-small coproduct of representables by
+		\Cref{lem:Finite_Limits_Kappa_Coproducts_Representables}. Thus each
+		term $(X \times Z)\times_{Y_0\times Y_0}R_{q,s}$ is a finite limit of
+		$\kappa$-small coproducts of representables, hence is itself a
+		$\kappa$-small coproduct of representables. Since $\simp\catop$ and
+		$\N$ are countable and $\kappa$ is uncountable regular, the total
+		realization is a $\kappa$-small colimit of representables. Therefore
 		$X\times_Y Z$ is a $\kappa$-small colimit of representables.
 	\end{proof}
 
@@ -3103,8 +3184,8 @@
 		\]
 		with $A$ $\kappa$-small. Set $U:=\coprod_{a\in A}y(c_a)$. The map
 		$U\to y(c)$ factors through an effective epimorphism $U\to R$, and
-		$R$ is the geometric realization of its Cech nerve. Since
-		$R\to y(c)$ is a monomorphism, the terms of this Cech nerve are the
+		$R$ is the geometric realization of its \v{C}ech nerve. Since
+		$R\to y(c)$ is a monomorphism, the terms of this \v{C}ech nerve are the
 		corresponding fiber products over $y(c)$:
 		\[
 			U_n
