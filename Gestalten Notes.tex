@@ -1110,13 +1110,12 @@
 	\]
 	Since the endomorphism functor $\End\colon (n+1)\Pr \to n\Pr$ commutes with limits, this means that every fpqc-stack $X$ defines a Stefanich ring
 	\[
-		\St(X) := (\Omega^\infty\Oo(X), \D(X), 1\Pr_X, 2\Pr_X, \ldots),
+		\Oo(X) := (\End_{\D(X)}(\unit,\unit), \D(X), 1\Pr_X, 2\Pr_X, \ldots),
 	\]
-	with $n$-th component $\St(X)_n := (n-1)\Pr_X$ (using the low-degree conventions $0\Pr_X := \D(X)$ and $(-1)\Pr_X := \Omega^\infty\Oo(X)$). This extends the affine assignment $A \mapsto \St(A)$ to a \emph{Stefanich ring functor}
+	with $n$-th component $\Oo(X)_n := (n-1)\Pr_X$ (using the low-degree convention $0\Pr_X := \D(X)$). This extends the affine assignment $\Spec(A) \mapsto \St(A)$ to a functor
 	\[
-		\St\colon \Shv_{\fpqc}(\Aff_{\S})\catop \to \StRing,
+		\Oo\colon \Shv_{\fpqc}(\Aff_{\S})\catop \to \StRing.
 	\]
-	restricting to $\St\colon \CAlg(\Sp) \hookrightarrow \StRing$ on affines.
 
 	For $n = 0$, the value $0\Pr_X = \D(X)$ is the usual derived $\infty$-category of quasicoherent sheaves on $X$, at least when $X$ is a countable colimit of affines.
 
@@ -1722,7 +1721,7 @@
 		$G$ with the right adjoint $f_{n,*}$.
 	\end{proof}
 
-	\section{The Stefanich ring functor}
+	\section{The structure sheaf functor}
 
 	We can summarize what we have shown in the language of Stefanich rings:
 
@@ -1732,11 +1731,13 @@
 			\Shv_{\fpqc}(\Aff_{\S})^{\aleph_1} \to (\StRing_{\S/})\catop, \qquad X \mapsto \St(X)
 		\]
 		commutes with countable colimits and finite limits.
-	\end{corollary}
+	\end{corollary} 
 
-	In other words, if the target were itself an $\infty$-topos, then this functor would have all the properties of a morphism of $\infty$-topoi (except that we restrict to countable colimits rather than to all small colimits).
+	If the target were itself an $\infty$-topos, then this functor would have all the properties of a morphism of $\infty$-topoi (except that we restrict to countable colimits rather than to all small colimits). In \Cref{chap:Gestalten}, we will make this idea precise using the concept of a \emph{countably toposic category}.
 
 	\begin{proof}[Sketch of proof]
+		Implicit in the statement is the claim that $\aleph_1$-compact objects are closed under finite limits in $\Shv_{\fpqc}(\Aff_{\S})$; see \Cref{cor:Kappa_Compact_Sheaves_Finite_Limits} for a proof of this fact.
+
 		Commutation with countable colimits holds essentially by definition. To prove commutation with finite limits, it suffices to handle the terminal object (which works by definition of $\StRing_{\S/}$) and pullbacks. So consider a pullback diagram
 		\[
 			\begin{tikzcd}
@@ -2766,8 +2767,302 @@
 	\end{proof}
 
 	\chapter{Gestalten}
+	\label[chapter]{chap:Gestalten}
 
 	\emph{Talk given by Giovanni.}
+
+	In the previous talk we introduced suave and étale maps of Stefanich rings. The goal of this talk is to assemble the $n$-étale maps over a fixed Stefanich ring $A$ into a category and to show that its opposite is a \emph{countably toposic category}, in the sense made precise below. Passing to opposites throughout, this exhibits the category of \emph{Gestalten}, the opposite of $\StRing$, as a setting in which the étale maps play the role of the open immersions in a topos.
+
+	Throughout we freely use the relative objects $(B/A)_m$ and $(B/A)^!_m$ attached to a map $f\colon A \to B$ of Stefanich rings, together with the relative maps $(f/A)^*_m$, $(f/A)_{m,\sharp}$, $(f/A)_{m,!}$, etc., from \Cref{chap:Properties_Of_Maps}.
+
+	\section{Countable limits of étale algebras}
+
+	Recall from \Cref{def:N_Suave,def:N_Etale} that, for $n \geq 0$, a map $f\colon A \to B$ is \emph{$n$-suave} if for each $m \geq n$ the relative map $(f/A)^*_m\colon \unit = (A/A)_{m+1} \to (B/A)_{m+1}$ admits a left adjoint $(f/A)_{m,\sharp}$ in $A_{m+2}$, whose value $(B/A)^!_m := (f/A)_{m,\sharp}(\unit)$ we call the relative \emph{dualizing object}, and if moreover the resulting counit $(f/A)_{m-1,!}\colon (B/A)^!_m \to (A/A)_m$ admits a right adjoint; and that $f$ is \emph{$n$-\'etale} if $f$ and all its iterated codiagonals are $n$-suave. By \Cref{prop:Suave_Properties,prop:Etale_Properties}, the $n$-suave and $n$-\'etale maps are stable under cobase change and composition, the dualizing objects satisfy the base-change formula
+	\[
+		g_m^*(B/A)^!_m \simeq (B \otimes_A C/C)^!_m \qquad (m \geq n)
+	\]
+	for any $g\colon A \to C$, and $n$-\'etale maps enjoy right cancellation: if $f\colon A \to B$ is $n$-\'etale and $g\colon B \to C$ is arbitrary, then $g$ is $n$-suave (resp.\ $n$-\'etale) if and only if $gf$ is.
+
+	We now turn to the behaviour of suave algebras under \emph{limits}. The classical theory offers a cautionary example.
+
+	\begin{example}
+		Static étale algebras are not closed under countable limits. For instance, if $k$ is a field, then every finite product $k^m$ is étale over $k$, but the limit $\lim(\cdots \to k^3 \to k^2 \to k) \simeq \prod_{\N} k$ is not étale over $k$, since it is not of finite presentation (it is not even noetherian).
+	\end{example}
+
+	Étale Stefanich rings do not suffer from this defect, essentially because of ambidexterity. The key adjointability input is the following.
+
+	\begin{lemma}\label[lemma]{lem:Adjoints_Countable_Limits}
+		Let $\bbC \in 2\Pr$ be a $2$-presentable category and let $I$ be a countable category.
+		\begin{enumerate}
+			\item Let $X_\bullet\colon I \to \bbC$ be a diagram and let $F\colon Y \to \lim_{i \in I} X_i$ be a morphism. Write $F_i := \pr_i \circ F\colon Y \to X_i$ for its composite with the projection to $X_i$. If each $F_i$ admits a left adjoint $F_{i,\sharp}\colon X_i \to Y$, then $F$ admits a left adjoint $F_\sharp$, and there is a canonical equivalence
+			\[
+				F_\sharp F \simeq \colim_{i \in I} F_{i,\sharp} F_i \qin \End_{\bbC}(Y).
+			\]
+			\item Let $X_\bullet\colon I \to \bbC$ be a diagram and let $G\colon \colim_{i \in I} X_i \to Y$ be a morphism. Write $G_i := G \circ \iota_i\colon X_i \to Y$ for its composite with the colimit structure map. If each $G_i$ admits a right adjoint $G_{i,*}\colon Y \to X_i$, then $G$ admits a right adjoint $G_*$, and there is a canonical equivalence
+			\[
+				G_* G \simeq \lim_{i \in I} G_{i,*} G_i \qin \End_{\bbC}(Y).
+			\]
+		\end{enumerate}
+	\end{lemma}
+	\begin{proof}
+		The two statements are dual, so we treat (1). As in the proof of \Cref{lem:Filtered_Colimit_Of_Adjoints}, the represented functors $\bbC(-,Z)\colon \bbC\catop \to 1\Pr$ jointly detect and reflect adjunctions of $1$-morphisms (and the displayed formula may be checked after applying them), so we may assume $\bbC = 1\Pr = \PrL_{\aleph_1}$. There a countable limit $\lim_{i \in I} X_i$ is computed as the corresponding limit in $\Cat$, equivalently as the limit in $\PrR$ formed along the right adjoints of the projections. A morphism $F$ into such a limit admits a left adjoint as soon as each component $F_i$ does, by assembling the partial left adjoints; this is where countability of $I$ enters, ensuring the relevant Beck--Chevalley colimits exist and are computed in $\PrL$. Tracing through the limit presentation, the composite $F_\sharp F$ is computed as the colimit $\colim_{i \in I} F_{i,\sharp} F_i$, the transition maps being the mates of the identifications $X_\alpha F_i \simeq F_j$ for $\alpha\colon i \to j$ in $I$.
+	\end{proof}
+
+	\begin{proposition}\label[proposition]{prop:Suave_Countable_Limits}
+		Let $A \in \StRing$ and $n \geq 0$.
+		\begin{enumerate}
+			\item The $n$-suave $A$-algebras are closed under countable limits in $\StRing_{A/}$. Moreover, for $m \geq n$ the formation of the dualizing object sends countable limits of $n$-suave algebras to colimits: if $B = \lim_{i \in I} B_i$ with each $B_i$ $n$-suave over $A$, then
+			\[
+				(B/A)^!_m \simeq \colim_{i \in I} (B_i/A)^!_m.
+			\]
+			\item For any map $g\colon A \to C$, the base-change functor $- \otimes_A C\colon \StRing_{A/} \to \StRing_{C/}$ preserves countable limits of $n$-suave algebras.
+		\end{enumerate}
+	\end{proposition}
+	\begin{proof}
+		By shifting (\Cref{lem:Shift_Functor_Equivalence}) we may assume $n = 0$. Let $I$ be countable and let $B_\bullet\colon I \to \StRing_{A/}$ be a diagram of $0$-suave algebras, with limit $B := \lim_{i \in I} B_i$, which exists since $\StRing_{A/}$ is presentable. Since limits of internal Stefanich rings are computed levelwise (\Cref{prop:Slice_Description}), we have $(B/A)_m \simeq \lim_{i \in I} (B_i/A)_m$ in $\CAlg(A_{m+1})$ for every $m$.
+
+		\emph{Part (1).} Fix $m \geq 0$. To produce the dualizing object we must show that the map
+		\[
+			\unit = (A/A)_{m+1} \to (B/A)_{m+1} \simeq \lim_{i \in I} (B_i/A)_{m+1}
+		\]
+		admits a left adjoint in $A_{m+2}$. For each $i$ the map $\unit \to (B_i/A)_{m+1}$ admits a left adjoint, since $B_i$ is $0$-suave over $A$. Applying \Cref{lem:Adjoints_Countable_Limits}(1) in $A_{m+2}$ produces the desired left adjoint, together with the identification
+		\[
+			(B/A)^!_m \simeq \colim_{i \in I} (B_i/A)^!_m
+		\]
+		in $A_{m+1}$. For the second suave condition, under this identification the counit $(B/A)^!_m \to \unit$ is the colimit over $I$ of the counits $(B_i/A)^!_m \to \unit$, each of which admits a right adjoint because $B_i$ is $0$-suave. As $(B/A)^!_m$ is the countable colimit of the $(B_i/A)^!_m$, \Cref{lem:Adjoints_Countable_Limits}(2) shows that the counit $(B/A)^!_m \to \unit$ admits a right adjoint. Hence $B$ is $0$-suave, proving (1).
+
+		\emph{Part (2).} Fix $g\colon A \to C$. As $0$-suave maps are stable under base change (\Cref{prop:Suave_Properties}(1)), the $C$-algebras $B \otimes_A C$ and $B_i \otimes_A C$ are $0$-suave, and we must show that the canonical map
+		\[
+			\Bigl(\lim_{i \in I} B_i\Bigr) \otimes_A C \to \lim_{i \in I} (B_i \otimes_A C)
+		\]
+		is an equivalence. By the base-change formula of \Cref{prop:Suave_Properties}(1) and the fact that $g_{m+1}^*$ preserves colimits, we have for every $m \geq 0$
+		\[
+			(B \otimes_A C/C)^!_m
+			\simeq g_{m+1}^*(B/A)^!_m
+			\simeq g_{m+1}^* \colim_{i \in I} (B_i/A)^!_m
+			\simeq \colim_{i \in I} (B_i \otimes_A C/C)^!_m.
+		\]
+		On the other hand, applying part (1) to the diagram $i \mapsto B_i \otimes_A C$ of $0$-suave $C$-algebras gives
+		\[
+			\Bigl(\bigl(\lim_{i \in I} (B_i \otimes_A C)\bigr)/C\Bigr)^!_m \simeq \colim_{i \in I} (B_i \otimes_A C/C)^!_m.
+		\]
+		Thus both $C$-algebras have the same dualizing objects in every degree. Since for suave algebras $\bigl((B/A)^!_m\bigr)^{\vee} \simeq (B/A)_m$ (see the discussion after \Cref{def:N_Suave}), they also have the same relative levels, shosing that the canonical map is an equivalence.
+	\end{proof}
+
+	\section{Countably toposic categories}
+
+	Recall the definition of a topos:
+
+	\begin{definition}\label[definition]{def:Topos}
+		A \emph{topos} is an accessible left exact localization of a presheaf category $\PSh(C)$ on a small category $C$; that is, a category $\Xx$ for which there exist a small category $C$ and an adjunction $\PSh(C) \rightleftarrows \Xx$ whose left adjoint preserves finite limits and whose right adjoint is fully faithful and accessible.
+	\end{definition}
+
+	In particular, every topos is presentable. In ordinary category theory, Giraud's theorem characterizes topoi by intrinsic exactness properties; the same holds in the $\infty$-categorical setting, the third axiom below (effectivity of groupoids) being the one that distinguishes $\infty$-topoi from $1$-topoi.
+
+	\begin{definition}\label[definition]{def:Giraud_Axioms}
+		A presentable category $\Xx$ \emph{satisfies the Giraud axioms} if:
+		\begin{enumerate}
+			\item[(G1)] \emph{Colimits are universal:} for every map $f\colon X \to Y$ in $\Xx$, the pullback functor $f^*\colon \Xx_{/Y} \to \Xx_{/X}$ preserves all colimits;
+			\item[(G2)] \emph{Coproducts are disjoint:} for all $X, Y \in \Xx$, the pullback of the span $X \to X \sqcup Y \leftarrow Y$ is initial;
+			\item[(G3)] \emph{Groupoid objects are effective:} for every groupoid object $X_\bullet\colon \simp\catop \to \Xx$ with geometric realization $\abs{X_\bullet}$, the canonical map from $X_\bullet$ to the Čech nerve of $X_0 \to \abs{X_\bullet}$ is an equivalence; equivalently, $X_n \simeq X_0 \times_{\abs{X_\bullet}} \cdots \times_{\abs{X_\bullet}} X_0$ for all $n \geq 0$.
+		\end{enumerate}
+	\end{definition}
+
+	\begin{theorem}[\protect{\citet[Theorem~6.1.0.6]{lurie2009HTT}}]\label[theorem]{thm:Topos_Characterization}
+		Let $\Xx$ be a presentable category. The following are equivalent:
+		\begin{enumerate}
+			\item $\Xx$ is a topos.
+			\item For some (equivalently, any) regular cardinal $\kappa$ such that $\Xx$ is $\kappa$-compactly generated and $\Xx^{\kappa}$ is closed under finite limits, the colimit-preserving extension $\PSh(\Xx^{\kappa}) \to \Xx$ of the inclusion preserves finite limits.
+			\item $\Xx$ satisfies the Giraud axioms.
+		\end{enumerate}
+	\end{theorem}
+
+	We are interested in the following `countable analogue' of the definition of a topos:
+
+	\begin{definition}\label[definition]{def:Countably_Toposic}
+		A small category $\Yy$ with finite limits and countable colimits is a \emph{countably toposic category} if the presentable category $\Ind_{\aleph_1}(\Yy)$ is a topos.
+	\end{definition}
+
+	\begin{remark}
+		Scholze uses ``countably topos'', and Giovanni used ``countable topos'' during his talk; we avoid both, the former being grammatically awkward and the latter misleading, since the category in question is not countable and not a topos.
+	\end{remark}
+
+	Since $\Yy$ has countable colimits, the unit $\Yy \to \Ind_{\aleph_1}(\Yy)$ identifies $\Yy$ with the full subcategory $\Ind_{\aleph_1}(\Yy)^{\aleph_1}$ of $\aleph_1$-compact objects. We deduce the following characterization.
+
+	\begin{proposition}\label[proposition]{prop:Countably_Toposic_Characterization}
+		Let $\Yy$ be a small category with finite limits and countable colimits. The following are equivalent.
+		\begin{enumerate}
+			\item $\Yy$ is a countably toposic category.
+			\item The countable-colimit-preserving extension $\PSh(\Yy)^{\aleph_1} \to \Yy$ of the identity preserves finite limits.
+			\item There exist a small category $C$ with finite limits and countable colimits and a finite-limit-preserving, countable-colimit-preserving localization $\PSh(C)^{\aleph_1} \to \Yy$.
+			\item $\Yy$ satisfies the \emph{countable Giraud axioms}: countable colimits are universal, coproducts are disjoint, and groupoid objects are effective.
+		\end{enumerate}
+	\end{proposition}
+	\begin{proof}
+		$(1) \Rightarrow (2)$: If $\Yy$ is countably toposic then $\Ind_{\aleph_1}(\Yy)$ is a topos. Using $\Yy \simeq \Ind_{\aleph_1}(\Yy)^{\aleph_1}$ together with the finite limits of $\Yy$, we may apply \Cref{thm:Topos_Characterization}(2) with $\kappa = \aleph_1$: the colimit-preserving functor $\PSh(\Yy) \to \Ind_{\aleph_1}(\Yy)$ preserves finite limits. Restricting to $\aleph_1$-compact objects, which are closed under finite limits in both source and target by \Cref{prop:Kappa_Compact_Presheaves_Finite_Limits} and \Cref{thm:Topos_Characterization}(2), yields (2).
+
+		$(2) \Rightarrow (3)$: Take $C = \Yy$. The functor $\PSh(\Yy)^{\aleph_1} \to \Yy$ preserves countable colimits and finite limits, and it is a localization: its fully faithful right adjoint is induced by the Yoneda embedding $\Yy \hookrightarrow \PSh(\Yy)^{\aleph_1}$.
+
+		$(3) \Rightarrow (4)$: Let $L\colon \PSh(C)^{\aleph_1} \to \Yy$ be a left exact localization as in (3). First, $\PSh(C)^{\aleph_1}$ satisfies the countable Giraud axioms: indeed $\PSh(C) \simeq \Ind_{\aleph_1}(\PSh(C)^{\aleph_1})$ is a presheaf topos, hence satisfies the Giraud axioms, and these restrict to the $\aleph_1$-compact objects, which are closed under finite limits by \Cref{prop:Kappa_Compact_Presheaves_Finite_Limits}. It then suffices to know that the countable Giraud axioms are stable under left exact localizations, which is \Cref{lem:Countable_Giraud_Localization} below.
+
+		$(4) \Rightarrow (1)$: Since $\Ind_{\aleph_1}(\Yy)$ is presentable, by \Cref{thm:Topos_Characterization} it is enough to verify the Giraud axioms for $\Ind_{\aleph_1}(\Yy)$. Now $\Ind_{\aleph_1}(\Yy)$ is generated under $\aleph_1$-filtered colimits by $\Yy$, and finite limits commute with $\aleph_1$-filtered colimits; hence universality of colimits and disjointness of coproducts propagate from $\Yy$ to $\Ind_{\aleph_1}(\Yy)$. For effectivity of groupoid objects one uses in addition that $\simp\catop$ is countable, so that the canonical functor
+		\[
+			\Fun(\simp\catop, \Ind_{\aleph_1}(\Yy)) \to \Ind_{\aleph_1}\bigl(\Fun(\simp\catop, \Yy)\bigr)
+		\]
+		is an equivalence, while both the groupoid condition and the comparison with the Čech nerve are finite-limit conditions after passing to geometric realizations.
+	\end{proof}
+
+	\begin{lemma}\label[lemma]{lem:Countable_Giraud_Localization}
+		The countable Giraud axioms are stable under left exact localizations.
+	\end{lemma}
+	\begin{proof}
+		Let $L\colon \Xx \rightleftarrows \Yy \noloc \iota$ be a left exact localization, with $\Xx$ satisfying the countable Giraud axioms. Finite limits in $\Yy$ are computed in $\Xx$ through the fully faithful right adjoint $\iota$, while colimits in $\Yy$ are obtained by applying $L$ to the corresponding colimits in $\Xx$. Universality of countable colimits and disjointness of coproducts then transport from $\Xx$ to $\Yy$ exactly as in the localization step of the proof of \Cref{thm:Topos_Characterization}, using that $L$ is left exact and colimit-preserving and that $\iota$ is left exact and fully faithful. Effectivity of groupoid objects is preserved because $L$ carries groupoid objects to groupoid objects and commutes with the formation of Čech nerves and geometric realizations, while $\iota$ reflects equivalences.
+	\end{proof}
+
+	\section{The category of étale algebras as a topos}
+
+	We now prove that $(\StRing^{n\text{-}\et}_{A/})\catop$ is a countably toposic category, where $\StRing^{n\text{-}\et}_{A/} \subseteq \StRing_{A/}$ denotes the full subcategory on the $n$-\'etale algebras. We first record that this is a legitimate small category with finite limits.
+
+	\begin{remark}\label[remark]{rmk:Etale_Small_Finite_Colimits}
+		Let $A \in \StRing$ and $n \geq 0$.
+		\begin{enumerate}
+			\item $\StRing^{n\text{-}\et}_{A/}$ has finite colimits: the identity $A = A$ is $n$-\'etale, giving an initial object, and $n$-\'etale maps are stable under cobase change (\Cref{prop:Etale_Properties}(1)), giving pushouts.
+			\item $\StRing^{n\text{-}\et}_{A/}$ is essentially small. Indeed, if $A \to B$ is $n$-\'etale then it is $(n+1)$-proper (\Cref{prop:Ambidexterity_Stefanich_Rings}), and for $m \geq n+1$ ambidexterity identifies $(B/A)_m \simeq (B/A)^!_m$ as a dualizable object of $A_{m+1}$ (\Cref{prop:Ambidexterity_Stefanich_Rings} and \Cref{lem:Linear_Adjoint_Preserves_Dualizable}). Since the unit of $A_{m+1}$ is $\aleph_1$-compact, the dualizable objects are $\aleph_1$-compact and hence form an essentially small subcategory (cf.\ \Cref{chap:Compact_Objects}); as a Stefanich algebra under $A$ is determined by the sequence $((B/A)_m)_{m \geq n+1}$ via the identification $\StRing_{A/} \simeq \lim(\CAlg(A_1) \to \CAlg(A_2) \to \cdots)$, the $n$-\'etale $A$-algebras form an essentially small category.
+		\end{enumerate}
+		Consequently $C := (\StRing^{n\text{-}\et}_{A/})\catop$ is a small category with finite limits.
+	\end{remark}
+
+	The key technical input is the following. Let $C$ be a small category with finite limits, and suppose given an $\aleph_1$-accessible left exact localization $L\colon \PSh(C) \rightleftarrows \Shv(C) \noloc \iota$. (The notation is suggestive, but we do \emph{not} assume that $\Shv(C)$ is the category of sheaves for a Grothendieck topology.) Assume that $C$ is \emph{subcanonical}, meaning that the composite $C \xrightarrow{y} \PSh(C) \xrightarrow{L} \Shv(C)$ is fully faithful. Fix $A \in \StRing$ and let
+	\[
+		\Oo\colon C\catop \to \StRing^{n\text{-}\et}_{A/}
+	\]
+	be a finite-colimit-preserving functor which is a \emph{sheaf}, in the sense that its right Kan extension to $\PSh(C)$ inverts $L$-equivalences. Equivalently, the right Kan extension of $\Oo$ along $y\catop$ factors through a limit-preserving functor
+	\[
+		\Oo\colon \Shv(C)\catop \to \StRing_{A/}, \qquad \Oo(F) \simeq \lim_{(y(X) \to F) \in C_{/F}} \Oo(X),
+	\]
+	which exists since $\StRing_{A/}$ is presentable.
+
+	\begin{theorem}\label[theorem]{thm:Sheaf_Valued_In_Etale}
+		In the situation above, the functor $\Oo\colon (\Shv(C)^{\aleph_1})\catop \to \StRing_{A/}$ factors through $\StRing^{n\text{-}\et}_{A/}$, and it preserves finite colimits.
+	\end{theorem}
+
+	The proof occupies the rest of this section; we first deduce the main result.
+
+	\begin{theorem}\label[theorem]{thm:Etale_Countably_Toposic}
+		Let $A \in \StRing$ and $n \geq 0$. Then $(\StRing^{n\text{-}\et}_{A/})\catop$ is a countably toposic category.
+	\end{theorem}
+	\begin{proof}
+		By \Cref{rmk:Etale_Small_Finite_Colimits}, $C := (\StRing^{n\text{-}\et}_{A/})\catop$ is a small category with finite limits. Equip it with the trivial topology, so that $\PSh(C) = \Shv(C)$ and $C$ is trivially subcanonical, and apply \Cref{thm:Sheaf_Valued_In_Etale} to the identity sheaf $\Oo = \id\colon C\catop = \StRing^{n\text{-}\et}_{A/} \to \StRing^{n\text{-}\et}_{A/}$, which preserves finite colimits. We obtain a finite-colimit-preserving functor
+		\[
+			(\PSh(C)^{\aleph_1})\catop \to \StRing^{n\text{-}\et}_{A/}.
+		\]
+		Passing to opposite categories gives a functor
+		\[
+			\PSh(C)^{\aleph_1} \to (\StRing^{n\text{-}\et}_{A/})\catop = C
+		\]
+		which preserves finite limits and countable colimits and is a localization with fully faithful right adjoint the Yoneda embedding. By the equivalence $(2) \Leftrightarrow (1)$ of \Cref{prop:Countably_Toposic_Characterization}, $C$ is a countably toposic category.
+	\end{proof}
+
+	\begin{corollary}\label[corollary]{cor:Etale_Countable_Limits}
+		The full subcategory $\StRing^{n\text{-}\et}_{A/} \subseteq \StRing_{A/}$ is closed under countable limits.
+	\end{corollary}
+	\begin{proof}
+		By \Cref{thm:Etale_Countably_Toposic} the category $(\StRing^{n\text{-}\et}_{A/})\catop$ is countably toposic, hence in particular has countable colimits; equivalently, $\StRing^{n\text{-}\et}_{A/}$ has countable limits. That these agree with the limits computed in $\StRing_{A/}$ follows from \Cref{prop:Suave_Countable_Limits}(1): a countable limit of $n$-suave algebras formed in $\StRing_{A/}$ is again $n$-suave. The iterated codiagonals of such a limit are computed as countable limits of the corresponding codiagonals, using that base change preserves countable limits of suave algebras (\Cref{prop:Suave_Countable_Limits}(2)), and these are again $n$-suave, so the limit is $n$-\'etale.
+	\end{proof}
+
+	\begin{proof}[Proof of \Cref{thm:Sheaf_Valued_In_Etale}]
+		The ``preserves finite colimits'' assertion is immediate once the factorization is established: by construction $\Oo$ sends finite limits in $\Shv(C)^{\aleph_1}$ to finite colimits in $\StRing_{A/}$. So we must show that for every $\aleph_1$-compact $X \in \Shv(C)^{\aleph_1}$ the algebra $\Oo(X)$ is $n$-\'etale over $A$. Our strategy is to show:
+		\begin{itemize}
+			\item for every map $f\colon Y \to X$ in $\Shv(C)^{\aleph_1}$ the map $\Oo(f)\colon \Oo(X) \to \Oo(Y)$ is $n$-suave (Claim 1);
+			\item $\Oo$ satisfies a Künneth formula (Claim 2).
+		\end{itemize}
+		Granting both, the iterated codiagonals of $\Oo(f)$ are again of the form $\Oo(f')$: by Künneth they correspond to the diagonals $Y \to Y \times_X Y$, $Y \to Y \times_{(Y \times_X Y)} Y$, \dots, hence are $n$-suave by Claim 1. Thus $\Oo(f)$ is $n$-\'etale; taking $X$ to be the terminal object of $\Shv(C)^{\aleph_1}$, for which $\Oo(X) = \Oo(\ast) = A$, shows that $\Oo(Y)$ is $n$-\'etale over $A$.
+
+		\textbf{Claim 1.} \emph{For every map $f\colon Y \to X$ in $\Shv(C)^{\aleph_1}$, the map $\Oo(f)\colon \Oo(X) \to \Oo(Y)$ is $n$-suave.}
+
+		Suppose first that $X \in C$ is representable. Since $Y$ is $\aleph_1$-compact, in the slice $\Shv(C)^{\aleph_1}_{/X}$ it may be written as a countable colimit $Y \simeq \colim_{i \in I} Y_i$ of representables $Y_i \in C_{/X}$. As $\Oo$ sends countable colimits in $\Shv(C)$ to countable limits in $\StRing_{A/}$,
+		\[
+			\Oo(Y) \simeq \lim_{i \in I} \Oo(Y_i) \qin \StRing_{\Oo(X)/}.
+		\]
+		Each map $\Oo(X) \to \Oo(Y_i)$ arises from the map $Y_i \to X$ in $C$, hence is $n$-\'etale and in particular $n$-suave. By \Cref{prop:Suave_Countable_Limits}(1) the countable limit $\Oo(X) \to \Oo(Y)$ is again $n$-suave, with
+		\[
+			(\Oo(Y)/\Oo(X))^!_m \simeq \colim_{i \in I} (\Oo(Y_i)/\Oo(X))^!_m \qquad (m \geq n).
+		\]
+		Moreover, \Cref{prop:Suave_Countable_Limits}(2) shows that for a map $g\colon X' \to X$ of representables base change is compatible:
+		\[
+			\Oo(X') \otimes_{\Oo(X)} \Oo(Y) \simeq \Oo(X' \times_X Y), \qquad
+			\Oo(X') \otimes_{\Oo(X)} (\Oo(Y)/\Oo(X))^!_m \simeq (\Oo(X' \times_X Y)/\Oo(X'))^!_m.
+		\]
+
+		Now let $X \in \Shv(C)^{\aleph_1}$ be arbitrary. Here we cannot apply \Cref{prop:Suave_Countable_Limits} directly, since the base need not be representable; we argue by descent. For each map $g\colon X' \to X$ with $X' \in C$ representable, form the pullback $X' \times_X Y$, which is again $\aleph_1$-compact, since $\aleph_1$-compact sheaves are closed under finite limits (\Cref{cor:Kappa_Compact_Sheaves_Finite_Limits}). By the representable case the map $\Oo(X') \to \Oo(X' \times_X Y)$ is $n$-suave, with dualizing objects $(\Oo(X' \times_X Y)/\Oo(X'))^!_m \in \Oo(X')_{m+1}$ for $m \geq n$. For a further representable $X'' \to X' \to X$, the base-change compatibility above gives
+		\[
+			\Oo(X'') \otimes_{\Oo(X')} (\Oo(X' \times_X Y)/\Oo(X'))^!_m \simeq (\Oo(X'' \times_X Y)/\Oo(X''))^!_m,
+		\]
+		so the assignment $X' \mapsto (\Oo(X' \times_X Y)/\Oo(X'))^!_m$ is a descent datum for the sheaf $\Oo(-)_{m+1}$. As $\Oo$ is a sheaf, it descends to a cocommutative coalgebra object $B^!_m \in \Oo(X)_{m+1}$ with $g^*B^!_m \simeq (\Oo(X' \times_X Y)/\Oo(X'))^!_m$ for every representable $g\colon X' \to X$. The trick we use is to relate properties of $B^!_m$ to properties of the map $\Oo(X) \to \Oo(Y)$.
+
+		For $m \geq n+1$, the counit $(\Oo(X' \times_X Y)/\Oo(X'))^!_m \to \unit$ admits a right adjoint, since $\Oo(X') \to \Oo(X' \times_X Y)$ is $n$-suave. These right adjoints are compatible with base change, so the counit $h_{m-1,!}\colon B^!_m \to \unit$ admits a right adjoint in $\Oo(X)_{m+1}$. It follows that the induced map $\unit \to (B^!_m)^{\vee}$ on duals admits a \emph{left} adjoint. This dual may be computed as follows:
+		\begin{align*}
+			(B^!_m)^{\vee}
+			&\simeq \lim_{g\colon X' \to X} g_{m,*}\bigl((\Oo(X' \times_X Y)/\Oo(X'))^!_m\bigr)^{\vee} \\
+			& \simeq \lim_{g\colon X' \to X} g_{m,*}(\Oo(X' \times_X Y)/\Oo(X'))_m \\
+			& \simeq (\Oo(Y)/\Oo(X))_m,
+		\end{align*}
+		where we used $\bigl((B/A)^!_m\bigr)^{\vee} \simeq (B/A)_m$ for suave algebras and, in the last step, that $\Oo$ is a sheaf (so that $\Oo(Y) \simeq \lim_{g\colon X' \to X} \Oo(X' \times_X Y)$). This in particular shows that the map $(f/\Oo(X))^*_{m-1}\colon \unit \to (B^!_m)^{\vee} = (\Oo(Y)/\Oo(X))_m$ admits left adjoint
+		\[
+			(f/\Oo(X))_{m-1,\sharp}\colon (\Oo(Y)/\Oo(X))_m \to (\Oo(X)/\Oo(X))_m.
+		\]
+		We claim that the value at the unit is $B^!_{m-1}$, showing that $B^!_m \simeq (\Oo(Y)/\Oo(X))^!_m$. This concludes the proof, as we already know that $B^!_m \to \unit$ admits a right adjoint.
+
+		To see this, we claim \red{[reason currently unclear to me]} that we may alternatively compute it as the image of the unit under the composite
+		\[
+			\unit \xrightarrow{h^!_{m-1}} B^!_m \xrightarrow{h_{m-1,!}} \unit.
+		\]
+		By descent, this is
+		\[
+			h^!_{m-1}h_{m-1,!}\unit \simeq \lim_{g\colon X' \to X} g_{m-1}^!g_{m-1,!}\unit \simeq B^!_{m-1}.
+		\]
+		We conclude that $\Oo(X) \to \Oo(Y)$ is $n$-suave.
+
+		\textbf{Claim 2 (Künneth formula).} \emph{For every pullback square}
+		\[
+			\begin{tikzcd}
+				Y' \rar \dar & Y \dar \\
+				X' \rar & X
+			\end{tikzcd}
+		\]
+		\emph{in $\Shv(C)^{\aleph_1}$, the natural map $\Oo(X') \otimes_{\Oo(X)} \Oo(Y) \to \Oo(Y')$ is an equivalence in $\StRing_{A/}$.}
+
+		Set $Y' = X' \times_X Y$. Suppose first that $X' = S \in C$ is representable, with structure map $g\colon S \to X$. By Claim 1 and the construction of $B^!_m$, the dualizing objects of $\Oo(X) \to \Oo(Y)$ pull back along $g$ to $\Oo(S) \otimes_{\Oo(X)} (\Oo(Y)/\Oo(X))^!_m \simeq (\Oo(S \times_X Y)/\Oo(S))^!_m$. Since base change of an $n$-suave map is computed on dualizing objects (\Cref{prop:Suave_Properties}(1)), it follows that $\Oo(S) \otimes_{\Oo(X)} \Oo(Y) \simeq \Oo(S \times_X Y)$.
+
+		For general $X' \to X$, consider $\varphi\colon \Oo(X') \otimes_{\Oo(X)} \Oo(Y) \to \Oo(Y')$. We check that $\varphi$ is an equivalence after base change along every representable $S \to X'$. The source becomes
+		\[
+			\Oo(S) \otimes_{\Oo(X')}\bigl(\Oo(X') \otimes_{\Oo(X)} \Oo(Y)\bigr)
+			\simeq \Oo(S) \otimes_{\Oo(X)} \Oo(Y)
+			\simeq \Oo(S \times_X Y),
+		\]
+		while the target becomes
+		\[
+			\Oo(S) \otimes_{\Oo(X')} \Oo(Y')
+			\simeq \Oo(S \times_{X'} Y')
+			\simeq \Oo(S \times_X Y),
+		\]
+		both by the representable case (the second applied to $S \to X'$ and $Y' \to X'$); under these identifications $\varphi$ becomes the identity of $\Oo(S \times_X Y)$. Since $\Oo$ is a sheaf, equivalences of $\Oo(X')$-algebras may be detected after base change to representables over $X'$, so $\varphi$ is an equivalence. This proves the Künneth formula, and with it the theorem.
+	\end{proof}
+
+	\section{Gestalten}
+
+	\begin{definition}\label[definition]{def:Gestalten}
+		The category of \emph{Gestalten} is the opposite category $\Gest := \StRing\catop$. For $A \in \StRing$ we write $\Gest(A) \in \Gest$ for the corresponding Gestalt.
+	\end{definition}
+
+	Dualizing the properties of maps of Stefanich rings introduced in \Cref{chap:Properties_Of_Maps}, we obtain notions of \emph{$n$-affine}, \emph{$n$-prim}, \emph{$n$-proper}, \emph{$n$-suave}, and \emph{$n$-\'etale} map of Gestalten. In this language, \Cref{thm:Etale_Countably_Toposic} asserts that for every $A \in \StRing$ and $n \geq 0$ the category of $n$-\'etale Gestalten over $\Gest(A)$ is countably toposic.
+
+	\begin{corollary}\label[corollary]{cor:Etale_Descent_Properties}
+		Let $f\colon X \to Y$ be a map in $\Gest$, let $Y' \to Y$ be an effective epimorphism, and let $f'\colon X' = X \times_Y Y' \to Y'$ be the base change. Then $f$ has property $\Pp_n$ if and only if $f'$ does, where $\Pp_n$ is any of $n$-affine, $n$-prim, $n$-proper, $n$-suave, $n$-\'etale.
+	\end{corollary}
+	\begin{proof}[Proof sketch]
+		The ``only if'' direction is stability of each property under base change, established in \Cref{chap:Properties_Of_Maps}. The ``if'' direction is descent along the effective epimorphism $Y' \to Y$: the defining adjointability conditions for each $\Pp_n$ may be checked after pulling back along $Y' \to Y$, since $Y' \to Y$ is an effective epimorphism and the relevant relative objects satisfy descent, as in the descent argument of \Cref{thm:Sheaf_Valued_In_Etale}.
+	\end{proof}
 
 	\chapter{Examples}
 
