@@ -18,7 +18,12 @@
 
 	%	\newgeometry{top=1in,bottom=1in,left=1.5in,right=1.5in,headsep=1.5cm,marginparwidth=1.25in}
 	\newgeometry{left=1.3in,right=1.2in, top=3.8cm, headsep=1.3cm}
-	
+
+	\chapter*{Acknowledgments}
+	\addcontentsline{toc}{chapter}{Acknowledgments}
+
+	All mathematical material in these notes is taken from \citet{Scholze_Gestalten}, which is joint work with Stefanich. These notes are based on notes taken live during the talks, and we thank all participants of the seminar for their contributions. We also thank Peter Scholze for explaining the arguments in \Cref{chap:Compact_Objects} to us. Finally, we have made use of generative AI (mostly Claude Code) to turn the live notes into proper \LaTeX{}.
+
     \renewcommand{\chaptername}{Talk}
 
 	\begin{KeepFromToc}
@@ -2554,6 +2559,29 @@
 		the colimit being filtered, so that it is again computed in $\bbC(X_0, X_0)$ compatibly with the structure maps; the unit $\id \to F^R F$ is the inclusion of the initial index $i = 0$, for which $F_0 = \id_{X_0}$. Alternatively, one writes down the unit and counit of the adjunction explicitly and checks the triangle identities directly.
 	\end{proof}
 
+	The relative objects of $n$-prim maps satisfy a Künneth formula for tensor products over $A$:
+
+	\begin{lemma}[Künneth for prim maps]\label[lemma]{lem:Kunneth_Prim}
+		Let $f\colon A \to B$ and $g\colon A \to C$ be $n$-prim maps of Stefanich rings. Then
+		\[
+			(B \otimes_A C/A)_n \cong (B/A)_n \otimes_{A_{n+1}} (C/A)_n.
+		\]
+	\end{lemma}
+	\begin{proof}
+		Let $\pr\colon C \to B \otimes_A C$ be the cobase change of $f$ along $g$, so that $\pr \circ g\colon A \to B \otimes_A C$ is the structure map. By functoriality of the relative $*$-pushforward,
+		\[
+			(B \otimes_A C/A)_n = (\pr \circ g)_{n,*}(\unit) = g_{n,*}\bigl(\pr_{n,*}(\unit)\bigr) = g_{n,*}\bigl((B \otimes_A C/C)_n\bigr).
+		\]
+		Since $\pr$ is the cobase change of the $n$-prim map $f$ along $g$, \Cref{prop:Prim_Properties}(3) gives $(B \otimes_A C/C)_n \simeq g_n^*\bigl((B/A)_n\bigr)$, and therefore
+		\[
+			(B \otimes_A C/A)_n \simeq g_{n,*} g_n^*\bigl((B/A)_n\bigr).
+		\]
+		As $g$ is $n$-prim, the right adjoint $g_{n,*}$ satisfies the projection formula, so
+		\[
+			(B \otimes_A C/A)_n \simeq g_{n,*} g_n^*\bigl((B/A)_n\bigr) \simeq (B/A)_n \otimes_{A_{n+1}} g_{n,*}(\unit) = (B/A)_n \otimes_{A_{n+1}} (C/A)_n. \qedhere
+		\]
+	\end{proof}
+
 	\section{Proper maps}
 
 	Note that one missing feature of the previous proposition is that $n$-prim maps are not necessarily closed under diagonals.
@@ -2686,6 +2714,26 @@
 		each admit a right adjoint (the first since $g$ is $0$-suave, the second since $f$ is), hence so does their composite. Thus $h$ is $0$-suave.
 	\end{proof}
 
+	The dualizing objects of $n$-suave maps satisfy a Künneth formula, dual to \Cref{lem:Kunneth_Prim}.
+
+	\begin{lemma}[Künneth for suave maps]\label[lemma]{lem:Kunneth_Suave}
+		Let $f\colon A \to B$ and $g\colon A \to C$ be $n$-suave maps of Stefanich rings. Then
+		\[
+			(B \otimes_A C/A)^!_n \cong (B/A)^!_n \otimes_{A_{n+1}} (C/A)^!_n.
+		\]
+	\end{lemma}
+	\begin{proof}
+		Let $\pr\colon C \to B \otimes_A C$ be the cobase change of $f$ along $g$, so that $\pr \circ g\colon A \to B \otimes_A C$ is the structure map. By functoriality of the relative $\sharp$-pushforward,
+		\[
+			(B \otimes_A C/A)^!_n = (\pr \circ g)_{n,\sharp}(\unit) \simeq g_{n,\sharp}\bigl(\pr_{n,\sharp}(\unit)\bigr) = g_{n,\sharp}\bigl((B \otimes_A C/C)^!_n\bigr).
+		\]
+		Since $\pr$ is the cobase change of the $n$-suave map $f$ along $g$, \Cref{prop:Suave_Properties}(1) gives $(B \otimes_A C/C)^!_n \simeq g_n^*\bigl((B/A)^!_n\bigr)$, and therefore
+		\[
+			(B \otimes_A C/A)^!_n \simeq g_{n,\sharp} g_n^*\bigl((B/A)^!_n\bigr) \simeq (B/A)^!_n \otimes_{A_{n+1}} g_{n,\sharp}(\unit) = (B/A)^!_n \otimes_{A_{n+1}} (C/A)^!_n,
+		\]
+		using the projection formula for the left adjoint $g_{n,\sharp}$.
+	\end{proof}
+
 	\section{Étale maps}
 
 	\begin{definition}\label[definition]{def:N_Etale}
@@ -2776,6 +2824,7 @@
 	Throughout we freely use the relative objects $(B/A)_m$ and $(B/A)^!_m$ attached to a map $f\colon A \to B$ of Stefanich rings, together with the relative maps $(f/A)^*_m$, $(f/A)_{m,\sharp}$, $(f/A)_{m,!}$, etc., from \Cref{chap:Properties_Of_Maps}.
 
 	\section{Countable limits of étale algebras}
+	\label[section]{sec:Countable_Limits_Etale_Algebras}
 
 	Recall from \Cref{def:N_Suave,def:N_Etale} that, for $n \geq 0$, a map $f\colon A \to B$ is \emph{$n$-suave} if for each $m \geq n$ the relative map $(f/A)^*_m\colon \unit = (A/A)_{m+1} \to (B/A)_{m+1}$ admits a left adjoint $(f/A)_{m,\sharp}$ in $A_{m+2}$, whose value $(B/A)^!_m := (f/A)_{m,\sharp}(\unit)$ we call the relative \emph{dualizing object}, and if moreover the resulting counit $(f/A)_{m-1,!}\colon (B/A)^!_m \to (A/A)_m$ admits a right adjoint; and that $f$ is \emph{$n$-\'etale} if $f$ and all its iterated codiagonals are $n$-suave. By \Cref{prop:Suave_Properties,prop:Etale_Properties}, the $n$-suave and $n$-\'etale maps are stable under cobase change and composition, the dualizing objects satisfy the base-change formula
 	\[
@@ -2920,6 +2969,7 @@
 	\end{proof}
 
 	\section{The category of étale algebras as a topos}
+	\label[section]{sec:Etale_Algebras_Form_Topos}
 
 	We now prove that $(\StRing^{n\text{-}\et}_{A/})\catop$ is a countably toposic category, where $\StRing^{n\text{-}\et}_{A/} \subseteq \StRing_{A/}$ denotes the full subcategory on the $n$-\'etale algebras. We first record that this is a legitimate small category with finite limits.
 
@@ -3066,11 +3116,431 @@
 
 	\chapter{Examples}
 
-	\emph{Talk given by Divya.}
+	\emph{Talk given by Sil.} \\
 
-	\chapter{Descendability}
+	\textbf{[I missed this talk; notes will be updated some point in the future.]}
+
+	\chapter{Injections and surjections of Gestalten}
+	\label[chapter]{chap:Injections_Surjections_Gestalten}
 
 	\emph{Talk given by Shai.}
+
+	In this talk we cover the appendix to lecture VIII of \citet{Scholze_Gestalten}. The goal is to understand injective and surjective maps of Gestalten, and to relate surjectivity to Mathew's notion of \emph{descendability} \citep{Mathew_Galois,Mathew2018DescentNilpotence}.
+
+	Throughout, for $X \in \Gest$ we write $\Oo(X)_n \in \CAlg(n\Pr)$ for the $n$-th level of the corresponding Stefanich ring, and for a map $f\colon Y \to X$ of Gestalten we write $(\Oo(Y)/\Oo(X))_m$ and $(\Oo(Y)/\Oo(X))^!_m$, with transition maps $f^*_m, f_{m,*}, f_{m,\sharp}, f_{m,!}$, for the relative objects and maps of \Cref{chap:Properties_Of_Maps}, dualized along $\Gest = \StRing\catop$. Dualizing the fully faithful embedding $\CAlg(A_{n+1}) \hookrightarrow \StRing_{A/}$ of \Cref{def:N_Affine}, whose essential image is the $n$-affine objects, we write $A \mapsto \Gest_X(A)$ for the resulting equivalence
+	\[
+		\CAlg(\Oo(X)_{n+1}) \simeq \bigl(\Gest_X^{n\text{-affine}}\bigr)\catop,
+	\]
+	so that $\Gest_X(A) \to X$ is the $n$-affine Gestalt over $X$ corresponding to $A \in \CAlg(\Oo(X)_{n+1})$.
+
+	\section{Injections of Gestalten}
+
+	\begin{definition}\label[definition]{def:Injective_Gestalten}
+		A map $f\colon Y \to X$ of Gestalten is \emph{injective} if its diagonal $\Delta_f\colon Y \to Y \times_X Y$ is an isomorphism. Equivalently, the Čech nerve of $f$ is constant.
+	\end{definition}
+
+	\subsection{Closed immersions and idempotent algebras}
+
+	We first relate closed immersions to idempotent \emph{algebras}, via the relative algebras $(B/A)_m$ of an $n$-prim map (\Cref{def:N_Prim,def:N_Proper}).
+
+	\begin{proposition}\label[proposition]{prop:Injective_Prim_Idempotent_Algebras}
+		Let $f\colon Y \to X$ be an injective map of Gestalten. Then $f$ is $n$-prim if and only if it is $n$-proper. In this case $f$ is $n$-affine and the algebra $(\Oo(Y)/\Oo(X))_n$ is idempotent in $\Oo(X)_{n+1}$. This assignment defines an equivalence of posets
+		\[
+			\bigl\{\text{$n$-proper injections $Z \hookrightarrow X$}\bigr\} \;\longleftrightarrow\; \bigl\{\text{idempotent algebras in $\Oo(X)_{n+1}$}\bigr\}.
+		\]
+	\end{proposition}
+	\begin{proof}
+		As the diagonal of $f$ is an isomorphism, so are all its iterated diagonals, and isomorphisms are automatically $n$-prim; hence $n$-prim is equivalent to $n$-proper for injective maps. By \Cref{lem:Kunneth_Prim} and injectivity, the diagonal of $f$ induces an isomorphism
+		\[
+			(\Oo(Y)/\Oo(X))_n \otimes_{\Oo(X)_{n+1}} (\Oo(Y)/\Oo(X))_n \simeq (\Oo(Y \times_X Y)/\Oo(X))_n \iso (\Oo(Y)/\Oo(X))_n,
+		\]
+		exhibiting $(\Oo(Y)/\Oo(X))_n$ as an idempotent algebra. In particular, we see that the functor
+		\[
+			(\Oo(-)/\Oo(X))_n\colon \Gest_X\catop \to \CAlg(\Oo(X)_{n+1})
+		\]
+		carries $n$-proper injections to idempotent algebras. In the other direction, recall from \Cref{def:N_Affine} that this functor admits a fully faithful, symmetric monoidal left adjoint, which we will denote by
+		\[
+			\Gest_X(-)\colon \CAlg(\Oo(X)_{n+1}) \rightleftarrows \Gest_X\catop.
+		\]
+		Given an idempotent algebra $A$ in $\Oo(X)_{n+1}$, we show that the map $\Gest_X(A) \to X$ is an $n$-proper injection. Since $\Gest_X(-)$ is symmetric monoidal, it sends the codiagonal $A \otimes_{\Oo(X)_{n+1}} A \iso A$ of $A$ to the diagonal $\Gest_X(A) \to \Gest_X(A) \times_X \Gest_X(A)$, and so since $A$ is idempotent this is an isomorphism. This shows that $\Gest_X(A) \to X$ is an injection. Writing $A_m := (\Oo(\Gest_X(A))/\Oo(X))_m$ for $m \geq n$, each $A_m$ is idempotent and, by affineness, $\Oo(\Gest_X(A))_{m+1} = \Mod_{A_m}(\Oo(X)_{m+1})$. This gives an internal adjunction in $\Mod_{\Oo(X)_{m+1}}(1\Pr)$
+		\[
+			A_m \otimes -\colon \Oo(X)_{m+1} \to \Mod_{A_m}(\Oo(X)_{m+1}),
+		\]
+		whose right adjoint is fully faithful since $A_m$ is idempotent. Applying $\Mod_{\Oo(X)_{m+1}}(1\Pr) \to \Oo(X)_{m+2}$, we obtain an internal adjunction in $\Oo(X)_{m+2}$ of the form
+		\[
+			\unit \rightleftarrows (\Oo(\Gest_X(A))/\Oo(X))_{m+1}.
+		\]
+		As $m \geq n$ was arbitrary, $\Gest_X(A) \to X$ is an $n$-prim injection.
+		
+		We conclude that there is an adjunction of posets
+		\[
+			(\Oo(-)/\Oo(X))_n\colon \bigl\{\text{$n$-proper injections $Z \hookrightarrow X$}\bigr\} \;\leftrightarrows\; \bigl\{\text{idempotent algebras in $\Oo(X)_{n+1}$}\bigr\} \noloc \; \Gest_X(-).
+		\]
+		Since $\Gest_X(-)$ is fully faithful, the unit $A \iso (\Oo(\Gest_X(A))/\Oo(X))_n$ is an isomorphism. For the counit, let $Z \hookrightarrow X$ be an $n$-proper injection; we must show its $n$-affinization map $Z \to \Gest_X\bigl((\Oo(Z)/\Oo(X))_n\bigr)$ is an isomorphism. By cancellation properties, this map is again an $n$-proper injection, now with trivial relative level-$n$ algebra. It thus suffices to show that any $n$-proper injection $Z \to X$ satisfying $\unit \iso (\Oo(Z)/\Oo(X))_n \simeq \unit$ is an isomorphism.
+
+		So let $i\colon Z \hookrightarrow X$ be an $n$-proper injection with $\unit \iso (\Oo(Z)/\Oo(X))_n$. We prove by induction on $m \geq n$ that $\unit \iso (\Oo(Z)/\Oo(X))_m$; the case $m = n$ is the hypothesis. Assume the claim for $m - 1$. By assumption on $i$, the map $i_m^*\colon \unit_X \to (\Oo(Z)/\Oo(X))_m$ has an internal right adjoint $i_{m,*}$ in $\Oo(X)_{m+1}$, and by the inductive hypothesis the unit of this adjunction, $\unit \to (\Oo(Z)/\Oo(X))_{m-1}$, is an isomorphism in $\End_{\Oo(X)_{m+1}}(\unit) = \Oo(X)_m$. Hence $i_m^*$ is a colocalization with $i_{m,*} i_m^* \simeq \id$, so $\unit$ is a retract of $(\Oo(Z)/\Oo(X))_m$; consequently the map $\unit \to (\Oo(Z)/\Oo(X))_m$ is a retract of the isomorphism
+		\[
+			(\Oo(Z)/\Oo(X))_m \iso (\Oo(Z)/\Oo(X))_m \otimes (\Oo(Z)/\Oo(X))_m,
+		\]
+		hence is itself an isomorphism. This completes the induction and the proof.
+	\end{proof}
+
+	\begin{definition}\label[definition]{def:Closed_Immersion}
+		A map of Gestalten is a \emph{closed immersion} if it is a $0$-prim injection. By \Cref{prop:Injective_Prim_Idempotent_Algebras}, closed immersions $Z \hookrightarrow X$ are classified by idempotent algebras in $\Oo(X)_1$.
+	\end{definition}
+
+	\begin{example}\label[example]{ex:Closed_Immersion_Zp}
+		The idempotent algebra $\Z[\tfrac{1}{p}] \in \D(\Z)$ corresponds to a \emph{closed} immersion $\Gest(\Z[\tfrac{1}{p}]) \hookrightarrow \Gest(\Z)$.
+	\end{example}
+
+	\subsection{Open immersions and idempotent coalgebras}
+
+	We now dualize the previous subsection, relating open immersions to idempotent \emph{coalgebras}. Recall from \Cref{def:N_Suave,def:N_Etale} that an $n$-suave map $f\colon A \to B$ comes with dualizing objects $(B/A)^!_m := f_{m,\sharp}(\unit)$, built from the left adjoints $f_{m,\sharp}$ of its structure maps, and that $f$ is \emph{$n$-étale} if all its codiagonals are $n$-suave. Since $f_{m,\sharp}$ is left adjoint to a symmetric monoidal functor $f^*_m$, it is automatically oplax symmetric monoidal. Consequently, $(B/A)^!_m$ is a cocommutative coalgebra in $A_{m+1}$, whose (weak) dual is the algebra $(B/A)_m$; the counit $f_{m-1,!}\colon (B/A)^!_m \to \unit$ similarly dualizes to the unit $f^*_{m-1}$ of $(B/A)_m$.
+
+	\begin{proposition}\label[proposition]{prop:Suave_Etale_Idempotent_Coalgebras}
+		Let $f\colon Y \to X$ be an injective map of Gestalten. Then $f$ is $n$-suave if and only if it is $n$-étale. In this case $(\Oo(Y)/\Oo(X))^!_n$ is an idempotent coalgebra in $\Oo(X)_{n+1}$, and this assignment defines a bijection of posets
+		\[
+			\bigl\{\text{$n$-étale injections $U \hookrightarrow X$}\bigr\} \;\longleftrightarrow\; \bigl\{\text{idempotent coalgebras in $\Oo(X)_{n+1}$}\bigr\},
+		\]
+		whose inverse sends $C$ to $\Gest_X\bigl(\coMod_C(\Oo(X)_{n+1})\bigr)$.
+	\end{proposition}
+	\begin{proof}
+		As $\Delta_f$ is an isomorphism, all iterated diagonals of $f$ are isomorphisms, and isomorphisms are $n$-suave; so $n$-suave is equivalent to $n$-étale for injective maps.
+
+		Assume $f$ is $n$-suave. By injectivity, we have $Y \iso Y \times_X Y$, and so by the Künneth formula for dualizing objects from \Cref{lem:Kunneth_Suave} we get an isomorphism
+		\[
+			(\Oo(Y)/\Oo(X))^!_n \otimes_{\Oo(X)_{n+1}} (\Oo(Y)/\Oo(X))^!_n \simeq (\Oo(Y \times_X Y)/\Oo(X))^!_n \iso (\Oo(Y)/\Oo(X))^!_n,
+		\]
+		exhibiting $(\Oo(Y)/\Oo(X))^!_n$ as an idempotent coalgebra.
+
+		Conversely, let $C$ be an idempotent coalgebra in $\Oo(X)_{n+1}$. Its comodules form a full subcategory
+		\[
+			\iota\colon \coMod_C(\Oo(X)_{n+1}) \hookrightarrow \Oo(X)_{n+1},
+		\]
+		on which the cofree functor $- \otimes C$ is a symmetric monoidal right adjoint to $\iota$, exhibiting $\coMod_C(\Oo(X)_{n+1})$ as a smashing colocalization of $\Oo(X)_{n+1}$. Through the structure map $-\otimes C$ this is a commutative algebra in $\Oo(X)_{n+2}$, and so determines an $(n+1)$-affine Gestalt
+		\[
+			U := \Gest_X\bigl(\coMod_C(\Oo(X)_{n+1})\bigr).
+		\]
+		We claim $U \to X$ is the desired $n$-étale injection, with $(\Oo(U)/\Oo(X))^!_n = C$.
+
+		First, $U \to X$ is an injection. Under the symmetric monoidal equivalence $\CAlg(\Oo(X)_{n+2}) \simeq \bigl(\Gest_X^{(n+1)\text{-affine}}\bigr)\catop$, its diagonal corresponds to the codiagonal of the algebra $\coMod_C(\Oo(X)_{n+1})$ in $\Oo(X)_{n+2}$. Since
+		\[
+			\coMod_C(\Oo(X)_{n+1}) \otimes_{\Oo(X)_{n+1}} \coMod_C(\Oo(X)_{n+1}) \simeq \coMod_{C \otimes_{\Oo(X)_{n+1}} C}(\Oo(X)_{n+1}),
+		\]
+		this codiagonal is the functor induced by the comultiplication $C \to C \otimes_{\Oo(X)_{n+1}} C$, an isomorphism as $C$ is idempotent; hence the codiagonal is an isomorphism and $U \to X$ is an injection.
+
+		It remains to show that $U \to X$ is $n$-suave; being an injection, it is then $n$-étale. The idea is to realize each level of $U$ as comodules over a canonical idempotent coalgebra, bootstrapping up from $C$.
+
+		We use two facts about the smashing colocalization $\coMod_D(\Vv)$ of an idempotent coalgebra $D$ in a category $\Vv \in \CAlg(1\Pr)$. First, these colocalizations tensor as
+		\[
+			\coMod_D(\Vv) \otimes_\Vv \coMod_{D'}(\Vv) \simeq \coMod_{D \otimes_\Vv D'}(\Vv).
+		\]
+		Second, regarded as an object of $\Mod_\Vv(1\Pr)$, the category $W := \coMod_D(\Vv)$ is a \emph{smashing idempotent}: it is an idempotent algebra, with unit the cofree functor $- \otimes D\colon \Vv \to W$ and multiplication $W \otimes_\Vv W \simeq \coMod_{D \otimes_\Vv D}(\Vv) \to W$ induced by the invertible comultiplication of $D$; and it is an idempotent coalgebra, with counit $\iota$, since a smashing colocalization of $\Vv$ is the same datum as an idempotent coalgebra in $\Mod_\Vv(1\Pr)$. As multiplication and comultiplication on $W$ are then mutually inverse, the $W$-modules and the $W$-comodules in $\Mod_\Vv(1\Pr)$ coincide, both being the $W$-local objects:
+		\[
+			\Mod_W\bigl(\Mod_\Vv(1\Pr)\bigr) = \coMod_W\bigl(\Mod_\Vv(1\Pr)\bigr).
+		\]
+
+		Now define idempotent coalgebras recursively by $C_n := C$ and
+		\[
+			C_{m+1} := \coMod_{C_m}(\Oo(X)_{m+1}) \qin \Oo(X)_{m+2},
+		\]
+		each one an idempotent coalgebra by the smashing-idempotent structure just described (taken with $\Vv = \Oo(X)_{m+1}$ and $D = C_m$). We show by induction that
+		\[
+			\Oo(U)_{m+1} = \coMod_{C_m}(\Oo(X)_{m+1}) \qquad (m \geq n).
+		\]
+		The base case $m = n$ is the construction of $U$. For the induction step, $(n+1)$-affineness gives $\Oo(U)_{m+2} = \Mod_{(\Oo(U)/\Oo(X))_{m+1}}(\Oo(X)_{m+2})$, and by the inductive hypothesis the relative algebra $(\Oo(U)/\Oo(X))_{m+1}$ is $\coMod_{C_m}(\Oo(X)_{m+1}) = C_{m+1}$; the identity $\Mod_{C_{m+1}} = \coMod_{C_{m+1}}$ above then turns the modules into comodules,
+		\[
+			\Oo(U)_{m+2} = \Mod_{C_{m+1}}(\Oo(X)_{m+2}) = \coMod_{C_{m+1}}(\Oo(X)_{m+2}),
+		\]
+		completing the induction.
+
+		At each level $m \geq n$ the structure map $f^*_m\colon \unit \to (\Oo(U)/\Oo(X))_{m+1} = \coMod_{C_m}(\Oo(X)_{m+1})$ is the cofree functor $- \otimes C_m$, whose left adjoint in $\Oo(X)_{m+2}$ is the inclusion $\iota_m$; this is the required left adjoint $f_{m,\sharp}$, and $(\Oo(U)/\Oo(X))^!_m = \iota_m(\unit) = C_m$. The same smashing-idempotent structure provides the right adjoint to each counit $f_{m-1,!}$, so both conditions of \Cref{def:N_Suave} hold and $U \to X$ is $n$-suave. In particular $(\Oo(U)/\Oo(X))^!_n = C_n = C$, as claimed.
+
+		It remains to recover an $n$-étale injection $U \hookrightarrow X$ from its dualizing coalgebra $C := (\Oo(U)/\Oo(X))^!_n$. The injection $U \to X$ factors through its $(n+1)$-affinization $U \to \Gest_X\bigl(\coMod_C(\Oo(X)_{n+1})\bigr)$, again an $n$-étale injection, now with trivial dualizing coalgebra; replacing $X$ by this Gestalt, it suffices to show that an $n$-étale injection $U \to X$ with $(\Oo(U)/\Oo(X))^!_n \simeq \unit_X$ is an isomorphism. We show by induction that $(\Oo(U)/\Oo(X))^!_m \simeq \unit_X$ for all $m \geq n$. Assume the claim for $m$. As $j\colon U \to X$ is $n$-suave, the map $j_{m,!}\colon (\Oo(U)/\Oo(X))^!_{m+1} \to \unit_X$ admits a right adjoint $j^!_m$ in $\Oo(X)_{m+2}$, and the composite
+		\[
+			\unit \xrightarrow{j^!_m} (\Oo(U)/\Oo(X))^!_{m+1} \xrightarrow{j_{m,!}} \unit_X
+		\]
+		is, as an object of $\End_{\Oo(X)_{m+2}}(\unit) = \Oo(X)_{m+1}$, given by $(\Oo(U)/\Oo(X))^!_m$, while the counit of the adjunction is the isomorphism $j_{m-1,!}\colon (\Oo(U)/\Oo(X))^!_m \iso \unit_X$ furnished by the inductive hypothesis. So $j_{m,!}$ is a localization with $j_{m,!} \circ j^!_m \simeq \id$, exhibiting $\unit$ as a retract of the idempotent $(\Oo(U)/\Oo(X))^!_{m+1}$. Hence the counit $j_{m,!}\colon (\Oo(U)/\Oo(X))^!_{m+1} \to \unit_X$ is a retract of the multiplication map $(\Oo(U)/\Oo(X))^!_{m+1} \otimes_{\Oo(X)_{m+2}} (\Oo(U)/\Oo(X))^!_{m+1} \to (\Oo(U)/\Oo(X))^!_{m+1}$, which is an isomorphism since $(\Oo(U)/\Oo(X))^!_{m+1}$ is idempotent. It follows that $j_{m,!}$ is itself an isomorphism, completing the induction.
+	\end{proof}
+
+	\begin{definition}\label[definition]{def:Open_Immersion}
+		A map of Gestalten is an \emph{open immersion} if it is a $0$-étale injection. By \Cref{prop:Suave_Etale_Idempotent_Coalgebras}, open immersions $U \hookrightarrow X$ are classified by idempotent coalgebras in $\Oo(X)_1$.
+	\end{definition}
+
+	\section{Complements}
+
+	\begin{definition}\label[definition]{def:Complement_Gestalten}
+		Let $f\colon Y \to X$ be a map of Gestalten. Its \emph{complement} is the subpresheaf $X \setminus Y$ of $\Hom_{\Gest}(-,X)$ given by
+		\[
+			(X \setminus Y)(S) = \{S \to X \mid S \times_X Y = \emptyset\}.
+		\]
+		If this presheaf is representable by some $Z \to X$, we call $Z$ the complement of $Y$ in $X$.
+	\end{definition}
+
+	\begin{remark}
+		In general $X \setminus Y$ need not be representable. If $f$ lies in $\Gest^{n\text{-ét}}$ for some $n$, then by topos-theoretic arguments $X \setminus Y$ is representable.
+	\end{remark}
+
+	\begin{proposition}\label[proposition]{prop:Complement_Construction}
+		Let $j\colon U \hookrightarrow X$ be an $n$-étale injection, corresponding to the idempotent coalgebra $C := (\Oo(U)/\Oo(X))^!_n$ in $\Oo(X)_{n+1}$, and let
+		\[
+			A := \cofib(C \to \unit) \qin \Oo(X)_{n+1}.
+		\]
+		Then $A$ is an idempotent algebra, and $\Gest_X(A) \hookrightarrow X$ is the complement of $U$.
+	\end{proposition}
+	\begin{proof}
+		Since the tensor product preserves cofibers in each variable, idempotency of $C$ gives
+		\[
+			A \otimes C = \cofib(C \otimes C \to C) = 0, \qquad\text{whence}\qquad A \otimes A = \cofib(A \otimes C \to A) = \cofib(0 \to A) = A,
+		\]
+		so $A$ is an idempotent algebra, complementary to $C$: the sequence $C \to \unit \to A$ is a cofiber sequence with $A \otimes C = 0$.
+
+		Let $g\colon S \to X$ be a map. On one side, $S \times_X U \hookrightarrow S$ is the $n$-étale injection over $S$ with dualizing coalgebra $(\Oo(S \times_X U)/\Oo(S))^!_n = g_n^*(C)$, so $S \times_X U$ is empty if and only if $g_n^*(C) = 0$. On the other, $S \times_X \Gest_X(A) \hookrightarrow S$ is the closed immersion over $S$ with idempotent algebra $(\Oo(S \times_X \Gest_X(A))/\Oo(S))_n = g_n^*(A)$, so $g$ factors through $\Gest_X(A) \hookrightarrow X$ if and only if $g_n^*(A) \simeq \unit$.
+
+		Applying $g_n^*$ to the cofiber sequence $C \to \unit \to A$ yields a complementary pair $g_n^*(C), g_n^*(A)$ in $\Oo(S)_{n+1}$, again with $g_n^*(A) = \cofib(g_n^*(C) \to \unit)$ and $g_n^*(C) \otimes g_n^*(A) = 0$. For such a pair one member vanishes precisely when the other is the unit: if $g_n^*(C) = 0$ then $g_n^*(A) = \cofib(0 \to \unit) = \unit$, and if $g_n^*(A) = \unit$ then $g_n^*(C) = g_n^*(C) \otimes g_n^*(A) = g_n^*(C \otimes A) = 0$. Hence $g$ factors through $\Gest_X(A)$ if and only if $S \times_X U = \emptyset$; that is, $\Gest_X(A)$ represents the complement $X \setminus U$.
+	\end{proof}
+
+	\begin{remark}
+		If instead one is given an $n$-proper injection $i\colon Z \hookrightarrow X$, one regards $i$ as $(n+1)$-étale by ambidexterity (\Cref{prop:Ambidexterity_Stefanich_Rings}) and applies \Cref{prop:Complement_Construction} one level higher to obtain its complement.
+	\end{remark}
+
+	\begin{warning}
+		The passage $C \mapsto A = \cofib(C \to \unit)$ is not reversible when $\Oo(X)_{n+1}$ is not stable\footnote{Note that stability can only happen for $n = 0$.}: it may happen that $A = 0$ even though $C \to \unit$ is not an isomorphism. So an open immersion can have empty closed complement without being everything.
+	\end{warning}
+
+	\begin{corollary}\label[corollary]{cor:Complement_Open_Closed}
+		The complement of an open immersion always yields a closed immersion. The converse holds in Gestalten over $\Spec(\S)$. \qed
+	\end{corollary}
+
+	\begin{corollary}
+		Consider a 1-presentable stable category category $E \in 1\Pr_{\st}$. Then there are (possibly order-reversing) bijections between the following four posets:
+		\begin{enumerate}
+			\item Closed immersions $Z \hookrightarrow \Gest_{\S}(E)$;
+			\item Idempotent algebras $A$ in $E$;
+			\item Open immersions $U \hookrightarrow \Gest_{\S}(E)$;
+			\item Idempotent coalgebras $C$ in $E$. \qednow
+		\end{enumerate} 
+	\end{corollary}
+
+	\begin{example}\label[example]{ex:Complement_Zp}
+		The map $\Gest(\Z[\tfrac{1}{p}]) \to \Gest(\Z)$ of \Cref{ex:Closed_Immersion_Zp} is a closed immersion, given by the idempotent algebra $\Z[\tfrac{1}{p}] \in \D(\Z)$. As $\D(\Z)$ is stable, its complement is the open immersion given by the complementary idempotent coalgebra $C := \fib(\Z \to \Z[\tfrac{1}{p}]) \simeq (\Z[\tfrac{1}{p}]/\Z)[-1]$, the Gestalt corresponding to
+		\[
+			\coMod_C(\D(\Z)) = \{M \mid M \otimes \Z[\tfrac{1}{p}] = 0\} \xrightarrow[\sim]{M \mapsto M^{\wedge}_p} \D(\Z)^{\wedge}_p.
+		\]
+		The two immersions assemble into the arithmetic fracture recollement of $\D(\Z)$: 
+		\[
+			\begin{tikzcd}[column sep=5em]
+				\D(\Z[\tfrac{1}{p}]) \arrow[r, hook] \arrow[r, bend left, leftarrow, "{(-)[1/p]}", shift left] & \D(\Z) \arrow[l, bend left, shift left] \arrow[r, "C \otimes -"] \arrow[r, hookleftarrow,bend left, shift left] \arrow[r, hookleftarrow,bend right, shift right, "M \mapsto M^{\wedge}_p"] & \coMod_C(\D(\Z)).
+			\end{tikzcd}
+		\]
+		Tensoring the cofiber sequence $C \to \unit \to \Z[\tfrac{1}{p}]$ with $M$ recovers the fracture fiber sequence
+		\[
+			C \otimes M \to M \to M[\tfrac{1}{p}].
+		\]
+	\end{example}
+
+	\section{Surjections of Gestalten}
+	\label[section]{sec:Surjections_Of_Gestalten}
+
+	We will now introduce the dual notion of a \emph{surjection} of Gestalten. Even though the category $\Gest$ as a whole is not a topos, the suave surjections of Gestalten will admit a behavior similar to that of effective epimorphisms in a topos.
+
+	\begin{definition}\label[definition]{def:Surjective_Gestalten}
+		A map $g\colon Y \to X$ of Gestalten is \emph{surjective}, or a \emph{cover}, if the map
+		\[
+			\im(g) := \colim_{[m] \in \simp\catop} Y^{\times_X(m+1)} \to X
+		\]
+		is an isomorphism.
+	\end{definition}
+
+	\begin{remark}
+		Assume that $g$ is $n$-étale, so that it is a morphism in the countably toposic category $\Gest^{n\text{-ét}}_{/X}$ of \Cref{thm:Etale_Countably_Toposic}. Then $g$ is surjective precisely when it is a cover in the sense of topos theory.
+	\end{remark}
+
+	\begin{lemma}
+		\label[lemma]{lem:Pullback_Along_Surjection_Convervative}
+		Let $f\colon Y \to X$ be an $n$-suave surjection of Gestalten. Then the pullback functor $f^*\colon \Gest_{/X} \to \Gest_{/Y}$ is conservative.
+	\end{lemma}
+	\begin{proof}
+		Let $\phi\colon A \to B$ be a morphism over $X$ such that $f^*\phi\colon A \times_X Y \to B \times_X Y$ is an isomorphism over $Y$; we must show $\phi$ is an isomorphism. Since $f$ is surjective, $\colim_{[m] \in \simp\catop} Y^{\times_X(m+1)} \simeq X$. Each map $Y^{\times_X(m+1)} \to X$ is $n$-suave by iterated base change, so \Cref{prop:Suave_Countable_Limits}(2) gives, for any $T \to X$,
+		\[
+			T \times_X \colim_{[m]} Y^{\times_X(m+1)} \simeq \colim_{[m]} (T \times_X Y)^{\times_Y(m+1)}.
+		\]
+		Applying this with $T = A$ and using surjectivity of $f$:
+		\[
+			A \simeq A \times_X \colim_{[m]} Y^{\times_X(m+1)} \simeq \colim_{[m]} (A \times_X Y)^{\times_Y(m+1)},
+		\]
+		and likewise $B \simeq \colim_{[m]} (B \times_X Y)^{\times_Y(m+1)}$. Since $A \times_X Y \simeq B \times_X Y$ over $Y$, taking iterated fiber products over $Y$ gives $(A \times_X Y)^{\times_Y(m+1)} \simeq (B \times_X Y)^{\times_Y(m+1)}$ for all $m \geq 0$. Taking colimits, $\phi$ induces an equivalence $A \simeq B$ over $X$.
+	\end{proof}
+
+	\begin{lemma}\label[lemma]{lem:Image_Suave_Injection}
+		Let $f\colon Y \to X$ be an $n$-suave map of Gestalten. Then the image $U := \colim_{[m] \in \simp\catop} Y^{\times_X(m+1)}$ is an $n$-suave injection $U \hookrightarrow X$.
+	\end{lemma}
+	\begin{proof}
+		By base change and stability under colimits, each $Y^{\times_X(m+1)} \to X$ is $n$-suave, hence so is $U \to X$. It remains to show $U \to X$ is a monomorphism, i.e.\ that the diagonal $U \to U \times_X U$ is an isomorphism, or equivalently that the first projection $U \times_X U \to U$ is an isomorphism.
+
+		It will suffice to show that the projection $Y \times_X U \to Y$ is an isomorphism. By \Cref{prop:Suave_Countable_Limits}(2), base change along $Y \to X$ commutes with the colimit of the $n$-suave diagram $[m] \mapsto Y^{\times_X(m+1)}$, giving
+		\[
+			Y \times_X U \simeq \colim_{[m]} Y^{\times_X(m+2)}.
+		\]
+		The simplicial object $[m] \mapsto Y^{\times_X(m+2)}$ carries extra degeneracies $s_{-1}\colon Y^{\times_X(m+2)} \to Y^{\times_X(m+3)}$ given by inserting a copy of $Y$ at position $0$ via the diagonal $\Delta\colon Y \to Y \times_X Y$. These make it a split augmented simplicial object with augmentation $Y$ (via the first projection), so $Y \times_X U \simeq \colim_{[m]} Y^{\times_X(m+2)} \iso Y$.
+	\end{proof}
+
+	\begin{proposition}\label[proposition]{prop:Epi_Mono_Factorization_Suave}
+		Every $n$-suave map $f\colon Y \to X$ of Gestalten admits a (necessarily unique) factorization
+		\[
+			Y \twoheadrightarrow U \hookrightarrow X
+		\]
+		into an $n$-suave surjection followed by an $n$-suave injection.
+	\end{proposition}
+	\begin{proof}
+		The factorization is provided by \Cref{lem:Image_Suave_Injection}: set $U := \colim_{[m] \in \simp\catop} Y^{\times_X(m+1)}$, so that $U \hookrightarrow X$ is an $n$-suave injection by that lemma, and $Y \to U$ is an $n$-suave surjection by definition. For uniqueness, any factorization $Y \twoheadrightarrow V \hookrightarrow X$ with $V \to X$ a monomorphism gives $Y^{\times_V(m+1)} \simeq Y^{\times_X(m+1)}$ for all $m$, hence $V \simeq \colim_{[m]} Y^{\times_V(m+1)} \simeq U$.
+	\end{proof}
+
+	\begin{proposition}\label[proposition]{prop:Surjective_Criteria}
+		Let $f\colon Y \to X$ be an $n$-suave map of Gestalten. The following are equivalent.
+		\begin{enumerate}
+			\item $f$ is surjective.
+			\item The map $\colim_{[m]} (\Oo(Y^{\times_X(m+1)})/\Oo(X))^!_n \to \unit$ is an isomorphism.
+			\item The map $\colim_{[m]} \bigl((\Oo(Y)/\Oo(X))^!_n\bigr)^{\otimes(m+1)} \to \unit$ is an isomorphism.
+			\item The pullback functor $f_n^*\colon \Oo(X)_{n+1} \to \Oo(Y)_{n+1}$ is conservative.
+		\end{enumerate}
+	\end{proposition}
+	\begin{proof}
+		(1) $\Leftrightarrow$ (2): Consider the epi-mono factorization $Y \twoheadrightarrow U \hookrightarrow X$ of $f$ from \Cref{prop:Surjective_Criteria}. Then $f$ is surjective if and only if $U \to X$ is an isomorphism. Since this map is an $n$-suave injection, hence $n$-affine by \Cref{prop:Suave_Etale_Idempotent_Coalgebras}, it is an isomorphism if and only if it induces an isomorphism on $(\Oo(-)/\Oo(X))_n$, which is condition (2).
+
+		(2) $\Leftrightarrow$ (3) is \Cref{lem:Kunneth_Suave}.
+
+		(1) $\Rightarrow$ (4): By \Cref{lem:Pullback_Along_Surjection_Convervative}, the pullback functor $f^*\colon \Gest_{/X} \to \Gest_{/Y}$ is conservative. Since $n$-affine objects of $\Gest_{/X}$ correspond, via \Cref{prop:Suave_Etale_Idempotent_Coalgebras}, to objects of $\Oo(X)_{n+1}$, and $f^*$ restricts to $f_n^*$ on these, condition~(4) follows.
+
+		(4) $\Rightarrow$ (3): it suffices to check the map of (3) becomes an isomorphism after base change to $\Oo(Y)_{n+1}$. But then the projection $Y \otimes_X Y \to Y$ is split by the diagonal, so the colimit system acquires extra degeneracies and is therefore already a colimit diagram.
+	\end{proof}
+
+	For $n = 0$ these conditions are easy to check directly. For higher $n$ one instead wants a criterion phrased in terms of \emph{generation}: being a cover is closely related to the functor
+	\[
+		f_{n-1,!}\colon \Hom_{\Oo(X)_{n+1}}\bigl(\unit,(\Oo(Y)/\Oo(X))^!_n\bigr) \to \Oo(X)_n
+	\]
+	generating the target quickly. If $f$ is in addition $(n-1)$-proper, the source identifies with $\Oo(Y)_n$ and the displayed functor with $f_{n-1,*}\colon \Oo(Y)_n \to \Oo(X)_n$.
+
+	We record the following $2$-categorical lemma, a special case of the condensation formalism of \citet{GaiottoJohnsonFreyd2019Condensations}.
+
+	\begin{lemma}[Gaiotto--Johnson-Freyd]\label[lemma]{lem:Gaiotto_Johnson_Freyd}
+		Let $\bbC \in 2\Pr$, let $X, Y \in \bbC$, and suppose there are maps $F\colon Y \to X$ and $G\colon X \to Y$ such that $\id_Y$ is a retract of $GF$ in $\End_{\bbC}(Y)$. Then $Y$ lies in the $1\Pr$-linear subcategory of $\bbC$ generated by $X$.
+	\end{lemma}
+	\begin{proof}
+		We may replace $\bbC$ by the $1\Pr$-linear subcategory atomically generated by $X$ and $Y$, so that $X$ is atomic in $\bbC$. Let $i\colon \bbC_X \subset \bbC$ be the subcategory generated by $X$; it admits a linear right adjoint $i^R\colon \bbC \to \bbC_X$, and we set $Y' := i^R(Y) \in \bbC_X$, regarded also as an object of $\bbC$ via $i$. There is a comparison map $H\colon Y' \to Y$, which we must show is an isomorphism. Applying $i^R$ to $F$ and $G$, the object $Y'$ inherits maps $F'\colon Y' \to X$ and $G'\colon X \to Y'$ such that $\id_{Y'}$ is a retract of $G'F'$.
+
+		By the Yoneda embedding we may assume $\bbC = 1\Pr$, so that $X, Y, Y'$ are presentable categories and $H\colon Y' \to Y$ is a functor we must show is an equivalence. Every object $y \in Y$ is a retract
+		\[
+			y \to GF(y) = H(G'F(y)) \to y,
+		\]
+		so every object of $Y$ is a retract of an object in the image of $H$, and it suffices to show $H$ is fully faithful. We first check this on the image of $G'$. For $x_1, x_2 \in X$, the composite
+		\[
+			\Map_Y(Gx_1,Gx_2) \xrightarrow{F} \Map_X(FGx_1,FGx_2) \xrightarrow{G} \Map_Y(GFGx_1,GFGx_2) \to \Map_Y(Gx_1,Gx_2),
+		\]
+		where the last map uses the two structure maps of the retraction $\id_Y \Rightarrow GF \Rightarrow \id_Y$, is the identity, so $\Map_Y(Gx_1,Gx_2)$ is exhibited as a retract of $\Map_X(FGx_1,FGx_2)$. Likewise $\Map_{Y'}(G'x_1,G'x_2)$ is a retract of $\Map_X(F'G'x_1,F'G'x_2)$. Since $F'G' = FG$, these are retracts of the same anima $\Map_X(FGx_1,FGx_2)$, compatibly with $H$ (which intertwines $G$ with $G'$ and $F$ with $F'$), so $H$ induces an isomorphism $\Map_{Y'}(G'x_1,G'x_2) \iso \Map_Y(Gx_1,Gx_2)$. As every object of $Y$ is a retract of one in the image of $G$, this shows $H$ is fully faithful, hence an isomorphism.
+	\end{proof}
+
+	\begin{proposition}\label[proposition]{prop:Surjective_Retract_Criterion}
+		Let $f\colon Y \to X$ be $n$-suave, $n \geq 1$. Consider the functor
+		\[
+			\colim_{[m] \in \simp\catop} \Hom_{\Oo(X)_{n+1}}\bigl(\unit,(\Oo(Y^{\times_X(m+1)})/\Oo(X))^!_n\bigr) \to \Oo(X)_n \qin 1\Pr.
+		\]
+		If $\unit$ is a retract of an object in the image of this functor, then $f$ is surjective.
+	\end{proposition}
+	\begin{proof}
+		Let $C := \colim_{[m] \in \simp\catop} (\Oo(Y^{\times_X(m+1)})/\Oo(X))^!_n$, the idempotent coalgebra corresponding to the image of $f$ (\Cref{prop:Surjective_Criteria}), with counit $F\colon C \to \unit$. The hypothesis exhibits $\unit$ as a retract of an object in the image of
+		\[
+			F\colon \Hom_{\Oo(X)_{n+1}}(\unit,C) \to \Hom_{\Oo(X)_{n+1}}(\unit,\unit) = \Oo(X)_n,
+		\]
+		so there is $G\colon \unit \to C$ with $\id$ a retract of $FG$. By \Cref{lem:Gaiotto_Johnson_Freyd} applied in $\Oo(X)_{n+1}$ with $Y = \unit$, $X = C$, the unit $\unit$ lies in the $1\Pr$-linear subcategory of $\Oo(X)_{n+1}$ generated by $C$. The category of $C$-comodules is a $1\Pr$-linear subcategory containing $C$, hence contains this generated subcategory; so $\unit$ is a $C$-comodule, $\coMod_C(\Oo(X)_{n+1}) = \Oo(X)_{n+1}$, and $C = \unit$. By \Cref{prop:Surjective_Criteria}(3), $f$ is surjective.
+	\end{proof}
+
+	We also record a converse, assuming $X$ is $n$-prim.
+
+	\begin{proposition}\label[proposition]{prop:Surjective_Generation}
+		Let $n \geq 1$ and let $X$ be an $n$-prim Gestalt (or, more generally, assume the functor $n\Pr \to \Oo(X)_{n+1}$ has a colimit-preserving right adjoint). Let $f\colon Y \to X$ be an $n$-suave surjection. Then
+		\[
+			\colim_{[m] \in \simp\catop} \Hom_{\Oo(X)_{n+1}}\bigl(\unit,(\Oo(Y^{\times_X(m+1)})/\Oo(X))^!_n\bigr) \iso \Oo(X)_n,
+		\]
+		and the image of $f_{n-1,!}$ generates $\Oo(X)_n$ under simplicial colimits.
+	\end{proposition}
+	\begin{proof}
+		The colimit-preserving right adjoint is $\Hom_{\Oo(X)_{n+1}}(\unit,-)$, so the displayed isomorphism follows from \Cref{prop:Surjective_Criteria}(2). Any $M \in \Oo(X)_n$ is the geometric realization of the simplicial object obtained by composing
+		\[
+			\Oo(X)_n \to \Hom_{\Oo(X)_{n+1}}\bigl(\unit,(\Oo(Y^{\times_X(\bullet+1)})/\Oo(X))^!_n\bigr) \to \Oo(X)_n,
+		\]
+		where the first map is the right adjoint, on underlying categories, of the second. This can be checked by conservativity after base change along $f$, where this bar resolution is split. The colimit takes values in the image of $f_{n-1,!}$.
+	\end{proof}
+
+	\begin{corollary}\label[corollary]{cor:Surjective_Affine_Truncation}
+		Let $f\colon Y \to X$ be a countably presented, $n$-prim, eventually suave map of Gestalten. Then the map
+		\[
+			Y \to \Gest_X\bigl((\Oo(Y)/\Oo(X))_n\bigr)
+		\]
+		is surjective. In particular, $f$ is surjective if and only if $\Gest_X\bigl((\Oo(Y)/\Oo(X))_n\bigr) \to X$ is surjective.
+	\end{corollary}
+	\begin{proof}
+		Replacing $X$ by $\Gest_X\bigl((\Oo(Y)/\Oo(X))_n\bigr)$, we may assume $(\Oo(Y)/\Oo(X))_n = \unit$. Assume $f$ is $m$-suave, $m \geq n+2$ without loss of generality; we induct on $m$.
+
+		\emph{Base case $m = n+2$.} Shifting, we may assume $n = 0$, so $f_{0,*}(\unit) = \unit$. As $f$ is both $2$-prim (being $0$-prim) and $2$-suave, $(\Oo(Y)/\Oo(X))^!_2 \in \Oo(X)_3$ is dualizable with dual $(\Oo(Y)/\Oo(X))_2$. As $f$ is $1$-prim, the unit map $f_1^*\colon \unit \to (\Oo(Y)/\Oo(X))_2$ has a right adjoint $f_{1,*}$ in $\Oo(X)_3$, so dually the counit $f_{1,!}\colon (\Oo(Y)/\Oo(X))^!_2 \to \unit$ has a left adjoint $f^!_1$ in $\Oo(X)_3$. Dualizing identifies the composite
+		\[
+			\unit \xrightarrow{f^!_1} (\Oo(Y)/\Oo(X))^!_2 \xrightarrow{f_{1,!}} \unit \qquad\text{with}\qquad \unit \xrightarrow{f_1^*} (\Oo(Y)/\Oo(X))_2 \xrightarrow{f_{1,*}} \unit,
+		\]
+		which, as an object of $\Oo(X)_2 = \End_{\Oo(X)_3}(\unit)$, is given by tensoring with $f_{1,*}(\unit)$. Now $f_{1,*}(\unit) \in \Oo(X)_2$ has $\unit$ as a retract: the unit $\unit \to f_{1,*}(\unit)$ has a right adjoint (as $f$ is $0$-prim), and the composite $\unit \to f_{1,*}(\unit) \to \unit$ is tensoring with $f_{0,*}(\unit) = \unit$. So $\unit \in \Oo(X)_2$ is a retract of an object in the image of
+		\[
+			f_{1,!}\colon \Hom_{\Oo(X)_3}\bigl(\unit,(\Oo(Y)/\Oo(X))^!_2\bigr) \to \Oo(X)_2,
+		\]
+		and \Cref{prop:Surjective_Retract_Criterion} (with $n=2$) shows that $f$ is surjective.
+
+		\emph{Induction step.} Assume the claim for $(m-1)$-suave maps, and let $f$ be $n$-prim and $m$-suave. Let $Y' := \Gest_X\bigl((\Oo(Y)/\Oo(X))_{m-2}\bigr)$ be the $(m-2)$-affine truncation of $Y$. By the base case, $Y \to Y'$ is surjective. The map $g\colon Y' \to X$ is $(m-2)$-affine and still $n$-prim: for $k \leq m-2$ the unit $\unit \to g_{k,*}(\unit)$ agrees with $\unit \to f_{k,*}(\unit)$, while for $k > m-2$ it has a right adjoint as $g$ is $(m-2)$-affine and countably presented. So $g$ is $n$-prim and, being countably presented and $(m-2)$-affine, $(m-2)$-proper (\Cref{prop:Proper_Properties}(1)); hence $g$ is $(m-1)$-suave by ambidexterity (\Cref{prop:Ambidexterity_Stefanich_Rings}), and by induction $g$ is surjective. As $Y \to Y'$ is surjective as well, so is the composite $Y \to X$.
+	\end{proof}
+
+	\begin{remark}
+		Scholze does not assume countable presentability in \Cref{cor:Surjective_Affine_Truncation}; we do not know how to prove the statement without this assumption.
+	\end{remark}
+
+	\section{Descendability}
+
+	We now relate surjectivity to Mathew's notion of descendability \citep[§§3--4]{Mathew_Galois}, see also \citet{Mathew2018DescentNilpotence}.
+
+	\begin{definition}\label[definition]{def:Descendable}
+		Let $\bbC$ be a stably symmetric monoidal category and $R \in \Alg(\bbC)$.
+		\begin{enumerate}
+			\item An object $M \in \bbC$ is \emph{$R$-nilpotent} if it lies in the thick $\otimes$-ideal $\mathrm{Thick}^{\otimes}(R)$ generated by $R$.
+			\item $R$ is \emph{descendable} if the unit $\unit \in \bbC$ is $R$-nilpotent.
+		\end{enumerate}
+	\end{definition}
+
+	\begin{proposition}[{\citet[Proposition 2.32]{Mathew2018DescentNilpotence}}]\label[proposition]{prop:Descendable_Criteria}
+		Let $R \in \Alg(\bbC)$ with $I := \fib(\unit \to R)$. The following are equivalent.
+		\begin{enumerate}
+			\item $R$ is descendable.
+			\item The map $I \to \unit$ is $\otimes$-nilpotent: $I^{\otimes N} \to \unit$ is null for some $N$.
+			\item For some finite $m$, the unit map $\unit \to \lim_{\simp_{\leq m}} R^{\otimes \bullet+1}$, into the $m$-th partial totalization of the Amitsur (cobar) complex of $R$, admits a retract.
+		\end{enumerate}
+	\end{proposition}
+
+	\begin{corollary}\label[corollary]{cor:Descendable_Implies_Surjective}
+		Let $f\colon Y \to X$ be a countably presented, $0$-prim, eventually suave map of Gestalten over $\Spec(\S)$. If $f_{0,*}(\unit) \in \Oo(X)_1$ is descendable, then $f$ is surjective.
+	\end{corollary}
+	\begin{proof}
+		By \Cref{cor:Surjective_Affine_Truncation} we may assume $Y$ is $0$-affine over $X$. Then $f$ is $0$-proper, so by ambidexterity $(\Oo(Y)/\Oo(X))^!_1 = (\Oo(Y)/\Oo(X))_1$, and likewise for the finite fiber powers of $Y$ over $X$. For each finite $m$, the functor
+		\[
+			\colim_{\simp^{op}_{\leq m}} \Hom_{\Oo(X)_2}\bigl(\unit,(\Oo(Y^{\times_X(\bullet+1)})/\Oo(X))^!_1\bigr) = \colim_{\simp^{op}_{\leq m}} (\Oo(Y^{\times_X(\bullet+1)})/\Oo(X))_1 \to \Oo(X)_1
+		\]
+		has a left adjoint, whose unit is the finite limit of the units at the individual levels: the indexing category is finite, and finite limits agree with finite colimits in the stable category $\Oo(X)_1$, so this finite limit of left adjoints is again computed levelwise. Evaluated at $\unit \in \Oo(X)_1$, this unit is the map
+		\[
+			\unit \to \lim_{\simp_{\leq m}} f_{0,*}(\unit)^{\otimes \bullet+1}
+		\]
+		into the $m$-th partial totalization of the Amitsur complex of $f_{0,*}(\unit)$. By descendability of $f_{0,*}(\unit)$ and \Cref{prop:Descendable_Criteria}(3), some finite $m$ makes this map admit a retract. Then $\unit$ is a retract of an object in the image of the displayed functor, and \Cref{prop:Surjective_Retract_Criterion} shows that $f$ is surjective.
+	\end{proof}
+
+	\begin{corollary}\label[corollary]{cor:Surjective_Iff_Descendable}
+		Let $X$ be a $0$-prim Gestalt over $\Spec(\S)$, and let $f\colon Y \to X$ be a countably presented, $0$-prim, eventually suave map. Then $f$ is surjective if and only if $f_{0,*}(\unit)$ is descendable in $\Oo(X)_1$.
+	\end{corollary}
+	\begin{proof}
+		The implication $\Leftarrow$ is \Cref{cor:Descendable_Implies_Surjective}. Conversely, suppose $f$ is surjective; by \Cref{cor:Surjective_Affine_Truncation} we may assume $f$ is $0$-affine. The image of $f_{0,*}\colon \Oo(Y)_1 \to \Oo(X)_1$ lies in $f_{0,*}(\unit)$-modules, so by \Cref{prop:Surjective_Generation} every object of $\Oo(X)_1$, in particular $\unit$, is a geometric realization of $f_{0,*}(\unit)$-modules. As $X$ is $0$-prim, the unit map $\unit \to \Oo(X)_1$ admits the internal right adjoint $\Hom_{\Oo(X)_1}(\unit,-)$, so $\unit \in \Oo(X)_1$ is compact; it is therefore already a retract of a finite stage of this realization, i.e.\ a retract of an object of the thick subcategory generated by $f_{0,*}(\unit)$-modules. Thus $\unit \in \mathrm{Thick}^{\otimes}(f_{0,*}(\unit))$, which is descendability.
+	\end{proof}
 
 	\chapter{Six functors and Gestalten}
 
