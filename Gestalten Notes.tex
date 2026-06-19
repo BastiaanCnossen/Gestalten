@@ -542,7 +542,7 @@
 					T \rar & U,
 				\end{tikzcd}
 			\]
-			meaning that $U \simeq T \otimes_R S$ as commutative algebras. By passing to extension of scalar functions, we obtain a commutative diagram in $\CAlg(1\Pr)$ of the form
+			meaning that $U \simeq T \otimes_R S$ as commutative algebras. By passing to extension of scalars functors, we obtain a commutative diagram in $\CAlg(1\Pr)$ of the form
 			\[
 				\begin{tikzcd}
 					\Mod_R(\Vv) \rar \dar & \Mod_S(\Vv) \dar \\
@@ -756,7 +756,7 @@
 		
 		For $\epsilon$, note that there is an equivalence
 		\begin{align*}
-			\End_{(n+1)\Pr_A(1\Pr)}(n\Pr_B) &= \End_{\Mod_{n\Pr_A}}(\Mod_{(n-1)\Pr_B}(n\Pr_A), \Mod_{(n-1)\Pr_B}(n\Pr_A)) \\
+			\End_{(n+1)\Pr_A}(n\Pr_B) &= \End_{\Mod_{n\Pr_A}}(\Mod_{(n-1)\Pr_B}(n\Pr_A), \Mod_{(n-1)\Pr_B}(n\Pr_A)) \\
 			&\simeq \Mod_{(n-1)\Pr_B \otimes_{(n-1)\Pr_A} (n-1)\Pr_B}(n\Pr_A).
 		\end{align*}
 		Under this equivalence, the counit $\epsilon$ corresponds to the `multiplication map'
@@ -796,7 +796,7 @@
 
 	The goal of this chapter is the following hyperdescent statement:
 
-	\begin{theorem}[{cf.\ \cite[Corollary 3.33, Proposition 3.45]{Mathew_Galois}}]
+	\begin{theorem}[{cf.\ \cite[Corollary 3.33, Proposition 3.45]{Mathew_Galois}}]\label[theorem]{thm:fpqc_Hyperdescent_nPr}
 		The functor $n\Pr_{(-)}^!\colon \Aff_{\S} \to 1\Pr$ (defined on maps by the right adjoints $f^!$) is a hypersheaf with respect to the fpqc topology for each $n \geq 0$.
 	\end{theorem}
 
@@ -1277,7 +1277,7 @@
 		\[
 			n\Pr_Y := f_{n+1,*}(\unit_Y) \qin (n+1)\Pr_X.
 		\]
-		For $p_X: X \to \pt$, we get a `forgetful functor' $p_{X,n+1,*} \colon (n+1)\Pr_X \to (n+1)\Pr$, and we claim that the image of $f_{n+1,*}(\unit_Y)$ under this functor is $n\Pr_Y$. Indeed, if we write $Y \simeq \colim_{\Spec(A) \to Y} \Spec(A)$, then we may write $p_{X,n+1,*}f_{n+1,*}(\unit) = p_{Y,n+1,*}(\unit)$ as a limit over $p_{A,n+1}(\unit) = n\Pr_A$, which is $n\Pr_Y$ by definition.
+		For $p_X\colon X \to \pt$, we get a `forgetful functor' $p_{X,n+1,*} \colon (n+1)\Pr_X \to (n+1)\Pr$, and we claim that the image of $f_{n+1,*}(\unit_Y)$ under this functor is $n\Pr_Y$. Indeed, if we write $Y \simeq \colim_{\Spec(A) \to Y} \Spec(A)$, then we may write $p_{X,n+1,*}f_{n+1,*}(\unit) = p_{Y,n+1,*}(\unit)$ as a limit over $p_{A,n+1}(\unit) = n\Pr_A$, which is $n\Pr_Y$ by definition.
 	\end{remark}
 
 	\begin{theorem}\label[theorem]{thm:Six_Functors_For_nPr}
@@ -1323,9 +1323,9 @@
 		\]
 		(See \citet[Corollary~1.3]{HorevYanovski2017Descent}.) This is a map in $(n+1)\Pr_A = \Mod_{n\Pr_A}(1\Pr)$, and in particular it commutes with all small colimits and with tensoring. This gives (i). We may explicitly write the resulting functor as
 		\[
-			f_{n,\sharp}: \lim_{i \in I\catop} n\Pr_{B_i} \to n\Pr_A, \qquad (Z_i) \mapsto \colim_{i \in I} (g_i)_{n,\sharp}(Z_i),
+			f_{n,\sharp}\colon \lim_{i \in I\catop} n\Pr_{B_i} \to n\Pr_A, \qquad (Z_i) \mapsto \colim_{i \in I} (g_i)_{n,\sharp}(Z_i),
 		\]
-		with $g_i: \Spec(B_i) \to \Spec(A)$ the affine structure map.
+		with $g_i\colon \Spec(B_i) \to \Spec(A)$ the affine structure map.
 
 		For (ii), since $\aleph_1$-compact objects in $(n+1)\Pr_A$ are closed under countable colimits, the $\aleph_1$-compactness of $n\Pr_Y$ follows from the $\aleph_1$-compactness of the $n\Pr_{B_i}$ established in Talk 2.
 		
@@ -1337,7 +1337,7 @@
 		\[
 			f'_{n,\sharp}\colon n\Pr_{Y'} \to n\Pr_{A'}, \qquad (Z'_i) \mapsto \colim_{i \in I} (g'_i)_{n,\sharp}(Z'_i),
 		\]
-		where $g'_i: \Spec(B_i') \to \Spec(A')$ is the base change of $g_i\colon \Spec(B_i) \to \Spec(A)$. The base-change property is known from Talk 2:
+		where $g'_i\colon \Spec(B_i') \to \Spec(A')$ is the base change of $g_i\colon \Spec(B_i) \to \Spec(A)$. The base-change property is known from Talk 2:
 		\[
 			u_n^* (g_i)_{n,\sharp} \simeq (g_i')_{n,\sharp} (v_i)_n^*.
 		\]
@@ -1364,9 +1364,9 @@
 		\[
 			((n+1)\Pr_{X})^{\aleph_1} = \lim_{\Spec(A) \to X} ((n+1)\Pr_{A})^{\aleph_1}.
 		\]
-		Letting $Y_A := \Spec(A) \times_X Y$, we have already established that $n\Pr_{Y_A}$ is $\aleph_1$-compact in $(n+1)\Pr_A$, thus giving the $\aleph_1$-compactness of $n\Pr_Y$ in $(n+1)\Pr_X$. Moreover, to check that $f_n^*\colon n\Pr_X \to n\Pr_Y$ admits a left adjoint in $((n+1)\Pr_{X})^{\aleph_1}$, it will suffice to show that all maps $(f_A)_n^*: n\Pr_A \to n\Pr_{Y_A}$ admit left adjoints compatible with base change, which we established in Step 1. Similarly, the dualizability of $f_{n,\sharp}(\unit) \in n\Pr_X$ may be checked after pullback to affines.
+		Letting $Y_A := \Spec(A) \times_X Y$, we have already established that $n\Pr_{Y_A}$ is $\aleph_1$-compact in $(n+1)\Pr_A$, thus giving the $\aleph_1$-compactness of $n\Pr_Y$ in $(n+1)\Pr_X$. Moreover, to check that $f_n^*\colon n\Pr_X \to n\Pr_Y$ admits a left adjoint in $((n+1)\Pr_{X})^{\aleph_1}$, it will suffice to show that all maps $(f_A)_n^*\colon n\Pr_A \to n\Pr_{Y_A}$ admit left adjoints compatible with base change, which we established in Step 1. Similarly, the dualizability of $f_{n,\sharp}(\unit) \in n\Pr_X$ may be checked after pullback to affines.
 
-		\textbf{Step 3: Ambidexterity.} For (v), we use the general ambidexterity result again: it suffices to check that the unit and counit of the adjunction $f_n^* \dashv f_{n,\sharp}$ admit right adjoints. For the counit $f_{n,\sharp} f_n^* \to \id$, we use that under the equivalence $\End_{(n+1)\Pr_X}(n\Pr_X,n\Pr_X) \simeq n\Pr_X$ this map corresponds to the map $f_{n,\sharp}(\unit) \to \unit$, so we need to show this admits a right adjoint in $n\Pr_X$. By (iv), the object $f_{n,\sharp}(\unit)$ is dualizable, so this is equivalent to its dual $\unit \to f_{n,\ast}(\unit)$ admitting a left adjoint in $n\Pr_X$. But this dual map is the map $(n-1)\Pr_X \to (n-1)\Pr_Y$, which has a left adjoint in $n\Pr_X$ by part (i) applied one level down (which uses $n - 1 \geq 1$).
+		\textbf{Step 3: Ambidexterity.} For (v), we use the general ambidexterity result (\Cref{prop:General_Ambidexterity}) again: it suffices to check that the unit and counit of the adjunction $f_n^* \dashv f_{n,\sharp}$ admit right adjoints. For the counit $f_{n,\sharp} f_n^* \to \id$, we use that under the equivalence $\End_{(n+1)\Pr_X}(n\Pr_X,n\Pr_X) \simeq n\Pr_X$ this map corresponds to the map $f_{n,\sharp}(\unit) \to \unit$, so we need to show this admits a right adjoint in $n\Pr_X$. By (iv), the object $f_{n,\sharp}(\unit)$ is dualizable, so this is equivalent to its dual $\unit \to f_{n,\ast}(\unit)$ admitting a left adjoint in $n\Pr_X$. But this dual map is the map $(n-1)\Pr_X \to (n-1)\Pr_Y$, which has a left adjoint in $n\Pr_X$ by part (i) applied one level down (which uses $n - 1 \geq 1$).
 
 		For the unit $\eta\colon \id \to f_n^* f_{n,\sharp}$ in $\End_{(n+1)\Pr_X}(n\Pr_Y, n\Pr_Y)$ we use a base-change argument. Consider the cartesian square
 		\[
@@ -2895,7 +2895,7 @@
 		\[
 			\Bigl(\bigl(\lim_{i \in I} (B_i \otimes_A C)\bigr)/C\Bigr)^!_m \simeq \colim_{i \in I} (B_i \otimes_A C/C)^!_m.
 		\]
-		Thus both $C$-algebras have the same dualizing objects in every degree. Since for suave algebras $\bigl((B/A)^!_m\bigr)^{\vee} \simeq (B/A)_m$ (see the discussion after \Cref{def:N_Suave}), they also have the same relative levels, shosing that the canonical map is an equivalence.
+		Thus both $C$-algebras have the same dualizing objects in every degree. Since for suave algebras $\bigl((B/A)^!_m\bigr)^{\vee} \simeq (B/A)_m$ (see the discussion after \Cref{def:N_Suave}), they also have the same relative levels, showing that the canonical map is an equivalence.
 	\end{proof}
 
 	\section{Countably toposic categories}
@@ -3057,7 +3057,7 @@
 			& \simeq \lim_{g\colon X' \to X} g_{m,*}(\Oo(X' \times_X Y)/\Oo(X'))_m \\
 			& \simeq (\Oo(Y)/\Oo(X))_m,
 		\end{align*}
-		where we used $\bigl((B/A)^!_m\bigr)^{\vee} \simeq (B/A)_m$ for suave algebras and, in the last step, that $\Oo$ is a sheaf (so that $\Oo(Y) \simeq \lim_{g\colon X' \to X} \Oo(X' \times_X Y)$). This in particular shows that the map $(f/\Oo(X))^*_{m-1}\colon \unit \to (B^!_m)^{\vee} = (\Oo(Y)/\Oo(X))_m$ admits left adjoint
+		where we used $\bigl((B/A)^!_m\bigr)^{\vee} \simeq (B/A)_m$ for suave algebras and, in the last step, that $\Oo$ is a sheaf (so that $\Oo(Y) \simeq \lim_{g\colon X' \to X} \Oo(X' \times_X Y)$). This in particular shows that the map $(f/\Oo(X))^*_{m-1}\colon \unit \to (B^!_m)^{\vee} = (\Oo(Y)/\Oo(X))_m$ admits a left adjoint
 		\[
 			(f/\Oo(X))_{m-1,\sharp}\colon (\Oo(Y)/\Oo(X))_m \to (\Oo(X)/\Oo(X))_m.
 		\]
@@ -3114,18 +3114,12 @@
 		The ``only if'' direction is stability of each property under base change, established in \Cref{chap:Properties_Of_Maps}. The ``if'' direction is descent along the effective epimorphism $Y' \to Y$: the defining adjointability conditions for each $\Pp_n$ may be checked after pulling back along $Y' \to Y$, since $Y' \to Y$ is an effective epimorphism and the relevant relative objects satisfy descent, as in the descent argument of \Cref{thm:Sheaf_Valued_In_Etale}.
 	\end{proof}
 
-	\chapter{Examples}
-
-	\emph{Talk given by Sil.} \\
-
-	\textbf{[I missed this talk; notes will be updated some point in the future.]}
-
 	\chapter{Injections and surjections of Gestalten}
 	\label[chapter]{chap:Injections_Surjections_Gestalten}
 
 	\emph{Talk given by Shai.}
 
-	In this talk we cover the appendix to lecture VIII of \citet{Scholze_Gestalten}. The goal is to understand injective and surjective maps of Gestalten, and to relate surjectivity to Mathew's notion of \emph{descendability} \citep{Mathew_Galois,Mathew2018DescentNilpotence}.
+	The goal of this chapter is to understand injective and surjective maps of Gestalten, and to relate surjectivity to Mathew's notion of \emph{descendability} \citep{Mathew_Galois,Mathew2018DescentNilpotence}.
 
 	Throughout, for $X \in \Gest$ we write $\Oo(X)_n \in \CAlg(n\Pr)$ for the $n$-th level of the corresponding Stefanich ring, and for a map $f\colon Y \to X$ of Gestalten we write $(\Oo(Y)/\Oo(X))_m$ and $(\Oo(Y)/\Oo(X))^!_m$, with transition maps $f^*_m, f_{m,*}, f_{m,\sharp}, f_{m,!}$, for the relative objects and maps of \Cref{chap:Properties_Of_Maps}, dualized along $\Gest = \StRing\catop$. Dualizing the fully faithful embedding $\CAlg(A_{n+1}) \hookrightarrow \StRing_{A/}$ of \Cref{def:N_Affine}, whose essential image is the $n$-affine objects, we write $A \mapsto \Gest_X(A)$ for the resulting equivalence
 	\[
@@ -3197,6 +3191,29 @@
 
 	We now dualize the previous subsection, relating open immersions to idempotent \emph{coalgebras}. Recall from \Cref{def:N_Suave,def:N_Etale} that an $n$-suave map $f\colon A \to B$ comes with dualizing objects $(B/A)^!_m := f_{m,\sharp}(\unit)$, built from the left adjoints $f_{m,\sharp}$ of its structure maps, and that $f$ is \emph{$n$-étale} if all its codiagonals are $n$-suave. Since $f_{m,\sharp}$ is left adjoint to a symmetric monoidal functor $f^*_m$, it is automatically oplax symmetric monoidal. Consequently, $(B/A)^!_m$ is a cocommutative coalgebra in $A_{m+1}$, whose (weak) dual is the algebra $(B/A)_m$; the counit $f_{m-1,!}\colon (B/A)^!_m \to \unit$ similarly dualizes to the unit $f^*_{m-1}$ of $(B/A)_m$.
 
+	\begin{lemma}\label[lemma]{lem:Smashing_Idempotent_Coalgebras}
+		Let $\Vv \in \CAlg(1\Pr)$, and let $D$ be an idempotent cocommutative coalgebra in $\Vv$. Then the inclusion
+		\[
+			\iota_D\colon \coMod_D(\Vv) \hookrightarrow \Vv
+		\]
+		admits the symmetric monoidal right adjoint $-\otimes D$, and exhibits $\coMod_D(\Vv)$ as a smashing colocalization of $\Vv$. Moreover, for idempotent coalgebras $D,D'$ in $\Vv$ there is a canonical equivalence
+		\[
+			\coMod_D(\Vv) \otimes_\Vv \coMod_{D'}(\Vv) \simeq \coMod_{D \otimes_\Vv D'}(\Vv).
+		\]
+		Finally, regarded as an object of $\Mod_\Vv(1\Pr)$, the category $W_D := \coMod_D(\Vv)$ is simultaneously an idempotent algebra and an idempotent coalgebra, with multiplication and comultiplication mutually inverse. Consequently, if $\Ww \in \CAlg(1\Pr)$ and $F\colon \Mod_\Vv(1\Pr) \to \Ww$ is any symmetric monoidal functor, then
+		\[
+			\Mod_{F(W_D)}(\Ww) \simeq \coMod_{F(W_D)}(\Ww),
+		\]
+		both sides identifying with the full subcategory of $F(W_D)$-local objects.
+	\end{lemma}
+	\begin{proof}
+		Since $D \to D \otimes_\Vv D$ is an equivalence, the comonad $T_D := -\otimes D$ on $\Vv$ is idempotent. Thus its comodules are precisely the $T_D$-colocal objects, and the inclusion of this full subcategory admits $T_D$ as right adjoint. The localized tensor product has unit $D$, and the idempotence of $D$ makes $T_D$ symmetric monoidal as a functor $\Vv \to \coMod_D(\Vv)$.
+
+		The tensor formula follows from the same description: both sides are smashing colocalizations of $\Vv$, and the right adjoints of their inclusions into $\Vv$ are canonically identified with $-\otimes D \otimes_\Vv D'$.
+
+		Under this equivalence with $D'=D$, the multiplication of $W_D$ is induced by the inverse of the comultiplication $D \iso D \otimes_\Vv D$. The colocalization adjunction also regards $W_D$ as an idempotent coalgebra in $\Mod_\Vv(1\Pr)$, with counit $\iota_D$. These algebra and coalgebra structures have inverse multiplication and comultiplication. This property is preserved by any symmetric monoidal functor $F$. For an object whose multiplication and comultiplication are inverse equivalences, module structures and comodule structures are the same datum: both say that the canonical map to tensoring with that object is an equivalence, with the action and coaction inverse to each other.
+	\end{proof}
+
 	\begin{proposition}\label[proposition]{prop:Suave_Etale_Idempotent_Coalgebras}
 		Let $f\colon Y \to X$ be an injective map of Gestalten. Then $f$ is $n$-suave if and only if it is $n$-étale. In this case $(\Oo(Y)/\Oo(X))^!_n$ is an idempotent coalgebra in $\Oo(X)_{n+1}$, and this assignment defines a bijection of posets
 		\[
@@ -3227,28 +3244,21 @@
 		\[
 			\coMod_C(\Oo(X)_{n+1}) \otimes_{\Oo(X)_{n+1}} \coMod_C(\Oo(X)_{n+1}) \simeq \coMod_{C \otimes_{\Oo(X)_{n+1}} C}(\Oo(X)_{n+1}),
 		\]
-		this codiagonal is the functor induced by the comultiplication $C \to C \otimes_{\Oo(X)_{n+1}} C$, an isomorphism as $C$ is idempotent; hence the codiagonal is an isomorphism and $U \to X$ is an injection.
+		this codiagonal is the functor induced by the inverse of the comultiplication $C \iso C \otimes_{\Oo(X)_{n+1}} C$; hence the codiagonal is an isomorphism and $U \to X$ is an injection.
 
 		It remains to show that $U \to X$ is $n$-suave; being an injection, it is then $n$-étale. The idea is to realize each level of $U$ as comodules over a canonical idempotent coalgebra, bootstrapping up from $C$.
 
-		We use two facts about the smashing colocalization $\coMod_D(\Vv)$ of an idempotent coalgebra $D$ in a category $\Vv \in \CAlg(1\Pr)$. First, these colocalizations tensor as
-		\[
-			\coMod_D(\Vv) \otimes_\Vv \coMod_{D'}(\Vv) \simeq \coMod_{D \otimes_\Vv D'}(\Vv).
-		\]
-		Second, regarded as an object of $\Mod_\Vv(1\Pr)$, the category $W := \coMod_D(\Vv)$ is a \emph{smashing idempotent}: it is an idempotent algebra, with unit the cofree functor $- \otimes D\colon \Vv \to W$ and multiplication $W \otimes_\Vv W \simeq \coMod_{D \otimes_\Vv D}(\Vv) \to W$ induced by the invertible comultiplication of $D$; and it is an idempotent coalgebra, with counit $\iota$, since a smashing colocalization of $\Vv$ is the same datum as an idempotent coalgebra in $\Mod_\Vv(1\Pr)$. As multiplication and comultiplication on $W$ are then mutually inverse, the $W$-modules and the $W$-comodules in $\Mod_\Vv(1\Pr)$ coincide, both being the $W$-local objects:
-		\[
-			\Mod_W\bigl(\Mod_\Vv(1\Pr)\bigr) = \coMod_W\bigl(\Mod_\Vv(1\Pr)\bigr).
-		\]
+		We shall use the smashing-idempotent package from \Cref{lem:Smashing_Idempotent_Coalgebras}. In particular, the conclusions are preserved after applying the symmetric monoidal transition functors $\Mod_{\Oo(X)_{m+1}}(1\Pr) \to \Oo(X)_{m+2}$.
 
 		Now define idempotent coalgebras recursively by $C_n := C$ and
 		\[
 			C_{m+1} := \coMod_{C_m}(\Oo(X)_{m+1}) \qin \Oo(X)_{m+2},
 		\]
-		each one an idempotent coalgebra by the smashing-idempotent structure just described (taken with $\Vv = \Oo(X)_{m+1}$ and $D = C_m$). We show by induction that
+		each one an idempotent coalgebra by \Cref{lem:Smashing_Idempotent_Coalgebras}, taken with $\Vv = \Oo(X)_{m+1}$ and $D = C_m$. We show by induction that
 		\[
 			\Oo(U)_{m+1} = \coMod_{C_m}(\Oo(X)_{m+1}) \qquad (m \geq n).
 		\]
-		The base case $m = n$ is the construction of $U$. For the induction step, $(n+1)$-affineness gives $\Oo(U)_{m+2} = \Mod_{(\Oo(U)/\Oo(X))_{m+1}}(\Oo(X)_{m+2})$, and by the inductive hypothesis the relative algebra $(\Oo(U)/\Oo(X))_{m+1}$ is $\coMod_{C_m}(\Oo(X)_{m+1}) = C_{m+1}$; the identity $\Mod_{C_{m+1}} = \coMod_{C_{m+1}}$ above then turns the modules into comodules,
+		The base case $m = n$ is the construction of $U$. For the induction step, $(n+1)$-affineness gives $\Oo(U)_{m+2} = \Mod_{(\Oo(U)/\Oo(X))_{m+1}}(\Oo(X)_{m+2})$, and by the inductive hypothesis the relative algebra $(\Oo(U)/\Oo(X))_{m+1}$ is $\coMod_{C_m}(\Oo(X)_{m+1}) = C_{m+1}$; \Cref{lem:Smashing_Idempotent_Coalgebras} identifies modules and comodules over $C_{m+1}$ in $\Oo(X)_{m+2}$, so
 		\[
 			\Oo(U)_{m+2} = \Mod_{C_{m+1}}(\Oo(X)_{m+2}) = \coMod_{C_{m+1}}(\Oo(X)_{m+2}),
 		\]
@@ -3278,7 +3288,7 @@
 	\end{definition}
 
 	\begin{remark}
-		In general $X \setminus Y$ need not be representable. If $f$ lies in $\Gest^{n\text{-ét}}$ for some $n$, then by topos-theoretic arguments $X \setminus Y$ is representable.
+		In general $X \setminus Y$ need not be representable. If $f$ lies in $\Gest^{n\text{-ét}}$ for some $n$, then perhaps it might follow from abstract topos-theoretic arguments that $X \setminus Y$ is representable.
 	\end{remark}
 
 	\begin{proposition}\label[proposition]{prop:Complement_Construction}
@@ -3313,7 +3323,7 @@
 	\end{corollary}
 
 	\begin{corollary}
-		Consider a 1-presentable stable category category $E \in 1\Pr_{\st}$. Then there are (possibly order-reversing) bijections between the following four posets:
+		Consider a 1-presentable stable category $E \in 1\Pr_{\st}$. Then there are (possibly order-reversing) bijections between the following four posets:
 		\begin{enumerate}
 			\item Closed immersions $Z \hookrightarrow \Gest_{\S}(E)$;
 			\item Idempotent algebras $A$ in $E$;
@@ -3357,11 +3367,11 @@
 	\end{remark}
 
 	\begin{lemma}
-		\label[lemma]{lem:Pullback_Along_Surjection_Convervative}
+		\label[lemma]{lem:Pullback_Along_Surjection_Conservative}
 		Let $f\colon Y \to X$ be an $n$-suave surjection of Gestalten. Then the pullback functor $f^*\colon \Gest_{/X} \to \Gest_{/Y}$ is conservative.
 	\end{lemma}
 	\begin{proof}
-		Let $\phi\colon A \to B$ be a morphism over $X$ such that $f^*\phi\colon A \times_X Y \to B \times_X Y$ is an isomorphism over $Y$; we must show $\phi$ is an isomorphism. Since $f$ is surjective, $\colim_{[m] \in \simp\catop} Y^{\times_X(m+1)} \simeq X$. Each map $Y^{\times_X(m+1)} \to X$ is $n$-suave by iterated base change, so \Cref{prop:Suave_Countable_Limits}(2) gives, for any $T \to X$,
+		Let $\varphi\colon A \to B$ be a morphism over $X$ such that $f^*\varphi\colon A \times_X Y \to B \times_X Y$ is an isomorphism over $Y$; we must show $\varphi$ is an isomorphism. Since $f$ is surjective, $\colim_{[m] \in \simp\catop} Y^{\times_X(m+1)} \simeq X$. Each map $Y^{\times_X(m+1)} \to X$ is $n$-suave by iterated base change, so \Cref{prop:Suave_Countable_Limits}(2) gives, for any $T \to X$,
 		\[
 			T \times_X \colim_{[m]} Y^{\times_X(m+1)} \simeq \colim_{[m]} (T \times_X Y)^{\times_Y(m+1)}.
 		\]
@@ -3369,7 +3379,7 @@
 		\[
 			A \simeq A \times_X \colim_{[m]} Y^{\times_X(m+1)} \simeq \colim_{[m]} (A \times_X Y)^{\times_Y(m+1)},
 		\]
-		and likewise $B \simeq \colim_{[m]} (B \times_X Y)^{\times_Y(m+1)}$. Since $A \times_X Y \simeq B \times_X Y$ over $Y$, taking iterated fiber products over $Y$ gives $(A \times_X Y)^{\times_Y(m+1)} \simeq (B \times_X Y)^{\times_Y(m+1)}$ for all $m \geq 0$. Taking colimits, $\phi$ induces an equivalence $A \simeq B$ over $X$.
+		and likewise $B \simeq \colim_{[m]} (B \times_X Y)^{\times_Y(m+1)}$. Since $A \times_X Y \simeq B \times_X Y$ over $Y$, taking iterated fiber products over $Y$ gives $(A \times_X Y)^{\times_Y(m+1)} \simeq (B \times_X Y)^{\times_Y(m+1)}$ for all $m \geq 0$. Taking colimits, $\varphi$ induces an equivalence $A \simeq B$ over $X$.
 	\end{proof}
 
 	\begin{lemma}\label[lemma]{lem:Image_Suave_Injection}
@@ -3396,6 +3406,11 @@
 		The factorization is provided by \Cref{lem:Image_Suave_Injection}: set $U := \colim_{[m] \in \simp\catop} Y^{\times_X(m+1)}$, so that $U \hookrightarrow X$ is an $n$-suave injection by that lemma, and $Y \to U$ is an $n$-suave surjection by definition. For uniqueness, any factorization $Y \twoheadrightarrow V \hookrightarrow X$ with $V \to X$ a monomorphism gives $Y^{\times_V(m+1)} \simeq Y^{\times_X(m+1)}$ for all $m$, hence $V \simeq \colim_{[m]} Y^{\times_V(m+1)} \simeq U$.
 	\end{proof}
 
+	\begin{corollary}
+		\label[corollary]{cor:Surjective_And_Injective_Implies_Iso}
+		An $n$-suave map of Gestalten is an isomorphism if and only if it is both surjective and injective.\qed
+	\end{corollary}
+
 	\begin{proposition}\label[proposition]{prop:Surjective_Criteria}
 		Let $f\colon Y \to X$ be an $n$-suave map of Gestalten. The following are equivalent.
 		\begin{enumerate}
@@ -3406,11 +3421,11 @@
 		\end{enumerate}
 	\end{proposition}
 	\begin{proof}
-		(1) $\Leftrightarrow$ (2): Consider the epi-mono factorization $Y \twoheadrightarrow U \hookrightarrow X$ of $f$ from \Cref{prop:Surjective_Criteria}. Then $f$ is surjective if and only if $U \to X$ is an isomorphism. Since this map is an $n$-suave injection, hence $n$-affine by \Cref{prop:Suave_Etale_Idempotent_Coalgebras}, it is an isomorphism if and only if it induces an isomorphism on $(\Oo(-)/\Oo(X))_n$, which is condition (2).
+		(1) $\Leftrightarrow$ (2): Consider the epi-mono factorization $Y \twoheadrightarrow U \hookrightarrow X$ of $f$ from \Cref{prop:Epi_Mono_Factorization_Suave}. Then $f$ is surjective if and only if $U \to X$ is an isomorphism. Since this map is an $n$-suave injection, hence $n$-affine by \Cref{prop:Suave_Etale_Idempotent_Coalgebras}, it is an isomorphism if and only if it induces an isomorphism on $(\Oo(-)/\Oo(X))_n$, which is condition (2).
 
 		(2) $\Leftrightarrow$ (3) is \Cref{lem:Kunneth_Suave}.
 
-		(1) $\Rightarrow$ (4): By \Cref{lem:Pullback_Along_Surjection_Convervative}, the pullback functor $f^*\colon \Gest_{/X} \to \Gest_{/Y}$ is conservative. Since $n$-affine objects of $\Gest_{/X}$ correspond, via \Cref{prop:Suave_Etale_Idempotent_Coalgebras}, to objects of $\Oo(X)_{n+1}$, and $f^*$ restricts to $f_n^*$ on these, condition~(4) follows.
+		(1) $\Rightarrow$ (4): By \Cref{lem:Pullback_Along_Surjection_Conservative}, the pullback functor $f^*\colon \Gest_{/X} \to \Gest_{/Y}$ is conservative. Since $n$-affine objects of $\Gest_{/X}$ correspond, via \Cref{prop:Suave_Etale_Idempotent_Coalgebras}, to objects of $\Oo(X)_{n+1}$, and $f^*$ restricts to $f_n^*$ on these, condition~(4) follows.
 
 		(4) $\Rightarrow$ (3): it suffices to check the map of (3) becomes an isomorphism after base change to $\Oo(Y)_{n+1}$. But then the projection $Y \otimes_X Y \to Y$ is split by the diagonal, so the colimit system acquires extra degeneracies and is therefore already a colimit diagram.
 	\end{proof}
@@ -3471,6 +3486,10 @@
 		\]
 		where the first map is the right adjoint, on underlying categories, of the second. This can be checked by conservativity after base change along $f$, where this bar resolution is split. The colimit takes values in the image of $f_{n-1,!}$.
 	\end{proof}
+
+	\begin{definition}
+		A map of Gestalten is called \emph{eventually suave} if it is $m$-suave for some $m \geq 0$.
+	\end{definition}
 
 	\begin{corollary}\label[corollary]{cor:Surjective_Affine_Truncation}
 		Let $f\colon Y \to X$ be a countably presented, $n$-prim, eventually suave map of Gestalten. Then the map
@@ -3541,6 +3560,453 @@
 	\begin{proof}
 		The implication $\Leftarrow$ is \Cref{cor:Descendable_Implies_Surjective}. Conversely, suppose $f$ is surjective; by \Cref{cor:Surjective_Affine_Truncation} we may assume $f$ is $0$-affine. The image of $f_{0,*}\colon \Oo(Y)_1 \to \Oo(X)_1$ lies in $f_{0,*}(\unit)$-modules, so by \Cref{prop:Surjective_Generation} every object of $\Oo(X)_1$, in particular $\unit$, is a geometric realization of $f_{0,*}(\unit)$-modules. As $X$ is $0$-prim, the unit map $\unit \to \Oo(X)_1$ admits the internal right adjoint $\Hom_{\Oo(X)_1}(\unit,-)$, so $\unit \in \Oo(X)_1$ is compact; it is therefore already a retract of a finite stage of this realization, i.e.\ a retract of an object of the thick subcategory generated by $f_{0,*}(\unit)$-modules. Thus $\unit \in \mathrm{Thick}^{\otimes}(f_{0,*}(\unit))$, which is descendability.
 	\end{proof}
+
+	\chapter{Affine and coaffine maps of Gestalten}
+	\label[chapter]{chap:Affine_Coaffine_Maps_Gestalten}
+
+	The goal of this chapter is to isolate the affine-coaffine factorization system and use it to study how affineness interacts with diagonals.
+
+	Throughout the chapter, we keep using the notations $\Gest_X(-)\colon (\StRing_{\Oo(X)/})\catop \to \Gest_{/X}$ and $\Oo(-)/\Oo(X)\colon (\Gest_{/X})\catop \to \StRing_{\Oo(X)/}$ for the inverse equivalence between Gestalten over a fixed Gestalt $X$ and Stefanich rings over the global sections $\Oo(X)$ of $X$.
+
+	\emph{During the seminar, we did not discuss the material of this chapter as a separate talk; instead, \Cref{prop:Affineness_And_Diagonals} was proved directly as part of \Cref{chap:Examples}. The material was expanded into a separate chapter for the sake of clarity of exposition.}
+
+	\section{The affine-coaffine factorization system}
+
+	\begin{definition}
+		Recall from \Cref{cor:Inclusion_n_Affine_A_Algebras} that for a Stefanich ring $A$, the functor $\StRing_{A/} \to \CAlg(A_{n+1}), B \mapsto (B/A)_n$ admits a fully faithful left adjoint $\CAlg(A_{n+1}) \to \StRing_{A/}$. This defines a functor
+		\[
+			(-)^{n\text{-affine}}\colon \StRing_{A/} \to \StRing_{A/}, B \mapsto (B/A)^{n\text{-affine}}
+		\]
+		equipped with a natural transformation $(B/A)^{n\text{-affine}} \to B$ of Stefanich $A$-algebras. We refer to this as the \emph{$n$-affinization of $B$ over $A$}.
+
+		By dualizing, we similarly obtain for every map $Y \to X$ of Gestalten a factorization
+		\[
+			Y \to (Y/X)^{n\text{-affine}} \to X,
+		\]
+		with $(Y/X)^{n\text{-affine}}$ the \emph{$n$-affinization of $Y$ over $X$}.
+	\end{definition}
+
+	\begin{definition}\label[definition]{def:N_Coaffine}
+		A map $f\colon Y \to X$ of Gestalten is called \emph{$n$-coaffine} if the unit map
+		\[
+			\unit_{\Oo(X)_{n+1}} \to (\Oo(Y)/\Oo(X))_n
+		\]
+		is an isomorphism in $\CAlg(\Oo(X)_{n+1})$.
+	\end{definition}
+
+	\begin{observation}\label[observation]{obs:Affine_Coaffine_Monotonicity}
+		If $n < m$, then every $n$-affine map is $m$-affine, and every $m$-coaffine map is $n$-coaffine.
+	\end{observation}
+	\begin{proof}
+		The assertion for affine maps follows, with $A=\Oo(X)$, from the factorization $\CAlg(A_{n+1}) \hookrightarrow \CAlg(A_{m+1}) \hookrightarrow \StRing_{A/}$. For coaffine maps, if $(\Oo(Y)/\Oo(X))_m$ is the unit, then applying the endomorphism transition functors $\End^{\Oo(X)}_m,\dots,\End^{\Oo(X)}_{n+1}$ identifies each lower relative algebra with the corresponding unit.
+	\end{proof}
+
+	\begin{corollary}\label[corollary]{cor:Affine_Coaffine_Implies_Iso}
+		If $f\colon Y \to X$ is both $n$-affine and $n$-coaffine, then $f$ is an isomorphism.
+	\end{corollary}
+	\begin{proof}
+		An $n$-affine map is classified by its relative algebra $(\Oo(Y)/\Oo(X))_n \in \CAlg(\Oo(X)_{n+1})$. If $f$ is also $n$-coaffine, this algebra is the unit. The $n$-affine Gestalt over $X$ classified by the unit algebra is the identity of $X$.
+	\end{proof}
+
+	We record the following observation.
+
+	\begin{proposition}\label[proposition]{prop:Affine_Coaffine_Factorization_System}
+		The $n$-coaffine maps and the $n$-affine maps form a factorization system on $\Gest$. The factorization of a map $Y \to X$ is
+		\[
+			Y \to (Y/X)^{n\text{-affine}} \to X.
+		\]
+	\end{proposition}
+	\begin{proof}
+		Write $Y' := (Y/X)^{n\text{-affine}}$. By construction, $Y' \to X$ is $n$-affine and the map $Y \to Y'$ identifies the relative algebra of $Y'$ over $X$ in degree $n$ with that of $Y$ over $X$. After replacing the base $X$ by $Y'$, this says precisely that
+		\[
+			\unit_{\Oo(Y')_{n+1}} \to (\Oo(Y)/\Oo(Y'))_n
+		\]
+		is an isomorphism, i.e.\ that $Y \to Y'$ is $n$-coaffine.
+
+		It remains to check orthogonality. Let $i\colon Y \to Z$ be $n$-coaffine, let $p\colon W \to X$ be $n$-affine, and consider a commutative square
+		\[
+		\begin{tikzcd}
+			Y \rar \dar[swap]{i} & W \dar{p} \\
+			Z \rar & X.
+		\end{tikzcd}
+		\]
+		We regard $Y$ and $Z$ as objects of $\Gest_{/X}$ through the bottom map. Since $p$ is $n$-affine, with classifying algebra $R := (\Oo(W)/\Oo(X))_n \in \CAlg(\Oo(X)_{n+1})$, maps into $W$ over $X$ are computed by maps out of $R$:
+		\[
+			\Map_{\Gest_{/X}}(T,W)
+			\simeq
+			\Map_{\CAlg(\Oo(X)_{n+1})}\bigl(R,(\Oo(T)/\Oo(X))_n\bigr)
+		\]
+		naturally in $T \in \Gest_{/X}$. Applying this to $T=Z$ and $T=Y$, the map
+		\[
+			\Map_{\Gest_{/X}}(Z,W) \to \Map_{\Gest_{/X}}(Y,W)
+		\]
+		is an equivalence, because $i$ being $n$-coaffine implies that
+		\[
+			(\Oo(Z)/\Oo(X))_n \to (\Oo(Y)/\Oo(X))_n
+		\]
+		is an isomorphism: if $A=\Oo(X)$, $C=\Oo(Z)$, and $B=\Oo(Y)$, then the relative algebra for $A \to B$ is obtained by applying the right adjoint for $A \to C$ to the relative algebra for $C \to B$, which is the unit by $n$-coaffineness. This shows that the square we started with has a contractible anima of fillers. 
+		
+		The usual retract argument then identifies the two classes with the corresponding left and right orthogonal classes.
+	\end{proof}
+
+	\section{Affineness and diagonals}
+
+	The main result of this section shows that, under suitable hypotheses, passing to the diagonal drops the level of affineness by precisely one. Part (2) generalizes results of Gaitsgory on 1-affineness \cite{Gaitsgory_1Affineness}, and related results for the general case appeared in Stefanich's thesis \cite{Stefanich_HigherQCoh}.
+
+	\begin{lemma}\label[lemma]{lem:Affine_Equivalence_On_Classifying_Level}
+		Let $f\colon Y \to X$ be a map of Gestalten. If
+		\[
+			f_n^*\colon \Oo(X)_{n+1} \to \Oo(Y)_{n+1}
+		\]
+		is an equivalence, then $f$ is $n$-coaffine.
+	\end{lemma}
+	\begin{proof}
+		Let $f_{n,*}$ denote the right adjoint of $f_n^*$. Since $f_n^*$ is an equivalence, the adjunction unit identifies the unit of $\Oo(X)_{n+1}$ with
+		\[
+			f_{n,*}\unit_{\Oo(Y)_{n+1}} = (\Oo(Y)/\Oo(X))_n.
+		\]
+		This is exactly the condition that $f$ is $n$-coaffine.
+	\end{proof}
+
+	\begin{lemma}\label[lemma]{lem:Prim_Coaffine_Diagonal_Coaffine}
+		Let $h\colon Y \to X$ be an $(n+1)$-prim and $(n+1)$-coaffine map of Gestalten. Then the diagonal $\Delta_h\colon Y \to Y \times_X Y$ is $n$-coaffine.
+		In particular, if $\Delta_h$ is $n$-affine, $h$ is injective.
+	\end{lemma}
+	\begin{proof}
+		By $(n+1)$-coaffineness, the unit map
+		\[
+			\unit_{\Oo(X)_{n+2}} \to (\Oo(Y)/\Oo(X))_{n+1}
+		\]
+		is an isomorphism. The Künneth formula for prim maps (\Cref{lem:Kunneth_Prim}), applied to the two copies of $h$, therefore gives
+		\[
+			(\Oo(Y \times_X Y)/\Oo(X))_{n+1}
+			\simeq
+			(\Oo(Y)/\Oo(X))_{n+1}
+			\otimes_{\Oo(X)_{n+2}}
+			(\Oo(Y)/\Oo(X))_{n+1}
+			\simeq
+			\unit_{\Oo(X)_{n+2}}.
+		\]
+		Under this identification, the map induced by $\Delta_h$ on relative algebras over $X$ is the multiplication map $\unit \otimes \unit \to \unit$, hence is an isomorphism. Passing to underlying categories gives an equivalence
+		\[
+			(\Delta_h)_n^*\colon \Oo(Y \times_X Y)_{n+1} \to \Oo(Y)_{n+1}.
+		\]
+		Thus \Cref{lem:Affine_Equivalence_On_Classifying_Level} shows that $\Delta_h$ is $n$-coaffine.
+
+		If $\Delta_h$ is also $n$-affine, then \Cref{cor:Affine_Coaffine_Implies_Iso} shows that $\Delta_h$ is an isomorphism. Thus $h$ is injective.
+	\end{proof}
+
+	\begin{proposition}
+		\label[proposition]{prop:Affineness_And_Diagonals}
+		Let $n \geq 0$, and let $f\colon Y \to X$ be an eventually suave map of Gestalten.
+		\begin{enumerate}
+			\item If $f$ is $(n-1)$-affine and $\Delta_f$ is $n$-prim, then $\Delta_f$ is $n$-affine.
+		\end{enumerate}
+		Assume additionally that both $f$ and its $(n+1)$-affinization $(Y/X)^{(n+1)\text{-affine}} \to X$ are countably presented,\footnote{Scholze does not assume these countability hypotheses; at present we do not know how to prove this implication without them.}
+		\begin{enumerate}
+			\item[(2)] If $\Delta_f$ is $n$-affine, and $f$ is $(n+1)$-prim, then $f$ is $(n+1)$-affine.
+		\end{enumerate}
+		In particular, if $f$ is $n$-proper, then $f$ is $(n+1)$-affine if and only if $\Delta_f$ is $n$-affine.
+	\end{proposition}
+	\begin{proof}
+		Part (1) is an instance of \Cref{lem:Reduce_Affineness}, applied to the map $\Delta_f^*\colon A = \Oo(Y \times_X Y) \to B = \Oo(Y)$. Indeed, $\Delta_f^*$ is still $(n+1)$-affine and is $n$-prim by assumption, and has an $(n+1)$-affine section $\pr^*\colon \Oo(Y) \to \Oo(Y \times_X Y)$.
+
+		For part (2), consider the unique factorization of $f$ as an $(n+1)$-coaffine map followed by an $(n+1)$-affine map
+		\[
+			Y \xrightarrow{h} Y' := (Y/X)^{(n+1)\text{-affine}} \xrightarrow{g} X.
+		\]
+		We need to show that $h$ is an isomorphism. Since $f$ is countably presented, \Cref{cor:Surjective_Affine_Truncation}, applied to the $(n+1)$-prim, eventually suave map $f$, shows that $h$ is surjective. It therefore suffices by \Cref{cor:Surjective_And_Injective_Implies_Iso} to show that $h$ is a monomorphism, i.e.\ that $\Delta_h$ is an isomorphism.
+
+		By construction, $h$ is $(n+1)$-coaffine. We now check that $h$ is also $(n+1)$-prim. The map $g$ is $(n+1)$-affine and, by assumption, countably presented. Hence \Cref{prop:Proper_Properties}(1) shows that $g$ is $(n+1)$-proper. Applying the cancellation statement \Cref{prop:Proper_Properties}(4) to the factorization $f=g \circ h$, the $(n+1)$-primness of $f$ implies the $(n+1)$-primness of $h$. It then follows from \Cref{lem:Prim_Coaffine_Diagonal_Coaffine} that $\Delta_h$ is $n$-coaffine, and so it remains to show that $\Delta_h$ is also $n$-affine.
+
+		Note that the classifying algebra of $g$ is
+		\[
+			(\Oo(Y)/\Oo(X))_{n+1} \qin \CAlg(\Oo(X)_{n+2}).
+		\]
+
+		Since $\Delta_f$ is assumed $n$-affine and $n$-affine maps are closed under right cancellation and base change, it suffices to show that $\Delta_g$ is $n$-affine in the following commutative diagram:
+		\[
+		\begin{tikzcd}
+			Y \dar[swap]{\Delta_h} \drar{\Delta_f} \\
+			Y \times_{Y'} Y \rar \drar[pullback] \dar & Y \times_X Y \dar \\
+			Y' \rar{\Delta_g} & Y' \times_X Y'.
+		\end{tikzcd}
+		\]
+		Now, since the map $f\colon Y \to X$ is $(n+1)$-prim, the Künneth formula for prim maps (\Cref{lem:Kunneth_Prim}) implies that we have
+		\[
+			(\Oo(Y \times_X Y)/\Oo(X))_{n+1} \iso (\Oo(Y)/\Oo(X))_{n+1} \otimes_{\Oo(X)_{n+2}} (\Oo(Y)/\Oo(X))_{n+1}.
+		\]
+		This identifies the $(n+1)$-affinization of $Y \times_X Y$ over $X$ with $Y' \times_X Y'$. Indeed, under the equivalence
+		\[
+			\CAlg(\Oo(X)_{n+2}) \simeq \bigl(\Gest_X^{(n+1)\text{-affine}}\bigr)\catop,
+		\]
+		the object $Y'$ corresponds to $(\Oo(Y)/\Oo(X))_{n+1}$, and fiber products of $(n+1)$-affine Gestalten over $X$ correspond to tensor products of the corresponding algebras in $\CAlg(\Oo(X)_{n+2})$.
+
+		Under this identification, $\Delta_g\colon Y' \to Y'\times_X Y'$ is the image of the map $\Delta_f\colon Y \to Y \times_X Y$ under the functor
+		\[
+			(-)^{(n+1)\text{-affine}}\colon \Gest_{/X} \to \Gest_{/X}^{(n+1)\text{-affine}}.
+		\]
+		This image is again $n$-affine: the $(n+1)$-affinization does not change the $(n+1)$-st categories, and hence does not change the relative algebra in degree $n$ for this map. Thus the comparison
+		\[
+			\Mod_{(\Oo(Y)/\Oo(Y \times_X Y))_n}\bigl(\Oo(Y \times_X Y)_{n+1}\bigr) \to \Oo(Y)_{n+1}
+		\]
+		for $\Delta_g$ is the same equivalence as for the $n$-affine map $\Delta_f$. Since $\Delta_g$ is already $(n+1)$-affine by \Cref{prop:Affineness_Properties}(4), this verifies the recursive criterion for $n$-affineness. This concludes the proof.
+	\end{proof}
+
+	\chapter{Examples of Gestalten}
+	\label[chapter]{chap:Examples}
+
+	\emph{Talk given by Sil.} 
+	
+	The goal of this chapter is to discuss examples of Gestalten.
+
+	\begin{convention}
+		Throughout this chapter, we will fix $n$ large enough, and work inside $\Gest_{/X}^{n\text{-}\et}$ for some Gestalt $X$, mostly $X = *$ or $X = \Gest(\D(A))$ for some $A \in \CAlg(\Sp)$. Since the inclusions $\Gest_{/X}^{n\text{-}\et} \hookrightarrow \Gest_{/X}^{(n+1)\text{-}\et}$, it doesn't matter which precise choice of $n$ we pick as long as all objects that are involved are $n$-étale.
+	\end{convention}
+
+	\section{Basic examples}
+
+	We start with some elementary examples.
+
+	\begin{example}[The point]
+		The \emph{terminal Gestalt} $* \in \Gest_{/X}$ is the identity map $\id_X\colon X \to X$. This is $0$-affine, $0$-étale, and $0$-proper.
+	\end{example}
+
+	\begin{example}[The empty set]
+		The \emph{initial Gestalt} $\emptyset \in \Gest_{/X}$ is the Gestalt associated to the zero ring:
+		\[
+			\emptyset = \Gest(*, *, *, \dots).
+		\]
+		We claim that this is always 1-affine. For each $n \geq 0$, we have $(\Oo(\emptyset)/\Oo(X))_n = *$. But for $n \geq 2$, the category $\Oo(X)_{n}$ is a module over the pointed category $1\Pr$, hence $\Oo(X)_n$ itself is pointed, so that $\Mod_*(\Oo(X)_n) = *$ as desired.
+
+		Since $\emptyset$ is 1-affine, it is in particular 1-proper. Moreover, it is $0$-étale, as it is a colimit (an empty colimit) of 0-étale objects over $X$. It is $0$-affine if and only if $\Oo(X)_1$ is pointed, or equivalently whenever $X$ is a Gestalt over $\Gest(\An_*)$.
+	\end{example}
+
+	\begin{example}[Finite sets]
+		Let $I$ be a finite set. Then we have the corresponding Gestalt
+		\[
+			I := \bigsqcup_{x \in I} * \in \Gest_{/X}.
+		\]
+		If $X = \Gest(A)$, we may express this as $\Gest(\prod_{I} A_0, \prod_I A_1, \prod_I A_2, \dots, \dots)$, since colimits of Gestalten correspond to limits of Stefanich rings.
+
+		Note that $I$ is 0-étale over $X$, as a colimit of 0-étale Gestalten. We claim it is also 1-affine: we have $(\Oo(I)/\Oo(X))_n = \prod_I \unit \in A_n$, and so
+		\[
+			\Mod_{(\Oo(I)/\Oo(X))_{n-1}}(\Oo(X)_n) = \Mod_{\prod_I \unit}(A_n) \simeq \prod_I \Mod_{\unit} A_n \simeq \prod_{I} A_n = (\Oo(I)/\Oo(X))_{n}
+		\]
+		for all $n \geq 2$; here we use that $A_n$ semiadditive, since it is a module over $1\Pr$, which is semiadditive. If $A_1$ is semiadditive, then $I$ is even 0-affine.
+	\end{example}
+
+	\begin{example}[Countable sets]
+		Similarly as in the previous example, for any countable set $I$ we may define
+		\[
+			I = \coprod_I * \in \Gest_{/X}.
+		\]
+		Once again this is $0$-étale and 1-affine; this uses the fact that $1\Pr$ is not just semiadditive but even countably semiadditive, in that countable products agree with countable coproducts.
+	\end{example}
+
+	\begin{example}[Countable animae]
+		Generalizing the previous two examples, there exists a unique countable-colimit-preserving functor
+		\[
+			\An^{\mathrm{ctbl}} \to \Gest_{/X}^{0\text{-}\et}
+		\]
+		given on the point by $* \mapsto *$. Every countable anima is $0$-étale, hence 1-proper. However, it may not be 1-affine.
+
+		As a counterexample, we will show by induction on $n$ that the Gestalt $B^{n+1}(\Z/2)$ is not $n$-affine over $\Gest(\D(\Q))$. 
+		
+		We first show that it is $0$-proper: it is 0-étale hence 1-proper, and its diagonal has fibers by $B^n(\Z/2)$, so it remains to show it is $0$-prim. In other words, we need to show that the functor
+		\[
+			\D(\Q) \to \D(\Q)^{B^{n+1}(\Z/2)} \simeq \Mod_{\Q[\Omega(B^{n+1}(\Z/2))]}(\D(\Q)) \simeq \Mod_{\Q[B^n(\Z/2)]}(\D(\Q))
+		\]
+		has a $\D(\Q)$-linear right adjoint. For $n = 1$, we know that $H_*(B^n(\Z/2);\Q) \iso \Q$, so that $\Q[B^n(\Z/2)]$ is the monoidal unit in $\D(\Q)$, hence this map is even an isomorphism. It thus remains to show that the right adjoint of the functor $\D(\Q) \to \Fun(B(\Z/2),\D(\Q))$ preserves colimits. This functor is given by taking $\Z/2$-fixed points. But since $\D(\Q)$ is rational, the norm map $(-)_{h\Z/2} \to (-)^{h\Z/2}$ is an isomorphism, and so this is also a left adjoint, hence preserves colimits.
+
+		We may now use \Cref{lem:Reduce_Affineness} to inductively show that $B^{n+1}(\Z/2)$ is not $n$-affine for any $n$. To see this, assume for contradiction that $B^{n+1}(\Z/2)$ is $n$-affine.Then its diagonal is $(n-1)$-affine, hence by the pullback square
+		\[
+		\begin{tikzcd}
+			B^{n}(\Z/2) \rar \dar \drar[pullback] & B^{n+1}(\Z/2) \dar{\Delta} \\
+			* \rar & B^{n+1}(\Z/2) \times B^{n+1}(\Z/2)
+		\end{tikzcd}
+		\]
+		we would get that $B^{n}(\Z/2)$ is $(n-1)$-affine. It thus suffices to show that $B(\Z/2)$ is not $0$-affine. Indeed, if it were, then the category $\D(\Q)^{B(\Z/2)}$ of $\Z/2$-representations of $\Q$-modules would be equivalent to the module category $\Mod_{\Q^{B(\Z/2)}}(\D(\Q))$, which is equivalent to $\D(\Q)$ since again $B(\Z/2)$ has trivial rational cohomology. But this is a contradiction as there exist non-trivial $\Q$-representations.
+	\end{example}
+
+	\section{Examples from algebraic geometry}
+
+	Recall that for a Gestalt of the form $X = \Gest(\D(A))$ for some ring spectrum $A \in \CAlg(\Sp)$, we defined a functor
+	\[
+		\Gest(-)\colon \Shv_{\fpqc}(\Aff_A)^{\aleph_1} \to \Gest_{/X}, \qquad Y \mapsto \Gest(\Oo(Y), 1\Pr_Y, 2\Pr_Y, \dots).
+	\]
+	In fact, we can define things more generally.
+
+	\begin{example}[Affine line]
+		\label[example]{ex:Affine_Line}
+		There is a functor
+		\[
+			\Oo(-)_0\colon (\Gest_{/X})\catop \to \An, \qquad Y \mapsto \Oo(Y)_0.
+		\]
+		Writing $A := \Oo(X) \in \StRing$, this is represented by the \emph{affine line}
+		\[
+			\bbA^1_X := \Gest_X(A_0\{x\}),
+		\]
+		where $A_0\{x\}$ is the free $E_{\infty}$-algebra on one generator $x$ over $A_0$:
+		\[
+			\Hom_{\Gest_{/X}}(Y,\bbA^1_X) \simeq \Hom_{\StRing_{A/}}(\St_A(A_0\{x\}), \Oo(Y)/\Oo(X)) \simeq \Hom_{\CAlg(A_1)}(A_0\{x\}, (\Oo(Y)/\Oo(X))_0) \simeq \Oo(Y)_0.
+		\]
+		Note that $\bbA^1_X$ is $0$-affine, hence $0$-proper and $1$-étale.
+
+		Over the absolute base, this is $\Gest(*\{x\})$, where
+		\[
+			*\{x\} = \bigsqcup_{n \geq 0} */\sigma_n
+		\]
+		is the free $E_{\infty}$-monoid (in animae) on one generator.
+	\end{example}
+
+	\begin{example}[Flat affine line]
+		Over $\S$, or even over $\Z$, the free $E_{\infty}$-algebra $\Z\{x\} = \bigoplus_{n \geq 0} \Z[*/\Sigma_n]$  is \emph{not} isomorphic to the polynomial algebra $\Z[x]$; rather, it has contributions coming from the group homology of symmetric groups. After base change to $\Q$, the two versions of the polynomial algebra agree.
+
+		Over a general base $X = \Gest(A)$, we will denote this other version of the affine line by
+		\[
+			\bbG_a := \Gest_X(A_0[x]),
+		\]
+		where $A_0[x] = \bigsqcup_{n \geq 0} A_0 \cdot x^n$ is the polynomial algebra over $A_0$. This is 0-affine, and hence $0$-proper and $1$-étale.
+
+		Over the absolute base, we have $\bbG_a = \Gest(\N)$, the natural numbers.
+	\end{example}
+
+	\begin{example}[Multiplicative group]
+		Consider the subfunctor
+		\[
+			\GL_1 \subseteq \bbA^1_X
+		\]
+		sending a Gestalt $Y \in \Gest_{/X}$ to the invertible elements $\Oo(Y)^{\times}_0$ of the commutative ring $\Oo(Y)_0$. This is representable by the Gestalt
+		\[
+			\GL_1 := \Gest_X(A_0\{x^{\pm}\}),
+		\]
+		the free $E_{\infty}$-algebra over $A_0$ on an invertible element $x$.
+
+		There is again another version:
+		\[
+			\bbG_m := \GL_1 \times_{\bbA^1} \bbG_a = \Gest_X(A_0[x^{\pm1}]).
+		\]
+		Over the absolute base, this is $\Gest(\Z)$, where we regard $\Z$ as a ``multiplicative group'': it represents the functor taking $Y$ to $\Hom_{\CAlg(\An)}(\Z,\Oo(Y)_0)$.
+
+		Over $\D(\Q)$ (or just $D_{\geq 0}(\Q)$), $\GL_1$ and $\bbG_m$ are isomorphic.
+	\end{example}
+
+	\begin{example}[Projective line]
+		We define the \emph{projective line} as the pushout
+		\[
+			\bbP^1_X := \bbA^1_X \sqcup_{\GL_1} \bbA^1_X
+		\]
+		in $\Gest_{/X}$. Here the two maps $\GL_1 \to \bbA^1$ are the maps represented by the algebra maps $A_0\{x\} \to A_0\{x^{\pm}\}$ given by $x \mapsto x$ and $x \mapsto x^{-1}$.
+
+		As a pushout of 1-étale Gestalten, this is 1-étale. It is not 0-affine, but its diagonal is 0-affine: The product of two copies of $\bbA^1_X \sqcup_{\GL_1} \bbA^1_X$ is covered by four copies of $\bbA^1 \times \bbA^1$ and the preimage of the diagonal is either $\bbA^1$ embedded diagonally, or $\GL_1$ embedded via $x \mapsto (x,x^{-1})$, and both maps are $0$-affine as maps between $0$-affines.
+	\end{example}
+
+	While may already define $\bbP^1_X$ over the absolute base, it turns out that before passing to the stable setting of $\D(\S)$, this is not well-behaved, and is different from the object one might expect. For concreteness, we explain the situation over a field $k$.
+
+	\begin{proposition}
+		\label[proposition]{prop:Counterexample_Zariski_Cover}
+		Let $k$ be a field. Then the map
+		\[
+			\Gest_X(k[T^{\pm 1}]) \sqcup \Gest_X(k[T,\frac{1}{1-T}]) \to \Gest_X(k[T])
+		\]
+		over $X = \Gest(\D_{\geq 0}(k))$ is not surjective. After base change to $\Gest(\D(k))$, it becomes surjective.
+	\end{proposition}
+	\begin{proof}
+		The fact that it is surjective after base change to $\D(k)$ follows from fpqc descent for the affine functor $\Spec(A) \mapsto \St(A)$, assembled from \Cref{thm:fpqc_Hyperdescent_nPr}, together with \Cref{thm:Sheaf_Valued_In_Etale}. Indeed, after base change the displayed map is the image of the usual Zariski cover $D(T) \cup D(1-T) = \Spec(k[T])$, whose \v{C}ech nerve realizes to $\Spec(k[T])$ in $\Shv_{\fpqc}(\Aff_k)^{\aleph_1}$.
+
+		We now show that the original map is not surjective. If the displayed map were surjective, then \Cref{prop:Surjective_Generation}, applied with $n=1$, would imply that the image of
+		\[
+			\D_{\geq 0}(k[T^{\pm 1}]) \times \D_{\geq 0}(k[T,\frac{1}{1-T}]) \to \D_{\geq 0}(k[T])
+		\]
+		generates $\D_{\geq 0}(k[T])$ under small colimits.
+
+		However, $k[T] \in \D_{\geq 0}(k[T])$ receives no nonzero maps from any object in this image. Indeed, if $M \in \D_{\geq 0}(k[T^{\pm 1}])$, then every $k[T]$-linear map $M \to k[T]$ is detected on $\pi_0(M)$, and its image in $k[T]$ is divisible by all powers of $T$, hence lies in $\bigcap_{r \geq 0} T^r k[T] = 0$. Similarly, maps from objects of $\D_{\geq 0}(k[T,\frac{1}{1-T}])$ have image in $\bigcap_{r \geq 0} (1-T)^r k[T] = 0$. The full subcategory of objects mapping trivially to $k[T]$ is closed under colimits, so $k[T]$ cannot be generated by the displayed image.
+	\end{proof}
+
+	\begin{remark}
+		After base change to $\Gest(\D(\S))$, the descent argument in the previous proof, together with \Cref{thm:fpqc_Hyperdescent_nPr,thm:Sheaf_Valued_In_Etale}, shows that
+		\[
+			\bbA^1 \sqcup_{\GL_1} \bbA^1
+		\]
+		comes from the obvious fpqc stack, namely the derived scheme obtained by gluing two affine lines along the invertible locus. In particular, it is $0$-proper. If one instead forms the version
+		\[
+			\bbG_a \sqcup_{\bbG_m} \bbG_a
+		\]
+		using ordinary polynomial algebras rather than free $E_{\infty}$-algebras, then the resulting Gestalt is also $0$-suave. Over $\D(\Q)$, the two choices of polynomial algebra agree, so the distinction between these two projective lines disappears.
+	\end{remark}
+
+	For our last example we work over $\D(\Q)$.
+
+	\begin{example}
+		Consider the functor
+		\[
+			\pic(-)\colon \Gest_{/\D(\Q)} \to \An, X \mapsto \Oo(X)_1^{\times}.
+		\]
+		This is represented by a 2-étale Gestalt
+		\[
+			\Pic \in \Gest_{/\D(\Q)}.
+		\]
+	\end{example}
+
+	\begin{construction}
+		Over the base $X_0 := \Gest(\D(\Q))$, let
+		\[
+			\mu_2 := \Gest_{X_0}(\Q[x]/(x^2-1))
+		\]
+		denote the group of second roots of unity. Since $2$ is invertible in $\Q$, this is isomorphic to the constant sheaf $\underline{\Z/2}$.
+
+		We construct a map
+		\[
+			\Pic \to \mu_2
+		\]
+		of sheaves of spectra on $\Gest_{/\D(\Q)}$, where we identify $\CGrp(\An)$-valued sheaves with $\Sp_{\geq 0}$-valued sheaves. Given an invertible object $L \in \Oo(X)^{\times}_1 = \pic(X)$, the swap map $c\colon L \otimes L \cong L \otimes L$ provides a map
+		\[
+			\unit \cong L^{-\otimes 2} \otimes (L \otimes L) \iso L^{-\otimes 2} \otimes (L \otimes L) \cong \unit,
+		\]
+		which provides an element of $\mu_2$.
+	\end{construction}
+
+	\begin{proposition}
+		\label[proposition]{prop:Relation_Pic_BG_m}
+		There is a fiber sequence of sheaves of spectra on $\Gest_{/\D(\Q)}$ of the form
+		\[
+			*/\bbG_m \to \Pic \to \mu_2.
+		\]
+	\end{proposition}
+	\begin{proof}
+		The map $\Pic \to \mu_2$ is surjective, since the $\Q$-module $\Q[1]$ has $-1$ as a swap. In particular, we get a fiber sequence
+		\[
+			\fib(\Pic \to \mu_2) \to \Pic \to \mu_2.
+		\]
+		We will now show that the map $* \to \fib(\Pic \to \mu_2)$ is surjective, i.e.\ that any $L \in \Oo(X)^{\times}_1$ such that the swap map $c\colon L \otimes L \to L \otimes L$ is trivial is already locally trivial. Write $A = \Oo(X)$. The action of $\Sigma_n$ on $L^{\otimes n}$ is uniquely trivial for all $n \geq 1$. Indeed, this action is given by a map
+		\[
+			\Sigma_n \to \Aut(L^{\otimes n}) \simeq \Aut(\unit) = A_0^{\times}.
+		\]
+		Since $X$ lies over $\D(\Q)$, the commutative algebra $A_0$ refines to an object of $\CAlg(\D_{\geq 0}(\Q))$. Thus $A_0^{\times}$ is a connective $E_{\infty}$-group whose higher homotopy groups are $\Q$-vector spaces. The induced map $\Sigma_n \to \pi_0(A_0^{\times})$ is trivial because transpositions act trivially by assumption, and transpositions generate $\Sigma_n$. Since $\Sigma_n$ is finite and the higher homotopy groups are rational vector spaces, there are no higher obstructions or choices, so the map $\Sigma_n \to A_0^{\times}$ is uniquely nullhomotopic.
+
+		We may therefore form the commutative algebra
+		\[
+			B := \bigoplus_{n \in \Z} L^{\otimes n} \qin \CAlg(A_1),
+		\]
+		with multiplication induced by the identifications $L^{\otimes m} \otimes L^{\otimes n} \simeq L^{\otimes(m+n)}$. Tensoring with $L$ shifts the grading, so
+		\[
+			L \otimes B \simeq B
+		\]
+		in $\Mod_B(A_1)$. Hence $L$ becomes trivial after base change along the $0$-affine map $\Gest_X(B) \to X$. Moreover, the inclusion $\unit \to B$ of the degree-zero summand splits in $A_1$ by projection onto degree zero, so $B \otimes -$ is conservative. By the conservative criterion of \Cref{prop:Surjective_Criteria}, the map $\Gest_X(B) \to X$ is a cover. This proves that $* \to \fib(\Pic \to \mu_2)$ is surjective.
+
+		Finally, $* \times_{\Pic} *$ classifies automorphisms of the trivial line bundle, which is precisely $\bbG_m$. Since $* \to \fib(\Pic \to \mu_2)$ is surjective, its \v{C}ech nerve presents the fiber as the quotient $*/\bbG_m$, giving the desired identification $\fib(\Pic \to \mu_2) \simeq */\bbG_m$.
+	\end{proof}
+
+	\begin{remark}
+		We have $\pi_0\Pic(\D(\Q)) = \Z$, given by the shifts $\Q[n]$ for $n \in \Z$. However, the proof shows that the classes with $n$ even are locally trivial in Gestalten. To trivialize them, one has to pass to the periodic $E_{\infty}$-rings
+		\[
+			\bigoplus_{m \in \Z} \Q[nm].
+		\]
+		Only for even $n$ does this admit a commutative multiplication.
+
+		We will later study higher versions of this story, comparing $B^n\bbG_m$ with the moduli space of invertible objects of $A_n$. In the terminology used in the literature, this studies ``invertible topological quantum field theories''; these are expected to be classified by a spectrum essentially given by an Anderson dual of the sphere. From this viewpoint, the $\mu_2$ above should be seen as dual to the first stable homotopy group of spheres, $\pi_1 \S = \Z/2$. We will in fact see that the moduli space of invertible objects in the $A_n$ defines a sheaf of spectra on Gestalten which is an internal Anderson dual of the sphere, proving a precise version of this expectation.
+	\end{remark}
 
 	\chapter{Six functors and Gestalten}
 
@@ -4125,5 +4591,3 @@
 	\printbibliography[heading=bibintoc]
 	
 \end{document}
-
-
