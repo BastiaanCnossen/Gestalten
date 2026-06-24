@@ -105,13 +105,13 @@
 % Section headings
 \usepackage{titlesec}
 %\titleformat{\section}{\Large\bfseries}{\thepart.\arabic{chapter}.\arabic{section}}{10pt}{\Large}
-\titleformat{\section}{\Large\bfseries}{\arabic{chapter}.\arabic{section}}{10pt}{\Large}
-\titleformat{\subsection}{\large\bfseries}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}{6pt}{\large}
-\titleformat{\subsubsection}{\large\bfseries}{\arabic{chapter}.\arabic{section}.\arabic{subsubsection}}{6pt}{\large}
-\titleformat{\chapter}{\normalfont\huge\bfseries}{\arabic{chapter}}{20pt}{\Huge}
+\titleformat{\section}{\Large\bfseries}{\thechapter.\arabic{section}}{10pt}{\Large}
+\titleformat{\subsection}{\large\bfseries}{\thechapter.\arabic{section}.\arabic{subsection}}{6pt}{\large}
+\titleformat{\subsubsection}{\large\bfseries}{\thechapter.\arabic{section}.\arabic{subsubsection}}{6pt}{\large}
+\titleformat{\chapter}{\normalfont\huge\bfseries}{\thechapter}{20pt}{\Huge}
 %\counterwithin{chapter}{part}
-\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
-\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesection}{\thechapter.\arabic{section}}
+\renewcommand{\thesubsection}{\thechapter.\arabic{section}.\arabic{subsection}}
 
 \cftsetindents{section}{10pt}{25pt}
 \cftsetindents{part}{0pt}{30pt}

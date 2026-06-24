@@ -3,7 +3,6 @@
 %---------------------------------------
 % === Document Setup and Language ===
 \usepackage[english]{babel}        % English language
-\addto\captionsenglish{\renewcommand{\chaptername}{Talk}}
 \usepackage[utf8]{inputenc}        % Unicode support
 \usepackage[T1]{fontenc}           % Font encoding
 \usepackage{subfiles}              % Allow for subfiles which can be compiled standalone
@@ -27,12 +26,13 @@
 	positioning, 	% For relative positioning (below=of, right=of)
 	calc,        	% For coordinate calculations (finding midpoints)
 	fit,			% Needed for the bounding box (fit)
-	patterns, 
+	patterns,
 	decorations.markings,
 	decorations.pathmorphing,	% Needed for squiggly arrows
 	backgrounds
 }
 \usepackage{graphicx}              % Image handling
+\usepackage{booktabs}              % \toprule, \midrule, \bottomrule for tables
 
 % === Page Layout ===
 \usepackage{geometry}
@@ -302,6 +302,7 @@ maxbibnames=99
 %---------------------------------------
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\QCoh}{QCoh}
+\DeclareMathOperator{\IndCoh}{IndCoh}
 \DeclareMathOperator{\Perf}{Perf}
 \DeclareMathOperator{\Proj}{Proj}
 \DeclareMathOperator{\Zar}{Zar}
@@ -326,6 +327,7 @@ maxbibnames=99
 \DeclareMathOperator{\LConst}{LConst}
 \DeclareMathOperator{\Nm}{Nm}
 \DeclareMathOperator{\Pro}{Pro}
+\DeclareMathOperator{\Lan}{Lan}
 \DeclareMathOperator{\Ran}{Ran}
 \DeclareMathOperator{\Rex}{Rex}
 \DeclareMathOperator{\PSh}{PSh}
@@ -335,12 +337,19 @@ maxbibnames=99
 \newcommand{\simp}{\mathlarger{\boldsymbol{\Delta}}}
 \newcommand{\bOmega}{{\boldsymbol{\Omega}}}
 \DeclareMathOperator{\Span}{Span}
+\newcommand{\SpanTwo}{{\textup{\textsc{Span}}}_2}
+\newcommand{\SpanTwoP}[4]{\SpanTwo(#1,#2)_{#4,#3}}
 \DeclareMathOperator{\NSpan}{NSpan}
 \DeclareMathOperator{\Tw}{Tw}
 \DeclareMathOperator{\LM}{LM}
 \let\Re\relax
 \DeclareMathOperator{\Re}{Re}
 \DeclareMathOperator{\Fact}{Fact}
+
+\DeclareMathOperator{\SD}{SD}				% Suave dual
+\DeclareMathOperator{\PD}{PD}				% Prim dual
+\DeclareMathOperator{\Suave}{Suave}			% Suave objects
+\DeclareMathOperator{\Prim}{Prim}			% Prim objects
 
 \DeclareMathOperator{\shift}{shift}
 \DeclareMathOperator{\act}{act}
@@ -350,9 +359,8 @@ maxbibnames=99
 \DeclareMathOperator{\rex}{rex}
 \DeclareMathOperator{\chain}{chain}
 \DeclareMathOperator{\sd}{sd}
-\DeclareMathOperator{\Reedy}{Reedy}
-\newcommand{\vectimes}[1]{\;\vec{\times}_{#1}\;}
-\DeclareMathOperator{\Nmadj}{\widetilde{\Nm}}
+\DeclareMathOperator{\qc}{qc}
+\DeclareMathOperator{\Poly}{Poly}
 
 %---------------------------------------
 % Abbreviations
@@ -448,6 +456,10 @@ maxbibnames=99
 \newcommand{\ProFin}{\catname{ProFin}}
 \newcommand{\AnRing}{\catname{AnRing}}
 \newcommand{\AnStck}{\catname{AnStck}}
+\newcommand{\Ring}{\catname{Ring}}
+\newcommand{\twoCAlg}{\catname{2CAlg}}
+\newcommand{\Idem}{\catname{Idem}}
+\newcommand{\coIdem}{\catname{coIdem}}
 \newcommand{\StRing}{\catname{StRing}}
 \newcommand{\PreStRing}{\catname{PreStRing}}
 \newcommand{\Gest}{\catname{Gest}}
@@ -820,3 +832,8 @@ maxbibnames=99
 \Crefname{terminology}{Terminology}{Terminologies}
 \Crefname{theorem}{Theorem}{Theorems}
 \Crefname{warning}{Warning}{Warnings}
+
+% Appendix chapters are labelled \label[appendix]{...} so that \Cref calls them
+% ``Appendix'' rather than ``Chapter'' (main-matter chapters keep ``Chapter'').
+\crefname{appendix}{appendix}{appendices}
+\Crefname{appendix}{Appendix}{Appendices}
