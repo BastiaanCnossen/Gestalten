@@ -13,7 +13,9 @@
 *.out
 *.json
 Talks/
+Notes/
 Literature/
 .claude/
 .obsidian/
 CLAUDE.md
+AGENTS.md
