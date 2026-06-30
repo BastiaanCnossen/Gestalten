@@ -24,7 +24,7 @@
 	% \addcontentsline{toc}{chapter}{Acknowledgments}
 	% \addtocontents{toc}{\vskip 15pt}
 
-	All mathematical material in these notes is taken from \citet{Scholze_Gestalten}, which is joint work with Stefanich. These notes are based on notes taken live during the talks, and we thank all participants of the seminar for their contributions. We also thank Peter Scholze for explaining the arguments in \Cref{chap:Compact_Objects} to us. Finally, we have made use of generative AI (mostly Claude Code) to turn the live notes into proper \LaTeX{}.
+	All mathematical material in these notes is taken from \citet{Scholze_Gestalten}, which is joint work with Stefanich. These notes are based on notes taken live during the talks, and we thank all participants of the seminar for their contributions. We also thank Peter Scholze for explaining the arguments in \Cref{chap:Compact_Objects} to us. Finally, we have made use of generative AI (Claude Code and Codex) to turn the live notes into proper \LaTeX{} and to fill in certain proofs (notably: end of \Cref{chap:Properties_Of_Maps}, \Cref{chap:Transmutations}, \Cref{chap:SH} and \Cref{chap:Compact_Objects}.)
 
 	\addto\captionsenglish{\renewcommand{\chaptername}{Talk}}
 
@@ -402,9 +402,9 @@
 	\[
 		0\Pr_A,\; 1\Pr_A,\; 2\Pr_A,\ldots
 	\]
-	which should be thought of as higher versions of $\QCoh(\Spec(A))$. These categories assemble into a Stefanich ring $\St(A)$, resulting in a functor
+	which should be thought of as higher versions of $\QCoh(\Spec(A))$. These categories assemble into a Stefanich ring $\Oo(\Spec(A))$, resulting in a functor
 	\[
-		\St\colon \Aff_{\S}\catop \hookrightarrow \StRing.
+		\Oo\colon \Aff_{\S}\catop \hookrightarrow \StRing.
 	\]
 	The main goals of the talk are then the following:
 	\begin{itemize}
@@ -456,13 +456,13 @@
 	\end{observation}
 
 	\begin{definition}
-		Given a commutative ring spectrum $A$, we define its associated Stefanich ring
+		Given a commutative ring spectrum $A$, we define the associated Stefanich ring
 		\[
-			\St(A) \qin \StRing \; = \; \lim_{\CAT}\bigl(\CAlg(\An) \xleftarrow{\End^{\bbP}_1} \CAlg(1\Pr) \xleftarrow{\End^{\bbP}_2} \CAlg(2\Pr) \xleftarrow{\End^{\bbP}_3} \dots\bigr)
+			\Oo(\Spec(A)) \qin \StRing \; = \; \lim_{\CAT}\bigl(\CAlg(\An) \xleftarrow{\End^{\bbP}_1} \CAlg(1\Pr) \xleftarrow{\End^{\bbP}_2} \CAlg(2\Pr) \xleftarrow{\End^{\bbP}_3} \dots\bigr)
 		\]
 		to be the sequence
 		\[
-			\St(A) := (\Omega^{\infty}(A), \D(A), 1\Pr_A, 2\Pr_A, \ldots),
+			\Oo(\Spec(A)) := (\Omega^{\infty}(A), \D(A), 1\Pr_A, 2\Pr_A, \ldots),
 		\]
 		equipped with the structure maps from \eqref{eq:Structure_Maps_St(A)}.
 	\end{definition}
@@ -498,9 +498,9 @@
 
 	\begin{lemma}
 		\label[lemma]{lem:Affine_Stefanich_Rings}
-		The assignment $A \mapsto \St(A)$ defines a fully faithful functor
+		The assignment $\Spec(A) \mapsto \Oo(\Spec(A))$ defines a fully faithful functor
 		\[
-			\St\colon \CAlg(\Sp) \hookrightarrow \StRing.
+			\Oo\colon \Aff_{\S}\catop \hookrightarrow \StRing.
 		\]
 	\end{lemma}
 	\begin{proof}
@@ -522,7 +522,7 @@
 	\begin{notation}
 		Consider a map $f\colon A \to B$ in $\CAlg(\Sp)$. By the functoriality of the associated Stefanich ring, this results in a map of Stefanich rings
 		\[
-			\St(f)\colon \St(A) \to \St(B).
+			\Oo(\Spec(f))\colon \Oo(\Spec(A)) \to \Oo(\Spec(B)).
 		\]
 		The $n$-th component is a symmetric monoidal functor of the form
 		\[
@@ -820,7 +820,7 @@
 	The goal of this chapter is the following hyperdescent statement:
 
 	\begin{theorem}[{cf.\ \cite[Corollary 3.33, Proposition 3.45]{Mathew_Galois}}]\label[theorem]{thm:fpqc_Hyperdescent_nPr}
-		The functor $n\Pr_{(-)}^!\colon \Aff_{\S} \to 1\Pr$ (defined on maps by the right adjoints $f^!$) is a hypersheaf with respect to the fpqc topology for each $n \geq 0$.
+		The functor $n\Pr_{(-)}^!\colon \Aff_{\S}\catop \to 1\Pr$ (defined on maps by the right adjoints $f^!$) is a hypersheaf with respect to the fpqc topology for each $n \geq 0$.
 	\end{theorem}
 
 	\begin{remark}
@@ -857,11 +857,11 @@
 		is an isomorphism.
 	\end{itemize}
 
-	The proof has three parts:
+	The proof has three parts; the first two treat countably presented fpqc-hypercovers:
 	\begin{itemize}
-		\item The main argument treats countably presented fpqc-hypercovers; the final section reduces arbitrary fpqc-hypercovers to this case.
 		\item We first prove the theorem for $n = 0$.
 		\item We then prove the general case by induction on $n$.
+		\item Finally, we reduce arbitrary fpqc-hypercovers to the countably presented case.
 	\end{itemize}
 
 	\section{The base case \texorpdfstring{$n = 0$}{n = 0}}
@@ -876,7 +876,7 @@
 
 	We start by showing that this comparison functor is fully faithful.
 
-	Note that the functor $\D(A) \iso \lim_{[n] \in \simp}^! \D(A_{\bullet})$ admits a left adjoint, given by sending an object $(A_n)_{[n] \in \simp}$ to the colimit $\colim_{[n] \in \simp\catop} (f_n)_* A_n$, where we denote by $f_n\colon \Spec(A_n) \to \Spec(A)$ the maps constituting the hypercover. So we must show that for any object $M \in \D(A)$, the counit map
+	Note that the functor $\D(A) \iso \lim_{[n] \in \simp}^! \D(A_{\bullet})$ admits a left adjoint, given by sending an object $(M_n)_{[n] \in \simp}$ to the colimit $\colim_{[n] \in \simp\catop} (f_n)_* M_n$, where we denote by $f_n\colon \Spec(A_n) \to \Spec(A)$ the maps constituting the hypercover. So we must show that for any object $M \in \D(A)$, the counit map
 	\[
 		\colim_{[n] \in \simp\catop} (f_{n})_* f_n^! M \to M
 	\]
@@ -977,7 +977,7 @@
 	It will thus suffice to show that the map $C_{m+2} \to C_m$ is the zero map in $\D(A)$ for each $m \geq 0$. For this, recall the following definition:
 
 	\begin{definition}
-		A morphism $X \to Y$ in $\D(A)$ is called a \emph{phantom map} if the induced map $\pi_i(X) \to \pi_i(Y)$ is the zero map for each $i \in \Z$. Equivalently, for every perfect $A$-module $Z$ and every map $Z \to X$, the composite $Z \to X \to Y$ is nullhomotopic.
+		A morphism $X \to Y$ in $\D(A)$ is called a \emph{phantom map} if for every perfect $A$-module $Z$ and every map $Z \to X$, the composite $Z \to X \to Y$ is nullhomotopic. In particular, taking $Z = A[i]$ shows that a phantom map induces the zero map $\pi_i(X) \to \pi_i(Y)$ for each $i \in \Z$.
 	\end{definition}
 
 	\begin{observation}
@@ -985,14 +985,22 @@
 		\[
 			\pi_0(\lim_i \hom_A(X_i, Y)) \cong \pi_0\hom_A(X, Y) \to \lim_i \pi_0 \hom_A(X_i, Y).
 		\]
-		This kernel is $\lim^1_i \pi_{-1}\hom_A(X_i, Y)$.
+		More generally, the homotopy limit spectral sequence
+		\[
+			R^s\lim_i\pi_t\hom_A(X_i,Y) \Rightarrow \pi_{t-s}\hom_A(X,Y)
+		\]
+		identifies this kernel with the first positive piece of the induced filtration on $\pi_0\hom_A(X,Y)$; its associated graded pieces are subquotients of $R^s\lim_i\pi_s\hom_A(X_i,Y)$ for $s > 0$. In the sequential case, this reduces to the Milnor exact sequence for the tower of spectra $\hom_A(X_i,Y)$:
+		\[
+			0 \to \lim\nolimits^1_i \pi_{1}\hom_A(X_i,Y) \to \pi_0\hom_A(X,Y) \to \lim_i\pi_0\hom_A(X_i,Y) \to 0,
+		\]
+		so in that case the kernel is $\lim^1_i \pi_{1}\hom_A(X_i, Y)$.
 	\end{observation}
 
 	\begin{lemma}[{\cite[Theorem~4.2.5]{HPS1997Axiomatic}}]
 		The composite of two phantom maps is nullhomotopic.
 	\end{lemma}
 	\begin{proof}[Proof sketch]
-		Consider two phantom maps $W \to X \to Y$. By the above observation, both maps come from $\lim^1$-terms. Their composite would then be an element of some $\lim^2$. But $\lim^2$ of abelian groups are zero.
+		In the phantom-tower proof of \citet{HPS1997Axiomatic}, one constructs a sequential tower by iteratively killing maps out of perfect objects. Phantom maps have filtration at least $1$ in this tower, detected by the $\lim^1$-term in the Milnor exact sequence. Composition is compatible with this filtration and adds filtration degrees. Thus a composite of two phantom maps lands in filtration at least $2$, i.e.\ in an $R^2\lim$-term. For a sequential tower, $R^s\lim$ vanishes for $s \geq 2$.
 	\end{proof}
 
 	In light of the lemma, it remains to show that each map $C_{m+1} \to C_m$ is a phantom map. We now make the following claim:
@@ -1010,7 +1018,7 @@
 		\]
 	\end{theorem}
 
-	Combining this with \Cref{cl:CountablyGeneratedFlat}, we may thus write $C_{m+1} \simeq \colim_{i \geq 0} A^{\oplus n_i}[-m]$. Now, if $Z$ is any perfect $A$-module and $Z \to C_{m+1}$ is any map, then it must factor through some finite stage $Z \to A^{\oplus n_i}[-m]$. So it suffices to show that any map $A[-m] \to C_m$ is nullhomotopic in $\D(A)$. But homotopy classes of such maps correspond to elements of $\pi_{-m}(C_m)$, which is $0$ since by \Cref{cl:CountablyGeneratedFlat} $C_m$ is concentrated in degree $m-1$.
+	Combining this with \Cref{cl:CountablyGeneratedFlat}, we may thus write $C_{m+1} \simeq \colim_{i \geq 0} A^{\oplus n_i}[m]$. Now, if $Z$ is any perfect $A$-module and $Z \to C_{m+1}$ is any map, then it must factor through some finite stage $Z \to A^{\oplus n_i}[m]$. So it suffices to show that any map $A[m] \to C_m$ is nullhomotopic in $\D(A)$. But homotopy classes of such maps correspond to elements of $\pi_{m}(C_m)$, which is $0$ since by \Cref{cl:CountablyGeneratedFlat} $C_m$ is concentrated in degree $m-1$.
 
 	We now move towards a proof of \Cref{cl:CountablyGeneratedFlat}. For this, recall that an $A$-module $M$ is flat if and only if $M \otimes_A \pi_0(A)$ is a flat static $\pi_0 A$-module. So we may check the claim after base changing to $\pi_0 A$. Observe that base change commutes with the cofiber and with the finite limit $\lim_{\leq m} A_{\bullet}$. So we may assume that $A$ and $A_{\bullet}$ are static.
 
@@ -1045,13 +1053,13 @@
 	\[
 		\D(A_0) \iso \lim^!_{[i] \in \simp} \D(A_0 \otimes_A A_i),
 	\]
-	and similarly $\D(A_0^{\otimes_A n}) \iso \lim^!_{[i] \in \simp} \D(A_0^{\otimes_A n} \otimes_A A_i)$ for all $n \geq 0$. So we are done if we can show that
+	and, more generally, $\D(A_0^{\otimes_A k}) \iso \lim^!_{[i] \in \simp} \D(A_0^{\otimes_A k} \otimes_A A_i)$ for all $k \geq 1$. So we are done if we can show that
 	\[
-		\D(A) \iso \lim^!_{[n] \in \simp} \D(A_0^{\otimes_A n}) \qquad \text{ and } \qquad \D(A_i) \iso \lim^!_{[n] \in \simp} \D(A_0^{\otimes_A n} \otimes_A A_i),
+		\D(A) \iso \lim^!_{[n] \in \simp} \D(A_0^{\otimes_A (n+1)}) \qquad \text{ and } \qquad \D(A_i) \iso \lim^!_{[n] \in \simp} \D(A_0^{\otimes_A (n+1)} \otimes_A A_i),
 	\]
 	which is the special case of \v{C}ech descent.
 
-	\textbf{Step 2b:} Assume now that $A_i \cong A_0^{\otimes_A i}$ is the \v{C}ech cover of $A \to A_0$. To show that the map $\D(A) \to \lim_{[n] \in \simp}^! \D(A_n)$ is an isomorphism in $\PrR$, we may pass to left adjoints and show that
+	\textbf{Step 2b:} Assume now that $A_n \cong A_0^{\otimes_A (n+1)}$ is the \v{C}ech cover of $A \to A_0$. To show that the map $\D(A) \to \lim_{[n] \in \simp}^! \D(A_n)$ is an isomorphism in $\PrR$, we may pass to left adjoints and show that
 	\[
 		\colim_{[n] \in \simp\catop} \D(A_n) \to \D(A)
 	\]
@@ -1069,7 +1077,7 @@
 
 	We now assume that $n > 0$, and that we have already proved the claim for $n - 1$. Observe that we again have an adjunction
 	\[
-		F_n^*\colon n\Pr_A \rightleftarrows \lim n\Pr_{A_{\bullet}} \colon F_{n,\sharp}.
+		F_{n,\sharp}\colon \lim n\Pr_{A_{\bullet}} \rightleftarrows n\Pr_A \colon F_n^*.
 	\]
 	Also, in this case each of the individual adjunctions $n\Pr_A \rightleftarrows n\Pr_{A_{\bullet}}$ is an ambidextrous adjunction.
 
@@ -1113,7 +1121,7 @@
 
 	Now, given any hypercover $\Spec(A_{\bullet}) \to \Spec(A)$, we have
 	\[
-		\lim_{\simp}^! n\Pr_{A_\bullet} \simeq \lim^!_{\simp} \colim_r n\Pr_{A_{r,\bullet}} \simeq \colim_r \lim_{\simp}^! n\Pr_{A_n,\bullet} \simeq n\Pr_A,
+		\lim_{\simp}^! n\Pr_{A_\bullet} \simeq \lim^!_{\simp} \colim_r n\Pr_{A_{r,\bullet}} \simeq \colim_r \lim_{\simp}^! n\Pr_{A_{r,\bullet}} \simeq n\Pr_A,
 	\]
 	where we use that $1\Pr$ is $\aleph_1$-compactly generated so that $\aleph_1$-filtered colimits commute with countable limits. This finishes the proof of the general form of the theorem.
 
@@ -1138,9 +1146,13 @@
 	\]
 	Since the endomorphism functor $\End\colon (n+1)\Pr \to n\Pr$ commutes with limits, this means that every fpqc-stack $X$ defines a Stefanich ring
 	\[
-		\Oo(X) := (\End_{\D(X)}(\unit,\unit), \D(X), 1\Pr_X, 2\Pr_X, \ldots),
+		\Oo(X) := (\Omega^{\infty}\Gamma(X), \D(X), 1\Pr_X, 2\Pr_X, \ldots),
 	\]
-	with $n$-th component $\Oo(X)_n := (n-1)\Pr_X$ (using the low-degree convention $0\Pr_X := \D(X)$). This extends the affine assignment $\Spec(A) \mapsto \St(A)$ to a functor
+	with $n$-th component $\Oo(X)_n := (n-1)\Pr_X$ (using the low-degree convention $0\Pr_X := \D(X)$). Here $\Gamma(X) := \End_{\D(X)}(\unit_{\D(X)}) \in \CAlg(\Sp)$ denotes the spectrum of global functions on $X$; more generally, for a map $f\colon Y \to X$ we write
+	\[
+		\Oo(Y/X)_0 := f_*\unit_{\D(Y)} \in \D(X)
+	\]
+	for the level-zero relative structure object.\footnote{This notation is chosen to be compatible with the later notation $(\Oo(Y)/\Oo(X))_m$ for the relative objects of a map of Gestalten.} This extends the affine assignment $\Spec(A) \mapsto \Oo(\Spec(A))$ to a functor
 	\[
 		\Oo\colon \Shv_{\fpqc}(\Aff_{\S})\catop \to \StRing.
 	\]
@@ -1161,7 +1173,7 @@
 
 	\section{Bi-countably presented maps}
 
-	We will now extend the assignment $X \mapsto n\Pr_X$ to a six-functor formalism. We may think of this as a `higher' version of the six-functor formalism on $X \mapsto D(X)$. A first question is: what are the $!$-able maps? It turns out that at the higher categorical level, the class of $!$-able maps contains essentially \emph{all} maps. The relevant class of maps is the following:
+	We will now extend the assignment $X \mapsto n\Pr_X$ to a six-functor formalism. We may think of this as a `higher' version of the six-functor formalism on $X \mapsto \D(X)$. A first question is: what are the $!$-able maps? It turns out that at the higher categorical level, the class of $!$-able maps contains essentially \emph{all} maps. The relevant class of maps is the following:
 
 	\begin{definition}\label[definition]{def:Bi_Countably_Presented}
 		Let $A \in \CAlg(\Sp)$. A map $Z \to \Spec(A)$ of fpqc-sheaves is \emph{bi-countably presented over $\Spec(A)$} if $Z$ is a countable colimit, in $\Shv_{\fpqc}(\Aff_{\S})_{/\Spec(A)}$, of affines $\Spec(B_i)$ with $A \to B_i$ countably presented.
@@ -1300,7 +1312,7 @@
 		\[
 			n\Pr_Y := f_{n+1,*}(\unit_Y) \qin (n+1)\Pr_X.
 		\]
-		For $p_X\colon X \to \pt$, we get a `forgetful functor' $p_{X,n+1,*} \colon (n+1)\Pr_X \to (n+1)\Pr$, and we claim that the image of $f_{n+1,*}(\unit_Y)$ under this functor is $n\Pr_Y$. Indeed, if we write $Y \simeq \colim_{\Spec(A) \to Y} \Spec(A)$, then we may write $p_{X,n+1,*}f_{n+1,*}(\unit) = p_{Y,n+1,*}(\unit)$ as a limit over $p_{A,n+1}(\unit) = n\Pr_A$, which is $n\Pr_Y$ by definition.
+		For $p_X\colon X \to \pt$, we get a `forgetful functor' $p_{X,n+1,*} \colon (n+1)\Pr_X \to (n+1)\Pr$, and we claim that the image of $f_{n+1,*}(\unit_Y)$ under this functor is $n\Pr_Y$. Indeed, if we write $Y \simeq \colim_{\Spec(A) \to Y} \Spec(A)$, then we may write $p_{X,n+1,*}f_{n+1,*}(\unit) = p_{Y,n+1,*}(\unit)$ as a limit over $p_{A,n+1,*}(\unit) = n\Pr_A$, which is $n\Pr_Y$ by definition.
 	\end{remark}
 
 	\begin{theorem}\label[theorem]{thm:Six_Functors_For_nPr}
@@ -1332,7 +1344,7 @@
 	In other words: at level $n \geq 1$, ``all maps are étale'', and at level $n \geq 2$, ``all maps are proper''.
 
 	\begin{proof}
-		\textbf{Step 1: The affine case.} We first assume that $X = \Spec(A)$ is affine and prove (i)-(iv). By assumption $Y = \colim_{i \in I} \Spec(B_i)$ is a countable colimit of affines $Y_i = \Spec(B_i)$, where each $B_i$ is countably presented over $A$. Consider
+		\textbf{Step 1: The affine case.} We first assume that $X = \Spec(A)$ is affine and prove (i)--(iv). By assumption $Y = \colim_{i \in I} \Spec(B_i)$ is a countable colimit of affines $Y_i = \Spec(B_i)$, where each $B_i$ is countably presented over $A$. Consider
 		\[
 			f_n^*\colon n\Pr_X = n\Pr_A \to n\Pr_Y = \lim_{i \in I\catop} n\Pr_{B_i}.
 		\]
@@ -1463,7 +1475,7 @@
 
 	In particular, for $n \geq 2$, sheaves of presentable $(n-1)$-categories on a fiber product are determined by what they are on the factors and what sheaves of presentable $n$-categories are on the base. This is the first genuinely surprising statement about quasicoherent sheaves of higher categories: \emph{both} parts of \Cref{cor:Kunneth_Higher_Pr} fail at lower categorical levels:
 	\begin{itemize}
-		\item At level $n = 0$, it would say that $\Oo(Y) \in \D(X)$ is dualizable (i.e.\ a perfect complex), or that $\Oo(Y) \otimes_{\D(X)} \Oo(Y') \simeq \Oo(Y \times_X Y')$, both of which are absurd without strong assumptions on $Y$ and $Y'$.
+		\item At level $n = 0$, it would say that $\Oo(Y/X)_0 \in \D(X)$ is dualizable (i.e.\ a perfect complex), or that $\Oo(Y/X)_0 \otimes_{\D(X)} \Oo(Y'/X)_0 \simeq \Oo((Y \times_X Y')/X)_0$, both of which are absurd without strong assumptions on $Y$ and $Y'$.
 		\item At level $n = 1$, it is often the case that $\D(Y) \in 1\Pr_X$ is dualizable and the Künneth formula holds (cf.\ work by Gaitsgory), but one still needs some assumption such as ``$Y$ is a geometric stack over $X$''.
 		\item For $n \geq 2$, these results are essentially \emph{always} true.
 	\end{itemize}
@@ -1489,7 +1501,7 @@
 		If $X$ is affine, the conclusion says that $f_{n,*}$ is a map in $\Mod_{n\Pr_A}(\PrL)$, but \emph{not} in general in $\Mod_{n\Pr_A}(\PrL_{\aleph_1}) = \Mod_{n\Pr_A}(1\Pr)$: it fails only to preserve $\aleph_1$-compact objects.
 	\end{remark}
 
-	The proof of the proposition requires various auxiliary lemmas, which will be given after the proof of the proposition.
+	The proof of the proposition requires various auxiliary lemmas, which are given afterwards.
 
 	\begin{proof}
 		We first reduce to the case where $X$ is affine. Since $X$ is $\aleph_1$-compact, by \Cref{lem:Affines_Aleph1_Compact_fpqc} it is a countable colimit of affines,
@@ -1756,7 +1768,7 @@
 	\begin{corollary}\label[corollary]{cor:StRing_Functor_Properties}
 		The functor
 		\[
-			\Shv_{\fpqc}(\Aff_{\S})^{\aleph_1} \to (\StRing_{\S/})\catop, \qquad X \mapsto \St(X)
+			\Shv_{\fpqc}(\Aff_{\S})^{\aleph_1} \to (\StRing_{\S/})\catop, \qquad X \mapsto \Oo(X)
 		\]
 		commutes with countable colimits and finite limits.
 	\end{corollary} 
@@ -1775,17 +1787,17 @@
 		\]
 		of $\aleph_1$-compact fpqc-stacks. A priori, to compute the pushout of Stefanich rings, we would start by forming the infinite tuple
 		\[
-			\big(\,\Oo(Y) \otimes_{\Oo(X)} \Oo(Y'),\quad \D(Y) \otimes_{\D(X)} \D(Y'),\quad 1\Pr_Y \otimes_{1\Pr_X} 1\Pr_{Y'},\quad \ldots\,\big),
+			\big(\,\Gamma(Y) \otimes_{\Gamma(X)} \Gamma(Y'),\quad \D(Y) \otimes_{\D(X)} \D(Y'),\quad 1\Pr_Y \otimes_{1\Pr_X} 1\Pr_{Y'},\quad \ldots\,\big),
 		\]
 		consisting of all the levelwise pushouts. These come with natural maps from each entry to endomorphisms of the unit of the next, but these are typically \emph{not} isomorphisms; one needs to ``spectrify'', i.e.\ apply the left adjoint to the inclusion of Stefanich rings into the larger category that allows for non-invertible comparison maps. 
 		
 		In the next talk, we will explain a convenient way of computing such tensor products. What we will see there is that we can make a `first approximation' to the spectrification, given by:
 		\[
-			\big(\,\Oo(Y) \otimes_{\D(X)} \Oo(Y'),\quad \D(Y) \otimes_{1\Pr_X} \D(Y'),\quad 1\Pr_Y \otimes_{2\Pr_X} 1\Pr_{Y'},\quad \ldots\,\big).
+			\big(\,\Oo(Y/X)_0 \otimes_{\D(X)} \Oo(Y'/X)_0,\quad \D(Y) \otimes_{1\Pr_X} \D(Y'),\quad 1\Pr_Y \otimes_{2\Pr_X} 1\Pr_{Y'},\quad \ldots\,\big).
 		\]
-		Here on each level the tensor product is taken at the next-higher categorical level. (For example, in the zeroth slot we form the tensor product not over $\Oo(X)$, i.e.\ in $\Oo(X)$-modules, but rather inside $\D(X)$; this is finer, since there is a canonical functor $\Mod_{\Oo(X)}(\D(\S)) \to \D(X)$.) By \Cref{prop:Kunneth_Aleph1_Compact}, starting from the slot $1\Pr_Y \otimes_{2\Pr_X} 1\Pr_{Y'}$, this expression agrees with
+		Here on each level the tensor product is taken at the next-higher categorical level. (For example, in the zeroth slot we form the tensor product not over $\Gamma(X)$, i.e.\ in $\Gamma(X)$-modules, but rather inside $\D(X)$; this is finer, since there is a canonical functor $\Mod_{\Gamma(X)}(\D(\S)) \to \D(X)$.) By \Cref{prop:Kunneth_Aleph1_Compact}, starting from the slot $1\Pr_Y \otimes_{2\Pr_X} 1\Pr_{Y'}$, this expression agrees with
 		\[
-			(\Omega^\infty\Oo(Y \times_X Y'),\; \D(Y \times_X Y'),\; 1\Pr_{Y \times_X Y'},\; \ldots),
+			(\Omega^\infty\Gamma(Y \times_X Y'),\; \D(Y \times_X Y'),\; 1\Pr_{Y \times_X Y'},\; \ldots),
 		\]
 		which is already a Stefanich ring, namely the one corresponding to $Y \times_X Y'$. As the first few terms do not affect the Stefanich ring structure, this gives the desired result.
 	\end{proof}
@@ -1931,10 +1943,10 @@
 		\[
 			T(F_R) \colon T(A_m) \rightleftarrows T(\Mod_R(A_m)) \noloc T(G_R)
 		\]
-		in $\Mod_{A_m}(m\Pr)$. Since $T$ is lax monoidal, the functor $T(F_R)$ is still symmetric monoidal, and so the unit object of $T(\Mod_R(A_m))$ is $T(F_R)(\unit_{T(A_m)})$. Combining all of this, we may now compute:
+		in $\Mod_{A_m}(m\Pr)$. Since $T$ is lax monoidal, it induces a functor on commutative algebras, and hence sends the symmetric monoidal functor $F_R$ to a symmetric monoidal functor $T(F_R)$; consequently the unit object of $T(\Mod_R(A_m))$ is $T(F_R)(\unit_{T(A_m)})$. Combining all of this, we may now compute:
 		\begin{align*}
-			\End^A_m(\Mod^A_m(R)) &= \underline{\End}_{T(\Mod_R(A_m))}(\unit) \\
-			& \simeq \underline{\End}_{T(\Mod_R(A_m))}(T(F_R)(\unit_{T(A_m)})) \\
+			\End^A_m(\Mod^A_m(R)) &= \End_{T(\Mod_R(A_m))}(\unit) \\
+			& \simeq \End_{T(\Mod_R(A_m))}(T(F_R)(\unit_{T(A_m)})) \\
 			& \simeq \iHom_{T(A_m)}(\unit_{T(A_m)}, T(G_R)T(F_R)(\unit_{T(A_m)})) \\
 			& \simeq \iHom_{T(A_m)}(\unit_{T(A_m)}, T(G_R \circ F_R)(\unit_{T(A_m)})) \\
 			& \simeq \iHom_{T(A_m)}(\unit_{T(A_m)}, T(R \otimes -)(\unit_{T(A_m)})) \\
@@ -1984,26 +1996,26 @@
 		\[
 			\StRing_{A/} \simeq \lim_{\CAT}(\CAlg(A_1) \xleftarrow{\End^A_1} \CAlg(A_2) \xleftarrow{\End^A_2} \dots) = \StRing(A),
 		\]
-		where the last equality is the limit description of \Cref{def:Internal_Stefanich_Rings}. Under this equivalence, an object $f\colon A \to B$ is sent in degree $n \geq 1$ to
+		where the last equality is the limit description of \Cref{def:Internal_Stefanich_Rings}. Under this equivalence, an object $f\colon A \to B$ is sent in degree $n \geq 0$ to
 		\[
-			f_{n-1,*}(\unit_{B_n}) = (B/A)_{n-1} \qin \CAlg(A_n),
+			f_{n,*}(\unit_{B_{n+1}}) = (B/A)_n \qin \CAlg(A_{n+1}),
 		\]
 		that is, to the tuple $((B/A)_0, (B/A)_1, (B/A)_2, \dots)$, as claimed.
 	\end{proof}
 
 	\begin{corollary}
 		\label[corollary]{cor:Inclusion_n_Affine_A_Algebras}
-		The functor $\StRing_{A/} \to \CAlg(A_n), B \mapsto (B/A)_n$ admits a fully faithful left adjoint
+		The functor $\StRing_{A/} \to \CAlg(A_{n+1}), B \mapsto (B/A)_n$ admits a fully faithful left adjoint
 		\[
-			\CAlg(A_n) \hookrightarrow \StRing_{A/}.
+			\CAlg(A_{n+1}) \hookrightarrow \StRing_{A/}.
 		\]
 	\end{corollary}
 	\begin{proof}
-		By \Cref{prop:Mod_Transition_Fully_Faithful}, the internal module functors $\Mod^A_m$ are fully faithful left adjoints. Hence \Cref{lem:Colimit_Of_Fully_Faithful_Left_Adjoints} shows that, for every $n \geq 1$, the canonical functor
+		By \Cref{prop:Mod_Transition_Fully_Faithful}, the internal module functors $\Mod^A_m$ are fully faithful left adjoints. Hence \Cref{lem:Colimit_Of_Fully_Faithful_Left_Adjoints} shows that, for every $n \geq 0$, the canonical functor
 		\[
-			\CAlg(A_n) \hookrightarrow \StRing(A)
+			\CAlg(A_{n+1}) \hookrightarrow \StRing(A)
 		\]
-		is fully faithful and left adjoint to the projection $\StRing(A) \to \CAlg(A_n)$. The claim now follows from the equivalence $\StRing_{A/} \simeq \StRing(A)$ of \Cref{prop:Slice_Description}, under which this projection corresponds to the functor $B \mapsto (B/A)_n$.
+		is fully faithful and left adjoint to the projection $\StRing(A) \to \CAlg(A_{n+1})$. The claim now follows from the equivalence $\StRing_{A/} \simeq \StRing(A)$ of \Cref{prop:Slice_Description}, under which this projection corresponds to the functor $B \mapsto (B/A)_n$.
 	\end{proof}
 
 	In \Cref{prop:Mod_Transition_Fully_Faithful} we showed that the composite
@@ -2059,7 +2071,7 @@
 		\]
 		In particular, for any $n \geq 0$, iterated shifting induces an equivalence
 		\[
-			\mathrm{shift}^n\colon \StRing \iso \StRing_{(n\Pr,(n+1)\Pr, \dots)/}.
+			\shift^n\colon \StRing \iso \StRing_{(n\Pr,(n+1)\Pr, \dots)/}.
 		\]
 	\end{lemma}
 	\begin{proof}
@@ -2097,11 +2109,11 @@
 	\begin{definition}\label[definition]{def:PreStRing}
 		Let
 		\[
-			\mathcal{P}_A := \prod_{n \geq 1} \CAlg(A_n),
+			\mathcal{P}_A := \prod_{n \geq 0} \CAlg(A_{n+1}),
 		\]
 		and define an endofunctor
 		\[
-			\End^A_\bullet\colon \mathcal{P}_A \to \mathcal{P}_A, \qquad (D_n)_{n \geq 1} \mapsto (\End^A_n(D_{n+1}))_{n \geq 1}.
+			\End^A_\bullet\colon \mathcal{P}_A \to \mathcal{P}_A, \qquad (B_n)_{n \geq 0} \mapsto (\End^A_{n+1}(B_{n+1}))_{n \geq 0}.
 		\]
 		The category of \emph{internal preStefanich rings in $A$} is the lax equalizer
 		\[
@@ -2110,9 +2122,9 @@
 			\mathcal{P}_A \times_{\mathcal{P}_A \times \mathcal{P}_A} \Ar(\mathcal{P}_A),
 		\]
 		where $\mathcal{P}_A \to \mathcal{P}_A \times \mathcal{P}_A$ is $(\id,\End^A_\bullet)$ and $\Ar(\mathcal{P}_A) \to \mathcal{P}_A \times \mathcal{P}_A$ is the source-target functor.
-		Thus an internal preStefanich ring is a tuple $D = (D_1,D_2,D_3,\dots)$ with $D_n \in \CAlg(A_n)$, together with structure maps
+		Thus an internal preStefanich ring is a tuple $B = (B_0,B_1,B_2,\dots)$ with $B_n \in \CAlg(A_{n+1})$, together with structure maps
 		\[
-			\alpha_n\colon D_n \to \End^A_n(D_{n+1})
+			\alpha_n\colon B_n \to \End^A_{n+1}(B_{n+1})
 		\]
 		that are not assumed to be equivalences. By \Cref{def:Internal_Stefanich_Rings}, the category $\StRing(A)$ identifies with the full subcategory of $\PreStRing(A)$ spanned by those objects for which all $\alpha_n$ are equivalences.
 	\end{definition}
@@ -2121,21 +2133,21 @@
 		The category $\PreStRing(A)$ admits small colimits, and the projection $\PreStRing(A) \to \mathcal{P}_A$ creates them. In particular, colimits in $\PreStRing(A)$ are computed pointwise.
 	\end{lemma}
 	\begin{proof}
-		Let $I \to \PreStRing(A)$ be a diagram, written as $(D^i,\alpha^i)$ for $i \in I$. Let $D := \colim_i D^i$ in $\mathcal{P}_A$, so that $D_n \simeq \colim_i D^i_n$ in $\CAlg(A_n)$. The maps $\alpha^i\colon D^i \to \End^A_\bullet(D^i)$ assemble to a morphism of diagrams $D^{\bullet} \to \End^A_\bullet(D^{\bullet})$. Hence we obtain a structure map
+		Let $I \to \PreStRing(A)$ be a diagram, written as $(B^i,\alpha^i)$ for $i \in I$. Let $B := \colim_i B^i$ in $\mathcal{P}_A$, so that $B_n \simeq \colim_i B^i_n$ in $\CAlg(A_{n+1})$. The maps $\alpha^i\colon B^i \to \End^A_\bullet(B^i)$ assemble to a morphism of diagrams $B^{\bullet} \to \End^A_\bullet(B^{\bullet})$. Hence we obtain a structure map
 		\[
-			D \simeq \colim_i D^i \to \colim_i \End^A_\bullet(D^i) \to \End^A_\bullet(\colim_i D^i) = \End^A_\bullet(D),
+			B \simeq \colim_i B^i \to \colim_i \End^A_\bullet(B^i) \to \End^A_\bullet(\colim_i B^i) = \End^A_\bullet(B),
 		\]
-		where the second arrow is the canonical comparison map induced by the cocone $D^i \to D$. This defines an object $(D,\alpha)$ of $\PreStRing(A)$.
+		where the second arrow is the canonical comparison map induced by the cocone $B^i \to B$. This defines an object $(B,\alpha)$ of $\PreStRing(A)$.
 
-		For any $(Y,\beta) \in \PreStRing(A)$, the hom anima $\Hom_{\PreStRing(A)}((D,\alpha),(Y,\beta))$ is the homotopy equalizer of the two maps
+		For any $(Y,\beta) \in \PreStRing(A)$, the hom anima $\Hom_{\PreStRing(A)}((B,\alpha),(Y,\beta))$ is the homotopy equalizer of the two maps
 		\[
-			\Hom_{\mathcal{P}_A}(D,Y) \rightrightarrows \Hom_{\mathcal{P}_A}(D,\End^A_\bullet Y)
+			\Hom_{\mathcal{P}_A}(B,Y) \rightrightarrows \Hom_{\mathcal{P}_A}(B,\End^A_\bullet Y)
 		\]
-		defined by $\beta \circ (-)$ and $\End^A_\bullet(-)\circ \alpha$. Since $D$ is the colimit of the $D^i$ in $\mathcal{P}_A$, this homotopy equalizer identifies with
+		defined by $\beta \circ (-)$ and $\End^A_\bullet(-)\circ \alpha$. Since $B$ is the colimit of the $B^i$ in $\mathcal{P}_A$, this homotopy equalizer identifies with
 		\[
-			\lim_i \Hom_{\PreStRing(A)}((D^i,\alpha^i),(Y,\beta)).
+			\lim_i \Hom_{\PreStRing(A)}((B^i,\alpha^i),(Y,\beta)).
 		\]
-		Thus $(D,\alpha)$ has the universal property of the colimit.
+		Thus $(B,\alpha)$ has the universal property of the colimit.
 	\end{proof}
 
 	What we will do is to embed $\StRing(A)$ in $\PreStRing(A)$ and then reflect back.
@@ -2147,9 +2159,9 @@
 	\begin{proof}
 		Define a functor
 		\[
-			T \colon \PreStRing(A) \to \PreStRing(A), \qquad (D_n)_{n \geq 1} \mapsto (D'_n)_{n \geq 1},
+			T \colon \PreStRing(A) \to \PreStRing(A), \qquad (B_n)_{n \geq 0} \mapsto (B'_n)_{n \geq 0},
 		\]
-		by setting $D'_n = \End^A_n(D_{n+1})$, with structure maps obtained by applying the functors $\End^A_n$ to the structure maps of $D$. This admits a natural transformation $\eta\colon \id \to T$, given by the structure maps of an internal preStefanich ring. For $X \in \PreStRing(A)$, define $X^{(0)} := X$, $X^{(\alpha + 1)} := T(X^{(\alpha)})$, and
+		by setting $B'_n = \End^A_{n+1}(B_{n+1})$, with structure maps obtained by applying the functors $\End^A_{n+1}$ to the structure maps of $B$. This admits a natural transformation $\eta\colon \id \to T$, given by the structure maps of an internal preStefanich ring. For $X \in \PreStRing(A)$, define $X^{(0)} := X$, $X^{(\alpha + 1)} := T(X^{(\alpha)})$, and
 		\[
 			X^{(\lambda)} := \colim_{\alpha < \lambda} X^{(\alpha)}
 		\]
@@ -2537,7 +2549,7 @@
 		\[
 			(A/A)_{m+1} \to \Mod^A_{m+1}((B/A)_m) \xrightarrow{L^{B/A}_m} (B/A)_{m+1}.
 		\]
-		If $A/B$ is $n$-affine, then the second map is an equivalence for $m \geq n$, and so this composite has a right adjoint in $A_{m+2}$ if and only if the first map admits a right adjoint. By definition, the first map is the image under the 2-functor $L^A_{m+1}\colon \Mod_{A_{m+1}}((m+2)\Pr) \to A_{m+2}$ of the free module functor
+		If $B/A$ is $n$-affine, then the second map is an equivalence for $m \geq n$, and so this composite has a right adjoint in $A_{m+2}$ if and only if the first map admits a right adjoint. By definition, the first map is the image under the 2-functor $L^A_{m+1}\colon \Mod_{A_{m+1}}((m+2)\Pr) \to A_{m+2}$ of the free module functor
 		\[
 			A_{m+1} \to \Mod_{(B/A)_m}(A_{m+1}).
 		\]
@@ -2736,7 +2748,7 @@
 
 		If $B$ is $0$-proper, then (1) and (2) hold by applying the $0$-prim condition to $f\colon A \to B$ and to its codiagonal $\nabla_f\colon B \otimes_A B \to B$, using that by \Cref{prop:Affineness_Properties}(2) we have $(B \otimes_A B)_2 \simeq \Mod_{(B/A)_1 \otimes_{A_2} (B/A)_1}(A_2)$.
 
-		Conversely, it suffices to show that (1) and (2) imply that the codiagonal $\nabla_f\colon B \otimes_A B \to B$ is $0$-affine. Indeed, the codiagonal is then certainly $0$-proper, and together with $A \to B$ being $0$-prim this shows that $f$ is $0$-proper. Now the codiagonal is $1$-affine and $0$-prim, and it admits a section (the diagonal). Hence it is $0$-affine by \Cref{lem:Reduce_Affineness}.
+		Conversely, it suffices to show that (1) and (2) imply that the codiagonal $\nabla_f\colon B \otimes_A B \to B$ is $0$-affine. Indeed, the codiagonal is then certainly $0$-proper, and together with $A \to B$ being $0$-prim this shows that $f$ is $0$-proper. Now the codiagonal is $1$-affine and $0$-prim, and it admits a section, the coprojection $B \to B \otimes_A B$, which is $1$-affine as a cobase change of $f$. Hence it is $0$-affine by \Cref{lem:Reduce_Affineness}.
 	\end{proof}
 
 	The following lemma is often useful to reduce the level of affineness.
@@ -2747,7 +2759,7 @@
 	\begin{proof}
 		By shifting we may assume $n = 0$. Replacing $A$ by the image of $(B/A)_0 \in \CAlg(A_1)$ in $\StRing_{A/}$, we may assume that $(B/A)_0 = \unit \in \CAlg(A_1)$; we must then show that $A \to B$ is an equivalence. By $1$-affineness it suffices to show that $\unit \to (B/A)_1$ is an equivalence.
 
-		Since $f$ is $0$-prim, the map $(f/A)^*_0\colon \unit \to (B/A)_1$ admits a right adjoint $(f/A)_{0,*}$ in $A_2$. Moreover, the unit $\id \to (f/A)_{0,*} (f/A)^*_0$ in $A_1 \simeq \End_{A_2}(\unit)$ is an equivalence, since it is the map $\unit \to (B/A)_0 = \unit$. We would like to conclude that $\unit \to (B/A)_1$ is an equivalence because $g$ splits it; this is not quite true, but the following weaker statement is. After applying $g_1$, the map $\unit \to (B/A)_1$ becomes the map $(A/B)_1 \to \unit$, which is split by $g_0\colon \unit \to (A/B)_1$. Since $g_1$ preserves the fully faithful adjunction, $\unit \to (B/A)_1$ becomes an equivalence after applying $g_1$. But $g$ is $1$-affine, so $g_1\colon A_2 \simeq \Mod_{(A/B)_1}(B_2) \to B_2$ is conservative, which finishes the proof.
+		Since $f$ is $0$-prim, the map $(f/A)^*_0\colon \unit \to (B/A)_1$ admits a right adjoint $(f/A)_{0,*}$ in $A_2$. Moreover, the unit $\id \to (f/A)_{0,*} (f/A)^*_0$ in $A_1 \simeq \End_{A_2}(\unit)$ is an equivalence, since it is the map $\unit \to (B/A)_0 = \unit$. We would like to conclude that $\unit \to (B/A)_1$ is an equivalence because $g$ splits it; this is not quite true, but the following weaker statement is. After applying $g_{1,*}$, the map $\unit \to (B/A)_1$ becomes the map $(A/B)_1 \to \unit$, which is split by $g_0^*\colon \unit \to (A/B)_1$. Since $g_{1,*}$ preserves the fully faithful adjunction, $\unit \to (B/A)_1$ becomes an equivalence after applying $g_{1,*}$. But $g$ is $1$-affine, so $g_{1,*}\colon A_2 \simeq \Mod_{(A/B)_1}(B_2) \to B_2$ is conservative, which finishes the proof.
 	\end{proof}
 
 	\section{Suave maps}
@@ -2784,7 +2796,7 @@
 	\[
 		(f/A)_{m-1,\sharp} \cong ((f/A)^!_{m-1})^{\vee}
 	\]
-	of maps $(B/A)_m \to (A/A)_m$ in $A_{m+1}$. In particular, condition (2) as a strenghtening of the existence of the left adjoint for $(A/A)_m \to (B/A)_m$. One should think of the existence of the right adjoint $(B/A)^!_m \to \unit$ as the ``correct'' condition to put, but its mere formulation requires the existence of the left adjoint one level higher.
+	of maps $(B/A)_m \to (A/A)_m$ in $A_{m+1}$. In particular, condition (2) is a strengthening of the existence of the left adjoint for $(A/A)_m \to (B/A)_m$. One should think of the existence of the right adjoint $(B/A)^!_m \to \unit$ as the ``correct'' condition to put, but its mere formulation requires the existence of the left adjoint one level higher.
 
 	\begin{lemma}
 		\label[lemma]{lem:Suave_Dualizing_Object_Via_Adjunction}
@@ -2875,7 +2887,7 @@
 			&\overset{(1)}{\simeq} g_{m}^*((f/A)_{m,!}(f/A)^!_{m}\unit) \\
 			&\overset{(2)}{\simeq} g_m^*((B/A)^!_m),
 		\end{align*}
-		where (1) holds since $g_{m+1}^*$ restricts to $g_m^*$ on endomorphisms of the unit and (2) is \Cref{lem:Suave_Dualizing_Object_Via_Adjunction}. Under this equivalence, the counit map $(f'/C)_{m-1,!}\colon (B \otimes_A C/C)^!_m \to \unit$ is the image under $g_m^*$ of the counit map $(f/A)_{m-1,!}\colon (B/A)^!_m \to \unit$, and hence it admits a right adjoint. This shows that $f'$ is $n$-suave, and that the we have
+		where (1) holds since $g_{m+1}^*$ restricts to $g_m^*$ on endomorphisms of the unit and (2) is \Cref{lem:Suave_Dualizing_Object_Via_Adjunction}. Under this equivalence, the counit map $(f'/C)_{m-1,!}\colon (B \otimes_A C/C)^!_m \to \unit$ is the image under $g_m^*$ of the counit map $(f/A)_{m-1,!}\colon (B/A)^!_m \to \unit$, and hence it admits a right adjoint. This shows that $f'$ is $n$-suave, and that we have
 		\[
 			g^*_m(B/A)^!_m \iso (B \otimes_A C/C)^!_m \qquad (m \geq n).
 		\]
@@ -3056,7 +3068,7 @@
 	\section{Countable limits of étale algebras}
 	\label[section]{sec:Countable_Limits_Etale_Algebras}
 
-	Recall from \Cref{def:N_Suave,def:N_Etale} that, for $n \geq 0$, a map $f\colon A \to B$ is \emph{$n$-suave} if for each $m \geq n$ the relative map $(f/A)^*_m\colon \unit = (A/A)_{m+1} \to (B/A)_{m+1}$ admits a left adjoint $(f/A)_{m,\sharp}$ in $A_{m+2}$, whose value $(B/A)^!_m := (f/A)_{m,\sharp}(\unit)$ we call the relative \emph{dualizing object}, and if moreover the resulting counit $(f/A)_{m-1,!}\colon (B/A)^!_m \to (A/A)_m$ admits a right adjoint; and that $f$ is \emph{$n$-\'etale} if $f$ and all its iterated codiagonals are $n$-suave. By \Cref{prop:Suave_Properties,prop:Etale_Properties}, the $n$-suave and $n$-\'etale maps are stable under cobase change and composition, the dualizing objects satisfy the base-change formula
+	Recall from \Cref{def:N_Suave,def:N_Etale} that, for $n \geq 0$, a map $f\colon A \to B$ is \emph{$n$-suave} if for each $m \geq n$ the relative map $(f/A)^*_m\colon \unit = (A/A)_{m+1} \to (B/A)_{m+1}$ admits a left adjoint $(f/A)_{m,\sharp}$ in $A_{m+2}$, whose value $(B/A)^!_m := (f/A)_{m,\sharp}(\unit)$ we call the relative \emph{dualizing object}, and if moreover, for each $m \geq n+1$, the resulting counit $(f/A)_{m-1,!}\colon (B/A)^!_m \to (A/A)_m$ admits a right adjoint; and that $f$ is \emph{$n$-\'etale} if $f$ and all its iterated codiagonals are $n$-suave. By \Cref{prop:Suave_Properties,prop:Etale_Properties}, the $n$-suave and $n$-\'etale maps are stable under cobase change and composition, the dualizing objects satisfy the base-change formula
 	\[
 		g_m^*(B/A)^!_m \simeq (B \otimes_A C/C)^!_m \qquad (m \geq n)
 	\]
@@ -3445,7 +3457,7 @@
 	\end{proof}
 
 	\begin{proposition}\label[proposition]{prop:Suave_Etale_Idempotent_Coalgebras}
-		Let $f\colon Y \to X$ be an injective map of Gestalten. Then $f$ is $n$-suave if and only if it is $n$-étale. In this case $(\Oo(Y)/\Oo(X))^!_n$ is an idempotent coalgebra in $\Oo(X)_{n+1}$, and this assignment defines a bijection of posets
+		Let $f\colon Y \to X$ be an injective map of Gestalten. Then $f$ is $n$-suave if and only if it is $n$-étale. In this case $(\Oo(Y)/\Oo(X))^!_n$ is an idempotent coalgebra in $\Oo(X)_{n+1}$, and this assignment defines an equivalence of posets
 		\[
 			\bigl\{\text{$n$-étale injections $U \hookrightarrow X$}\bigr\} \;\longleftrightarrow\; \bigl\{\text{idempotent coalgebras in $\Oo(X)_{n+1}$}\bigr\},
 		\]
@@ -3518,7 +3530,7 @@
 	\end{definition}
 
 	\begin{remark}
-		In general $X \setminus Y$ need not be representable. If $f$ lies in $\Gest^{n\text{-ét}}$ for some $n$, then perhaps it might follow from abstract topos-theoretic arguments that $X \setminus Y$ is representable.
+		In general $X \setminus Y$ need not be representable. If $f$ lies in $\Gest^{n\text{-ét}}$ for some $n$, then it might follow from abstract topos-theoretic arguments that $X \setminus Y$ is representable.
 	\end{remark}
 
 	\begin{proposition}\label[proposition]{prop:Complement_Construction}
@@ -3553,7 +3565,7 @@
 	\end{corollary}
 
 	\begin{corollary}
-		Consider a 1-presentable stable category $E \in 1\Pr_{\st}$. Then there are (order-presering or order-reversing) bijections between the following four posets:
+		Consider a 1-presentable stable category $E \in 1\Pr_{\st}$. Then there are (order-preserving or order-reversing) bijections between the following four posets:
 		\begin{enumerate}
 			\item Closed immersions $Z \hookrightarrow \Gest_{\S}(E)$;
 			\item Idempotent algebras $A$ in $E$;
@@ -3657,7 +3669,7 @@
 
 		(1) $\Rightarrow$ (4): By \Cref{lem:Pullback_Along_Surjection_Conservative}, the pullback functor $f^*\colon \Gest_{/X} \to \Gest_{/Y}$ is conservative. Since $n$-affine objects of $\Gest_{/X}$ correspond, via \Cref{prop:Suave_Etale_Idempotent_Coalgebras}, to objects of $\Oo(X)_{n+1}$, and $f^*$ restricts to $f_n^*$ on these, condition~(4) follows.
 
-		(4) $\Rightarrow$ (3): it suffices to check the map of (3) becomes an isomorphism after base change to $\Oo(Y)_{n+1}$. But then the projection $Y \otimes_X Y \to Y$ is split by the diagonal, so the colimit system acquires extra degeneracies and is therefore already a colimit diagram.
+		(4) $\Rightarrow$ (3): it suffices to check the map of (3) becomes an isomorphism after base change to $\Oo(Y)_{n+1}$. But then the projection $Y \times_X Y \to Y$ is split by the diagonal, so the colimit system acquires extra degeneracies and is therefore already a colimit diagram.
 	\end{proof}
 
 	For $n = 0$ these conditions are easy to check directly. For higher $n$ one instead wants a criterion phrased in terms of \emph{generation}: being a cover is closely related to the functor
@@ -3697,7 +3709,7 @@
 		\[
 			F\colon \Hom_{\Oo(X)_{n+1}}(\unit,C) \to \Hom_{\Oo(X)_{n+1}}(\unit,\unit) = \Oo(X)_n,
 		\]
-		so there is $G\colon \unit \to C$ with $\id$ a retract of $FG$. By \Cref{lem:Gaiotto_Johnson_Freyd} applied in $\Oo(X)_{n+1}$ with $Y = \unit$, $X = C$, the unit $\unit$ lies in the $1\Pr$-linear subcategory of $\Oo(X)_{n+1}$ generated by $C$. The category of $C$-comodules is a $1\Pr$-linear subcategory containing $C$, hence contains this generated subcategory; so $\unit$ is a $C$-comodule, $\coMod_C(\Oo(X)_{n+1}) = \Oo(X)_{n+1}$, and $C = \unit$. By \Cref{prop:Surjective_Criteria}(3), $f$ is surjective.
+		so there is $G\colon \unit \to C$ with $\id$ a retract of $FG$. By \Cref{lem:Gaiotto_Johnson_Freyd} applied in $\Oo(X)_{n+1}$ with $Y = \unit$, $X = C$, the unit $\unit$ lies in the $1\Pr$-linear subcategory of $\Oo(X)_{n+1}$ generated by $C$. The category of $C$-comodules is a $1\Pr$-linear subcategory containing $C$, hence contains this generated subcategory; so $\unit$ is a $C$-comodule, $\coMod_C(\Oo(X)_{n+1}) = \Oo(X)_{n+1}$, and $C = \unit$. By \Cref{prop:Surjective_Criteria}(2), $f$ is surjective.
 	\end{proof}
 
 	We also record a converse, assuming $X$ is $n$-prim.
@@ -3755,7 +3767,7 @@
 	\begin{definition}\label[definition]{def:Descendable}
 		Let $\bbC$ be a stably symmetric monoidal category and $R \in \Alg(\bbC)$.
 		\begin{enumerate}
-			\item An object $M \in \bbC$ is \emph{$R$-nilpotent} if it lies in the thick $\otimes$-ideal $\mathrm{Thick}^{\otimes}(R)$ generated by $R$.
+			\item An object $M \in \bbC$ is \emph{$R$-nilpotent} if it lies in the thick $\otimes$-ideal $\Thick^{\otimes}(R)$ generated by $R$.
 			\item $R$ is \emph{descendable} if the unit $\unit \in \bbC$ is $R$-nilpotent.
 		\end{enumerate}
 	\end{definition}
@@ -3775,7 +3787,7 @@
 	\begin{proof}
 		By \Cref{cor:Surjective_Affine_Truncation} we may assume $Y$ is $0$-affine over $X$. Then $f$ is $0$-proper, so by ambidexterity $(\Oo(Y)/\Oo(X))^!_1 = (\Oo(Y)/\Oo(X))_1$, and likewise for the finite fiber powers of $Y$ over $X$. For each finite $m$, the functor
 		\[
-			\colim_{\simp^{op}_{\leq m}} \Hom_{\Oo(X)_2}\bigl(\unit,(\Oo(Y^{\times_X(\bullet+1)})/\Oo(X))^!_1\bigr) = \colim_{\simp^{op}_{\leq m}} (\Oo(Y^{\times_X(\bullet+1)})/\Oo(X))_1 \to \Oo(X)_1
+			\colim_{\simp\catop_{\leq m}} \Hom_{\Oo(X)_2}\bigl(\unit,(\Oo(Y^{\times_X(\bullet+1)})/\Oo(X))^!_1\bigr) = \colim_{\simp\catop_{\leq m}} (\Oo(Y^{\times_X(\bullet+1)})/\Oo(X))_1 \to \Oo(X)_1
 		\]
 		has a left adjoint, whose unit is the finite limit of the units at the individual levels: the indexing category is finite, and finite limits agree with finite colimits in the stable category $\Oo(X)_1$, so this finite limit of left adjoints is again computed levelwise. Evaluated at $\unit \in \Oo(X)_1$, this unit is the map
 		\[
@@ -3788,7 +3800,7 @@
 		Let $X$ be a $0$-prim Gestalt over $\Spec(\S)$, and let $f\colon Y \to X$ be a countably presented, $0$-prim, eventually suave map. Then $f$ is surjective if and only if $f_{0,*}(\unit)$ is descendable in $\Oo(X)_1$.
 	\end{corollary}
 	\begin{proof}
-		The implication $\Leftarrow$ is \Cref{cor:Descendable_Implies_Surjective}. Conversely, suppose $f$ is surjective; by \Cref{cor:Surjective_Affine_Truncation} we may assume $f$ is $0$-affine. The image of $f_{0,*}\colon \Oo(Y)_1 \to \Oo(X)_1$ lies in $f_{0,*}(\unit)$-modules, so by \Cref{prop:Surjective_Generation} every object of $\Oo(X)_1$, in particular $\unit$, is a geometric realization of $f_{0,*}(\unit)$-modules. As $X$ is $0$-prim, the unit map $\unit \to \Oo(X)_1$ admits the internal right adjoint $\Hom_{\Oo(X)_1}(\unit,-)$, so $\unit \in \Oo(X)_1$ is compact; it is therefore already a retract of a finite stage of this realization, i.e.\ a retract of an object of the thick subcategory generated by $f_{0,*}(\unit)$-modules. Thus $\unit \in \mathrm{Thick}^{\otimes}(f_{0,*}(\unit))$, which is descendability.
+		The implication $\Leftarrow$ is \Cref{cor:Descendable_Implies_Surjective}. Conversely, suppose $f$ is surjective; by \Cref{cor:Surjective_Affine_Truncation} we may assume $f$ is $0$-affine. The image of $f_{0,*}\colon \Oo(Y)_1 \to \Oo(X)_1$ lies in $f_{0,*}(\unit)$-modules, so by \Cref{prop:Surjective_Generation} every object of $\Oo(X)_1$, in particular $\unit$, is a geometric realization of $f_{0,*}(\unit)$-modules. As $X$ is $0$-prim, the unit map $\unit \to \Oo(X)_1$ admits the internal right adjoint $\Hom_{\Oo(X)_1}(\unit,-)$, so $\unit \in \Oo(X)_1$ is compact; it is therefore already a retract of a finite stage of this realization, i.e.\ a retract of an object of the thick subcategory generated by $f_{0,*}(\unit)$-modules. Thus $\unit \in \Thick^{\otimes}(f_{0,*}(\unit))$, which is descendability.
 	\end{proof}
 
 	% Talks 9a and 9b are the two halves of the single ninth talk. The chapter heading,
@@ -3911,7 +3923,7 @@
 
 	\section{Affineness and diagonals}
 
-	The main result of this section shows that, under suitable hypotheses, passing to the diagonal drops the level of affineness by precisely one. Part (2) generalizes results of Gaitsgory on 1-affineness \cite{Gaitsgory_1Affineness}, and related results for the general case appeared in Stefanich's thesis \cite{Stefanich_HigherQCoh}.
+	The main result of this section shows that, under suitable hypotheses, passing to the diagonal drops the level of affineness by precisely one. Part (2) generalizes results of Gaitsgory on 1-affineness \citep{Gaitsgory_1Affineness}, and related results for the general case appeared in Stefanich's thesis \citep{Stefanich_HigherQCoh}.
 
 	\begin{lemma}\label[lemma]{lem:Affine_Equivalence_On_Classifying_Level}
 		Let $f\colon Y \to X$ be a map of Gestalten. If
@@ -3979,9 +3991,9 @@
 		\[
 			Y \xrightarrow{h} Y' := (Y/X)^{(n+1)\text{-affine}} \xrightarrow{g} X.
 		\]
-		We need to show that $h$ is an isomorphism. Since $f$ is countably presented, \Cref{cor:Surjective_Affine_Truncation}, applied to the $(n+1)$-prim, eventually suave map $f$, shows that $h$ is surjective. It therefore suffices by \Cref{cor:Surjective_And_Injective_Implies_Iso} to show that $h$ is a monomorphism, i.e.\ that $\Delta_h$ is an isomorphism.
+		We need to show that $h$ is an isomorphism. Since $f$ is countably presented, \Cref{cor:Surjective_Affine_Truncation}, applied to the $(n+1)$-prim, eventually suave map $f$, shows that $h$ is surjective. Moreover $h$ is eventually suave: the map $g$ is $(n+1)$-affine and countably presented, hence $(n+1)$-proper (\Cref{prop:Proper_Properties}(1)) and therefore $(n+2)$-\'etale by ambidexterity (\Cref{prop:Ambidexterity_Stefanich_Rings}(2)); since $g$ is \'etale, right cancellation for \'etale maps (\Cref{prop:Etale_Properties}) applied to $f = g \circ h$, together with the eventual suaveness of $f$, shows that $h$ is eventually suave. It therefore suffices by \Cref{cor:Surjective_And_Injective_Implies_Iso} to show that $h$ is a monomorphism, i.e.\ that $\Delta_h$ is an isomorphism.
 
-		By construction, $h$ is $(n+1)$-coaffine. We now check that $h$ is also $(n+1)$-prim. The map $g$ is $(n+1)$-affine and, by assumption, countably presented. Hence \Cref{prop:Proper_Properties}(1) shows that $g$ is $(n+1)$-proper. Applying the cancellation statement \Cref{prop:Proper_Properties}(4) to the factorization $f=g \circ h$, the $(n+1)$-primness of $f$ implies the $(n+1)$-primness of $h$. It then follows from \Cref{lem:Prim_Coaffine_Diagonal_Coaffine} that $\Delta_h$ is $n$-coaffine, and so it remains to show that $\Delta_h$ is also $n$-affine.
+		By construction, $h$ is $(n+1)$-coaffine. We now check that $h$ is also $(n+1)$-prim. Recall from above that $g$ is $(n+1)$-proper. Applying the cancellation statement \Cref{prop:Proper_Properties}(4) to the factorization $f=g \circ h$, the $(n+1)$-primness of $f$ implies the $(n+1)$-primness of $h$. It then follows from \Cref{lem:Prim_Coaffine_Diagonal_Coaffine} that $\Delta_h$ is $n$-coaffine, and so it remains to show that $\Delta_h$ is also $n$-affine.
 
 		Since $\Delta_f$ is assumed $n$-affine and $n$-affine maps are closed under left cancellation and base change, it suffices to show that $\Delta_g$ is $n$-affine:
 		\[
@@ -4003,7 +4015,7 @@
 		\[
 			\CAlg(\Oo(X)_{n+2}) \simeq \bigl(\Gest_X^{(n+1)\text{-affine}}\bigr)\catop,
 		\]
-		the object $Y'$ corresponds to $(\Oo(Y)/\Oo(X))_{n+1}$, and fiber products of $(n+1)$-affine Gestalten over $X$ correspond to tensor products of the corresponding algebras in $\CAlg(\Oo(X)_{n+2})$. This identifies the $(n+1)$-affinization of $Y \times_X Y$ over $X$ with $Y' \times_X Y'$, and identifies the $(n+1)$-affinization of $\Delta_f$ with $\Delta_g$, as claimed.This concludes the proof.
+		the object $Y'$ corresponds to $(\Oo(Y)/\Oo(X))_{n+1}$, and fiber products of $(n+1)$-affine Gestalten over $X$ correspond to tensor products of the corresponding algebras in $\CAlg(\Oo(X)_{n+2})$. This identifies the $(n+1)$-affinization of $Y \times_X Y$ over $X$ with $Y' \times_X Y'$, and identifies the $(n+1)$-affinization of $\Delta_f$ with $\Delta_g$, as claimed. This concludes the proof.
 	\end{proof}
 
 	% Carry the section and theorem counters over from talk 9a so that 9b continues the
@@ -4038,7 +4050,7 @@
 		\[
 			\emptyset = \Gest(*, *, *, \dots).
 		\]
-		We claim that this is always 1-affine. For each $n \geq 0$, we have $(\Oo(\emptyset)/\Oo(X))_n = *$. But for $n \geq 2$, the category $\Oo(X)_{n}$ is a module over the pointed category $1\Pr$, hence $\Oo(X)_n$ itself is pointed, so that $\Mod_*(\Oo(X)_n) = *$ as desired.
+		We claim that this is always 1-affine. For each $n \geq 0$, we have $(\Oo(\emptyset)/\Oo(X))_n = *$. But for $n \geq 2$, the category $\Oo(X)_{n}$ is a module over the pointed category $1\Pr$, hence $\Oo(X)_n$ itself is pointed, so that $\Oo(\emptyset)_n = \Mod_{(\Oo(\emptyset)/\Oo(X))_{n-1}}(\Oo(X)_n) = \Mod_*(\Oo(X)_n) = *$ as desired.
 
 		Since $\emptyset$ is 1-affine, it is in particular 1-proper. Moreover, it is $0$-étale, as it is a colimit (an empty colimit) of 0-étale objects over $X$. It is $0$-affine if and only if $\Oo(X)_1$ is pointed, or equivalently whenever $X$ is a Gestalt over $\Gest(\An_*)$.
 	\end{example}
@@ -4048,11 +4060,11 @@
 		\[
 			I := \bigsqcup_{x \in I} * \in \Gest_{/X}.
 		\]
-		If $X = \Gest(A)$, we may express this as $\Gest(\prod_{I} A_0, \prod_I A_1, \prod_I A_2, \dots, \dots)$, since colimits of Gestalten correspond to limits of Stefanich rings.
+		If $X = \Gest(A)$, we may express this as $\Gest(\prod_{I} A_0, \prod_I A_1, \prod_I A_2, \dots)$, since colimits of Gestalten correspond to limits of Stefanich rings.
 
-		Note that $I$ is 0-étale over $X$, as a colimit of 0-étale Gestalten. We claim it is also 1-affine: we have $(\Oo(I)/\Oo(X))_n = \prod_I \unit \in A_n$, and so
+		Note that $I$ is 0-étale over $X$, as a colimit of 0-étale Gestalten. We claim it is also 1-affine: we have $(\Oo(I)/\Oo(X))_{n-1} = \prod_I \unit \in \CAlg(A_n)$, and so
 		\[
-			\Mod_{(\Oo(I)/\Oo(X))_{n-1}}(\Oo(X)_n) = \Mod_{\prod_I \unit}(A_n) \simeq \prod_I \Mod_{\unit} A_n \simeq \prod_{I} A_n = (\Oo(I)/\Oo(X))_{n}
+			\Oo(I)_n = \Mod_{(\Oo(I)/\Oo(X))_{n-1}}(\Oo(X)_n) = \Mod_{\prod_I \unit}(A_n) \simeq \prod_I \Mod_{\unit}(A_n) \simeq \prod_{I} A_n
 		\]
 		for all $n \geq 2$; here we use that $A_n$ semiadditive, since it is a module over $1\Pr$, which is semiadditive. If $A_1$ is semiadditive, then $I$ is even 0-affine.
 	\end{example}
@@ -4080,7 +4092,7 @@
 		\]
 		has a $\D(\Q)$-linear right adjoint. For $n \geq 1$, we have $H_*(B^n(\Z/2);\Q) \cong \Q$, so that $\Q[B^n(\Z/2)]$ is the monoidal unit in $\D(\Q)$ and this functor is even an isomorphism. In the remaining case $n = 0$, the functor is $\D(\Q) \to \Fun(B(\Z/2),\D(\Q))$, whose right adjoint is given by taking $\Z/2$-fixed points; we must show that this right adjoint preserves colimits. But since $\D(\Q)$ is rational, the norm map $(-)_{h\Z/2} \to (-)^{h\Z/2}$ is an isomorphism, so the right adjoint is also a left adjoint and hence preserves colimits.
 
-		We may now use \Cref{lem:Reduce_Affineness} to inductively show that $B^{n+1}(\Z/2)$ is not $n$-affine for any $n$. To see this, assume for contradiction that $B^{n+1}(\Z/2)$ is $n$-affine. Then its diagonal is $(n-1)$-affine, hence by the pullback square
+		We may now use \Cref{prop:Affineness_And_Diagonals}(1) to inductively show that $B^{n+1}(\Z/2)$ is not $n$-affine for any $n$. To see this, assume for contradiction that $B^{n+1}(\Z/2)$ is $n$-affine. Then its diagonal is $(n-1)$-affine, hence by the pullback square
 		\[
 		\begin{tikzcd}
 			B^{n}(\Z/2) \rar \dar \drar[pullback] & B^{n+1}(\Z/2) \dar{\Delta} \\
@@ -4094,7 +4106,7 @@
 
 	Recall that for a Gestalt of the form $X = \Gest(\D(R))$ for some ring spectrum $R \in \CAlg(\Sp)$, we defined a functor
 	\[
-		\Gest(-)\colon \Shv_{\fpqc}(\Aff_A)^{\aleph_1} \to \Gest_{/X}, \qquad Y \mapsto \Gest(\Oo(Y), 1\Pr_Y, 2\Pr_Y, \dots).
+		\Gest(-)\colon \Shv_{\fpqc}(\Aff_R)^{\aleph_1} \to \Gest_{/X}, \qquad Y \mapsto \Gest(\Omega^{\infty}\Gamma(Y), \D(Y), 1\Pr_Y, 2\Pr_Y, \dots).
 	\]
 	In fact, we can define things more generally.
 
@@ -4110,9 +4122,9 @@
 		\]
 		where $A_0\{x\}$ is the free $E_{\infty}$-algebra on one generator $x$ over $A_0$:
 		\[
-			\Hom_{\Gest_{/X}}(Y,\bbA^1_X) \simeq \Hom_{\StRing_{A/}}(\St_A(A_0\{x\}), \Oo(Y)/\Oo(X)) \simeq \Hom_{\CAlg(A_1)}(A_0\{x\}, (\Oo(Y)/\Oo(X))_0) \simeq \Oo(Y)_0.
+			\Hom_{\Gest_{/X}}(Y,\bbA^1_X) \simeq \Hom_{\CAlg(A_1)}(A_0\{x\}, (\Oo(Y)/\Oo(X))_0) \simeq \Oo(Y)_0,
 		\]
-		Note that $\bbA^1_X$ is $0$-affine, hence $0$-proper and $1$-étale.
+		where the first equivalence is the adjunction $\Gest_X(-) \dashv (\Oo(-)/\Oo(X))_0$ of \Cref{def:N_Affine}, using $\bbA^1_X = \Gest_X(A_0\{x\})$. Note that $\bbA^1_X$ is $0$-affine, hence $0$-proper and $1$-étale.
 
 		Over the absolute base, this is $\Gest(*\{x\})$, where
 		\[
@@ -4174,7 +4186,7 @@
 		over $X = \Gest(\D_{\geq 0}(k))$ is not surjective. After base change to $\Gest(\D(k))$, it becomes surjective.
 	\end{proposition}
 	\begin{proof}
-		The fact that it is surjective after base change to $\D(k)$ follows from fpqc descent for the affine functor $\Spec(A) \mapsto \St(A)$, assembled from \Cref{thm:fpqc_Hyperdescent_nPr}, together with \Cref{thm:Sheaf_Valued_In_Etale}. Indeed, after base change the displayed map is the image of the usual Zariski cover $D(T) \cup D(1-T) = \Spec(k[T])$, whose \v{C}ech nerve realizes to $\Spec(k[T])$ in $\Shv_{\fpqc}(\Aff_k)^{\aleph_1}$.
+		The fact that it is surjective after base change to $\D(k)$ follows from fpqc descent for the affine functor $\Spec(A) \mapsto \Oo(\Spec(A))$, assembled from \Cref{thm:fpqc_Hyperdescent_nPr}, together with \Cref{thm:Sheaf_Valued_In_Etale}. Indeed, after base change the displayed map is the image of the usual Zariski cover $D(T) \cup D(1-T) = \Spec(k[T])$, whose \v{C}ech nerve realizes to $\Spec(k[T])$ in $\Shv_{\fpqc}(\Aff_k)^{\aleph_1}$.
 
 		We now show that the original map is not surjective. If the displayed map were surjective, then \Cref{prop:Surjective_Generation}, applied with $n=1$, would imply that the image of
 		\[
@@ -4277,11 +4289,11 @@
 		\label[construction]{con:Condensed_Gestalten}
 		Generalizing the finite and countable sets considered above, we work over $X = \Gest(\D(\S))$ and send a light profinite set $S = \lim_i S_i$ to the Gestalt
 		\[
-			\Gest_{\Gest(\D(\S))}\bigl(\operatorname{Cont}(S,\S)\bigr) = \lim_i \bigl(S_i \times \Gest(\D(\S))\bigr),
+			\Gest_{\Gest(\D(\S))}\bigl(\Cont(S,\S)\bigr) = \lim_i \bigl(S_i \times \Gest(\D(\S))\bigr),
 		\]
-		where $\operatorname{Cont}(S,\S)$ is the Stefanich ring of continuous $\S$-valued functions on $S$, and $S_i \times \Gest(\D(\S))$ denotes the finite coproduct of copies of the base indexed by $S_i$. This could already be defined over the absolute base $\Gest(\An)$; for \Cref{prop:Internal_Real_Numbers} below it is important to work stably. By hyperdescent (\Cref{thm:fpqc_Hyperdescent_nPr}), this assignment takes hypercovers to colimits in Gestalten, so the functor
+		where $\Cont(S,\S)$ is the Stefanich ring of continuous $\S$-valued functions on $S$, and $S_i \times \Gest(\D(\S))$ denotes the finite coproduct of copies of the base indexed by $S_i$. This could already be defined over the absolute base $\Gest(\An)$; for \Cref{prop:Internal_Real_Numbers} below it is important to work stably. By hyperdescent (\Cref{thm:fpqc_Hyperdescent_nPr}), this assignment takes hypercovers to colimits in Gestalten, so the functor
 		\[
-			\ProFin^{\mathrm{light}} \to \Gest^{0\text{-}\mathrm{aff}}_{/\Gest(\D(\S))}
+			\ProFin^{\mathrm{light}} \to \Gest^{0\text{-affine}}_{/\Gest(\D(\S))}
 		\]
 		extends to a countable-colimit- and finite-limit-preserving functor
 		\[
@@ -4337,7 +4349,7 @@
 	\begin{example}[Analytic rings and analytic stacks]
 		Analytic rings yield examples of Gestalten. Any analytic ring $A$, consisting of a light condensed ring together with a chosen full subcategory $\D(A)$ of ``complete'' modules, defines a symmetric monoidal category $\D(A)$ and hence a Stefanich ring; this assembles into a functor
 		\[
-			\AnRing \to \StRing, \qquad A \mapsto (\D(A), 1\Pr_{\D(A)}, 2\Pr_{\D(A)}, \dots).
+			\AnRing \to \StRing, \qquad A \mapsto (\Omega^{\infty}\End_{\D(A)}(\unit), \D(A), 1\Pr_{\D(A)}, 2\Pr_{\D(A)}, \dots).
 		\]
 		Analytic stacks are defined precisely so that this extends to a functor
 		\[
@@ -4423,7 +4435,7 @@
 		\D(Y \times Z) \times \D(X \times Y) \to \D(X \times Z), \qquad (B, A) \mapsto \pr_{XZ,!}(\pr_{XY}^*A \otimes \pr_{YZ}^*B).
 	\]
 
-	Note that this definition of the 2-category of kernels is different from the one that usually appears in the literature, e.g.\ in \cite{Heyer_Mann}: Usually, one considers the canonical self-enrichment of $\Span(C)$ via its closed monoidal structure, and then transfers the enrichment via the lax monoidal functor $\D\colon \Span(C) \to \Cat$. (See \Cref{def:Kernel_2_Category}.) The following result shows that $\bbK_{\D}$ is the $1\Pr$-enriched presheaves on this 2-category.
+	Note that this definition of the 2-category of kernels is different from the one that usually appears in the literature, e.g.\ in \citep{Heyer_Mann}: Usually, one considers the canonical self-enrichment of $\Span(C)$ via its closed monoidal structure, and then transfers the enrichment via the lax monoidal functor $\D\colon \Span(C) \to \Cat$. (See \Cref{def:Kernel_2_Category}.) The following result shows that $\bbK_{\D}$ is the $1\Pr$-enriched presheaves on this 2-category.
 
 	\begin{theorem}[{\citet[Thm.~2.6]{Aoki_PhD_Thesis}}]\label[theorem]{thm:Aoki_Enriched_Presheaves}
 		Let $S$ be a small closed symmetric monoidal category and $\Vv \in \CAlg(\PrL)$, and let $\D\colon S \to \Vv$ be a lax symmetric monoidal functor. Then there is a canonical equivalence
@@ -4650,7 +4662,7 @@
 		\]
 		which follows directly from the defining pullback square for $f^*A$. All in all, we obtain the desired pair of adjunctions
 		\[
-			f_{1,\sharp} \vdash f_1^* \vdash f_{1,*},
+			f_{1,\sharp} \dashv f_1^* \dashv f_{1,*},
 		\]
 		where by construction we have an identification $f_{1,\sharp} = f_{1,*}$.
 		The projection formula exhibits the adjoint $\Span(f_!)^*$ as a $\D_X$-linear functor, so the two adjunctions pass to the corresponding module categories and give the projection formula for $f_{1,\sharp}$ and $f_{1,*}$.
@@ -5076,69 +5088,104 @@
 	\]
 	yielding a map $f_{0,!}\colon \Oo(Y)_1 \to \Oo(X)_1$ compatible with base change and composition. It is reasonable to expect that these define a six-functor formalism on $!$-able maps (or co-$!$-able maps), but at present it is not yet clear how to resolve all coherence issues.
 
-	Restricting to truncated maps, we can however get the desired six-functor formalism:
+	Restricting to truncated maps, we can however get the desired six-functor formalism. Let
+	\[
+		E_{\mathrm{tr}}\subseteq\Gest
+	\]
+	denote the wide subcategory of truncated, $1$-\'etale and $1$-proper maps.
 
-	\begin{proposition}[{\citet{Aoki_PhD_Thesis}}]\label[proposition]{prop:6FF_Truncated_Gest}
-		Fix some Gestalt $X$, and let $C \subseteq \Gest_{/X}$ be the small category of Gestalten over $X$ that are truncated, $1$-étale and $1$-proper. Then there is a six-functor formalism
+	\begin{proposition}
+		\label[proposition]{prop:6FF_Truncated_Gest}
+		The assignment $X\mapsto\Oo(X)_1$ extends to a presentable six-functor formalism
 		\[
-			\Span(C) \to \Oo(X)_2\colon Y \mapsto (\Oo(Y)/\Oo(X))_1
+			\Oo(-)_1\colon\Span(\Gest,E_{\mathrm{tr}})\longrightarrow1\Pr.
 		\]
-		refining the above construction. In particular, forgetting along $\Oo(X)_2 \to 1\Pr$, this yields a six-functor formalism
-		\[
-			\Span(C) \to 1\Pr\colon Y \mapsto \Oo(Y)_1.
-		\]
+		If $f\colon Y\to X$ lies in $E_{\mathrm{tr}}$, the exceptional pushforward of this formalism is the map $f_{0,!}\colon\Oo(Y)_1\to\Oo(X)_1$ constructed above.
 	\end{proposition}
 	\begin{proof}
-		In short, we apply \citep[Theorem~B]{CLL_Span2} (recalled in \Cref{thm:Span_2_Universal}) to obtain a once-categorified six-functor formalism $Y \mapsto \Oo(Y)_2$, and then pass to endomorphisms to get the desired functor $\Span(C) \to \Oo(X)_2$. We spell out the details.
-
-		The category $C$ has finite limits: truncated, $1$-étale and $1$-proper maps are all stable under base change and composition, and the identity of $X$ has all three properties. Moreover, every morphism $f\colon Y \to Z$ in $C$ is truncated, since it is a morphism between truncated objects of $\Gest_{/X}$, and the cancellation properties in \Cref{prop:Etale_Properties,prop:Proper_Properties} guarantee it is again $1$-étale and $1$-proper. We may therefore apply the setup of \Cref{sec:2Cat_Enhancement} with
+		\textbf{Step 1: the slicewise construction.}
+		Fix a Gestalt $X$, and let
 		\[
-			I=P=E=C,
+			C_X:=(E_{\mathrm{tr}})_{/X}
 		\]
-		where the notation means that all three wide subcategories contain every morphism of $C$. The base-change, factorization and left-cancellation hypotheses are then automatic, while the truncatedness hypothesis on $I\cap P$ holds by the preceding observation.
+		be the category of truncated, $1$-\'etale and $1$-proper Gestalten over $X$. This category has finite limits, and every morphism in $C_X$ again lies in $E_{\mathrm{tr}}$: indeed, the relevant properties are stable under base change and composition, and the cancellation properties for the $1$-\'etale and $1$-proper conditions are part of \Cref{prop:Etale_Properties,prop:Proper_Properties}. Thus we may apply \Cref{thm:Span_2_Universal} with all three classes equal to $C_X$.
 
-		Let $A := \Oo(X)$. In what follows, we regard $A_3$ as a $2$-category and $A_2$ as a category via the usual forgetful functors, without changing notation. Consider the symmetric monoidal functor
+		Set $A:=\Oo(X)$. The relative algebras define a symmetric monoidal functor to $\CAlg(A_3)$; after forgetting the algebra structures, we regard this as a lax symmetric monoidal functor
 		\[
-			\Phi\colon C\catop\longrightarrow \CAlg(A_3),
+			\Phi_X\colon C_X\catop\longrightarrow A_3,
 			\qquad
-			Y\longmapsto (\Oo(Y)/A)_2,
+			(Y\to X)\longmapsto (\Oo(Y)/A)_2.
 		\]
-		where the contravariant functoriality along $f\colon Y\to Z$ is via the relative map $(f/A)^*_1$. Its symmetric monoidal structure follows from the Künneth formula \Cref{lem:Kunneth_Prim}, applied in degree $2$.
-
-		We claim that $\Phi$ is $(C,C)$-biadjointable in the sense of \Cref{def:Biadjointable_Functor}. Indeed, every $f$ in $C$ is $1$-étale and $1$-proper, so $(f/A)^*_1$ admits both the internal left adjoint $(f/A)_{1,\sharp}$ and the internal right adjoint $(f/A)_{1,*}$. The two Beck--Chevalley conditions are \Cref{prop:Prim_Suave_Base_Change}, the double Beck--Chevalley condition is \Cref{prop:Double_BC_Gest}, and the two projection formulae are \Cref{lem:Suave_Projection_Formula,lem:Prim_Projection_Formula}. Applying \Cref{thm:Span_2_Universal} now produces a lax symmetric monoidal $2$-functor
+		The symmetric monoidal structure is supplied by the Künneth formula \Cref{lem:Kunneth_Prim}, applied in degree $2$. If $f\colon Y\to Z$ lies in $C_X$, then the induced map $(f/A)^*_1$ admits both internal adjoints, since $f$ is $1$-\'etale and $1$-proper. The Beck--Chevalley, double Beck--Chevalley, and projection-formula requirements are exactly \Cref{prop:Prim_Suave_Base_Change,prop:Double_BC_Gest,lem:Suave_Projection_Formula,lem:Prim_Projection_Formula}. Hence \Cref{thm:Span_2_Universal} produces a lax symmetric monoidal $2$-functor
 		\[
-			\widetilde\Phi\colon \SpanTwoP{C}{C}{C}{C}\longrightarrow A_3
+			\widetilde\Phi_X\colon
+			\SpanTwoP{C_X}{C_X}{C_X}{C_X}\longrightarrow A_3
 		\]
-		extending $\Phi$.
+		extending $\Phi_X$.
 
-		We have $\Phi(\ast)=(A/A)_2\simeq\unit_{A_3}$. Hence passing to endomorphisms of the unit, as in \Cref{con:Endo_Unit}, gives a lax symmetric monoidal functor
+		The terminal object of $C_X$ is $\id_X$, and $\Phi_X(\id_X)=(A/A)_2\simeq\unit_{A_3}$. Passing to endomorphisms of the unit as in \Cref{con:Endo_Unit} gives a lax symmetric monoidal functor
 		\[
-			\Span(C)
-			\simeq \Hom_{\SpanTwoP{C}{C}{C}{C}}(\ast,\ast)
+			\Span(C_X)
+			\simeq
+			\Hom_{\SpanTwoP{C_X}{C_X}{C_X}{C_X}}(\id_X,\id_X)
 			\longrightarrow
-			\Hom_{A_3}(\unit,\unit)
-			\simeq A_2=\Oo(X)_2.
+			\End_{A_3}(\unit)
+			\simeq A_2.
 		\]
-		It remains to identify its value on objects. An object $Y\in C$ corresponds on the left to the endomorphism span
+		An object $Y\to X$ of $C_X$ corresponds to the endomorphism span
 		\[
-			\ast\xleftarrow{p_Y}Y\xrightarrow{p_Y}\ast.
+			\id_X\xleftarrow{p_Y}Y\xrightarrow{p_Y}\id_X.
 		\]
-		By regarding the forward map as living in $P$, its image under $\widetilde\Phi$ is the endomorphism $(p_Y/A)_{1,*}(p_Y/A)^*_1$ of the unit in $A_3$. Under the equivalence $\End_{A_3}(\unit)\simeq A_2$, evaluation at the unit identifies this with
+		Its image is the endomorphism $(p_Y/A)_{1,*}(p_Y/A)^*_1$ of the unit in $A_3$. Under the equivalence $\End_{A_3}(\unit)\simeq A_2$, evaluation at the unit identifies this object with
 		\[
 			(p_Y/A)_{1,*}(p_Y/A)^*_1(\unit)
-			\simeq (\Oo(Y)/A)_1
+			\simeq(\Oo(Y)/A)_1.
 		\]
-		by \Cref{obs:Endomorphism_Object_Via_Right_Adjoint}. Thus the resulting functor has the asserted value on $Y$.
+		For a morphism $f\colon Y\to Z$ in $C_X$, the forward span $Y\xleftarrow{\id}Y\xrightarrow{f}Z$ acts through the counit of $(f/A)_{1,\sharp}\dashv(f/A)^*_1$. Since $f$ belongs to both the left and the right class, \Cref{thm:Span_2_Universal} identifies $(f/A)_{1,\sharp}$ with $(f/A)_{1,*}$; after evaluation at the unit, this is precisely the map $f_{0,!}\colon\Oo(Y)_1\to\Oo(Z)_1$ constructed above. Forgetting along $A_2=\Oo(X)_2\to1\Pr$, we therefore obtain a lax symmetric monoidal functor
+		\[
+			D_X\colon\Span((E_{\mathrm{tr}})_{/X})\longrightarrow1\Pr,
+			\qquad
+			(Y\to X)\longmapsto\Oo(Y)_1.
+		\]
 
-		Finally, for a morphism $f\colon Y\to Z$ in $C$, the forward span $Y\xleftarrow{\id}Y\xrightarrow{f}Z$ acts through the counit of $(f/A)_{1,\sharp}\dashv(f/A)^*_1$. Since $f$ belongs to $I\cap P$, the two factorizations $f=f\circ\id=\id\circ f$ in the formula for the exceptional pushforward of \Cref{thm:Span_2_Universal} give a canonical identification $(f/A)_{1,\sharp}\simeq(f/A)_{1,*}$. After evaluation at the unit, the above counit is precisely the map $f_{0,!}$ constructed before the proposition. Consequently the functor refines that construction. All its values and structure functors are presentable, so the required right adjoints exist by \Cref{rmk:Presentable_Targets}; hence it is a six-functor formalism. Forgetting along $A_2=\Oo(X)_2\to1\Pr$ sends $(\Oo(Y)/A)_1$ to $\Oo(Y)_1$ and gives the second displayed formalism.
+		\textbf{Step 2: assembling the slices.}
+		We now apply \Cref{thm:Slicewise_Reconstruction}. For $Y\to X$ in $(E_{\mathrm{tr}})_{/X}$ and $T\to X$ in $\Gest_{/X}$, define
+		\[
+			\D_{/X}(Y)(T):=D_T(T\times_XY)=\Oo(T\times_XY)_1.
+		\]
+		A span $Y\xleftarrow{}W\xrightarrow{}Z$ in $(E_{\mathrm{tr}})_{/X}$ pulls back along $T\to X$ to a span in $(E_{\mathrm{tr}})_{/T}$, and applying $D_T$ defines the corresponding functor
+		\[
+			\D_{/X}(Y)(T)\longrightarrow\D_{/X}(Z)(T).
+		\]
+		Thus we obtain functors
+		\[
+			\D_{/X}\colon\Span((E_{\mathrm{tr}})_{/X})\longrightarrow\Fun(\Gest_{/X}\catop,1\Pr).
+		\]
+		Their contravariant compatibility in $X$ is the evident base-change identification
+		\[
+			T'\times_{X'}(X'\times_XY)\simeq T'\times_XY.
+		\]
+		If $e\colon X'\to X$ lies in $E_{\mathrm{tr}}$, the covariant compatibility required in \Cref{thm:Slicewise_Reconstruction} is checked objectwise by the same pullback identity:
+		\[
+			\D_{/X}(e_{\sharp}Y)(T)
+			=\Oo(T\times_XY)_1
+			\simeq
+			\Oo((T\times_XX')\times_{X'}Y)_1
+			=(e_*\D_{/X'}(Y))(T).
+		\]
+		Therefore \Cref{thm:Slicewise_Reconstruction}, using the expected monoidal refinement discussed in \Cref{rmk:Slicewise_Reconstruction_Monoidal}, assembles the $D_X$ into a lax symmetric monoidal functor
+		\[
+			\Oo(-)_1\colon\Span(\Gest,E_{\mathrm{tr}})\longrightarrow1\Pr.
+		\]
+		Its value at $X$ is $\D_{/X}(\id_X)(\id_X)=\Oo(X)_1$, and the description of the exceptional pushforward in \Cref{thm:Slicewise_Reconstruction} identifies the map attached to $f\colon Y\to X$ with the forward-span map in $D_X$, hence with $f_{0,!}$. All values are presentable, so the remaining right adjoints exist by \Cref{rmk:Presentable_Targets}.
 	\end{proof}
 
 	\begin{question}
-		Can the six-functor formalism on $\Gest$ constructed in \Cref{prop:6FF_Truncated_Gest} be improved to a functor
+		Can the six-functor formalism on $\Gest$ constructed in \Cref{prop:6FF_Truncated_Gest} be extended to a functor
 		\[
 			\Oo(-)_1\colon \Span(\Gest, \Gest^{!}) \to 1\Pr,
 		\]
-		defined on the span category of \emph{all} $!$-able maps of Gestalten (\Cref{def:Quasi_Shrieksable}), and not only the truncated ones? Here $\Gest^{!} \subseteq \Gest$ denotes the wide subcategory of $!$-able maps.
+		defined on the span category of \emph{all} $!$-able maps of Gestalten (\Cref{def:Quasi_Shrieksable})? Here $\Gest^{!} \subseteq \Gest$ denotes the wide subcategory of $!$-able maps.
 	\end{question}
 
 	\begin{question}
@@ -5153,17 +5200,17 @@
 
 	\emph{Talk given by Bastiaan.}
 
-	\emph{Essentially all material in this chapter is taken from \cite{Aoki_PhD_Thesis}.}
+	\emph{Essentially all material in this chapter is taken from \citet{Aoki_PhD_Thesis}.}
 
 	In classical algebraic geometry, one studies smooth projective varieties over a field $k$ by means of cohomology theories, like Betti cohomology, de Rham cohomology, and $\ell$-adic cohomology. In order to understand the relation between these theories, Grothendieck envisioned the concept a universal abelian category $\Mot(k)$ of motives, together with a ``universal cohomology theory'' of the form $\Sch \to \Mot(k)$; every other cohomology theory ought to factor through $\Mot(k)$ by means of a \emph{realization functor} from $\Mot(k)$ to the category of vector spaces.
 
-	While Grothendieck's original vision of $\Mot(k)$ has remained conjectural, it was later substantially realized by Voevodsky \cite{Voevodsky_Triangulated} through his triangulated category of motives $\mathrm{DM}(k)$. Closely related is the stable motivic homotopy theory $\SH(k)$ of \cite{MorelVoevodsky1999Motivic}, obtained from the category of smooth $k$-schemes by asking for presentability, Nisnevich descent, $\bbA^1$-invariance and $\bbP^1$-stability. For the purposes of this chapter, the categories $\SH(k)$ are the main objects of interest.
+	While Grothendieck's original vision of $\Mot(k)$ has remained conjectural, it was later substantially realized by Voevodsky \citep{Voevodsky_Triangulated} through his triangulated category of motives $\mathrm{DM}(k)$. Closely related is the stable motivic homotopy theory $\SH(k)$ of \citet{MorelVoevodsky1999Motivic}, obtained from the category of smooth $k$-schemes by asking for presentability, Nisnevich descent, $\bbA^1$-invariance and $\bbP^1$-stability. For the purposes of this chapter, the categories $\SH(k)$ are the main objects of interest.
 
 	The motivic stable category $\SH(X)$ can be defined for any scheme $X$, and the assignment $X \mapsto \SH(X)$ can be upgraded to a six-functor formalism
 	\[
 		\SH\colon \Span(\Sch_S) \to 1\Pr,
 	\]
-	where $\Sch_S$ is the category of separated finite type schemes over some base scheme $S$. By a result of Drew--Gallauer \cite{DrewGallauer2022Universal}, formulated in the closely related language of coefficient systems, this is the universal six-functor formalism on $\Sch_S$ satisfying four axioms: smooth base change and the projection formula, localization, $\bbA^1$-invariance, and $\bbP^1$-stability.
+	where $\Sch_S$ is the category of separated finite type schemes over some base scheme $S$. By a result of Drew--Gallauer \citep{DrewGallauer2022Universal}, formulated in the closely related language of coefficient systems, this is the universal six-functor formalism on $\Sch_S$ satisfying four axioms: smooth base change and the projection formula, localization, $\bbA^1$-invariance, and $\bbP^1$-stability.
 
 	Applying the category-of-kernels construction provides a presentably symmetric monoidal 2-category
 	\[
@@ -5182,7 +5229,7 @@
 	The goal of today's talk is to go through the following results by \citet{Aoki_PhD_Thesis}:
 	\begin{itemize}
 		\item The functor $\Sch_S\catop \to \SH^{(2)}(S), X \mapsto [X]$ is universal among symmetric monoidal functors from schemes into stable presentably symmetric monoidal $2$-categories which satisfy the corresponding $2$-categorical versions of the same four axioms.
-		\item The Gestalt $[\Spec(\Z)]_{\SH}$ is the free Gestalt $S$ equipped with a ring object $R \in \CRing(\Gest_{/S})$ which is 1-affine, 0-suave, homologically contractible and `sutured' (roughly: $0 \hookrightarrow R$ and $R^{\times} \hookrightarrow R$ form a recollement).
+		\item The Gestalt $[\Spec(\Z)]_{\SH}$ is the free Gestalt $S$ equipped with a ring object $R \in \CRing(\Gest_{/S})$ which is 1-affine, 0-suave, homologically trivial and `sutured' (roughly: $0 \hookrightarrow R$ and $R^{\times} \hookrightarrow R$ form a recollement).
 	\end{itemize}
 
 	\section{Motivic spectra and the six operations}
@@ -5221,14 +5268,14 @@
 		\]
 		satisfying the following four conditions.
 		\begin{enumerate}
-			\item Smooth maps admit left adjoints $f_\natural$, and these left adjoints satisfy smooth base change and the projection formula.
+			\item Smooth maps admit left adjoints $f_\sharp$, and these left adjoints satisfy smooth base change and the projection formula.
 			\item For every closed immersion $i\colon Z\hookrightarrow X$ with open complement $j\colon U\hookrightarrow X$, the diagram
 			\[
 				D(U)\xleftarrow{\ j^*\ }D(X)\xrightarrow{\ i^*\ }D(Z)
 			\]
 			is a recollement.
 			\item For $\pi\colon\bbA^1_X\to X$, the functor $\pi^*$ is fully faithful.
-			\item If $s\colon X\to\bbA^1_X$ is the zero section, then $\pi_\natural s_*$ is an equivalence.
+			\item If $s\colon X\to\bbA^1_X$ is the zero section, then $\pi_\sharp s_*$ is an equivalence.
 		\end{enumerate}
 		A morphism of motivic coefficient systems is a lax symmetric monoidal natural transformation which is compatible with the left adjoints for smooth maps.
 		We write
@@ -5260,7 +5307,7 @@
 		\]
 		is cartesian with $p$ proper and $g$ smooth, then the smooth--proper Beck--Chevalley map
 		\[
-			g_\natural p'_*\longrightarrow p_*g'_\natural
+			g_\sharp p'_*\longrightarrow p_*g'_\sharp
 		\]
 		is an equivalence.
 
@@ -5384,7 +5431,7 @@
 	\[
 		F\colon\Sch_S\catop\longrightarrow\Cc
 	\]
-	is motivic if smooth pullback admits left adjoints satisfying smooth base change, closed--open decompositions give recollements, the projection $\bbA^1_X\to X$ is homotopy invariant, and the Tate operator $\pi_\natural s_*$ is invertible. Morphisms between motivic functors are symmetric monoidal natural transformations which are compatible with the left adjoints for smooth maps.
+	is motivic if smooth pullback admits left adjoints satisfying smooth base change, closed--open decompositions give recollements, the projection $\bbA^1_X\to X$ is homotopy invariant, and the Tate operator $\pi_\sharp s_*$ is invertible. Morphisms between motivic functors are symmetric monoidal natural transformations which are compatible with the left adjoints for smooth maps.
 
 	\begin{lemma}
 		\label[lemma]{lem:Motivic_2_Functor_Extends_To_Spans}
@@ -5512,18 +5559,18 @@
 		\]
 		Here $D$ is lax symmetric monoidal because $T$ is symmetric monoidal and $\Hom_{\Mot^{(2)}(S)}(\unit,-)$ is lax symmetric monoidal. The contravariant part $X\mapsto D(X)$ is a motivic coefficient system in the sense of \Cref{def:Motivic_Coefficient_System}. Indeed, the smooth left adjoints, closed--open recollements, $\bbA^1$-invariance, and Tate invertibility are obtained by applying $\Hom_{\Mot^{(2)}(S)}(\unit,-)$ to the corresponding structures for $[-]_{\Mot}$.
 
-		The only point worth spelling out is the projection formula. Let $f\colon Y\to X$ be smooth. The graph-square argument in the proof of \Cref{lem:Motivic_2_Functor_Extends_To_Spans}, applied now to the smooth left adjoint $f_\natural$, gives an equivalence in $\Mot^{(2)}(S)$
+		The only point worth spelling out is the projection formula. Let $f\colon Y\to X$ be smooth. The graph-square argument in the proof of \Cref{lem:Motivic_2_Functor_Extends_To_Spans}, applied now to the smooth left adjoint $f_\sharp$, gives an equivalence in $\Mot^{(2)}(S)$
 		\[
-			f_\natural(M\otimes f^*N)
+			f_\sharp(M\otimes f^*N)
 			\simeq
-			f_\natural(M)\otimes N
+			f_\sharp(M)\otimes N
 		\]
 		for $M\colon\unit\to[Y]_{\Mot}$ and $N\colon\unit\to[X]_{\Mot}$. Applying $\Hom_{\Mot^{(2)}(S)}(\unit,-)$ gives precisely the projection formula for the induced left adjoint on $D(Y)\to D(X)$. Hence \Cref{thm:Drew_Gallauer_Universal_SH} gives a unique morphism of motivic coefficient systems
 		\[
 			\alpha^{\op}\colon\SH\longrightarrow D|_{\Sch_S\catop}.
 		\]
 
-		We must still upgrade this contravariant map to spans. By definition of morphisms of motivic coefficient systems, $\alpha^{\op}$ is compatible with the smooth left adjoints, hence in particular with the left adjoints for open immersions. By the final clause of \Cref{thm:Ayoub_Cisinski_Deglise_Axiomatic_Proper_Base_Change}, it is also compatible with the right adjoints for proper maps. Therefore the same CLL extension criterion used in \Cref{lem:Motivic_2_Functor_Extends_To_Spans} extends $\alpha^{\op}$ uniquely to a morphism of commutative algebra objects
+		We must still upgrade this contravariant map to spans. By definition of morphisms of motivic coefficient systems, $\alpha^{\op}$ is compatible with the smooth left adjoints, hence in particular with the left adjoints for open immersions. By the final clause of \Cref{thm:Ayoub_Cisinski_Deglise_Axiomatic_Proper_Base_Change}, it is also compatible with the right adjoints for proper maps. Therefore the same extension criterion of \citet{CLL_Span2} used in \Cref{lem:Motivic_2_Functor_Extends_To_Spans} extends $\alpha^{\op}$ uniquely to a morphism of commutative algebra objects
 		\[
 			\alpha\colon\SH\longrightarrow\Hom_{\Mot^{(2)}(S)}(\unit,T(-))
 		\]
@@ -7022,7 +7069,7 @@
 		Let $Y \in C$. The \emph{$2$-category of kernels} $K_{\D, Y}$ is the $2$-category whose:
 		\begin{itemize}
 			\item \emph{Objects} are objects of $(C_E)_{/Y}$, i.e.\ morphisms $X \to Y$ in $E$.
-			\item The\emph{hom category} from $X_1$ to $X_2$ is $\Hom_{K_{\D}}(X_1, X_2) \coloneqq \D(X_1 \times_Y X_2)$.
+			\item The \emph{hom category} from $X_1$ to $X_2$ is $\Hom_{K_{\D}}(X_1, X_2) \coloneqq \D(X_1 \times_Y X_2)$.
 			\item The \emph{identity} on $X$ is $\Delta_{f!}(\unit_X) \in \D(X \times_Y X)$, where $\Delta_f \colon X \to X \times_Y X$ is the relative diagonal.
 			\item \emph{Composition} of $M \in \Hom_{K_{\D}}(X_1, X_2)$ and $N \in \Hom_{K_{\D}}(X_2, X_3)$ is
 			\[
@@ -7177,7 +7224,7 @@
 			\begin{enumerate}
 				\item[(a)] $f$ is $\D$-\'etale;
 				\item[(b)] $f^! \unit_Y \iso f^* \unit_Y$ in $\D(X)$;
-				\item[(c)] $f^! iso f^*$ as functors.
+				\item[(c)] $f^! \iso f^*$ as functors.
 			\end{enumerate}
 			\item Suppose $\Delta_f$ is $\D$-proper. Then the following are equivalent:
 			\begin{enumerate}
@@ -7189,6 +7236,79 @@
 	\end{proposition}
 
 	In \Cref{sec:Translation} we study how the notions of cohomological smoothness, suaveness, primness, étaleness and properness can be translated to the corresponding notions for Gestalten via the transmutation $[-]_{\D}\colon C \to \Gest$.
+
+	\section{Recovering six-functor formalisms from slices}
+	\label[section]{sec:Recovering_From_Slices}
+
+	Given a six-functor formalism on $\Span(C,E)$, we may restrict it along the forgetful functor $E_{/X} \to C$ for every $X \in C$ to obtain a six-functor formalism on the slice $E_{/X}$. The point of this section is to ask about the converse: when can the original six-functor formalism be recovered from all of these restrictions?
+
+	The reason it is useful to be able to do so is that in categorified situations it is sometimes easier to get a handle on the restricted formalisms, using the fact that $\Span(E_{/X})$ is the endomorphism category of the span 2-category $\SpanTwo(C,E)$ considered in \Cref{con:Span_2_Category}. The abstract reconstruction result below is used in \Cref{prop:6FF_Truncated_Gest} to assemble the slicewise constructions on Gestalten.
+
+	Before giving a precise result, let us set the stage by making precise the restriction data and the compatibilities between them. Given $\D\colon \Span(C,E) \to \Cat$, we may consider for every morphism $W \to X$ in $C$ the functor
+	\[
+		\Span(E_{/X}) \to \Cat, \qquad (Z \to X) \mapsto \D(Z \times_X W).
+	\]
+	Collecting these functors for all $W \in C_{/X}$ results in a functor
+	\[
+		\D_{/X}\colon \Span(E_{/X}) \to \Fun(C_{/X}\catop,\Cat).
+	\]
+	Moreover, these functors are compatible with the two canonical functorialities in $X$ on both sides:
+	\begin{itemize}
+		\item On the one hand, both sides are contravariantly functorial in maps $f\colon Y \to X$ in $C$. For the left-hand side, we may consider the pullback functor $f^*\colon E_{/X} \to E_{/Y}$, which induces a functor on span categories $\Span(f^*)\colon \Span(E_{/X}) \to \Span(E_{/Y})$. For the right-hand side, we can restrict along the postcomposition functor $f_{\sharp}\colon C_{/Y} \to C_{/X}$ to obtain a functor $f^*\colon\Fun(C_{/X}\catop,\Cat)\to\Fun(C_{/Y}\catop,\Cat)$. We then have the relation
+		\[
+			f^* \circ \D_{/X}\simeq \D_{/Y}\circ\Span(f^*), \qquad (Z,W)\mapsto \D(Z \times_X W) \simeq \D((Z \times_X Y) \times_Y W)
+		\]
+		of functors $\Span(E_{/X})\to\Fun(C_{/Y}\catop,\Cat)$.
+		\item On the other hand, both sides are covariantly functorial in maps $e\colon Y \to X$ in $E$. For the left-hand side, the postcomposition functor $e_{\sharp}\colon E_{/Y} \to E_{/X}$ preserves pullbacks and thus induces a functor on spans. For the right-hand side, restricting along the pullback functor $e^*\colon C_{/Y} \to C_{/X}$ gives a functor $e_*\colon \Fun(C_{/Y}\catop,\Cat)\to\Fun(C_{/X}\catop,\Cat)$. We then have the relation
+		\[
+			\D_{/X} \circ \Span(e_{\sharp}) \simeq e_*\circ \D_{/Y}, \qquad (Z,W) \mapsto \D(Z \times_X W) \simeq \D(Z \times_Y (Y \times_X W))
+		\]
+		of functors $\Span(E_{/Y}) \to \Fun(C_{/X}\catop,\Cat)$.
+	\end{itemize}
+	These two compatibilities are closely related: the functor $\Span(e_{\sharp})$ induced by the left adjoint $e_{\sharp}\colon E_{/Y} \to E_{/X}$ to $e^*$ is a \emph{right} adjoint to $\Span(e^*)$, and similarly the restriction functor $e_*\colon \Fun(C_{/Y}\catop,\Cat)\to\Fun(C_{/X}\catop,\Cat)$ is right adjoint to $e^*$. The contravariant compatibility is then the mate of the covariant compatibility. In particular, if we remember the covariant compatibility relations as coherent data, the contravariant compatibilities can be stated as properties.
+
+	We can now state the main result.
+
+	\begin{theorem}[Slicewise reconstruction, {\citet[\textsection 8]{CLL_Span}}]
+		\label[theorem]{thm:Slicewise_Reconstruction}
+		Let $C$ have finite limits and let $E\subseteq C$ be closed under base change and left cancellation. For any category $A$, there is an equivalence between the following two types of data:
+		\begin{itemize}
+			\item Functors $\D\colon\Span(C,E)\longrightarrow A$;
+			\item Natural transformations
+			\[
+				\D_{/\bullet}\colon \Span(E_{/\bullet}) \to \Fun(C_{/\bullet}\catop,A)
+			\]
+			of functors $C\catop \to \Cat$ satisfying the property that for each morphism $e\colon Y \to X$ in $E$ the canonical map
+			\[
+				\D_{/X} \circ \Span(e_{\sharp}) \to e_*\circ \D_{/Y}
+			\]
+			is a natural equivalence of functors $\Span(E_{/Y}) \to \Fun(C_{/X}\catop,A)$.
+		\end{itemize}
+	\end{theorem}
+	\begin{proof}
+		The proof is given in \cite[\textsection 8]{CLL_Span}; there, the data in the second bullet point occurs under the name \emph{$E$-commutative monoid in the $C$-category $X \mapsto \Fun(C_{/X},A)$}.
+
+		The rough idea of the proof is as follows. Natural transformations between functors $C\catop \to \widehat{\Cat}$ can be alternatively encoded as morphisms between cocartesian fibrations over $C\catop$. The cocartesian unstraightening of $X \mapsto \Span(E_{/X})$ is the span category of $\Ar_E(C)$, the full subcategory of the arrow category $\Ar(C)$ spanned by the morphisms $Z \to X$ in $E$. The span category $\Span(C,E)$ is a localization of this span category, and the class of maps at which one needs to localize is precisely the class of maps encoding the second compatibility relation.
+	\end{proof}
+
+	We have already seen how to produce the data of the functor $\D_{/X}$ from $\D$. In the other direction, we may recover $\D$ from $\D_{/\bullet}$ by setting
+	\[
+		\D(X) := \D_{/X}(\id_X)(\id_X).
+	\]
+	For an arbitrary map $f\colon U \to X$, the pullback functor $f^*\colon \D(X) \to \D(U)$ is obtained by applying the presheaf $\D_{/X}(\id_X)\colon C_{/X}\catop \to A$ to the morphism $f\colon U \to X$ in $C_{/X}$, using that $\D_{/X}(\id_X)(U) \simeq \D_{/U}(\id_U)(\id_U)$. For a map $e\colon U \to Y$ in $E$, the exceptional pushforward $e_!\colon \D(U) \to \D(Y)$ is obtained by applying $\D_{/Y}$ to the forward span
+	\[
+		e \xleftarrow{\id} e \xrightarrow{e} \id_Y
+	\]
+	in $E_{/Y}$ and then evaluating at $\id_Y$. A general span $X \xleftarrow{f} U \xrightarrow{e} Y$ is sent to the composite $e_!f^*$. The compatibility with the right adjoints $e_*$ is precisely what makes this construction functorial in composites on spans.
+
+	\begin{remark}
+		\label[remark]{rmk:Slicewise_Reconstruction_Monoidal}
+		The theorem is stated only in the non-monoidal form, which is the form proved in \citet[\textsection 8]{CLL_Span}. It is highly expected that the same argument can be used to prove a symmetric monoidal refinement: if $C$ has finite products and $E$ is closed under products, then three-functor formalisms $\Span(C,E)\to \Cat$ should be equivalent to compatible families of slicewise three-functor formalisms
+		\[
+			\Span(E_{/X}) \to \Fun(C_{/X}\catop,\Cat).
+		\]
+		The same expectation applies with target any symmetric monoidal category, in particular $1\Pr$ or $\PrL$. We will not prove this refinement here, and will take it for granted in the applications below.
+	\end{remark}
 
 	\addtocontents{toc}{\vskip 10pt}
 %	\addcontentsline{toc}{chapter}{Bibliography}
