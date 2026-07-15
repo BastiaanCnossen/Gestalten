@@ -6671,8 +6671,217 @@
 	corresponding to the ring Gestalt $\underline{\R}$ over $\Gest(\D(\S))$: the pullback of $[\bbA^1_{\Z}]_{\SH}$ is $\underline{\R} = \Gest(\Shv(\R, \D(\S)))$ over $\Gest(\D(\S))$. Under this realization the torsor $\widetilde{X} \to X$ yields an $\underline{\R}^{\times}$-torsor over $\Gest(\D(\S))$ which, up to a trivial $\{\pm 1\}$-torsor, is the $\underline{\R}_{> 0}$-torsor $\Gest(W) \to \Gest(\D(\S))$ of Witt vectors discussed by \citet{Scholze_Wild_Betti}.
 
 	\chapter{The proof of Cartier duality}
+	\label[chapter]{chap:Cartier_Duality_Proof}
 
 	\emph{Talk given by Sil.}
+
+	In this chapter we prove the Cartier duality theorem for Gestalten (\Cref{thm:Cartier_Duality}), whose statement was discussed in the previous chapter.
+
+	\section{Recollections}
+	\label[section]{sec:Cartier_Proof_Recollections}
+
+	Throughout, fix a Gestalt $X = \Gest(A)$ as base.
+
+	\begin{definition}\label[definition]{def:GL1_A1_Levels}
+		Recall that $(\GL_1)_n$ is the Gestalt over $X$ defined by
+		\[
+			(\GL_1)_n := \Gest_X(\S \otimes \Oo(X)_n),
+		\]
+		where $\S$ is the free commutative group on a single generator. In light of the adjunction $\CMon(\An) \rightleftarrows \CAlg(\Oo(X)_{n+1})$, the Gestalt $(\GL_1)_n$ represents the functor
+		\[
+			\Gest_{/X}\catop \to \An, \qquad Y \mapsto \Oo(Y)^{\times}_n.
+		\]
+		Since this canonically lifts to a functor valued in $\CGrp(\An)$, the Gestalt $(\GL_1)_n$ is canonically a commutative group in $\Gest_{/X}$. We similarly define
+		\[
+			(\bbA^1)_n := \Gest_X(\Fin^{\simeq} \otimes \Oo(X)_n),
+		\]
+		which represents the functor $Y \mapsto \Oo(Y)^{\simeq, \aleph_1}_n$ and is canonically a commutative monoid in $\Gest_{/X}$.
+	\end{definition}
+
+	\begin{lemma}\label[lemma]{lem:Loops_GL1_Levels}
+		There are isomorphisms of commutative groups $\Omega(\GL_1)_n \simeq (\GL_1)_{n-1}$, so that the sequence $((\GL_1)_0, (\GL_1)_1, (\GL_1)_2, \dots)$ assembles into a spectrum object $\GL_1 \in \Sp(\Gest_{/X})$.
+	\end{lemma}
+	\begin{proof}
+		Naturally in $Y$ we have
+		\[
+			\Omega \Oo(Y)^{\times}_n = \Aut_{\Oo(Y)_n}(\unit) = \End_{\Oo(Y)_n}(\unit)^{\times} = (\Oo(Y)_{n-1})^{\times},
+		\]
+		which gives the claim.
+	\end{proof}
+
+	The goal of this talk is to prove the Cartier duality theorem of Scholze and Stefanich (\Cref{thm:Cartier_Duality}). Recall its content: for $M \in \Sp(\Gest^{n\text{-}\et}_{/X})$, the functor
+	\[
+		\Sp(\Gest_{/X})\catop \to \An, \qquad N \mapsto \Hom(N \otimes M, \GL_1)
+	\]
+	is representable by $M^* = \Hh om(M, \GL_1) \in \Sp(\Gest^{n\text{-prop}}_{/X})$; the assignment $M \mapsto M^*$ induces an equivalence
+	\[
+		\Sp(\Gest^{n\text{-}\et}_{/X})\catop \simeq \Sp(\Gest^{n\text{-prop}}_{/X});
+	\]
+	and for all $m, k \geq 0$ with $m + k \geq n$ there is an equivalence
+	\[
+		(\Oo(M^*_k)/\Oo(X))_{m+k} \simeq (\Oo(M_m)/\Oo(X))^!_{m+k},
+	\]
+	induced by a form of the Fourier--Makkai transform.
+
+	\section{The key computation}
+	\label[section]{sec:Cartier_Proof_Key_Computation}
+
+	The heart of the proof is the following computation, which refines \Cref{thm:Internal_Hom_GL1} to a statement over the slice.
+
+	\begin{theorem}\label[theorem]{thm:Cartier_Key_Computation}
+		Let $X = \Gest(A)$ and let $G \in \CGrp(\Gest^{n\text{-suave}}_{/X})$. Then the functor
+		\[
+			\Gest_{/X}\catop \to \An, \qquad Y \mapsto \Hom_{\CGrp(\Gest_{/Y})}(G \times_X Y, (\GL_1)_n)
+		\]
+		is representable by the $n$-affine Gestalt
+		\[
+			\Gest_X\bigl((\Oo(G)/A)^!_n\bigr)
+		\]
+		over $X$. The analogous statement holds with $(\GL_1)_n$ replaced by $(\bbA^1)_n$ and $G \in \CMon(\Gest^{n\text{-suave}}_{/X})$.
+	\end{theorem}
+
+	\begin{remark}\label[remark]{rem:Suave_Dualizing_Monoidal}
+		As explained in the previous chapter (\Cref{chap:Cartier_Duality}), the functor
+		\[
+			(\Oo(-)/A)^!_n \colon \Gest^{n\text{-suave}}_{/X} \to A_{n+1}
+		\]
+		is canonically symmetric monoidal for the cartesian structure on the source. In particular, for $G \in \CMon(\Gest^{n\text{-suave}}_{/X})$ the object $(\Oo(G)/A)^!_n$ acquires a commutative algebra structure in $A_{n+1}$.
+	\end{remark}
+
+	\begin{definition}\label[definition]{def:Internal_Hom_GL1}
+		We write
+		\[
+			\Hh om(G, (\GL_1)_n) := \Gest_X\bigl((\Oo(G)/A)^!_n\bigr)
+		\]
+		for the representing object of \Cref{thm:Cartier_Key_Computation}. It is canonically a commutative group, and as such represents the functor $G' \mapsto \Hom(G \otimes G', (\GL_1)_n)$; in other words, $\Hh om(G, (\GL_1)_n)$ is the internal hom of commutative groups in $\Gest_{/X}$.
+	\end{definition}
+
+	\begin{corollary}\label[corollary]{cor:Eventually_Suave_Dual}
+		If $G \in \CGrp(\Gest_{/X})$ is eventually suave (i.e.\ $n$-suave for some $n$), then $\Hh om(G, (\GL_1)_n)$ exists for all $n$. Likewise, if $M \in \Sp(\Gest_{/X})$ is such that each $M_n$ is eventually suave, then
+		\[
+			M^* = \Hh om(M, \GL_1)
+		\]
+		exists.
+	\end{corollary}
+	\begin{proof}
+		Assume first that $G$ is $n$-suave. Then $\Hh om(G, (\GL_1)_m)$ exists for all $m \geq n$ by \Cref{thm:Cartier_Key_Computation}, and by taking loops we obtain the claim for $m < n$ as well. For the spectral statement, use that
+		\[
+			\tau_{\geq 0}\Hh om(M, \GL_1) = \lim_n \Hh om(M_n, (\GL_1)_n). \qedhere
+		\]
+	\end{proof}
+
+	\begin{proof}[Proof of \Cref{thm:Cartier_Key_Computation}]
+		The $(\bbA^1)_n$-statement implies the $(\GL_1)_n$-statement by passing to units, so we prove the former.
+
+		Let first $H$ be an $n$-suave Gestalt over $X$. For a map $f\colon Y \to X$ we compute
+		\[
+			\Hom_{\Gest_{/Y}}(H \times_X Y, (\bbA^1)_n) \simeq \Oo(H \times_X Y)^{\simeq, \aleph_1}_n \simeq \Hom_{\Oo(Y)_{n+1}}\bigl(\unit, (\Oo(H \times_X Y)/\Oo(Y))_n\bigr) \simeq \Hom\bigl((\Oo(H \times_X Y)/\Oo(Y))^!_n, \unit\bigr).
+		\]
+		Recall that the assignment $(\Oo(-)/\Oo(-))^!_n$ commutes with base change along $n$-suave maps, and so
+		\[
+			\Hom\bigl((\Oo(H \times_X Y)/\Oo(Y))^!_n, \unit\bigr) = \Hom\bigl(f_n^*(\Oo(H)/\Oo(X))^!_n, \unit\bigr) = \Hom\bigl((\Oo(H)/\Oo(X))^!_n, (\Oo(Y)/\Oo(X))_n\bigr).
+		\]
+		If now $H = G \in \CMon(\Gest^{n\text{-suave}}_{/X})$ is a commutative monoid, one deduces
+		\[
+			\Hom_{\CMon(\Gest_{/Y})}(G \times_X Y, (\bbA^1)_n) \simeq \Hom_{\CAlg(\Oo(X)_{n+1})}\bigl((\Oo(G)/\Oo(X))^!_n, (\Oo(Y)/\Oo(X))_n\bigr),
+		\]
+		which is exactly representability by $\Gest_X\bigl((\Oo(G)/A)^!_n\bigr)$.
+	\end{proof}
+
+	We have thus constructed the spectral dual out of the non-spectral duals. It is not yet clear how to describe this spectral dual directly. We now show that the limit computing the spectral dual can be understood stage by stage, with the various stages iteratively fixing the $n$-affinizations of the spectral dual.
+
+	\begin{theorem}\label[theorem]{thm:Iterated_Affinization}
+		Let $X = \Gest(A)$ and $M \in \Sp(\Gest_{/X})$, and assume that for all $k \geq n$ the map $* \to M_{k+1}$ is $k$-suave. (Note that this implies that each $M_k$ is $k$-suave.) Then $M^*_0$ is $n$-prim, and the natural map
+		\[
+			M^*_0 \to \Hh om(M_n, (\GL_1)_n) = \Gest_X\bigl((\Oo(M_n)/A)^!_n\bigr)
+		\]
+		exhibits its target as the $n$-affinization of its source.
+	\end{theorem}
+
+	This follows from the following lemma.
+
+	\begin{lemma}\label[lemma]{lem:Affinization_Loop}
+		Let $G \in \CGrp(\Gest_{/X})$ and assume that $G$ is $(n+1)$-suave and that the unit $i\colon * \to G$ is $n$-suave, so that $G' := \Omega G$ is $n$-suave. Then $\Hh om(G, (\GL_1)_{n+1})$ is $n$-prim, and the map
+		\[
+			\Hh om(G, (\GL_1)_{n+1}) \xrightarrow{\Omega} \Hh om(G', (\GL_1)_n)
+		\]
+		exhibits its target as an $n$-affinization of its source.
+	\end{lemma}
+	\begin{proof}
+		The target is the $n$-affine Gestalt $\Gest_X\bigl((\Oo(G')/A)^!_n\bigr)$ and the source is the $(n+1)$-affine Gestalt $\Gest_X\bigl((\Oo(G)/A)^!_{n+1}\bigr)$. We must show the following two statements.
+		\begin{enumerate}
+			\item The map $\unit \to (\Oo(G)/A)^!_{n+1}$ in $A_{n+2}$ admits a right adjoint.
+			\item The map $(\Oo(G')/A)^!_n \to \End_{(\Oo(G)/A)^!_{n+1}}(\unit)$ is an isomorphism.
+		\end{enumerate}
+		For (1), the map $\unit \to (\Oo(G)/A)^!_{n+1}$ is obtained by applying $f_{n+1,\sharp}$ to the map $i_{n,!}\colon (\Oo(*)/\Oo(G))^!_{n+1} \to \unit$ in $\Oo(G)_{n+2}$, where $f\colon G \to *$. Since $i$ is $n$-suave, the map $i_{n,!}$ admits a right adjoint $i_n^!$; as $f_{n+1,\sharp}(-)$ preserves adjunctions, this produces the required right adjoint, hence primness.
+
+		For (2), we may use (1) to identify the endomorphism object $\End_{(\Oo(G)/A)^!_{n+1}}(\unit) \in A_{n+1} = \End_{A_{n+2}}(\unit)$ with the composite
+		\[
+			\unit \xrightarrow{f_{n+1,\sharp}(i_{n,!})} (\Oo(G)/A)^!_{n+1} \xrightarrow{f_{n+1,\sharp}(i_n^*)} \unit.
+		\]
+		Since $\Hom(-, \unit)$ acts as the identity on the unit, this composite may alternatively be computed as
+		\[
+			\unit \xrightarrow{f_{n+1,*}(i_{n,\sharp})} (\Oo(G)/A)_{n+1} \xrightarrow{f_{n+1,*}(i_n^*)} \unit.
+		\]
+		Now $f_{n+1,*}(i_n^* i_{n,\sharp}) = f_{n+1,*}(g_{n,\sharp} g_n^*)$ by the pullback square
+		\[\begin{tikzcd}
+			G' \rar["g"] \dar["g"'] \drar[pullback] & * \dar["i"] \\
+			* \rar["i"'] & G.
+		\end{tikzcd}\]
+		But the map $g_{n,\sharp} g_n^*\colon \unit \to \unit$ in $A_{n+2}$ is precisely $g_{n,\sharp}(\unit) = (\Oo(G')/A)^!_n \in A_{n+1} = \End_{A_{n+2}}(\unit)$, which finishes the proof.
+	\end{proof}
+
+	\section{Continuing the proof}
+	\label[section]{sec:Cartier_Proof_Continuing}
+
+	Now let $M \in \Sp(\Gest^{n\text{-}\et}_{/X})$. Applying \Cref{thm:Iterated_Affinization} to $\Omega^k M$ for all $k$ shows that each map $M^*_k \to X$ is $n$-prim. It remains to see that it is $n$-proper. The diagonal of $M^*_k$ is a base change of the zero section $* \to M^*_k$: indeed, for any commutative group $G$ the composite
+	\[
+		G \xrightarrow{\Delta} G \times G \xrightarrow{\mathrm{shear}} G \times G
+	\]
+	equals $(\id, e)$, which is a base change of $e\colon * \to G$. Consequently the higher diagonals are base changed from the zero sections of the iterated loop groups $\Omega^j G$. (Note that the diagonal of the zero section of $G$ is the zero section of $\Omega G$.)
+
+	\begin{proposition}\label[proposition]{prop:Zero_Section_Prim}
+		In the situation of \Cref{thm:Iterated_Affinization}, the map $* \to M^*_1$ is $(n+1)$-prim.
+	\end{proposition}
+	\begin{proof}
+		Assume for simplicity that $n = 0$. For $m \geq 1$, consider the map $i^*_{m-1}\colon (\Oo(M^*_1)/A)_m \to \unit$ in $A_{m+1}$; we show that it admits a right adjoint. As before, it is identified with the map $f_{m-1,!}\colon (\Oo(M_{m-1})/A)^!_m \to \unit$, where $f\colon M_{m-1} \to X$. Since $f$ is $(m-1)$-suave, the functor $f_{m-1,!}$ admits a right adjoint $f^!_{m-1}$, and hence $i^*_{m-1}$ admits a right adjoint $i_{m-1,*}$ in $A_{m+1}$ for each $m \geq 1$. However, we need this right adjoint in $\Oo(M^*_1)_{m+1}$.
+
+		Consider the map $\id \to i_{m,*} i_m^*$ in $\End_{A_{m+2}}\bigl((\Oo(M^*_1)/A)_{m+1}\bigr)$. Applying $\Hom(\unit, -)$ sends it to the unit map $\unit \to i_{m,*}\unit$ in $\Oo(M^*_1)_{m+1}$, so it suffices to show that this unit map admits a right adjoint.
+
+		Consider the map
+		\[
+			\Oo(M_m \times M_m)_{m+1} \to \End_{A_{m+2}}\bigl((\Oo(M_m)/A)^!_{m+1}\bigr)
+		\]
+		sending $K$ to the composite
+		\[
+			(\Oo(M_m)/A)^!_{m+1} \xrightarrow{p_m^!} (\Oo(M_m \times M_m)/A)^!_{m+1} \xrightarrow{-\otimes K} (\Oo(M_m \times M_m)/A)^!_{m+1} \xrightarrow{q_{m,!}} (\Oo(M_m)/A)^!_{m+1},
+		\]
+		where $p, q\colon M_m \times M_m \to M_m$ are the two projections. The tensoring $-\otimes K$ exists because $(\Oo(M_m \times M_m)/A)^!_{m+1}$ is the image of the unit under the left adjoint $\Oo(M_m \times M_m)_{m+2} \to A_{m+2}$, so that the endomorphisms $\Oo(M_m \times M_m)_{m+1} = \End_{\Oo(M_m \times M_m)_{m+2}}(\unit)$ act on this object.
+
+		One computes that the map $\Delta_{f, m-1, !}$ in $\Oo(M_m \times M_m)_{m+1}$ is sent to the unit $\id \to f_m^! f_{m,!}$. So to prove the claim, it remains to show that $\Delta_{f, m-1, !}$ admits a right adjoint. But this follows from the fact that $* \to M_{m-1}$ is $(m-1)$-suave.
+	\end{proof}
+
+	\begin{corollary}\label[corollary]{cor:Dual_Is_Proper}
+		Given $M \in \Sp(\Gest^{n\text{-}\et}_{/X})$, we have $M^* \in \Sp(\Gest^{n\text{-prop}}_{/X})$.
+	\end{corollary}
+
+	In fact, the argument dualizes, which implies the following.
+
+	\begin{proposition}\label[proposition]{prop:Dual_Is_Etale}
+		Given $M \in \Sp(\Gest^{n\text{-prop}}_{/X})$, we have $M^* \in \Sp(\Gest^{n\text{-}\et}_{/X})$.
+	\end{proposition}
+
+	\begin{proof}[Proof of \Cref{thm:Cartier_Duality}]
+		Let $M \in \Sp(\Gest^{n\text{-}\et}_{/X})$. Then $M^*$ is representable and lies in $\Sp(\Gest^{n\text{-prop}}_{/X})$ by \Cref{cor:Dual_Is_Proper}, and moreover
+		\[
+			(\Oo(M_k)/\Oo(X))^!_{m+k} \cong (\Oo(M^*_m)/\Oo(X))_{m+k}.
+		\]
+		To conclude, it suffices to show that the canonical map $M \to (M^*)^*$ is an isomorphism. But for $m + k > n + 1$ we have
+		\[
+			(\Oo(M^{**}_k)/A)_{m+k} \cong (\Oo(M^*_m)/A)_{m+k} \cong (\Oo(M_k)/A)_{m+k},
+		\]
+		which gives the claim.
+	\end{proof}
 
 	\appendix
 
@@ -8111,7 +8320,7 @@
 	and the realization functors of \Cref{disc:Realization_Density} are compatible with them, since the underlying Gestalten do not change.
 
 	\begin{discussion}[Outlook]\label[discussion]{disc:Zariski_Outlook}
-		We conclude with the questions this picture suggests, beyond those already recorded.
+		We record some questions this picture suggests, beyond those already recorded.
 		\begin{enumerate}
 			\item \emph{The internal Zariski spectrum.} \Cref{thm:Internal_Zariski_Geometry} feeds the machinery of \citet{Lurie_DAG_V}: there results an absolute spectrum functor from $\Ind$-objects of $\Cc_n(A)\catop$ to topoi with local $\Gg^{\mathrm{Zar}}_n(A)$-structure. For $A = \Oo(\Spec(\S))$, $n = 1$, and rigid compactly generated inputs, the poset of localizations is governed, after the Hochster duality of \Cref{rem:Hochster_Duality_Gestalten}, by the lattice of thick tensor ideals, and one expects the underlying locale of the spectrum to recover the Balmer spectrum via \citet{Kock_Pitsch}; at $\aleph_1$ and at higher height it is an intrinsic replacement for it. It would also be interesting to identify the internal analogue of a \emph{local} $2$-ring: plausibly, an internal $n$-ring all of whose geometric covers split.
 			\item \emph{Principality and telescope-type questions.} Call a localization \emph{principal} if it is universal among maps inverting a single $\aleph_1$-compact morphism of $\Oo(Y_R)_n$. Principal localizations should be $\aleph_1$-compact; the extent to which the converse fails is a coherence question of telescope type, and the stalk-locality results in the appendix of \citet{ABCSS_Higher_Zariski} suggest what its internal formulation should look like.
