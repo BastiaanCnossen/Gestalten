@@ -1,0 +1,510 @@
+% OLD ORIGINAL WRITE-UP BY CLAUDE FABLE
+%
+% This file is an archival source fragment, not a standalone document.
+% It preserves the former final appendix chapter of Gestalten Notes.tex
+% exactly as it stood before the replacement written on 2026-08-24.
+%
+	\chapter{Higher Zariski geometry of Gestalten}
+	\label[appendix]{chap:Zariski_Gestalten}
+
+	\emph{This appendix is exploratory: its material was neither treated in Scholze's notes nor discussed in the seminar. It records what the higher Zariski geometry of \citet{ABCSS_Higher_Zariski} looks like when internalized into the Gestalten formalism.}
+
+	\emph{This appendix grew out of AI-assisted exploratory discussions based on \citep{ABCSS_Higher_Zariski} and these notes. It is a proposal rather than a finished theory, and its conjectural points are marked explicitly.}
+
+	The paper \citet{ABCSS_Higher_Zariski} develops a Zariski geometry for \emph{$2$-rings}, i.e.\ idempotent-complete stable symmetric monoidal categories. It equips the opposite of the category of compact $2$-rings with the structure of a geometry in the sense of \citet{Lurie_DAG_V}: the admissible morphisms are the principal Karoubi quotients $\Kk \to \Kk/\lra{a}$, and a finite family of these is a cover when every object killed by all of its members is tensor-nilpotent. From this data the machinery of \emph{loc.\ cit.}\ produces a spectrum, a category of locally $2$-ringed topoi, and a spectrum--global-sections adjunction; the underlying space of the spectrum recovers the Balmer spectrum \citep{Balmer_Spectrum}, via its description in terms of the poset of tensor-triangulated localizations due to \citet{Kock_Pitsch}, and the spectrum functor is fully faithful on rigid $2$-rings.
+
+	The goal of this appendix is to formulate candidate Zariski geometries over an arbitrary base Stefanich ring $A$ and at arbitrary categorical height. Three indices must be kept separate. An internal $n$-ring is a commutative algebra in $A_n$; it presents an $(n-1)$-affine Gestalt; and its module category occurs in level $n$ of the structure Stefanich ring. The translation rests on the classification results of \Cref{chap:Injections_Surjections_Gestalten}: idempotent algebras classify proper injections of Gestalten, and idempotent coalgebras classify étale injections. Once the covering condition is defined geometrically, via surjections of Gestalten, a substantial part of the theory of \citet{ABCSS_Higher_Zariski} becomes formal:
+	\begin{itemize}
+		\item Zariski descent, both for the internal rings themselves and for their module categories, holds for geometric covers essentially by construction (\Cref{thm:Zariski_Covers_And_Descent}). In \emph{loc.\ cit.}\ the corresponding statements are the main descent theorems and require rigidity; internally to $A$, rigidity is instead the hypothesis under which the geometric covers admit a support-theoretic description (\Cref{thm:Rigid_Covers_Conservative}).
+		\item The dichotomy between Karoubi quotients and smashing localizations organizes itself along the categorical height: general localizations at ring height $n$ become smashing, and in fact clopen, at ring height $n+1$ (\Cref{obs:Localization_Ladder}). The theorem of Miller that finite localizations of rigid $2$-rings are smashing acquires a two-line internal proof (\Cref{prop:Rigid_Localizations_Smashing}).
+	\end{itemize}
+	There is nevertheless a choice here, rather than a uniquely forced definition. Algebraic localizations, smashing localizations, and open immersions agree only in special stable or rigid situations. Likewise, geometric covers are defined so that descent is automatic, whereas the support-theoretic covers of \citet{ABCSS_Higher_Zariski} carry substantial content. We keep these notions separate and label extrapolations beyond the results of the main text as expectations or questions.
+
+	Throughout, we fix a Stefanich ring $A$ and write $X := \Gest(A)$.
+
+	\section{Internal higher rings}
+	\label[section]{sec:Internal_Higher_Rings}
+
+	\begin{definition}\label[definition]{def:Internal_Higher_Rings}
+		For $n \geq 1$, the category of \emph{commutative internal $n$-rings}, or simply \emph{internal $n$-rings}, in $A$ is
+		\[
+			\Ring_n(A) := \CAlg(A_n),
+		\]
+		and its \emph{affine core} is the opposite of its subcategory of $\aleph_1$-compact objects,
+		\[
+			\Cc_n(A) := \bigl(\Ring_n(A)^{\aleph_1}\bigr)\catop.
+		\]
+	\end{definition}
+
+	By the affine correspondence of \Cref{def:N_Affine}, an internal $n$-ring $R \in \Ring_n(A)$ determines an $(n-1)$-affine Gestalt
+	\[
+		Y_R := \Gest_X(R) \longrightarrow X,
+	\]
+	and this assignment is a fully faithful embedding
+	\[
+		j_n\colon \Cc_n(A) \hookrightarrow \Gest_{/X}
+	\]
+	(defined on all of $\Ring_n(A)\catop$; the restriction to the affine core is what will carry the geometry). Since $(\Oo(Y_R)/A)_{n-1} = R$, \Cref{prop:Affineness_Properties}(2) provides an equivalence
+	\[
+		\Oo(Y_R)_{n} \simeq \Mod_{R}(A_{n}),
+	\]
+	and consequently
+	\[
+		\CAlg\bigl(\Oo(Y_R)_{n}\bigr) \simeq \Ring_n(A)_{R/}.
+	\]
+
+	\begin{remark}[Indexing convention]\label[remark]{rem:Higher_Ring_Indexing}
+		The index records the categorical height of the commutative algebra, not the affine height of the Gestalt it presents. Thus commutative ring spectra are internal $1$-rings, stable presentably symmetric monoidal categories are internal $2$-rings, and stable presentable $2$-categories with a commutative multiplication are internal $3$-rings. The former convention in this appendix used the affine height and therefore called these $0$-, $1$-, and $2$-rings, respectively.
+	\end{remark}
+
+	\begin{remark}[The role of $\aleph_1$]\label[remark]{rem:Role_Of_Aleph1}
+		The cutoff cardinal $\aleph_1$ plays the role that finite presentation plays in classical algebraic geometry and that $\omega$-compactness plays in \citet{ABCSS_Higher_Zariski}. The category $\Ring_n(A)$ is $\aleph_1$-presentable, and by \Cref{lem:Kappa_Compact_Algebra_Closure_Properties} its $\aleph_1$-compact objects form an essentially small, idempotent-complete subcategory closed under finite colimits; the underlying reason is that the $E_\infty$-operad is countable (\Cref{lem:Kappa_Compact_Algebra_Iff_Module}). Thus $\Cc_n(A)$ is an idempotent-complete small category with finite limits, as required for a geometry in the sense of Lurie. The localization and covering constructions below make sense before imposing compactness; compactness enters when forming the small geometry and gives represented points of Lurie's algebra category. The distinction between formal filtered colimits and genuine internal rings is explained in \Cref{warn:Spectrum_Aleph1_Extension}.
+	\end{remark}
+
+	\begin{discussion}[Calibration with the $2$-rings of ABCSS]\label[discussion]{disc:ABCSS_Calibration}
+		Take $A = \Oo(\Spec(\S))$ and $n = 2$. Then $A_2 = 1\Pr_{\S}$, so $\Ring_2(A)$ is the category of stable presentably symmetric monoidal categories, with morphisms the symmetric monoidal left adjoints preserving $\aleph_1$-compact objects. Passing to $\Ind$-objects embeds the $2$-rings of \citet{ABCSS_Higher_Zariski} into this category: a small idempotent-complete stable symmetric monoidal category $\Kk$ yields $\Ind(\Kk) \in \Ring_2(A)$, and exact symmetric monoidal functors yield morphisms (a functor preserving colimits and $\omega$-compact objects preserves $\aleph_1$-compact objects, these being retracts of countable colimits of compact ones).
+
+		We emphasize that the two finiteness regimes genuinely differ, in both directions. On morphisms, $\Ring_2(A)$ is more permissive: a morphism $\Ind(\Kk) \to \Ind(\Ll)$ need only preserve $\aleph_1$-compact objects, so the embedding above is not full. On objects, $\aleph_1$-compactness of algebras (``countable presentation'') is weaker than compact generation in the sense relevant to \emph{loc.\ cit.}; and one cannot blindly transport rigidity arguments, since countable colimits of dualizable objects need not be dualizable. We therefore treat the geometry of \citet{ABCSS_Higher_Zariski} as a guide for the internal theory, not as a special case of it; the precise comparison of the two sites is left open.
+	\end{discussion}
+
+	\begin{discussion}[What is to be classified]\label[discussion]{disc:What_Zariski_Classifies}
+		At fixed ring height $n$, the basic classification problem is not initially a problem about thick subcategories. It is the classification of $\aleph_1$-compact idempotent commutative $R$-algebras
+		\[
+			q\colon R \longrightarrow S \quad\text{in}\quad \CAlg(A_n),
+		\]
+		equivalently of $\aleph_1$-compact $(n-1)$-proper injections $Y_S \hookrightarrow Y_R$ (\Cref{prop:Localizations_Proper_Injections}). Smashing localizations form the lower-height part of this poset and are classified by idempotent algebras in $\Oo(Y_R)_{n-1}$. Only after imposing rigidity, compact generation, or another telescope-type hypothesis should one expect to replace these idempotent algebras by tensor ideals of objects in an underlying homotopy category.
+
+		For the sphere Stefanich ring, the monoidal $2$-category $\PrL_{\mathrm{st}} \simeq 1\Pr_{\S}$ is the height shift $\Mod^A_2(\Sp)$ and hence is naturally a $3$-ring. Thus its first spectrum problem asks for compact idempotent commutative $\PrL_{\mathrm{st}}$-algebras in the ambient category $\Ring_3(A)$. Equivalently, it asks for compact $2$-proper injections into the $2$-affine Gestalt presented by $\PrL_{\mathrm{st}}$. The smashing part is controlled one level lower, by idempotent commutative algebra objects in the underlying monoidal $2$-category. A description by thick subcategories would be a further theorem, not the definition of the points or opens.
+	\end{discussion}
+
+	\section{Localizations and immersions}
+	\label[section]{sec:Internal_Localizations}
+
+	The following class of maps is the internal counterpart of the Karoubi quotients of \citet{ABCSS_Higher_Zariski}.
+
+	\begin{definition}\label[definition]{def:Internal_Localization}
+		A map $q\colon R \to S$ in $\Ring_n(A)$ is a \emph{localization} if the multiplication map
+		\[
+			S \otimes_R S \longrightarrow S
+		\]
+		is an isomorphism, i.e.\ if $S$ is an idempotent $R$-algebra.
+	\end{definition}
+
+	\begin{observation}\label[observation]{obs:Localizations_Are_Epimorphisms}
+		Localizations of $R$ are precisely the epimorphisms out of $R$: the condition that $S \otimes_R S \iso S$ is equivalent to the mapping animae $\Hom_{\Ring_n(A)_{R/}}(S,T)$ being $(-1)$-truncated for all $T$. In particular the localizations of $R$ form a poset. Every symmetric monoidal reflective localization represented by an object of $\Ring_n(A)$ is a localization in this sense. The converse is not formal: an idempotent commutative $R$-algebra need not by itself exhibit the underlying functor as a reflective Bousfield localization. Thus kernels and acyclic objects will only be used when such a reflective presentation is available. At ring height $2$, examples include the $\Ind$-extensions of Karoubi quotients and completions such as $\D(\Z) \to \D(\Z)^{\wedge}_p$. The finiteness of the admissible maps of \citet{ABCSS_Higher_Zariski} is imposed separately by $\aleph_1$-compactness.
+	\end{observation}
+
+	The classification of injections from \Cref{chap:Injections_Surjections_Gestalten} identifies this class geometrically.
+
+	\begin{proposition}\label[proposition]{prop:Localizations_Proper_Injections}
+		Let $q\colon R \to S$ be a map in $\Ring_n(A)$. The following are equivalent:
+		\begin{enumerate}
+			\item $q$ is a localization;
+			\item The map $Y_S \to Y_R$ is an injection of Gestalten.
+		\end{enumerate}
+		In this case $Y_S \to Y_R$ is an $(n-1)$-proper injection, and the assignment $q \mapsto (Y_S \to Y_R)$ is an equivalence between the poset of localizations of $R$ and the poset of $(n-1)$-proper injections into $Y_R$.
+	\end{proposition}
+	\begin{proof}
+		Since $\Gest_X(-)$ is fully faithful and symmetric monoidal, it carries the codiagonal $S \otimes_R S \to S$ to the diagonal $Y_S \to Y_S \times_{Y_R} Y_S$, giving the equivalence of (1) and (2). Under the identification $\CAlg(\Oo(Y_R)_{n}) \simeq \Ring_n(A)_{R/}$, a localization of $R$ is exactly an idempotent algebra in $\Oo(Y_R)_{n}$, so \Cref{prop:Injective_Prim_Idempotent_Algebras} (applied over the base $Y_R$) shows that $Y_S \to Y_R$ is an $(n-1)$-proper injection and that this establishes an equivalence of posets.
+	\end{proof}
+
+	Note that no compactness is needed in \Cref{prop:Localizations_Proper_Injections}: idempotency alone already produces the internal adjunctions witnessing $(n-1)$-properness. Among all localizations, we single out those which are induced from one categorical level down.
+
+	\begin{definition}\label[definition]{def:Smashing_Internal_Localization}
+		Let $n \geq 2$. A localization $q\colon R \to S$ in $\Ring_n(A)$ is \emph{smashing} if the corresponding injection $Y_S \hookrightarrow Y_R$ is $(n-2)$-proper. Equivalently, by \Cref{prop:Injective_Prim_Idempotent_Algebras} applied one level lower, $q$ is classified by an idempotent algebra $E \in \Idem(\Oo(Y_R)_{n-1})$ in the underlying $(n-1)$-category of $R \in A_n$. For $n = 1$ we declare every localization to be smashing.
+	\end{definition}
+
+	\begin{remark}[The height-two picture]\label[remark]{rem:Smashing_Height_Two}
+		Take $A = \Oo(\Spec(\S))$ and $n = 2$, and let $R \in \Ring_2(A)$ be a stable presentably symmetric monoidal category. Under the canonical equivalence $\Oo(Y_R)_1 \simeq R$, \Cref{def:Smashing_Internal_Localization} recovers the classical notion: a smashing localization of $R$ is one of the form $R \to \Mod_E(R)$ for an idempotent algebra object $E \in \CAlg(R)$ with $E \otimes E \iso E$. Note the bookkeeping of finiteness conditions: the relevant compactness is that of $E$ as an \emph{algebra in $R$}, not as an underlying object of $R$. For example, $B[1/f] \in \CAlg(\D(B))$ is a compact algebra, having the finite presentation $B[t]/(ft-1)$, while its underlying $B$-module is generally not compact. The precise comparison between $\aleph_1$-compactness of $E$ in $\CAlg(\Oo(Y_R)_{n-1})$ and $\aleph_1$-compactness of the localization $R \to S$ in $\Ring_n(A)_{R/}$ is the algebra-to-module compactness bridge for the internal module-endomorphism adjunction, which we treat as an input here (cf.\ \Cref{sec:Zariski_Height_Variation}).
+	\end{remark}
+
+	The two classes of maps interleave along the categorical height, in a way that dissolves the dichotomy between Karoubi quotients and smashing localizations:
+
+	\begin{observation}[The localization ladder]\label[observation]{obs:Localization_Ladder}
+		Recall from \Cref{sec:Zariski_Height_Variation} below the height-shift embedding $\Ring_n(A) \hookrightarrow \Ring_{n+1}(A)$, $R \mapsto \Mod_R(A_n)$, which does not change the associated Gestalt. Let $q\colon R \to S$ be a localization at ring height $n$.
+		\begin{enumerate}
+			\item Viewed at ring height $n+1$, the map $q$ is a \emph{smashing} localization: the injection $Y_S \hookrightarrow Y_R$ is $(n-1)$-proper (\Cref{prop:Localizations_Proper_Injections}), which is the defining condition for smashing at ring height $n+1$. Its classifying idempotent algebra in $\Oo(Y_R)_{n}$ is $S$ itself.
+			\item By ambidexterity (\Cref{prop:Ambidexterity_Stefanich_Rings}(2)), the $(n-1)$-proper injection $Y_S \hookrightarrow Y_R$ is also an $n$-étale injection, hence is classified by an idempotent \emph{coalgebra} in $\Oo(Y_R)_{n+1}$ as well (\Cref{prop:Suave_Etale_Idempotent_Coalgebras}); indeed the module category $\Mod_S(A_{n})$ is simultaneously an idempotent algebra and an idempotent coalgebra, cf.\ \Cref{lem:Smashing_Idempotent_Coalgebras}.
+		\end{enumerate}
+		In words: \emph{every localization becomes smashing, and in fact clopen, one categorical level up}. One may view this as a categorified and internal form of the theorem of Miller that finite localizations of rigid $2$-rings are smashing, with rigidity traded for one level of categorification; see \Cref{prop:Rigid_Localizations_Smashing} for the statement at a fixed height.
+	\end{observation}
+
+	Over a general base there is also a genuinely different, ``open'' class of admissible maps, invisible in the stable setting of \citet{ABCSS_Higher_Zariski}.
+
+	\begin{definition}\label[definition]{def:Open_Internal_Localization}
+		An \emph{open immersion at ring height $n$} over $R \in \Ring_n(A)$ is an $(n-1)$-étale injection $U \hookrightarrow Y_R$. By \Cref{prop:Suave_Etale_Idempotent_Coalgebras}, these are classified by idempotent coalgebras $C \in \coIdem(\Oo(Y_R)_{n})$, the corresponding Gestalt being $U_C = \Gest_{Y_R}\bigl(\coMod_C(\Oo(Y_R)_{n})\bigr)$.
+	\end{definition}
+
+	\begin{remark}\label[remark]{rem:Open_Level_Shift}
+		The open $U_C$ is $n$-affine over $Y_R$, but in general not $(n-1)$-affine: opens of $(n-1)$-affines live one affine height up. They are, however, again algebraic localizations there: an $(n-1)$-étale injection is $n$-proper by \Cref{prop:Ambidexterity_Stefanich_Rings}(4), i.e.\ a localization at ring height $n+1$. Thus the localizations at ring height $n+1$ contain both the closed and the open admissible maps arising at ring height $n$. This does not identify the corresponding height-$n$ notions. Complements relate the two classes: the complement of an open immersion is the closed immersion on the complementary idempotent algebra $\cofib(C \to \unit)$ (\Cref{prop:Complement_Construction}), but by the warning following that proposition this passage is irreversible without stability. The appropriate finiteness condition on the open side is likewise not $\aleph_1$-compactness of $C$ as an object: already for a finite localization the acyclization coalgebra can fail to be compact, and one should instead ask for compact generation of $\coMod_C$, or for $\aleph_1$-compactness of the resulting localization at ring height $n+1$.
+	\end{remark}
+
+	\begin{remark}[Hochster duality]\label[remark]{rem:Hochster_Duality_Gestalten}
+		The dictionary above inverts the topology familiar from tensor-triangular geometry. In \citet{ABCSS_Higher_Zariski}, the admissible maps $\Kk \to \Kk/\lra{a}$ correspond to the quasicompact \emph{opens} $U(a)$ of the Balmer spectrum; internally, the corresponding localizations are classified by idempotent algebras, i.e.\ by \emph{closed} immersions of Gestalten. Concretely, $\Gest(\Z[\tfrac 1p]) \hookrightarrow \Gest(\Z)$ is a closed immersion (\Cref{ex:Closed_Immersion_Zp}), while $\Spec(\Z[\tfrac 1p]) \subseteq \Spec(\Z)$ is Zariski open; dually, the $p$-complete Gestalt is the open complement (\Cref{ex:Complement_Zp}), while the support-theoretic side of the recollement is closed in the Balmer spectrum. Thus the internal Zariski topology on Gestalten is Hochster dual to the Balmer topology; compare the remark in \citet{ABCSS_Higher_Zariski} that their nomenclature is Hochster dual to the Zariski frame of \citet{Kock_Pitsch}. By \Cref{obs:Localization_Ladder}, the tension disappears one categorical level up, where both classes become clopen.
+	\end{remark}
+
+	\section{The internal Zariski geometry}
+	\label[section]{sec:Internal_Zariski_Geometry}
+
+	We first record the admissibility axioms.
+
+	\begin{proposition}\label[proposition]{prop:Localization_Admissibility}
+		Localizations in $\Ring_n(A)$ are stable under:
+		\begin{enumerate}
+			\item Cobase change: if $R \to S$ is a localization and $R \to T$ is any map, then $T \to T \otimes_R S$ is a localization;
+			\item Composition;
+			\item Left cancellation: if $R \to S \to T$ are maps such that $R \to S$ and $R \to T$ are localizations, then $S \to T$ is a localization;
+			\item Retracts in the arrow category of $\Ring_n(A)$.
+		\end{enumerate}
+		Moreover, each of these operations preserves the property that all objects involved are $\aleph_1$-compact and that the localizations are $\aleph_1$-compact in the relevant slice.
+	\end{proposition}
+	\begin{proof}
+		(1) Since the tensor product commutes with itself,
+		\[
+			(T \otimes_R S) \otimes_T (T \otimes_R S) \simeq T \otimes_R (S \otimes_R S) \simeq T \otimes_R S.
+		\]
+		Parts (2) and (3) follow more cleanly from \Cref{obs:Localizations_Are_Epimorphisms}. Epimorphisms are closed under composition, and if the composite $R \to T$ is an epimorphism, then $S \to T$ is an epimorphism: two maps out of $T$ which agree after precomposition with $S \to T$ also agree after precomposition with $R \to T$.
+		(4) Idempotency of a map $R \to S$ asserts that a canonical map, the multiplication $S \otimes_R S \to S$, is an isomorphism. A retract diagram in the arrow category induces a retract diagram of multiplication maps, and a retract of an isomorphism is an isomorphism.
+		The statements about $\aleph_1$-compactness are \Cref{lem:Kappa_Compact_Algebra_Closure_Properties}: part (2) of that lemma for cobase change, part (3) for composition, part (4) for cancellation, and part (1) for retracts.
+	\end{proof}
+
+	Next we define the covers. This is the point where the internal theory departs from \citet{ABCSS_Higher_Zariski}: their covering condition is support-theoretic, whereas the Gestalt formalism suggests a geometric one.
+
+	\begin{definition}\label[definition]{def:Geometric_Cover}
+		A finite family $\{q_i\colon R \to S_i\}_{i \in I}$ of $\aleph_1$-compact localizations in $\Ring_n(A)^{\aleph_1}$ is a \emph{geometric cover} if the map
+		\[
+			\coprod_{i \in I} Y_{S_i} \longrightarrow Y_R
+		\]
+		is a surjection of Gestalten in the sense of \Cref{def:Surjective_Gestalten}. We write $\tau_n^{\mathrm{geom}}$ for the Grothendieck topology on $\Cc_n(A)$ generated by the geometric covers.
+	\end{definition}
+
+	Each $Y_{S_i} \to Y_R$ is an $(n-1)$-proper injection, hence $n$-étale by \Cref{prop:Ambidexterity_Stefanich_Rings}(2); by \Cref{cor:Etale_Countable_Limits} the coproduct is again $n$-étale over $Y_R$. The covering condition therefore takes place inside the countably toposic category $\Gest^{n\text{-}\et}_{/Y_R}$ of \Cref{thm:Etale_Countably_Toposic}, where surjections are exactly the covers in the sense of topos theory.
+
+	\begin{theorem}\label[theorem]{thm:Internal_Zariski_Geometry}
+		The triple
+		\[
+			\Gg^{\mathrm{geom}}_n(A) := \bigl(\Cc_n(A),\ \{\text{$\aleph_1$-compact localizations}\},\ \tau_n^{\mathrm{geom}}\bigr)
+		\]
+		is a geometry in the sense of \citet{Lurie_DAG_V}. Moreover the geometric covers form a pretopology: they contain the isomorphisms and are stable under base change and composition of families.
+	\end{theorem}
+	\begin{proof}
+		The category $\Cc_n(A)$ is small, idempotent-complete and has finite limits by \Cref{rem:Role_Of_Aleph1}, and the admissibility axioms for the localizations are \Cref{prop:Localization_Admissibility}. It remains to verify the pretopology assertions; the topology $\tau_n^{\mathrm{geom}}$ they generate is then by construction generated by admissible morphisms.
+
+		A family containing an isomorphism is a cover, since isomorphisms are surjective. For stability under base change, let $\{R \to S_i\}$ be a geometric cover and $R \to T$ any map in $\Ring_n(A)^{\aleph_1}$. The base-changed family consists of $\aleph_1$-compact localizations by \Cref{prop:Localization_Admissibility}, and the corresponding map of Gestalten is the pullback of $\coprod_i Y_{S_i} \to Y_R$ along $Y_T \to Y_R$. As in the proof of \Cref{lem:Pullback_Along_Surjection_Conservative}, base change along an arbitrary map commutes with the simplicial colimit computing the image of an eventually suave map, by \Cref{prop:Suave_Countable_Limits}(2); hence pullbacks of surjections along maps of Gestalten are surjections.
+
+		For composition, let $\{R \to S_i\}_i$ be a geometric cover and let $\{S_i \to T_{ij}\}_j$ be geometric covers for each $i$. All maps in sight are $n$-étale, hence so are the two coproduct maps
+		\[
+			\coprod_{i,j} Y_{T_{ij}} \longrightarrow \coprod_i Y_{S_i} \longrightarrow Y_R
+		\]
+		and their composite. By \Cref{prop:Surjective_Criteria}(4), applied at level $n$, surjectivity of an $n$-suave map is equivalent to conservativity of its pullback functor on levels $n+1$; the first map has this property because a finite product of conservative functors is conservative, the second by assumption, and conservativity is stable under composition. Hence the composite family is a geometric cover.
+	\end{proof}
+
+	\section{Covers, descent, and structure sheaves}
+	\label[section]{sec:Zariski_Covers_Descent}
+
+	The next theorem unwinds what a geometric cover is. It is the internal counterpart of the two main descent theorems of \citet{ABCSS_Higher_Zariski}, descent for the structure presheaf and Zariski descent for module categories, and simultaneously of the classical statement that a Zariski cover of an affine scheme is of effective descent. The point is that, with the geometric definition of covers, all of this is essentially tautological: a surjection of Gestalten is \emph{by definition} a map whose Čech nerve realizes to the target, i.e.\ an effective-descent map for the structure sheaf.
+
+	\begin{theorem}[Covers and descent]\label[theorem]{thm:Zariski_Covers_And_Descent}
+		Let $\{q_i\colon R \to S_i\}_{i \in I}$ be a finite family of $\aleph_1$-compact localizations in $\Ring_n(A)^{\aleph_1}$. The following are equivalent:
+		\begin{enumerate}
+			\item The family is a geometric cover;
+			\item Effective descent: for every $m \geq 0$, the canonical map
+			\[
+				\Oo(Y_R)_m \longrightarrow \lim_{[p] \in \simp} \; \prod_{(i_0,\dots,i_p) \in I^{p+1}} \Oo\bigl(Y_{S_{i_0}} \times_{Y_R} \cdots \times_{Y_R} Y_{S_{i_p}}\bigr)_m
+			\]
+			is an equivalence;
+			\item The pullback functors $\Oo(Y_R)_{n+1} \to \Oo(Y_{S_i})_{n+1}$, $i \in I$, are jointly conservative.
+		\end{enumerate}
+		In this case, the pullback functors are jointly conservative on \emph{every} level; in particular:
+		\begin{enumerate}
+			\item[(4)] At level $n-1$, the functors $q_i\colon \Oo(Y_R)_{n-1} \to \Oo(Y_{S_i})_{n-1}$ underlying the localizations are jointly conservative, and the Amitsur comparison
+			\[
+				R \iso \lim_{[p] \in \simp} \; \prod_{(i_0,\dots,i_p)} S_{i_0} \otimes_R \cdots \otimes_R S_{i_p}
+			\]
+			holds in $\Ring_n(A)$;
+			\item[(5)] At level $n$, if $M \in \Mod_R(A_{n})$ satisfies $M \otimes_R S_i \simeq 0$ for all $i$, then $M \simeq 0$, and the categorified Amitsur comparison
+			\[
+				\Mod_R(A_{n}) \iso \lim_{[p] \in \simp} \; \prod_{(i_0,\dots,i_p)} \Mod_{S_{i_0} \otimes_R \cdots \otimes_R S_{i_p}}(A_{n})
+			\]
+			holds.
+		\end{enumerate}
+	\end{theorem}
+	\begin{proof}
+		Write $f\colon Y := \coprod_i Y_{S_i} \to Y_R$; as discussed after \Cref{def:Geometric_Cover}, this is a map in the countably toposic category $\Gest^{n\text{-}\et}_{/Y_R}$, whose countable colimits are computed in $\Gest_{/Y_R}$, i.e.\ as limits of Stefanich rings, by \Cref{cor:Etale_Countable_Limits}. Since countable colimits in a countably toposic category are universal (\Cref{prop:Countably_Toposic_Characterization}(4)), the Čech nerve of $f$ has $p$-simplices
+		\[
+			Y^{\times_{Y_R}(p+1)} \simeq \coprod_{(i_0,\dots,i_p)} Y_{S_{i_0}} \times_{Y_R} \cdots \times_{Y_R} Y_{S_{i_p}}.
+		\]
+		By \Cref{def:Surjective_Gestalten}, the family is a geometric cover if and only if the colimit of this simplicial object in $\Gest$ is $Y_R$, i.e.\ if and only if $\Oo(Y_R)$ is the limit of the corresponding cosimplicial diagram of Stefanich rings. Limits of Stefanich rings under $\Oo(Y_R)$ are computed levelwise (\Cref{prop:Slice_Description}), and levels take coproducts of Gestalten to products; this proves (1) $\Leftrightarrow$ (2). The equivalence with (3) is \Cref{prop:Surjective_Criteria}, (1) $\Leftrightarrow$ (4), applied to the $n$-suave map $f$ at level $n$.
+
+		Now assume (2). Each level of the limit is a limit of categories, in which isomorphisms are detected on the entries of the diagram; restricting attention to the entries with $p = 0$ gives joint conservativity at every level. For the displayed formula in (4), it remains to identify the levels of the Čech objects: the maps $Y_{S_i} \to Y_R$ are $(n-1)$-prim (\Cref{prop:Localizations_Proper_Injections}), so the Künneth formula for prim maps (\Cref{lem:Kunneth_Prim}) computes the relative level-$(n-1)$ algebra of $Y_{S_{i_0}} \times_{Y_R} \cdots \times_{Y_R} Y_{S_{i_p}}$ over $Y_R$ as $S_{i_0} \otimes_R \cdots \otimes_R S_{i_p}$. The formula in (5) is the same identification one level up, using $\Oo(Y_{S})_{n} \simeq \Mod_S(A_{n})$ from \Cref{prop:Affineness_Properties}(2), and the vanishing statement follows since an object of a limit of categories vanishes if all its images do (its identity being detected there).
+	\end{proof}
+
+	\begin{remark}[Structure sheaves of internal $n$-rings]\label[remark]{rem:Structure_Sheaf_Internal}
+		\Cref{thm:Zariski_Covers_And_Descent} says that the tautological presheaf
+		\[
+			\Oo\colon \bigl(\Cc_n(A)_{/R}\bigr)\catop \longrightarrow \Ring_n(A), \qquad S \longmapsto S,
+		\]
+		together with all of its categorified levels $S \mapsto \Oo(Y_S)_m$, is a sheaf for the topology $\tau_n^{\mathrm{geom}}$, without any rigidity hypothesis. This inverts the logic of \citet{ABCSS_Higher_Zariski}: there, covers are defined support-theoretically and the sheaf property of the structure presheaf on the spectrum of a rigid $2$-ring is the main theorem; here, covers are defined geometrically, the sheaf property is automatic, and the substance migrates into the question of \emph{which} support-theoretically defined families are geometric covers. Global sections over $R$ tautologically recover $R$. We now explain how this presheaf enters Lurie's spectrum construction, and exactly which internal rings lie in the domain of that construction.
+	\end{remark}
+
+	\section{The spectrum of an internal higher ring}
+	\label[section]{sec:Spectrum_Internal_Higher_Ring}
+
+	We recall the absolute spectrum construction of \citet[Section 2.2]{Lurie_DAG_V} before specializing it. Let $\Gg$ be a small geometry. Its category of algebras is
+	\[
+		\Alg_{\Gg} := \Ind_{\omega}(\Gg\catop) \simeq \Fun^{\lex}(\Gg,\An).
+	\]
+	A $\Gg$-structure on a topos $\Xx$ is a finite-limit-preserving functor $\Oo\colon \Gg \to \Xx$ carrying admissible covers to effective epimorphisms. A morphism of $\Gg$-structures is \emph{local} if its naturality square on every admissible morphism is cartesian. We write $\mathrm{LGeo}(\Gg)$ for the category of topoi equipped with $\Gg$-structures and local morphisms. Evaluation on global sections defines a functor
+	\[
+		\Gamma_{\Gg}\colon \mathrm{LGeo}(\Gg) \longrightarrow \Alg_{\Gg}.
+	\]
+
+	\begin{construction}[Lurie's spectrum]\label[construction]{con:Lurie_Spectrum_Geometry}
+		Let $R \in \Alg_{\Gg}$, and write $R^{\vee} \in \Pro(\Gg)$ for the corresponding pro-object under $\Alg_{\Gg}\catop \simeq \Pro(\Gg)$. An admissible morphism $U \to R^{\vee}$ in $\Pro(\Gg)$ is, by definition, a pullback of an admissible morphism of $\Gg$. Let
+		\[
+			D_R := \Pro(\Gg)^{\mathrm{adm}}_{/R^{\vee}}
+		\]
+		be the resulting pro-admissible site, with the topology generated by pullbacks of admissible covers in $\Gg$. Lurie defines
+		\[
+			\Xx_R := \Shv(D_R).
+		\]
+		The evaluation pairing $\Gg \times \Pro(\Gg)\catop \to \An$ gives a tautological presheaf $\widetilde{\Oo}_R\colon \Gg \to \PSh(D_R)$; composing with sheafification gives a $\Gg$-structure $\Oo_R\colon \Gg \to \Xx_R$. The resulting structured topos is
+		\[
+			\Spec^{\Gg}(R) := (\Xx_R,\Oo_R) \qin \mathrm{LGeo}(\Gg).
+		\]
+	\end{construction}
+
+	The construction is characterized by the adjunction
+	\[
+		\Hom_{\mathrm{LGeo}(\Gg)}\bigl(\Spec^{\Gg}(R),(\Xx,\Oo)\bigr)
+		\simeq
+		\Hom_{\Alg_{\Gg}}\bigl(R,\Gamma_{\Gg}(\Xx,\Oo)\bigr).
+	\]
+	This is Lurie's variance convention. Passing to $\mathrm{LGeo}(\Gg)\catop$ makes the spectrum contravariant, as in ordinary algebraic geometry.
+
+	We apply this with $\Gg = \Gg_n^{\mathrm{geom}}(A)$. Its Lurie algebra category is
+	\[
+		\Alg_n^{\mathrm{Lur}}(A)
+		:= \Ind_{\omega}\bigl(\Gg_n^{\mathrm{geom}}(A)\catop\bigr)
+		= \Ind_{\omega}\bigl(\Ring_n(A)^{\aleph_1}\bigr).
+	\]
+	Put $K_n(A) := \Ring_n(A)^{\aleph_1}$. The two ind-completions fit into an adjunction
+	\[
+		L_n\colon
+		\Alg_n^{\mathrm{Lur}}(A) = \Ind_{\omega}(K_n(A))
+		\rightleftarrows
+		\Ind_{\aleph_1}(K_n(A)) \simeq \Ring_n(A)
+		\noloc \iota_n,
+	\]
+	where $\iota_n$ is the canonical fully faithful inclusion and $L_n$ realizes a formal filtered colimit in $\Ring_n(A)$. In particular, every internal ring has a canonical image in Lurie's algebra category, and hence has an ordinary Lurie spectrum. The subtlety is not the existence of this formal spectrum. It is that $\iota_n$ remembers the countable-colimit relations in $\Ring_n(A)$ only as additional properties of its image, while a general object of $\Alg_n^{\mathrm{Lur}}(A)$ need not satisfy them. Equivalently, there is no formal reason for the realization $L_n$ to be left exact.
+
+	For represented algebras, however, Lurie's construction has the desired concrete form.
+
+	\begin{proposition}\label[proposition]{prop:Spectrum_Compact_Internal_Ring}
+		Let $R \in \Ring_n(A)^{\aleph_1}$. Let $\Loc_n^c(R)$ be the site whose objects are $\aleph_1$-compact localizations $q\colon R \to S$ between $\aleph_1$-compact internal $n$-rings, whose morphisms are the corresponding maps $Y_T \to Y_S$ over $Y_R$, equivalently the further localizations $S \to T$, and whose covers are the geometric covering families over $S$. Then
+		\[
+			\Spec^{\Gg_n^{\mathrm{geom}}(A)}(R)
+			\simeq
+			\bigl(\Shv(\Loc_n^c(R)),\Oo_R\bigr).
+		\]
+		For $T \in \Ring_n(A)^{\aleph_1}$, the structure sheaf is determined on a basic localization $R \to S$ by
+		\[
+			\Oo_R(Y_T)(R \to S)
+			\simeq
+			\Hom_{\Ring_n(A)}(T,S).
+		\]
+		No further sheafification is needed, and
+		\[
+			\Gamma_{\Gg_n^{\mathrm{geom}}(A)}\bigl(\Spec^{\Gg_n^{\mathrm{geom}}(A)}(R)\bigr) \simeq R
+		\]
+		in $\Alg_n^{\mathrm{Lur}}(A)$.
+	\end{proposition}
+	\begin{proof}
+		The pro-object associated to $R$ is represented. Indeed, an admissible map into it is obtained from an admissible map $V \to W$ of the geometry by pullback along a map $Y_R \to W$. Since the embedding of the geometry into its pro-category is fully faithful and preserves finite limits, this pullback is represented by $Y_R \times_W V$. Thus Lurie's pro-admissible site is $\Loc_n^c(R)$, with precisely the asserted topology; DAG~V, Theorem 2.2.12, then identifies its sheaf topos with the underlying topos of the spectrum. The displayed formula is the evaluation pairing in \Cref{con:Lurie_Spectrum_Geometry}. By \Cref{thm:Zariski_Covers_And_Descent}, the tautological internal-ring presheaf satisfies descent for geometric covers; applying $\Hom_{\Ring_n(A)}(T,-)$ shows that each displayed presheaf of animae is already a sheaf. Finally, global sections are evaluation at the final object $R \to R$ of the site, which gives the functor $T \mapsto \Hom_{\Ring_n(A)}(T,R)$ represented by $R$.
+	\end{proof}
+
+	\begin{corollary}\label[corollary]{cor:Underlying_Locale_Compact_Spectrum}
+		For $R \in \Ring_n(A)^{\aleph_1}$, the underlying topos of $\Spec^{\Gg_n^{\mathrm{geom}}(A)}(R)$ is localic. More precisely, let $J_R$ be the topology on the poset $\Loc_n^c(R)$ generated by geometric covers. Its frame of opens is the frame
+		\[
+			\Omega_R := \operatorname{Idl}_{J_R}\bigl(\Loc_n^c(R)\bigr)
+		\]
+		of $J_R$-ideals: downward-closed collections of basic localizations which are closed under the rule that, if every member of a geometric covering family belongs to the collection, then so does the object covered. There is an equivalence
+		\[
+			\Shv\bigl(\Loc_n^c(R),J_R\bigr) \simeq \Shv(\Omega_R).
+		\]
+	\end{corollary}
+	\begin{proof}
+		By \Cref{obs:Localizations_Are_Epimorphisms}, the category $\Loc_n^c(R)$ is a poset. A topos presented by a site whose underlying category is a poset is localic: its subterminal objects are precisely the sheaves associated to $J_R$-ideals, and these generate the topos. The standard equivalence between localic topoi and frames gives the displayed equivalence.
+	\end{proof}
+
+	\begin{discussion}[Points and stalks]\label[discussion]{disc:Spectrum_Points_Stalks}
+		The frame in \Cref{cor:Underlying_Locale_Compact_Spectrum} is presented by compact localizations, finite intersections
+		\[
+			(R \to S) \wedge (R \to T) = (R \to S \otimes_R T),
+		\]
+		and the relations imposed by geometric covers. Its points are equivalently the $\tau_n^{\mathrm{geom}}$-prime filters of basic localizations: a filter must meet every geometric covering family of each basic localization which it contains. If the locale has enough points, these filters recover it spatially. A point $x$ also determines a local $\Gg_n^{\mathrm{geom}}(A)$-algebra, its stalk,
+		\[
+			R_x \simeq \colim_{(R \to S) \in x} S.
+		\]
+		Thus identifying prime filters describes only the underlying locale. Computing the structured spectrum also requires identifying the local $\Gg_n^{\mathrm{geom}}(A)$-algebras $R_x$, their realizations under $L_n$ when one wants internal rings, and the restriction maps between basic localizations.
+	\end{discussion}
+
+	\begin{example}[The spectrum of $\PrL_{\mathrm{st}}$]\label[example]{ex:Spectrum_PrL_St}
+		Let $A = \Oo(\Spec(\S))$. The $3$-ring
+		\[
+			\PrL_{\mathrm{st}} \simeq \Mod^A_2(\Sp) \in \Ring_3(A)
+		\]
+		is the monoidal unit of $A_3$, hence the initial object of $\CAlg(A_3)$ and therefore $\aleph_1$-compact. It belongs to the affine core, so its Lurie spectrum is already defined:
+		\[
+			\Spec^{\Gg_3^{\mathrm{geom}}(A)}(\PrL_{\mathrm{st}})
+			\simeq
+			\bigl(\Shv(\Loc_3^c(\PrL_{\mathrm{st}})),\Oo_{\PrL_{\mathrm{st}}}\bigr).
+		\]
+		Computing it consists of four successive problems:
+		\begin{enumerate}
+			\item Classify the compact idempotent commutative $\PrL_{\mathrm{st}}$-algebras, equivalently the compact $2$-proper injections into its affine Gestalt.
+			\item Determine which finite families are geometric covers.
+			\item Classify the $\tau_3^{\mathrm{geom}}$-prime filters of the resulting localization site.
+			\item Compute the corresponding local $\Gg_3^{\mathrm{geom}}(A)$-algebras, their associated internal $3$-rings, and the structure sheaf.
+		\end{enumerate}
+		The discussion in \Cref{disc:What_Zariski_Classifies} addresses the first problem. A higher analogue of the Kock--Pitsch theorem would repackage the first three in terms of prime radical tensor congruences, but no such theorem is established here.
+	\end{example}
+
+	\begin{warning}[Formal versus realized algebras]\label[warning]{warn:Spectrum_Aleph1_Extension}
+		For every $R \in \Ring_n(A)$, the object $\iota_n(R) \in \Alg_n^{\mathrm{Lur}}(A)$ has an ordinary Lurie spectrum. This does not produce an adjunction between $\Ring_n(A)$ and structured topoi whose global sections are genuine internal rings: Lurie's structures and global sections take values in $\Alg_n^{\mathrm{Lur}}(A)$ and impose only finite-limit compatibility. Composing with $L_n$ can identify a formal countable colimit with its realization, but $L_n$ is not known to be left exact and therefore need not preserve the descent limits defining a structure sheaf. An intrinsic $\aleph_1$-spectrum--global-sections adjunction would still require a countably left exact version of the structured-topos formalism. The represented compact case, including \Cref{ex:Spectrum_PrL_St}, is insensitive to this distinction.
+	\end{warning}
+
+	The support-theoretic covering conditions are the following.
+
+	\begin{definition}\label[definition]{def:Conservative_Cover}
+		A finite family $\{q_i\colon R \to S_i\}$ of localizations in $\Ring_n(A)$ is:
+		\begin{enumerate}
+			\item \emph{module-conservative} if the base-change functors $\Mod_R(A_n) \to \Mod_{S_i}(A_n)$ are jointly conservative.
+			\item For $n \geq 2$, \emph{support-conservative} if the functors $\Oo(Y_R)_{n-1} \to \Oo(Y_{S_i})_{n-1}$ underlying the $q_i$ are jointly conservative.
+			\item For $n \geq 2$, \emph{nil-conservative} if every map $u$ in $\Oo(Y_R)_{n-1}$ inverted by all $q_i$ is tensor-nilpotent, meaning that some iterated pushout product $u^{\mathbin{\square}m}$ is an isomorphism.
+		\end{enumerate}
+	\end{definition}
+
+	\begin{remark}
+		Condition (3) is the direct internalization of the covers of \citet{ABCSS_Higher_Zariski}: when $\Oo(Y_R)_{n-1}$ is stable one has $\cofib(u^{\mathbin{\square}m}) \simeq \cofib(u)^{\otimes m}$, so nil-conservativity says exactly that the common kernel of the $q_i$ consists of tensor-nilpotent objects. Every support-conservative family is nil-conservative. The converse holds whenever tensor-nilpotent maps are isomorphisms, for example in the rigid stable setting, where a tensor-nilpotent object with a dual vanishes by the usual retract argument. We do not know an internal version of this retract argument at higher height. None of these implications identifies the support-theoretic coverage with $\tau_n^{\mathrm{geom}}$ without an additional descent theorem.
+	\end{remark}
+
+	By \Cref{thm:Zariski_Covers_And_Descent}, every geometric cover is module-conservative and, for $n \geq 2$, support-conservative. The converse is the internal analogue of the Mayer--Vietoris descent theorem of \citet{ABCSS_Higher_Zariski} (in turn a coherent enhancement of gluing results of Balmer--Favi). At ring height $1$, module-conservativity suffices without any rigidity hypothesis:
+
+	\begin{theorem}\label[theorem]{thm:Height_One_Ring_Covers}
+		Let $X = \Gest(A)$ be a Gestalt over $\Spec(\S)$, so that $A_1$ is stable, and let $\{q_i\colon R \to S_i\}_{i=1}^{k}$ be a finite family of $\aleph_1$-compact localizations in $\Ring_1(A)^{\aleph_1}$. Then the family is a geometric cover if and only if it is module-conservative.
+	\end{theorem}
+	\begin{proof}
+		One direction is \Cref{thm:Zariski_Covers_And_Descent}.
+
+		Conversely, assume the family is module-conservative, and work in the stable symmetric monoidal category $\Mod_R(A_1)$. Set $I_i := \fib(R \to S_i)$. Tensoring together the fiber sequences $I_i \to R \to S_i$ produces a $k$-cube $T \mapsto S_T := \bigotimes^R_{i \in T} S_i$ (with $S_{\emptyset} = R$) whose total fiber is $I_1 \otimes_R \cdots \otimes_R I_k$. Since $q_i$ is a localization, $I_i \otimes_R S_i = \fib(S_i \to S_i \otimes_R S_i) = 0$, so the total fiber dies after base change to every $S_i$ and hence vanishes by joint conservativity. Thus the cube is cartesian:
+		\[
+			R \iso \lim_{\emptyset \neq T \subseteq \{1,\dots,k\}} S_T.
+		\]
+		Each $S_T$ with $T \neq \emptyset$ is a module over $S := \prod_i S_i$, and any $S$-module $M$ is a retract of $S \otimes_R M$; since the limit above is finite and $\Mod_R(A_1)$ is stable, it follows that $R$ lies in the thick tensor ideal generated by $S$, i.e.\ that $S$ is descendable in the sense of \Cref{def:Descendable}.
+
+		Finally, since $A_1$ is stable, the finite product $S = \prod_i S_i$ splits off complementary idempotents at every level, so that $Y_S \simeq \coprod_i Y_{S_i}$. The map $Y_S \to Y_R$ is $0$-affine and countably presented, hence $0$-prim and eventually suave (\Cref{prop:Prim_Properties}(1), \Cref{prop:Proper_Properties}(1), \Cref{prop:Ambidexterity_Stefanich_Rings}), and its pushforward of the unit is the descendable algebra $S$. \Cref{cor:Descendable_Implies_Surjective} shows that it is surjective, i.e.\ the family is a geometric cover.
+	\end{proof}
+
+	\begin{warning}\label[warning]{warn:Conservative_Not_Geometric}
+		At ring height $n \geq 2$, support-conservative families need not be geometric covers, and rigidity genuinely enters. The counterexample is already in \citet{ABCSS_Higher_Zariski}: for the non-rigid $2$-ring $\Fun([1],\Sp)^{\omega}$, the source and target evaluations to $\Sp^{\omega}$ are Karoubi quotients forming a nil-conservative, indeed support-conservative, family, but descent fails, as it would identify $\Fun([1],\Sp)$ with $\Sp \times \Sp$. Viewed internally at ring height $2$ over $\Spec(\S)$, this is a support-conservative family of $\aleph_1$-compact localizations which is not a geometric cover, by \Cref{thm:Zariski_Covers_And_Descent}(4).
+	\end{warning}
+
+	\begin{question}\label[question]{quest:Higher_Height_Descent}
+		At ring height $n \geq 2$, under which internal rigidity hypotheses does support-conservativity imply geometric covering? The proof of \Cref{thm:Height_One_Ring_Covers} breaks down because $A_n$ is not stable, so the total-fiber argument is unavailable; the levels $A_m$ for $m \geq 2$ are, however, semiadditive, and one may hope for an ambidexterity-based replacement for the fracture cube. \Cref{thm:Rigid_Covers_Conservative} below settles the module-level criterion; what remains open is the comparison with support-conservativity on $\Oo(Y_R)_{n-1}$, which at ring height $2$ is the Mayer--Vietoris theorem of \citet{ABCSS_Higher_Zariski}.
+	\end{question}
+
+	\section{Rigidity}
+	\label[section]{sec:Zariski_Rigid}
+
+	\begin{definition}\label[definition]{def:Rigid_Internal_N_Ring}
+		For $n \geq 2$, an internal $n$-ring $R \in \Ring_n(A)$ is \emph{rigid} if the structure map $Y_R \to X$ is $(n-2)$-proper, i.e.\ if the Stefanich $A$-algebra $\Oo(Y_R)$ is $(n-2)$-proper over $A$. We declare every internal $1$-ring to be rigid. We write $\Cc_n^{\mathrm{rig}}(A) \subseteq \Cc_n(A)$ for the full subcategory of rigid objects.
+	\end{definition}
+
+	\begin{discussion}[Shifted rigidity]\label[discussion]{disc:Shifted_Rigidity}
+		For a countably presented $(n-1)$-affine algebra, $(n-1)$-properness is automatic (\Cref{prop:Proper_Properties}(1)), and $(n-2)$-properness is the genuine extra condition. At ring height $n = 2$, \Cref{prop:Proper_Rigid} identifies it with rigidity of $R \in \CAlg(A_2)$ in the sense of Gaitsgory--Rozenblyum: the unit and the multiplication of $R$ admit the relevant internal right adjoints. For $A = \Oo(\Spec(\S))$ and $R$ compactly generated this is closely related to the condition of \citet{ABCSS_Higher_Zariski} that every compact object of $R$ be dualizable. The proof of \Cref{prop:Proper_Rigid} is levelwise and suggests the analogous identification at every height, with $(n-2)$-properness corresponding to internal rigidity of $R$ as an object of $\CAlg(A_n)$; we have not checked this and use $(n-2)$-properness as the definition, since it is intrinsic to the Gestalt formalism and supplies all iterated codiagonal conditions at once. The convention at ring height $1$ is consistent with this: $0$-properness of countably presented $0$-affines is automatic.
+	\end{discussion}
+
+	\begin{proposition}\label[proposition]{prop:Rigid_Maps_Proper}
+		Let $n \geq 2$ and let $R, S \in \Ring_n(A)$ be rigid. Then every map $R \to S$ induces an $(n-2)$-proper map $Y_S \to Y_R$ of Gestalten.
+	\end{proposition}
+	\begin{proof}
+		Both composites $Y_S \to X$ and $Y_R \to X$ are $(n-2)$-proper; apply the cancellation statement of \Cref{prop:Proper_Properties}(4).
+	\end{proof}
+
+	\begin{proposition}[Internal Miller theorem]\label[proposition]{prop:Rigid_Localizations_Smashing}
+		Let $n \geq 2$. Every localization $q\colon R \to S$ between rigid internal $n$-rings is smashing.
+	\end{proposition}
+	\begin{proof}
+		By \Cref{prop:Localizations_Proper_Injections}, the map $Y_S \to Y_R$ is an injection, and by \Cref{prop:Rigid_Maps_Proper} it is $(n-2)$-proper. An $(n-2)$-proper injection is a smashing localization by \Cref{def:Smashing_Internal_Localization}.
+	\end{proof}
+
+	\begin{remark}\label[remark]{rem:Projection_Formula_Reading}
+		\Cref{prop:Rigid_Localizations_Smashing} internalizes the theorem of Miller that finite localizations of rigid $2$-rings are smashing, which in \citet{ABCSS_Higher_Zariski} enters through the criterion that a symmetric monoidal Bousfield localization is smashing if and only if it satisfies the projection formula. The internal counterpart of that criterion is visible here as well: an $(n-2)$-proper map is in particular $(n-2)$-prim, and the prim projection formula (\Cref{lem:Prim_Projection_Formula}) identifies $M \otimes_R q_*(N) \simeq q_*(q^*(M) \otimes_S N)$ at level $n-2$. Note that, unlike in \emph{loc.\ cit.}, no compactness hypothesis is needed: rigidity of the two endpoints suffices.
+	\end{remark}
+
+	Rigidity also lowers by one the level at which the covering condition can be tested, which is the internal counterpart of the rigid descent theorem of \citet{ABCSS_Higher_Zariski}:
+
+	\begin{theorem}\label[theorem]{thm:Rigid_Covers_Conservative}
+		Let $n \geq 2$ and let $\{q_i\colon R \to S_i\}_{i \in I}$ be a finite family of localizations in $\Ring_n(A)$ with $R$ and all $S_i$ rigid. The following are equivalent:
+		\begin{enumerate}
+			\item The map $\coprod_i Y_{S_i} \to Y_R$ is a surjection of Gestalten;
+			\item The base-change functors $\Mod_R(A_{n}) \to \Mod_{S_i}(A_{n})$, $M \mapsto M \otimes_R S_i$, are jointly conservative.
+		\end{enumerate}
+	\end{theorem}
+	\begin{proof}
+		By \Cref{prop:Rigid_Maps_Proper} each $Y_{S_i} \to Y_R$ is $(n-2)$-proper, hence $(n-1)$-étale by \Cref{prop:Ambidexterity_Stefanich_Rings}(2), and by \Cref{cor:Etale_Countable_Limits} the coproduct map $f\colon \coprod_i Y_{S_i} \to Y_R$ is $(n-1)$-étale, in particular $(n-1)$-suave. Now \Cref{prop:Surjective_Criteria}, (1) $\Leftrightarrow$ (4), applied to $f$ at level $n-1$, states that $f$ is surjective if and only if $f_{n-1}^*\colon \Oo(Y_R)_{n} \to \prod_i \Oo(Y_{S_i})_{n}$ is conservative. Under the identifications $\Oo(Y_R)_{n} \simeq \Mod_R(A_{n})$ and $\Oo(Y_{S_i})_{n} \simeq \Mod_{S_i}(A_{n})$ of \Cref{prop:Affineness_Properties}(2), the components of $f_{n-1}^*$ are the base-change functors of the statement.
+	\end{proof}
+
+	\begin{remark}
+		Compare with \Cref{thm:Zariski_Covers_And_Descent}(3), where the covering condition for a general family is detected on $\Oo(-)_{n+1}$; rigidity moves it down to $\Oo(-)_{n}$, i.e.\ to modules over the internal $n$-rings themselves. The same proof works verbatim for countable families. What rigidity does \emph{not} formally provide is the further descent to level $n-1$, i.e.\ the comparison with support-conservativity on $\Oo(Y_R)_{n-1}$ (\Cref{def:Conservative_Cover}); at ring height $2$ over $\Spec(\S)$ this last comparison is the rigid Mayer--Vietoris theorem of \citet{ABCSS_Higher_Zariski}, and we expect their argument to internalize, but we have not carried this out; cf.\ \Cref{quest:Higher_Height_Descent}.
+	\end{remark}
+
+	\begin{question}\label[question]{quest:Rigid_Closure}
+		Is a localization of a rigid internal $n$-ring again rigid? For $2$-rings this is the statement that Karoubi quotients of rigid $2$-rings are rigid, proved in \citet{ABCSS_Higher_Zariski}; the internal statement would ensure that $\Cc_n^{\mathrm{rig}}(A)$, with the smashing localizations (\Cref{prop:Rigid_Localizations_Smashing}) and the geometric covers, is itself a geometry, sitting inside $\Gg^{\mathrm{geom}}_n(A)$.
+	\end{question}
+
+	\begin{discussion}[Realization and density]\label[discussion]{disc:Realization_Density}
+		Since maps between rigid objects are $(n-2)$-proper, hence $(n-1)$-étale, the affine embedding restricts to
+		\[
+			j_n^{\mathrm{rig}}\colon \Cc_n^{\mathrm{rig}}(A) \longrightarrow \Gest^{(n-1)\text{-}\et}_{/X},
+		\]
+		landing in the countably toposic category of $(n-1)$-étale Gestalten over $X$. Provided that the rigid objects are closed under the admissible localizations in question, $j_n^{\mathrm{rig}}$ sends the Čech nerves of geometric covers to colimit diagrams. Left Kan extension along the Yoneda embedding then yields a realization functor
+		\[
+			\Shv_{\tau_n^{\mathrm{geom}}}\bigl(\Cc_n^{\mathrm{rig}}(A)\bigr)^{\aleph_1} \longrightarrow \Gest^{(n-1)\text{-}\et}_{/X},
+		\]
+		whose existence and image are governed by \Cref{thm:Sheaf_Valued_In_Etale}. The internal analogue of the full faithfulness of the spectrum functor on rigid $2$-rings is then a density question: are the rigid $(n-1)$-affine objects dense in the subtopos of the $(n-1)$-étale topos over $X$ that they generate, and does every $(n-1)$-étale Gestalt in this subtopos admit an effective-epimorphic resolution by rigid affines? We leave this as an open question; a positive answer would identify sheaves on the internal Zariski site with a localic piece of $\Gest^{(n-1)\text{-}\et}_{/X}$, in parallel with the identification of the Zariski spectrum of a $2$-ring with the sheaves on its Balmer spectrum.
+	\end{discussion}
+
+	\section{Variation of the categorical height}
+	\label[section]{sec:Zariski_Height_Variation}
+
+	The internal higher rings at successive heights are related by the fully faithful internal module functors
+	\[
+		\Mod^A_{n}\colon \Ring_n(A) = \CAlg(A_{n}) \hookrightarrow \CAlg(A_{n+1}) = \Ring_{n+1}(A)
+	\]
+	of \Cref{sec:Recollections_And_Notations}. On affine Gestalten this transition is invisible: an $(n-1)$-affine object is $n$-affine, with level-$n$ algebra the module category, so
+	\[
+		j_{n+1} \circ \bigl(\Mod^A_{n}\bigr)\catop \simeq j_n.
+	\]
+	Consequently:
+	\begin{enumerate}
+		\item Localizations at ring height $n$ are carried to smashing localizations at ring height $n+1$, with classifying idempotent algebra the localization itself (\Cref{obs:Localization_Ladder});
+		\item Rigid objects are carried to rigid objects, since $(n-2)$-proper implies $(n-1)$-proper;
+		\item Geometric covers are literally unchanged, being conditions on the underlying map of Gestalten.
+	\end{enumerate}
+	The one assertion which is not formal is that $\Mod^A_{n}$ preserves $\aleph_1$-compactness, i.e.\ that a countably presented internal $n$-ring is countably presented as an internal $(n+1)$-ring. This algebra-to-module compactness bridge is used by Scholze and we treat it as an input here, cf.\ \Cref{sec:Compact_Algebras}. Granting it, the transitions define morphisms of geometries
+	\[
+		\Gg^{\mathrm{geom}}_n(A) \longrightarrow \Gg^{\mathrm{geom}}_{n+1}(A),
+	\]
+	and the realization functors of \Cref{disc:Realization_Density} are compatible with them, since the underlying Gestalten do not change.
+
+	\begin{discussion}[Outlook]\label[discussion]{disc:Zariski_Outlook}
+		We record some questions this picture suggests, beyond those already recorded.
+		\begin{enumerate}
+			\item \emph{Comparison and realization of spectra.} The ordinary Lurie spectrum and its compact specialization are described in \Cref{sec:Spectrum_Internal_Higher_Ring}. For $A = \Oo(\Spec(\S))$, $n = 2$, and rigid compactly generated inputs coming from small $2$-rings, one expects comparison with the spectrum of \citet{ABCSS_Higher_Zariski}; the underlying locale should recover the Balmer spectrum after the Hochster duality of \Cref{rem:Hochster_Duality_Gestalten}. At $\aleph_1$ and at higher height, the correct support-theoretic comparison remains open. Every internal ring has a formal Lurie spectrum after applying $\iota_n$, but constructing an intrinsic spectrum--global-sections adjunction valued in genuine internal rings is the separate problem isolated in \Cref{warn:Spectrum_Aleph1_Extension}. A candidate notion of a local internal $n$-ring is one for which every geometric cover contains a localization admitting a section.
+			\item \emph{Principality and telescope-type questions.} For $n \geq 2$, call a localization \emph{principal} if it is universal among maps inverting a single $\aleph_1$-compact morphism of $\Oo(Y_R)_{n-1}$. Principal localizations should be $\aleph_1$-compact; the extent to which the converse fails is a coherence question of telescope type, and the stalk-locality results in the appendix of \citet{ABCSS_Higher_Zariski} suggest what its internal formulation should look like.
+			\item \emph{Stabilization of the tower.} The presentation $\StRing_{A/} \simeq \colim_m \CAlg(A_m)$ suggests the tower of geometries $\Gg^{\mathrm{geom}}_1(A) \to \Gg^{\mathrm{geom}}_2(A) \to \cdots$. Calling this an exhaustion of an all-height geometry requires the compactness compatibility stated above, as well as a choice of the transition topology. By \Cref{obs:Localization_Ladder} every admissible map becomes clopen after one step. Whether the associated spectra stabilize on objects coming from a fixed finite height, and what the resulting limit anima is for classical inputs, we do not know.
+		\end{enumerate}
+	\end{discussion}
+
